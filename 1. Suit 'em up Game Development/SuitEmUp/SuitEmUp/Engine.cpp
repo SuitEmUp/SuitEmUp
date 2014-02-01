@@ -8,6 +8,7 @@
 #include "Customize.h"
 #include "Game.h"
 #include "InputManager.h"//Ladbon
+#include "DrawManager.h"
 
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
@@ -18,9 +19,13 @@
 
 Engine::Engine()
 {
+
+
 	m_running = false;//Ladbon
-	m_statemanager = nullptr;
 	m_window = nullptr;
+	
+	m_drawmanager = nullptr;
+	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 
 	m_fDeltaTime = 0.01f;
@@ -31,6 +36,13 @@ bool Engine::Initialize()
 	m_statemanager = new StateManager;
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
 	m_spritemanager = new SpriteManager;
+
+	m_drawmanager = new DrawManager();
+	if (!m_drawmanager->initialize(m_window))
+	{
+		return false;
+	}
+
 
 	if(m_statemanager->current == nullptr)
 	{
