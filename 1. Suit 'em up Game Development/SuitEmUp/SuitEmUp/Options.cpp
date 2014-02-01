@@ -20,6 +20,7 @@ Options::Options(InputManager* input)
 bool Options::Init()
 {
 	printf("State: Options,   Initialized\n");
+	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";
 
 	return true;

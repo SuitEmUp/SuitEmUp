@@ -29,6 +29,7 @@ bool Game::Init()
 
 	//-----------
 	printf("State: Game,  Initialized\n");
+	printf("F1 - F4 to Change States\n");
 	return true;
 };
 void Game::Exit(){};

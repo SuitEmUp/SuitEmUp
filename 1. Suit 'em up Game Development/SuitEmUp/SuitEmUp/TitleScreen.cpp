@@ -32,6 +32,7 @@ bool TitleScreen::Init()
 
 
 	printf("State: TitleScreen,  Initialized\n");
+	printf("Press SPACE or RETURN to enter MainMenu\n");
 	return true;
 };
 void TitleScreen::Exit(){};

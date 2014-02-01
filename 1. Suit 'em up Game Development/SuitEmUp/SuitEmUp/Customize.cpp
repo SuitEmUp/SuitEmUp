@@ -16,15 +16,14 @@ Customize::Customize(InputManager* input)
 
 bool Customize::Init()
 {
-	printf("State: Customize, Initialized\n");
 	tempName_change = "02";
 
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 
 	m_rects.push_back(rectangle);
 
-
-
+	printf("State: Customize, Initialized\n");
+	printf("F1 - F4 to Change States\n");
 
 	return true;
 };

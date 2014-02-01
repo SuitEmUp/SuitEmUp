@@ -29,6 +29,7 @@ bool MainMenu::Init()
 
 	//-----------
 	printf("State: MainMenu,  Initialized\n");
+	printf("F1 - F4 to Change States\n");
 	return true;
 };
 void MainMenu::Exit(){};
