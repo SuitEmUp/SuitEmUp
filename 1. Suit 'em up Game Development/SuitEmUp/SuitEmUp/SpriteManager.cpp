@@ -1,0 +1,55 @@
+
+
+
+#include "SpriteManager.h"
+
+
+SpriteManager::~SpriteManager()
+{
+	{
+		auto it = m_Sprites.begin();
+		while (it != m_Sprites.end())
+		{
+			delete it->second;
+			it->second = nullptr;
+			it++;
+		}
+		m_Sprites.clear();
+	}
+	{
+		auto it = m_Textures.begin();
+		while (it != m_Textures.end())
+		{
+			delete it->second;
+			it->second = nullptr;
+			it++;
+		}
+		m_Textures.clear();
+	}
+
+};
+
+sf::Sprite* SpriteManager::Load(const std::string &filename, const std::string spritename, float x_scale, float y_scale)
+{
+	auto it = m_Textures.find(filename); //searches for texture
+	if(it == m_Textures.end()) //if texture isnt found
+	{
+		sf::Texture* xTexture = new sf::Texture; //skapa en ny textur
+
+		if(!xTexture->loadFromFile(filename)) // ladda texturen från en fil
+			return nullptr;
+
+		std::pair<std::string, sf::Texture*> xTexturePair(filename, xTexture); //lägg in den nya texturen i map'en
+		m_Textures.insert(xTexturePair);
+		it = m_Textures.find(filename);
+	}
+	sf::Sprite* xSprite = new sf::Sprite; //skapa en ny sprite
+	xSprite->setTexture(*it->second); //sätt spritens textur
+	xSprite->setScale(x_scale, y_scale); //sätt scale
+	std::pair<std::string,sf::Sprite*>xSpritePair(spritename, xSprite); //lägg in den nya spriten i map'en
+	m_Sprites.insert(xSpritePair);
+	return xSprite; //returnera den nya spriten
+
+};
+
+

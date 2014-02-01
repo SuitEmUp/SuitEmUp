@@ -1,0 +1,13 @@
+﻿Build started 2014-01-30 14:58:36.
+     1>Project "C:\Users\Fotze\Dropbox\GROUP 9\Suit 'Em Up\Programming\Ladbons Shitty programming versions\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" StateManager.cpp
+         StateManager.cpp
+         Engine.cpp
+     1>c:\users\fotze\dropbox\group 9\suit 'em up\programming\ladbons shitty programming versions\1. suit 'em up game development\suitemup\suitemup\engine.cpp(40): error C2660: 'StateManager::Update' : function does not take 1 arguments
+         Generating Code...
+     1>Done Building Project "C:\Users\Fotze\Dropbox\GROUP 9\Suit 'Em Up\Programming\Ladbons Shitty programming versions\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.97

@@ -1,0 +1,7 @@
+fullscreen = false
+window_w = 1280
+window_h = 720
+background_r
+background_g
+background_b
+background_a

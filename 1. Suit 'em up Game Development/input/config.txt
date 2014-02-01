@@ -1,0 +1,3 @@
+fullscreen = false
+window_w = 1024
+window_h = 720
