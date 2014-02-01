@@ -1,4 +1,4 @@
-//PlayerObject.h
+//EnemyObject.h
 
 #pragma once
 
@@ -6,10 +6,9 @@
 
 class Truck;
 
-class PlayerObject : public MovingGameObject
-{
+class EnemyObject : public MovingGameObject{
 public:
-	PlayerObject(Truck* truck, sf::Sprite* sprite = nullptr);
+	EnemyObject(Truck* truck, sf::Sprite* sprite = nullptr);
 	bool Update(/*deltatime*/);
 
 private:
