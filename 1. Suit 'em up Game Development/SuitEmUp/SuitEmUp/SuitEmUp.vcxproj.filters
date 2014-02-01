@@ -66,8 +66,13 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp">
+      <Filter>Source Files</Filter>
+=======
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Source Files\States</Filter>
+>>>>>>> 4020bef1d10822476c6cffeb082f2829dbea591b
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,8 +124,13 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\DrawManager.h">
+      <Filter>Header Files</Filter>
+=======
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\TitleScreen.h">
       <Filter>Header Files\States</Filter>
+>>>>>>> 4020bef1d10822476c6cffeb082f2829dbea591b
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,8 @@
 
 class SpriteManager;
 class StateManager;
+class DrawManager;
+
 namespace sf{
 	class RenderWindow;
 }
@@ -23,12 +25,15 @@ private:
 	sf::RenderWindow* m_window;
 
 	SpriteManager* m_spritemanager;
-//ladbon
+	//ladbon
 	InputManager m_input;
+	DrawManager *m_drawmanager;
+
 	sf::Clock* m_xDeltaClock;
 	sf::Time* m_xDeltaTime;
 	float m_fDeltaTime;
 	bool m_running;
+
 
 
 };
