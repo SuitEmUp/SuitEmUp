@@ -1,23 +1,35 @@
-<<<<<<< HEAD
-﻿Build started 2014-02-01 15:59:05.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-01 16:25:36.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-01 15:11:45.
->>>>>>> bd41b1351242f05c33bdb535c9e412e57aafc219
+﻿Build started 2014-02-01 16:35:18.
      1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" TitleScreen.cpp
+         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Config.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\InputManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Options.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SpriteManager.cpp" TitleScreen.cpp StateManager.cpp "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Utils.cpp"
+         Utils.cpp
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(28): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned long', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(84): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(119): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(120): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(121): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         StateManager.cpp
+         SpriteManager.cpp
+         PlayerObject.cpp
+         Options.cpp
+         MainMenu.cpp
+         main.cpp
+         InputManager.cpp
+         GameObject.cpp
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobject.cpp(15): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+         Game.cpp
          Engine.cpp
-     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(87): warning C4244: '=' : conversion from 'sf::Int32' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(99): warning C4244: '=' : conversion from 'sf::Int32' to 'float', possible loss of data
+         DrawManager.cpp
+         Customize.cpp
+         Config.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
          TitleScreen.cpp
        Link:
          D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Config.obj
          Debug\Customize.obj
+         Debug\DrawManager.obj
          Debug\Engine.obj
          Debug\Game.obj
          Debug\GameObject.obj
@@ -36,44 +48,4 @@
 
 Build succeeded.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:02.52
-=======
-Time Elapsed 00:00:01.30
-=======
-﻿Build started 2014-02-01 13:33:17.
->>>>>>> 4020bef1d10822476c6cffeb082f2829dbea591b
-     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp"
-         DrawManager.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Engine.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Config.obj
-         Debug\Customize.obj
-         Debug\DrawManager.obj
-         Debug\Engine.obj
-         Debug\Game.obj
-         Debug\GameObject.obj
-         Debug\InputManager.obj
-         Debug\main.obj
-         Debug\MainMenu.obj
-         Debug\Options.obj
-         Debug\PlayerObject.obj
-         Debug\SpriteManager.obj
-         Debug\StateManager.obj
-         Debug\Utils.obj
-         SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-<<<<<<< HEAD
-Time Elapsed 00:00:00.98
-=======
-Time Elapsed 00:00:00.05
->>>>>>> b1381d22082d2eb5bd75942515b3b32ef07cb81d
->>>>>>> 4020bef1d10822476c6cffeb082f2829dbea591b
->>>>>>> bd41b1351242f05c33bdb535c9e412e57aafc219
+Time Elapsed 00:00:09.03
