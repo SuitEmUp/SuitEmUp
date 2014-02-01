@@ -20,8 +20,8 @@ public:
 	void PostKeyboardUpdate();
 	bool IsDown(int key) const;
 	bool IsUp(int key);
-	
-	private:
+
+private:
 
 	bool m_currentMouse[sf::Mouse::ButtonCount];
 	bool m_previousMouse[sf::Mouse::ButtonCount];
