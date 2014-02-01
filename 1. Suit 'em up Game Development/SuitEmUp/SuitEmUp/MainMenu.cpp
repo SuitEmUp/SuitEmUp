@@ -63,9 +63,21 @@ void MainMenu::Exit(){};
 
 bool MainMenu::Update()
 {
-	if(m_input->IsDown(sf::Keyboard::A))
+	if(m_input->IsDown(sf::Keyboard::F2))
 	{
-		printf("Next State set to Options");
+		printf("Next State set to Game\n");
+		setNextState("Game");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F3))
+	{
+		printf("Next State set to Customize\n");
+		setNextState("Customize");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F4))
+	{
+		printf("Next State set to Options\n");
 		setNextState("Options");
 		return false;
 	};

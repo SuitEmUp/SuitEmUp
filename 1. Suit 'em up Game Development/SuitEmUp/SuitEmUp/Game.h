@@ -1,16 +1,17 @@
 #pragma once
 
-#include "State.h"
 #include <vector>
+#include "State.h"
 
 namespace sf{
 	class RenderWindow;
 }
+
 class InputManager;
 
 class Game : public State {
 public:
-	Game(InputManager * input);
+	Game(InputManager *input);
 	bool Init();
 	void Exit();
 
@@ -24,5 +25,9 @@ public:
 
 private:
 	std::string next_state;
+	InputManager *m_input;
+	std::string tempName_change;
+	
+
 
 };

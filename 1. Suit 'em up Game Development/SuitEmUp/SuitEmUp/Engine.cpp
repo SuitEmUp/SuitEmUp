@@ -7,6 +7,8 @@
 #include "Options.h"
 #include "Customize.h"
 #include "Game.h"
+#include "TitleScreen.h"
+
 #include "InputManager.h"//Ladbon
 
 #include "SFML\Window.hpp"
@@ -34,10 +36,12 @@ bool Engine::Initialize()
 
 	if(m_statemanager->current == nullptr)
 	{
+		m_statemanager->Attach(new TitleScreen(&m_input));
 		m_statemanager->Attach(new MainMenu(&m_input));
 		m_statemanager->Attach(new Options(&m_input));
 		m_statemanager->Attach(new Customize(&m_input));
-		m_statemanager->SetState("MainMenu");
+		m_statemanager->Attach(new Game(&m_input));
+		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
 
