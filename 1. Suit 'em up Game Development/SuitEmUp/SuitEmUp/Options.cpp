@@ -2,6 +2,8 @@
 #include <SFML\Window.hpp>
 
 #include "Options.h"
+#include "InputManager.h"
+
 Options::Options()
 {
 
@@ -52,7 +54,24 @@ void Options::Exit(){};
 
 bool Options::Update()
 {
-
+	if(m_input->IsDown(sf::Keyboard::F1))
+	{
+		printf("Next State set to MainMenu\n");
+		setNextState("MainMenu");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F2))
+	{
+		printf("Next State set to Game\n");
+		setNextState("Game");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F3))
+	{
+		printf("Next State set to Customize\n");
+		setNextState("Customize");
+		return false;
+	};
 	return true;
 };
 

@@ -2,19 +2,19 @@
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
 
-#include "Game.h"
+#include "TitleScreen.h"
 #include "InputManager.h"
 
 
 
 
-Game::Game(InputManager* input) 
+TitleScreen::TitleScreen(InputManager* input) 
 {
 	m_input = input;
 	next_state = "";
 };
 
-bool Game::Init()
+bool TitleScreen::Init()
 {
 	//-----------
 	//sf::Font font;
@@ -28,10 +28,13 @@ bool Game::Init()
 	//m_InputManager = nullptr;
 
 	//-----------
-	printf("State: Game,  Initialized\n");
+
+
+
+	printf("State: TitleScreen,  Initialized\n");
 	return true;
 };
-void Game::Exit(){};
+void TitleScreen::Exit(){};
 
 
 
@@ -61,24 +64,12 @@ void Game::Exit(){};
 //	return true;
 //};
 
-bool Game::Update()
+bool TitleScreen::Update()
 {
-	if(m_input->IsDown(sf::Keyboard::F1))
+	if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 	{
-		printf("Next State set to mainMenu\n");
+		printf("Next State set to MainMenu\n");
 		setNextState("MainMenu");
-		return false;
-	};
-	if(m_input->IsDown(sf::Keyboard::F3))
-	{
-		printf("Next State set to Customize\n");
-		setNextState("Customize");
-		return false;
-	};
-	if(m_input->IsDown(sf::Keyboard::F4))
-	{
-		printf("Next State set to Options\n");
-		setNextState("Options");
 		return false;
 	};
 	return true;
@@ -86,19 +77,19 @@ bool Game::Update()
 
 //draw
 
-std::string Game::Next()
+std::string TitleScreen::Next()
 {
 	return next_state;
 };
 
-void Game::setNextState(std::string state)
+void TitleScreen::setNextState(std::string state)
 {
 	next_state = state;
 };
 
-bool Game::IsType(const std::string &type)
+bool TitleScreen::IsType(const std::string &type)
 {
-	return type.compare("Game") == 0;
+	return type.compare("TitleScreen") == 0;
 };
 
 

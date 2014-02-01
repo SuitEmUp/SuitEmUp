@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Customize.h"
+#include "InputManager.h"
 
 
 
@@ -64,6 +65,24 @@ void Customize::Exit(){
 
 bool Customize::Update()
 {
+	if(m_input->IsDown(sf::Keyboard::F1))
+	{
+		printf("Next State set to MainMenu\n");
+		setNextState("MainMenu");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F2))
+	{
+		printf("Next State set to Game\n");
+		setNextState("Game");
+		return false;
+	};
+	if(m_input->IsDown(sf::Keyboard::F4))
+	{
+		printf("Next State set to Options\n");
+		setNextState("Options");
+		return false;
+	};
 	return true;
 };
 

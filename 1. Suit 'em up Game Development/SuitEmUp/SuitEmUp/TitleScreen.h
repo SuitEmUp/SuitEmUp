@@ -9,9 +9,9 @@ namespace sf{
 
 class InputManager;
 
-class Game : public State {
+class TitleScreen : public State {
 public:
-	Game(InputManager *input);
+	TitleScreen(InputManager *input);
 	bool Init();
 	void Exit();
 
