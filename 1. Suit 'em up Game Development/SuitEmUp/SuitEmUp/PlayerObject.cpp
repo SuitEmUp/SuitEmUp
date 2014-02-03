@@ -23,7 +23,7 @@ bool PlayerObject::Update(/*deltatime*/){
 						//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
 
 	/*MOVEMENT INPUTS
-	if(LOL){
+	if(){
 		m_velocity.m_x=-speed*deltatime*((delta_y)/dist1);	
 		m_velocity.m_y=speed*deltatime*((delta_x)/dist1);
 		//nothing happens with dist2, but dist1 gets hit by centripetal effects
