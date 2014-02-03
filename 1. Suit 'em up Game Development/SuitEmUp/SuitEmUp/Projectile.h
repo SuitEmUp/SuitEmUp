@@ -7,4 +7,5 @@
 class Projectile : public MovingGameObject{
 public:
 	bool Update(/*deltatime*/);
+	bool GetType();
 };

@@ -39,3 +39,7 @@ bool EnemyObject::Update(/*deltatime*/){
 	}
 	else return false;//doesn't matter if false is returned.
 };
+
+bool EnemyObject::GetType(){
+	return true;
+};

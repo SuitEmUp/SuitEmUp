@@ -8,3 +8,7 @@ bool Projectile::Update(/*deltatime*/){
 	//if(m_truck->GetPosition()==10415 || || ||) return true;
 	return false;
 };
+
+bool Projectile::GetType(){
+	return true;
+};

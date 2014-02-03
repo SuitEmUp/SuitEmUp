@@ -21,3 +21,7 @@ sf::Vector2u Truck::GetVelocity(){
 void Truck::SetVelocity(sf::Vector2u vel){
 	m_velocity=vel;
 };
+
+bool Truck::GetType(){
+	return true;
+};
