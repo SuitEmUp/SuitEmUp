@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "GameObjectManager.h"
 #include <iostream>
-//#include "level.h"
+#include "level.h"
 #include <vector>
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
