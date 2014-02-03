@@ -90,6 +90,7 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\InputManager.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\main.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" />

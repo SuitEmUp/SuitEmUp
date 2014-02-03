@@ -10,6 +10,7 @@ public:
 	bool Update(/*deltatime*/);
 	sf::Vector2u GetVelocity();
 	void SetVelocity(sf::Vector2u vel);
+	bool GetType();
 
 private:
 	int m_hp;

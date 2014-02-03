@@ -10,5 +10,4 @@ class Truck;
 class EnemyProjectile : public Projectile{
 public:
 	EnemyProjectile(Truck* truck, sf::Sprite* sprite = nullptr);
-
 };

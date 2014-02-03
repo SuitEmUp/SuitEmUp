@@ -67,3 +67,7 @@ bool PlayerObject::Update(/*deltatime*/){
 	//}
 	return false; //if this is returned nothing will happen
 };
+
+bool PlayerObject::GetType(){
+	return true;
+};

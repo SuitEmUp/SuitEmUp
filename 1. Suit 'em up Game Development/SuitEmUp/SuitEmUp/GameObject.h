@@ -15,6 +15,9 @@ public:
 	sf::Sprite* GetSprite();
 	sf::Vector2u &GetPosition();
 
+	virtual bool Update() = 0; // SCARY
+	virtual bool GetType() = 0; //SCARY AS HELL
+
 	void SetPosition(float x_pos, float y_pos);
 	bool HasSprite();
 
