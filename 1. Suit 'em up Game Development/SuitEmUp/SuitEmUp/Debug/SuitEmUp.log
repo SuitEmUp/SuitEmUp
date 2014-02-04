@@ -1,82 +1,11 @@
-<<<<<<< HEAD
-﻿Build started 2014-02-04 11:44:45.
+﻿Build started 2014-02-04 12:24:26.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp"
          DrawManager.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\drawmanager.cpp(47): error C2664: 'void sf::RenderTarget::draw(const sf::Drawable &,const sf::RenderStates &)' : cannot convert parameter 1 from 'std::vector<_Ty>' to 'const sf::Drawable &'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 Reason: cannot convert from 'std::vector<_Ty>' to 'const sf::Drawable'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-         Generating Code...
-         Compiling...
-         Engine.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(44): error C2664: 'DrawManager::initialize' : cannot convert parameter 1 from 'sf::RenderWindow *' to 'sf::RenderWindow &'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(99): warning C4244: '=' : conversion from 'sf::Int32' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         GameObjectManager.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Level.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\drawmanager.cpp(45): error C2065: 'm_gameobject' : undeclared identifier
      1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)) -- FAILED.
-=======
-﻿Build started 2014-02-03 17:37:34.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp"
-         Level.cpp
-         CollisionManager.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(32): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(33): warning C4244: 'argument' : conversion from 'double' to 'unsigned int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(39): warning C4244: 'argument' : conversion from 'double' to 'unsigned int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(151): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(151): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(152): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\collisionmanager.cpp(152): warning C4244: '=' : conversion from 'float' to 'unsigned int', possible loss of data
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Collider.obj
-         Debug\CollisionManager.obj
-         Debug\Config.obj
-         Debug\Customize.obj
-         Debug\DrawManager.obj
-         Debug\EnemyObject.obj
-         Debug\EnemyProjectile.obj
-         Debug\Engine.obj
-         Debug\Game.obj
-         Debug\GameObject.obj
-         Debug\GameObjectManager.obj
-         Debug\InputManager.obj
-         Debug\Level.obj
-         Debug\main.obj
-         Debug\MainMenu.obj
-         Debug\MovingGameObject.obj
-         Debug\Options.obj
-         Debug\PlayerObject.obj
-         Debug\PlayerProjectile.obj
-         Debug\Projectile.obj
-         Debug\Spawner.obj
-         Debug\SpriteManager.obj
-         Debug\Truck.obj
-         Debug\TitleScreen.obj
-         Debug\StateManager.obj
-         Debug\Utils.obj
-         SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
->>>>>>> b44dded65772104e3cea1360d692f4a0bfdead0d
 
 Build FAILED.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:02.68
-=======
-Time Elapsed 00:00:01.91
->>>>>>> b44dded65772104e3cea1360d692f4a0bfdead0d
+Time Elapsed 00:00:00.66
