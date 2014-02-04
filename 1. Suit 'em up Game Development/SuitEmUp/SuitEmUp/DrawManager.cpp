@@ -1,5 +1,5 @@
 //DrawManager.cpp
-
+/*
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 #include "DrawManager.h"
@@ -45,4 +45,4 @@ void DrawManager::Draw(Sprite *m_sprite, int m_x, int m_y, int m_w, int m_h)
 		m_renderer->draw( *m_gameobject);
 	
 
-}
+}*/

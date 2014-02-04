@@ -19,7 +19,7 @@ public:
 	~CollisionManager();
 
 	void CheckCollision();
-	Collider *CreateCollider(sf::Vector2u &position, sf::Vector2u &extension);
+	Collider *CreateCollider(sf::Vector2f &position, sf::Vector2f &extension);
 	void DestroyCollider(Collider *collider);
 
 protected:

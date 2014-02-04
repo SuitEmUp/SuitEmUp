@@ -8,11 +8,11 @@ class Truck : public GameObject{
 public:
 	Truck(sf::Sprite* sprite = nullptr);
 	bool Update(/*deltatime*/);
-	sf::Vector2u GetVelocity();
-	void SetVelocity(sf::Vector2u vel);
+	sf::Vector2f GetVelocity();
+	void SetVelocity(sf::Vector2f vel);
 	bool GetType();
 
 private:
 	int m_hp;
-	sf::Vector2u m_velocity;
+	sf::Vector2f m_velocity;
 };

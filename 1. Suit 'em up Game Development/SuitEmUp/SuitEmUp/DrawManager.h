@@ -1,5 +1,5 @@
 //DrawManager.h
-
+/*
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
@@ -20,3 +20,4 @@ public:
 private:
 	 sf::RenderWindow *m_renderer;
 };
+*/

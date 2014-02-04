@@ -22,13 +22,13 @@ void Collider::NotifyParent(GameObject* go1)
 	go1->SetPosition(go1->GetPosition().x, go1->GetPosition().y);
 }
 
-Collider::Collider(const sf::Vector2u &p_position, const sf::Vector2u &p_extension)
+Collider::Collider(const sf::Vector2f &p_position, const sf::Vector2f &p_extension)
 	: m_position(p_position)
 	, m_extension(p_extension)
 {
 }
 
-bool Collider::Overlap(const Collider &p_other, sf::Vector2u &p_offset)
+bool Collider::Overlap(const Collider &p_other, sf::Vector2f &p_offset)
 {
 	float A = m_extension.x * 0.5f;
 	float B = p_other.m_extension.x *0.5f;

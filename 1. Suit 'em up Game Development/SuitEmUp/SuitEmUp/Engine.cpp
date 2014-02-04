@@ -40,11 +40,11 @@ bool Engine::Initialize()
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
 	m_spritemanager = new SpriteManager;
 
-	m_drawmanager = new DrawManager();
+	/*m_drawmanager = new DrawManager();
 	if (!m_drawmanager->initialize(*m_window))
 	{
 		return false;
-	}
+	}*/
 
 
 	if(m_statemanager->current == nullptr)
@@ -69,7 +69,7 @@ void Engine::Run()
 	while(m_running)
 	{
 		//deltatime()
-		UpdateDeltatime();
+	//	UpdateDeltatime();
 		m_statemanager->HandleEvents();
 		//m_statemanager->UpdateTime(m_fDeltaTime);
 		m_statemanager->Update();

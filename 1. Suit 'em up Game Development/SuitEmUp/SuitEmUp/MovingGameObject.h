@@ -9,10 +9,10 @@ class Truck;
 class MovingGameObject : public GameObject
 {
 public:
-	sf::Vector2u GetVelocity();
-	void SetVelocity(sf::Vector2u vel);
+	sf::Vector2f GetVelocity();
+	void SetVelocity(sf::Vector2f vel);
 
 protected:
-	sf::Vector2u m_velocity;
+	sf::Vector2f m_velocity;
 	Truck* m_truck;
 };

@@ -5,14 +5,14 @@ sf::Sprite* GameObject::GetSprite()
 	return m_sprite;
 };
 
-sf::Vector2u &GameObject::GetPosition()
+sf::Vector2f &GameObject::GetPosition()
 {
 	return m_position;
 };
 
 void GameObject::SetPosition(float x_pos, float y_pos)
 {
-	m_position = sf::Vector2u(x_pos,  y_pos);
+	m_position = sf::Vector2f(x_pos,  y_pos);
 };
 
 bool GameObject::HasSprite()
