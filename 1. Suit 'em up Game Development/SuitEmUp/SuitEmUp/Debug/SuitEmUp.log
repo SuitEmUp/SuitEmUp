@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Build started 2014-02-04 13:48:37.
      1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
@@ -89,7 +90,20 @@
          LINK : C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe not found or not built by the last incremental link; performing full link
          SuitEmUp.vcxproj -> C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
      1>Done Building Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+=======
+﻿Build started 2014-02-04 12:24:26.
+     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp"
+         DrawManager.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\drawmanager.cpp(45): error C2065: 'm_gameobject' : undeclared identifier
+     1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)) -- FAILED.
+>>>>>>> a7bc9134c6804be0fa47725dc85079178a9e2888
 
-Build succeeded.
+Build FAILED.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:20.97
+=======
+Time Elapsed 00:00:00.66
+>>>>>>> a7bc9134c6804be0fa47725dc85079178a9e2888

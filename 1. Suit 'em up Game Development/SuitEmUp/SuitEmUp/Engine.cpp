@@ -41,7 +41,7 @@ bool Engine::Initialize()
 	m_spritemanager = new SpriteManager;
 
 	m_drawmanager = new DrawManager();
-	if (!m_drawmanager->initialize(m_window))
+	if (!m_drawmanager->initialize(*m_window))
 	{
 		return false;
 	}
@@ -69,7 +69,7 @@ void Engine::Run()
 	while(m_running)
 	{
 		//deltatime()
-		//UpdateDeltatime();
+		UpdateDeltatime();
 		m_statemanager->HandleEvents();
 		//m_statemanager->UpdateTime(m_fDeltaTime);
 		m_statemanager->Update();
