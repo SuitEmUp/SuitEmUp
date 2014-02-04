@@ -12,7 +12,7 @@ friend class GameObjectManager;
 public:
 	DrawManager();
 	~DrawManager();
-	bool initialize(sf::RenderWindow* m_window);
+	bool initialize(sf::RenderWindow & m_window);
 	void Cleanup();
 	void Clear();
 	void Display();

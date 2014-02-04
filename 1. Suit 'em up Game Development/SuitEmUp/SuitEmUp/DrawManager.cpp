@@ -13,9 +13,9 @@ DrawManager::DrawManager()
 DrawManager::~DrawManager()
 {
 }
-bool DrawManager::initialize(sf::RenderWindow* m_window)
+bool DrawManager::initialize(sf::RenderWindow &m_window)
 {
-	m_renderer = m_window;
+	m_renderer = &m_window;
 	if(m_renderer == nullptr)
 	{
 		return false;
@@ -44,6 +44,6 @@ void DrawManager::Draw(std::vector<GameObject*> *m_gameobject)
 {
 	for (auto object : *m_gameobject)
 	{
-		//m_renderer->draw( *m_gameobject);
+		m_renderer->draw( *m_gameobject);
 	}
 }
