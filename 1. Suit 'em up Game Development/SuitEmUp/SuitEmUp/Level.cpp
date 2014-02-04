@@ -7,7 +7,7 @@
 #include "DrawManager.h"
 #include "GameObject.h"
 #include <string>
-//#include "Collider.h"
+#include "Collider.h"
 #include "GameObjectManager.h"
 #include <iostream>
 #include "CollisionManager.h"
