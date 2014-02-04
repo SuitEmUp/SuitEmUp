@@ -13,7 +13,7 @@ public:
 	virtual ~GameObject(){};
 
 	sf::Sprite* GetSprite();
-	sf::Vector2u &GetPosition();
+	sf::Vector2f &GetPosition();
 
 	virtual bool Update() = 0; // SCARY
 	virtual bool GetType() = 0; //SCARY AS HELL
@@ -25,7 +25,7 @@ public:
 	void SetRadius(float radius);
 
 protected:
-	sf::Vector2u m_position;
+	sf::Vector2f m_position;
 	sf::Sprite* m_sprite;
 	float m_radius;
 };

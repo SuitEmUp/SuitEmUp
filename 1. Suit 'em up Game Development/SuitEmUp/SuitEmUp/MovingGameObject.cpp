@@ -2,10 +2,10 @@
 
 #include "MovingGameObject.h"
 
-sf::Vector2u MovingGameObject::GetVelocity(){
+sf::Vector2f MovingGameObject::GetVelocity(){
 	return m_velocity;
 };
 
-void MovingGameObject::SetVelocity(sf::Vector2u vel){
+void MovingGameObject::SetVelocity(sf::Vector2f vel){
 	m_velocity=vel;
 };

@@ -11,15 +11,15 @@ class Collider
 {
 public:
 	Collider();
-	Collider(const sf::Vector2u &p_position, const sf::Vector2u &p_exstension);
+	Collider(const sf::Vector2f &p_position, const sf::Vector2f &p_exstension);
 	~Collider();
 
-	bool Overlap(const Collider &p_other, sf::Vector2u &p_offset);
+	bool Overlap(const Collider &p_other, sf::Vector2f &p_offset);
 	void NotifyParent(GameObject* go1);
 
 	GameObject *m_xobject; //min collider en pekare till ett gameobject
-	sf::Vector2u m_position;
-	sf::Vector2u m_extension;
+	sf::Vector2f m_position;
+	sf::Vector2f m_extension;
 private:
 
 

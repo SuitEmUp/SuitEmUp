@@ -17,7 +17,7 @@ StateManager::~StateManager()
 	}
 };
 
-bool StateManager::Init(const char* title, int width, int height) 
+bool StateManager::Init(const char* title, int width, int height) // enginepekare 
 {
 	return true;
 };
@@ -55,7 +55,8 @@ void StateManager::Update()
 void StateManager::Draw(sf::RenderWindow *p_window)
 {
 	if(current == nullptr) { return; }
-
+	
+	
 	current->Draw(p_window);
 	//Window Updates goes here
 

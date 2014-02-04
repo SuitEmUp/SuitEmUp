@@ -7,7 +7,6 @@
 
 class Game;
 class GameObject;
-class DrawManager;
 class Engine;
 
 class GameObjectManager
@@ -23,9 +22,9 @@ public:
 	void DetachObject(GameObject* object);
 	void DetachObject();
 	
-	sf::Vector2u GetStartPosition(GameObject *GO);
+	sf::Vector2f GetStartPosition(GameObject *GO);
 
-	void DrawObject(DrawManager *draw);
+	void DrawObject();
 
 private:
 	std::vector<GameObject*> m_gameobject;

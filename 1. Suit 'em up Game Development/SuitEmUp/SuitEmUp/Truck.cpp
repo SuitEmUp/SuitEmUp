@@ -5,7 +5,7 @@
 Truck::Truck(sf::Sprite* sprite){
 	m_sprite = sprite;
 	m_hp = 20;
-	m_position=sf::Vector2u(1280/2, 720/2);
+	m_position=sf::Vector2f(1280/2, 720/2);
 };
 
 bool Truck::Update(){
@@ -14,11 +14,11 @@ bool Truck::Update(){
 	return false;
 };
 
-sf::Vector2u Truck::GetVelocity(){
+sf::Vector2f Truck::GetVelocity(){
 	return m_velocity;
 };
 
-void Truck::SetVelocity(sf::Vector2u vel){
+void Truck::SetVelocity(sf::Vector2f vel){
 	m_velocity=vel;
 };
 

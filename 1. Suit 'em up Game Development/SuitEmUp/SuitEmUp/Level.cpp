@@ -170,8 +170,8 @@ Level::~Level()
 {
 	gom->DetachObject();
 }
-
+/*
 void Level::Draw(DrawManager *p_draw_manager)
 {
 	gom->DrawObject(p_draw_manager);
-}
+}*/

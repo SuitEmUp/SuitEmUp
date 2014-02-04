@@ -1,5 +1,5 @@
 //DrawManager.h
-
+/*
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
@@ -10,7 +10,7 @@ friend class SpriteManager;
 public:
 	DrawManager();
 	~DrawManager();
-	bool initialize(sf::RenderWindow* m_window);
+	bool initialize(sf::RenderWindow & m_window);
 	void Cleanup();
 	void Clear();
 	void Display();
@@ -20,3 +20,4 @@ public:
 private:
 	 sf::RenderWindow *m_renderer;
 };
+*/
