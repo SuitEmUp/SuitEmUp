@@ -28,7 +28,7 @@ public:
 	void DrawObject(DrawManager *draw);
 
 private:
-	std::vector<GameObject*> m_gameobject;
+	std::vector<GameObject*> *m_gameobject;
 
 
 };
