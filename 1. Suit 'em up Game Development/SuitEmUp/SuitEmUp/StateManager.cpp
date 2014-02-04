@@ -17,7 +17,7 @@ StateManager::~StateManager()
 	}
 };
 
-bool StateManager::Init(const char* title, int width, int height) 
+bool StateManager::Init(const char* title, int width, int height) // enginepekare 
 {
 	return true;
 };
