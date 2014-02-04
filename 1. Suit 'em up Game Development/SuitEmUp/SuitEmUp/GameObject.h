@@ -7,9 +7,7 @@
 
 #include "SpriteManager.h"
 
-
-class GameObject : public sf::Transformable, public sf::Drawable
-{
+class GameObject{
 public:
 	GameObject(){};
 	virtual ~GameObject(){};
@@ -25,12 +23,9 @@ public:
 
 	float GetRadius();
 	void SetRadius(float radius);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 protected:
-	
 	sf::Vector2u m_position;
 	sf::Sprite* m_sprite;
-	//sf::Vertex m_vertex;
 	float m_radius;
 };

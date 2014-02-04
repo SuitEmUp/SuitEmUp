@@ -4,7 +4,6 @@
 #include <SFML\Window.hpp>
 #include "DrawManager.h"
 #include "Sprite.h"
-#include "GameObject.h"
 
 DrawManager::DrawManager()
 {
@@ -34,16 +33,22 @@ void DrawManager::Cleanup()
 void DrawManager::Clear()
 {
 	m_renderer->clear(sf::Color(0x11,0x22,0x33,0xff));
-
+	
 }
 void DrawManager::Display()
 {
 	m_renderer->display();
 }
-void DrawManager::Draw(std::vector<GameObject*> *m_gameobject)
+void DrawManager::Draw(Sprite *m_sprite, int m_x, int m_y, int m_w, int m_h)
 {
-	for (auto object : *m_gameobject)
+	//int iW = m_sprite->m_w;
+	//int iH = m_sprite->m_h;
+	if(m_w != 0 && m_h != 0)
 	{
-		//m_renderer->draw( *m_gameobject);
+	//	iW = m_w;
+	//	iH = m_h;
 	}
+	//SDL_Rect src = {p_sprite->m_x,p_sprite->m_y,p_sprite->m_width,p_sprite->m_height};
+//	SDL_Rect dst = {p_x,p_y,iWidth,iHeight};
+	//SDL_RenderCopy(m_renderer, p_sprite->m_texture, &src, &dst);
 }

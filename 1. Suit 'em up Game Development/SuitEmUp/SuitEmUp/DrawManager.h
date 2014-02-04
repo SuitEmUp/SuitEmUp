@@ -4,11 +4,9 @@
 #include <SFML\Window.hpp>
 
 class Sprite;
-class GameObject;
 
 class DrawManager {
 friend class SpriteManager;
-friend class GameObjectManager;
 public:
 	DrawManager();
 	~DrawManager();
@@ -16,8 +14,7 @@ public:
 	void Cleanup();
 	void Clear();
 	void Display();
-	void Draw(std::vector<GameObject*> *m_gameobject);
-
+	void Draw(Sprite *m_sprite,int m_x,int m_y,int m_w = 0,int m_h = 0);
 	
 	sf::RenderWindow GetRenderer();
 private:
