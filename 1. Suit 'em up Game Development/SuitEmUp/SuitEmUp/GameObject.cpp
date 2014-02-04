@@ -1,11 +1,4 @@
-//GameObject.cpp
-
 #include "GameObject.h"
-#include <SFML\Window.hpp>
-#include <SFML\Graphics.hpp>
-
-
-
 
 sf::Sprite* GameObject::GetSprite()
 {
@@ -39,8 +32,3 @@ void GameObject::SetRadius(float radius)
 {
 	m_radius = radius;
 };
-void GameObject::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform *= sf::Transformable::getTransform();
-	target.draw(*m_sprite, states);
-}

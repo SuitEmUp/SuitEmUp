@@ -5,8 +5,6 @@
 #include "DrawManager.h"
 #include "Sprite.h"
 #include <iostream>
-#include <SFML\Window.hpp>
-#include <SFML\Graphics.hpp>
 
 GameObjectManager::GameObjectManager()
 {
@@ -19,7 +17,7 @@ GameObjectManager::~GameObjectManager()
 //Update
 void GameObjectManager::Update(float deltatime)
 {
-	for (auto it = m_gameobject->begin(); it != m_gameobject->end(); ++it)
+	for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	{
 		GameObject *obj = *it;
 		obj->Update();
@@ -38,13 +36,13 @@ sf::Vector2u GameObjectManager::GetStartPosition(GameObject *GO)
 void GameObjectManager::AttachObject(GameObject *object)
 {
 
-	m_gameobject->push_back(object);
+	m_gameobject.push_back(object);
 
 }
 //detach
 void GameObjectManager::DetachObject(GameObject *object)
 {
-	for (auto it = m_gameobject->begin();it != m_gameobject->end();)
+	for (auto it = m_gameobject.begin();it != m_gameobject.end();)
 	{
 		GameObject *obj = *it;
 		if (obj = object)
@@ -66,7 +64,7 @@ void GameObjectManager::DetachObject(GameObject *object)
 
 void GameObjectManager::DetachObject()
 {
-	for( auto it = m_gameobject->begin();it != m_gameobject->end(); ) 
+	for( auto it = m_gameobject.begin();it != m_gameobject.end(); ) 
 	{	
 
 		/*delete (*it)->GetCollider();*/
@@ -81,7 +79,7 @@ void GameObjectManager::DetachObject()
 
 void GameObjectManager::DrawObject(DrawManager *draw)
 {
-	for (auto it = m_gameobject->begin(); it != m_gameobject->end(); ++it)
+	for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	{
 		GameObject *obj = *it;
 		if (obj->HasSprite())
