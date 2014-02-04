@@ -28,7 +28,7 @@ void GameObjectManager::Update(float deltatime)
 	}
 }
 //GetStartPosition
-sf::Vector2u GameObjectManager::GetStartPosition(GameObject *GO)
+sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
 {
 	return GO->GetPosition();
 }
@@ -77,7 +77,7 @@ void GameObjectManager::DetachObject()
 
 }
 
-void GameObjectManager::DrawObject(DrawManager *draw)
+void GameObjectManager::DrawObject()
 {
 	for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	{

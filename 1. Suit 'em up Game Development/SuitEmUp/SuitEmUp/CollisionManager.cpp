@@ -29,14 +29,14 @@ void CollisionManager::CheckCollision()
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// SÅ MINA COLLIDERS SKA JÄMFÖRAS MED VARANDRA OCH SE OM DE COLLIDERAR, OM DET SKAPAS ETT OFFSET VÄRDE MÅSTE DE SKICKAS TILL DIN PARENT(GAMEOBJECT)///
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	sf::Vector2u wall_collision(720.0f, 720.0f);
-	sf::Vector2u offset(0.0, 0.0);
+	sf::Vector2f wall_collision(720.0f, 720.0f);
+	sf::Vector2f offset(0.0, 0.0);
 	int count = 0;
 
 	for(auto i = 0UL; i < m_object.size()-1; i++) {
 		for(auto z = i+1; z < m_object.size(); z++)
 		{
-			sf::Vector2u off(0.0, 0.0);
+			sf::Vector2f off(0.0, 0.0);
 			if(m_object[i] != m_object[z])
 			{
 				if(m_object.at(z)->m_xobject->GetType() /*== PLAYER*/) // WALL "COLLISION"
@@ -153,7 +153,7 @@ void CollisionManager::CheckCollision()
 	};
 
 }
-Collider *CollisionManager::CreateCollider(sf::Vector2u &position, sf::Vector2u &extension)
+Collider *CollisionManager::CreateCollider(sf::Vector2f &position, sf::Vector2f &extension)
 {
 
 	Collider *collider = new Collider(position, extension);
