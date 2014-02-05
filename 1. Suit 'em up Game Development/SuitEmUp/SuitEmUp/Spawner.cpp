@@ -25,12 +25,12 @@ EnemyObject* Spawner::EnemySpawner(){
 	EnemyObject* enemy = new EnemyObject(m_truck, nullptr);
 	return enemy;
 };
-EnemyProjectile* Spawner::EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck){
-	EnemyProjectile* enemyprojectile = new EnemyProjectile(m_truck, nullptr);
-	return enemyprojectile;
-};
-
-PlayerProjectile* Spawner::PlayerProjectileSpawner(PlayerObject* player, Truck* truck){
-	PlayerProjectile* playerprojectile = new PlayerProjectile(m_truck, nullptr);
-	return playerprojectile;
-};
+//EnemyProjectile* Spawner::EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck){
+//	EnemyProjectile* enemyprojectile = new EnemyProjectile(m_truck, nullptr);
+//	return enemyprojectile;
+//};
+//
+//PlayerProjectile* Spawner::PlayerProjectileSpawner(PlayerObject* player, Truck* truck){
+//	PlayerProjectile* playerprojectile = new PlayerProjectile(m_truck, nullptr);
+//	return playerprojectile;
+//};
