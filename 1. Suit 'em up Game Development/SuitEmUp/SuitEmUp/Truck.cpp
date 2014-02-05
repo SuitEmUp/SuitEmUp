@@ -4,6 +4,7 @@
 
 Truck::Truck(sf::Sprite* sprite){
 	m_sprite = sprite;
+	m_sprite->setOrigin((m_sprite->getLocalBounds().height)/2, (m_sprite->getLocalBounds().width)/2);
 	m_hp = 20;
 	m_position=sf::Vector2f(1280/2, 720/2);
 };
@@ -11,6 +12,7 @@ Truck::Truck(sf::Sprite* sprite){
 bool Truck::Update(){
 	//if hit by enemybullet m_hp -=1;
 	//if hp=0, return true
+	m_sprite->setPosition(m_position);
 	return false;
 };
 

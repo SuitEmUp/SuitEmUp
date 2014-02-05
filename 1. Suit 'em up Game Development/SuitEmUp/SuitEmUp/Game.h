@@ -12,12 +12,12 @@ class GameObjectManager;
 
 class Game : public State {
 public:
-	Game(InputManager *input);
+	Game(InputManager *input, GameObjectManager* gom);
 	bool Init();
 	void Exit();
 
 	bool Update();
-	void Draw(sf::RenderWindow *p_window){};
+	void Draw(/*sf::RenderWindow *p_window*/);
 
 	std::string Next();
 	void setNextState(std::string state);
