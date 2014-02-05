@@ -16,6 +16,7 @@ GameObjectManager::GameObjectManager()
 	m_spawner = new Spawner(m_truck);
 	m_enemies.clear();
 	m_projectiles.clear();
+	m_game_over = false;
 }
 GameObjectManager::~GameObjectManager()
 {
@@ -37,7 +38,7 @@ GameObjectManager::~GameObjectManager()
 void GameObjectManager::Update(/*float deltatime*/)
 {
 	if(m_truck->Update()){
-		//Game Over
+		m_game_over = true;
 	};
 	if(m_player->Update()){
 		//m_projectiles.push_back(m_player->Bullet());

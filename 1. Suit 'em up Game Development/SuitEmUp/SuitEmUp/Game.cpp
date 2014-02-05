@@ -75,7 +75,7 @@ bool Game::Update()
 
 	m_gom->Update();
 
-	if(m_input->IsDown(sf::Keyboard::F1))
+	if(m_input->IsDown(sf::Keyboard::F1) || m_gom->m_game_over)
 	{
 		printf("Next State set to mainMenu\n");
 		setNextState("MainMenu");

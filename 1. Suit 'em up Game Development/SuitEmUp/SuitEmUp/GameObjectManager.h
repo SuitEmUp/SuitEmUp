@@ -30,6 +30,7 @@ public:
 
 	void DrawObject();
 
+	bool m_game_over;
 private:
 //	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
