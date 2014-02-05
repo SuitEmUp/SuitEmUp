@@ -14,19 +14,20 @@ PlayerObject::PlayerObject(Truck* truck, sf::Sprite* sprite)
 };
 
 bool PlayerObject::Update(/*deltatime*/InputManager* input){
-	const float speed=10.0f;	//Change this to adjust player speed
+	const double speed=10.0f;	//Change this to adjust player speed
 
-	m_position += m_truck->GetVelocity();	//Lets the player smoothly stick to the truck if we're going to implement truck movement
+	m_velocity = sf::Vector2f(0, 0);
 
-	float delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
-	float delta_y = m_truck->GetPosition().y - m_position.y;		//y-difference between truck and player
+	//m_position += m_truck->GetVelocity();	//Lets the player smoothly stick to the truck if we're going to implement truck movement
 
-	float dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
-	float dist2=dist1;	//The distance from the truck we want to have
+	double delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
+	double delta_y = m_truck->GetPosition().y - m_position.y;		//y-difference between truck and player
+
+	double dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
+	double dist2=dist1;	//The distance from the truck we want to have
 						//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
 	
 	/*MOVEMENT INPUTS*/
-	m_velocity = sf::Vector2f(0, 0);
 
 	if(input->IsDown(sf::Keyboard::A)){
 		m_velocity.x=-speed*((delta_y)/dist1);	
@@ -58,13 +59,16 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	
 	m_position+=m_velocity;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
+	delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
+	delta_y = m_truck->GetPosition().y - m_position.y;
+
 	dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
-	float offset = dist2-dist1;	//how much off it is from the distance from the middle that we want
+	double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
 
-	std::cout << offset << std::endl;
+	std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
 
-	m_position.x-=(offset*delta_x)/dist1;	//adjusting x to be what we want
-	m_position.y-=(offset*delta_y)/dist1;	//adjusting y to be what we want
+	m_position.x+=(offset*delta_x)/dist2;	//adjusting x to be what we want
+	m_position.y+=(offset*delta_y)/dist2;	//adjusting y to be what we want
 
 	m_sprite->setPosition(m_position);
 
