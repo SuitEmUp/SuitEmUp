@@ -27,7 +27,7 @@ private:
 	SpriteManager* m_spritemanager;
 	//ladbon
 	InputManager m_input;
-	DrawManager *m_drawmanager;
+	//DrawManager *m_drawmanager;
 
 	sf::Clock* m_xDeltaClock;
 	sf::Time* m_xDeltaTime;

@@ -37,9 +37,6 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\DrawManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
@@ -154,9 +151,6 @@
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\DrawManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.h">
