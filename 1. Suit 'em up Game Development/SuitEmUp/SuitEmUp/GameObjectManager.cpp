@@ -11,12 +11,12 @@
 
 GameObjectManager::GameObjectManager()
 {
-	//m_truck = new Truck();
-	//m_player = new PlayerObject(m_truck, nullptr);
-	//m_spawner = new Spawner(m_truck);
-	//m_enemies.clear();
-	//m_projectiles.clear();
-	//m_game_over = false;
+	m_truck = new Truck();
+	m_player = new PlayerObject(m_truck, nullptr);
+	m_spawner = new Spawner(m_truck);
+	m_enemies.clear();
+	m_projectiles.clear();
+	m_game_over = false;
 }
 GameObjectManager::~GameObjectManager()
 {
