@@ -27,7 +27,7 @@ Engine::Engine()
 	m_running = false;//Ladbon
 	m_window = nullptr;
 	
-	m_drawmanager = nullptr;
+//	m_drawmanager = nullptr;
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 

@@ -8,9 +8,7 @@
 class Sprite : sf::Sprite
 {
 public:
-	Sprite();
-
-	void CreateSprite(std::string filename, int x, int y, int width, int height);
+	Sprite(sf::Sprite, float x_scale = 1.0, float y_scale = 1.0);
 
 	virtual void Update(float deltatime){};
 
