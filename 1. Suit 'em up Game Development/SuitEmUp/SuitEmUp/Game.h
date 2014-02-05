@@ -8,6 +8,7 @@ namespace sf{
 }
 
 class InputManager;
+class GameObjectManager;
 
 class Game : public State {
 public:
@@ -15,7 +16,6 @@ public:
 	bool Init();
 	void Exit();
 
-	//bool HandleInput();
 	bool Update();
 	void Draw(sf::RenderWindow *p_window){};
 
@@ -27,7 +27,5 @@ private:
 	std::string next_state;
 	InputManager *m_input;
 	std::string tempName_change;
-	
-
-
+	GameObjectManager* m_gom;
 };

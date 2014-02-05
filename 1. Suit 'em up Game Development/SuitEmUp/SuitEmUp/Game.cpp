@@ -4,8 +4,8 @@
 
 #include "Game.h"
 #include "InputManager.h"
-
-
+#include "GameObjectManager.h"
+#include "PlayerObject.h"
 
 
 Game::Game(InputManager* input) 
@@ -30,9 +30,17 @@ bool Game::Init()
 	//-----------
 	printf("State: Game,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
+	m_gom=new GameObjectManager();
 	return true;
 };
-void Game::Exit(){};
+
+void Game::Exit(){
+	if(m_gom!=nullptr){
+		delete m_gom;
+		m_gom = nullptr;
+	}
+
+};
 
 
 
@@ -64,6 +72,9 @@ void Game::Exit(){};
 
 bool Game::Update()
 {
+
+	m_gom->Update();
+
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to mainMenu\n");
@@ -101,5 +112,3 @@ bool Game::IsType(const std::string &type)
 {
 	return type.compare("Game") == 0;
 };
-
-

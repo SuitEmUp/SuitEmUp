@@ -14,9 +14,6 @@ public:
 	bool Timer(/*deltatime*/);
 
 	EnemyObject* EnemySpawner();
-	EnemyProjectile* EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck);
-
-	PlayerProjectile* PlayerProjectileSpawner(PlayerObject* player, Truck* truck);
 
 private:
 	float m_time;
