@@ -1,88 +1,9 @@
-<<<<<<< HEAD
-﻿Build started 2014-02-05 15:42:55.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-05 15:05:40.
-     1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Collider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MovingGameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp"
-         Truck.cpp
-         Spawner.cpp
-         Projectile.cpp
-         PlayerProjectile.cpp
-         PlayerObject.cpp
-         MovingGameObject.cpp
-         GameObject.cpp
-         EnemyProjectile.cpp
-         EnemyObject.cpp
-         CollisionManager.cpp
-         Collider.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Level.cpp
-         GameObjectManager.cpp
-       Link:
-         D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Collider.obj
-=======
-﻿Build started 2014-02-05 14:45:21.
->>>>>>> bd683d339a439c980f7fa822c3db85b203030be5
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp"
-         GameObjectManager.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Collider.obj
->>>>>>> ed16583c1a385fb2db3476397c7ac978c0bd7d27
-         Debug\CollisionManager.obj
-         Debug\Config.obj
-         Debug\Customize.obj
-         Debug\EnemyObject.obj
-         Debug\EnemyProjectile.obj
-         Debug\Engine.obj
-         Debug\Game.obj
-         Debug\GameObject.obj
-         Debug\GameObjectManager.obj
-         Debug\InputManager.obj
-         Debug\Level.obj
-         Debug\main.obj
-         Debug\MainMenu.obj
-         Debug\MovingGameObject.obj
-         Debug\Options.obj
-         Debug\PlayerObject.obj
-         Debug\PlayerProjectile.obj
-         Debug\Projectile.obj
-         Debug\Spawner.obj
-         Debug\Sprite.obj
-         Debug\SpriteManager.obj
-         Debug\Truck.obj
-         Debug\TitleScreen.obj
-         Debug\StateManager.obj
-         Debug\Utils.obj
-<<<<<<< HEAD
-     1>Utils.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>StateManager.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>TitleScreen.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>Options.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>MainMenu.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>InputManager.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>Game.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>Customize.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-     1>Config.obj : warning LNK4020: a type record in 'c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\debug\vc110.pdb' is corrupted; some symbols and types may not be accessible from the debugger
-         SuitEmUp.vcxproj -> C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+﻿Build started 2014-02-05 17:37:41.
+     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
+     1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:10.50
-=======
-         SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-<<<<<<< HEAD
-Time Elapsed 00:00:01.21
-=======
-Time Elapsed 00:00:01.27
->>>>>>> ed16583c1a385fb2db3476397c7ac978c0bd7d27
->>>>>>> bd683d339a439c980f7fa822c3db85b203030be5
+Time Elapsed 00:00:00.09
