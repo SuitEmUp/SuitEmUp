@@ -65,15 +65,18 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
 	double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
 
-	std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
 
-	m_position.x+=(offset*delta_x)/dist2;	//adjusting x to be what we want
-	m_position.y+=(offset*delta_y)/dist2;	//adjusting y to be what we want
+	m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
+	m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
+
+
+	//std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
+	
 
 	m_sprite->setPosition(m_position);
 
 	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
-	m_cooldown--;
+	m_cooldown-=0.05;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 	if(input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
 		m_cooldown=1;	//How long the cooldown is
@@ -81,6 +84,7 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	}
 	return false; //if this is returned nothing will happen
 };
+
 
 bool PlayerObject::GetType(){
 	return true;

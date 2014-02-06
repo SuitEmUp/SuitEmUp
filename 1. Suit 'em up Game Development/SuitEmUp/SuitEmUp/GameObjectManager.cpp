@@ -4,10 +4,10 @@
 #include "GameObject.h"
 #include "DrawManager.h"
 #include "SpriteManager.h"
-#include <iostream>
 #include "PlayerObject.h"
 #include "Truck.h"
 #include "Spawner.h"
+#include <iostream>
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw)
 {
@@ -46,7 +46,15 @@ void GameObjectManager::ClearGameObjects()
 		delete m_spawner;
 		m_spawner = nullptr;
 	}
-	// iterator to delete enemies and projectiles
+	for (auto it = m_enemies.begin();it != m_enemies.end();)
+	{
+		if(*it != nullptr) {
+			delete (*it)->GetSprite();
+			delete *it;
+			it++;
+		}
+	
+	}
 }
 //Update
 void GameObjectManager::Update(/*float deltatime*/InputManager* input)
@@ -55,10 +63,10 @@ void GameObjectManager::Update(/*float deltatime*/InputManager* input)
 		m_game_over = true;
 	};
 	if(m_player->Update(input)){
-		//m_projectiles.push_back(m_player->Bullet());
+		m_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3)));
 	}
 	if(m_spawner->Timer()){
-		m_enemies.push_back(m_spawner->EnemySpawner());
+		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
 	}
 	for(int i = 0; i<m_enemies.size(); i++){
 		if(m_enemies.at(i)!=nullptr){
@@ -139,6 +147,12 @@ void GameObjectManager::DrawGameObjects()
 {
 	m_window->draw(*m_truck->GetSprite());
 	m_window->draw(*m_player->GetSprite());
+	for(int i=0; i<m_enemies.size(); i++){
+		m_window->draw(*m_enemies.at(i)->GetSprite());
+	};
+	for(int i=0; i<m_projectiles.size(); i++){
+		m_window->draw(*m_projectiles.at(i)->GetSprite());
+	};
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
 	//	GameObject *obj = *it;
