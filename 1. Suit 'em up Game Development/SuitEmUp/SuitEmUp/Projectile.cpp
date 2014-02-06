@@ -9,7 +9,7 @@ bool Projectile::Update(/*deltatime*/Truck* truck){
 	float delta_x=truck->GetPosition().x-m_position.x;
 	float delta_y=truck->GetPosition().y-m_position.y;
 	float dist = sqrt((delta_x*delta_x)+(delta_y*delta_y));
-	if(dist>1000) return true;
+	if(dist>1000 || dist<50) return true;
 	return false;
 };
 

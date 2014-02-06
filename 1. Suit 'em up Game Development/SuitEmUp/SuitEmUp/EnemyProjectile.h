@@ -6,8 +6,10 @@
 
 class PlayerObject;
 class Truck;
+class EnemyObject;
 
 class EnemyProjectile : public Projectile{
 public:
-	EnemyProjectile(Truck* truck, sf::Sprite* sprite = nullptr);
+	EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite = nullptr);
+	bool Update(Truck* truck);
 };

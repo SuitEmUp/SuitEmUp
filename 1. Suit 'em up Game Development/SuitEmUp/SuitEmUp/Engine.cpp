@@ -65,7 +65,7 @@ bool Engine::Initialize()
 };
 void Engine::Run()
 {
-	sf::Sprite* xSprite = m_spritemanager->Load("../assets/gfx/b.png", "testbutton");
+	//sf::Sprite* xSprite = m_spritemanager->Load("../assets/gfx/b.png", "testbutton");
 
 
 	while(m_running)
@@ -92,8 +92,8 @@ void Engine::Run()
 void Engine::Cleanup()
 {
 	if(m_gom != nullptr){
-	m_gom->ClearGameObjects();
-	delete m_gom;
+	//m_gom->ClearGameObjects();
+	//delete m_gom;
 	m_gom=nullptr;
 	}
 	if(m_spritemanager != nullptr){
