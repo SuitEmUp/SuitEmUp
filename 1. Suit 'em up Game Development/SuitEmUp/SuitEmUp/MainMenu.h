@@ -17,7 +17,7 @@ public:
 
 	//bool HandleInput();
 	bool Update();
-	void Draw(sf::RenderWindow *p_window){};
+	void Draw(/*sf::RenderWindow *p_window*/){};
 
 	std::string Next();
 	void setNextState(std::string state);

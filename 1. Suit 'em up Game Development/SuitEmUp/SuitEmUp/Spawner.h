@@ -6,14 +6,17 @@
 #include "EnemyProjectile.h"
 #include "PlayerProjectile.h"
 
+class SpriteManager;
 class Truck;
+class PlayerProjectile;
 
 class Spawner{
 public:
 	Spawner(Truck* truck);
 	bool Timer(/*deltatime*/);
 
-	EnemyObject* EnemySpawner();
+	EnemyObject* EnemySpawner(SpriteManager* sm);
+	bool EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet);
 
 private:
 	float m_time;

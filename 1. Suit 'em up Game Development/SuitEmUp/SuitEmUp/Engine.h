@@ -5,6 +5,7 @@
 class SpriteManager;
 class StateManager;
 class DrawManager;
+class GameObjectManager;
 
 namespace sf{
 	class RenderWindow;
@@ -25,6 +26,8 @@ private:
 	sf::RenderWindow* m_window;
 
 	SpriteManager* m_spritemanager;
+
+	GameObjectManager* m_gom;
 	//ladbon
 	InputManager m_input;
 	//DrawManager *m_drawmanager;

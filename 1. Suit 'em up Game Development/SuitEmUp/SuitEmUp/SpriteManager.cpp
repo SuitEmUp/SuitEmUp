@@ -7,9 +7,11 @@ SpriteManager::~SpriteManager()
 		auto it = m_Sprites.begin();
 		while (it != m_Sprites.end())
 		{
-			delete it->second;
-			it->second = nullptr;
-			it++;
+			if(it->second != nullptr){
+				delete it->second;
+				it->second = nullptr;
+				it++;
+			}
 		}
 		m_Sprites.clear();
 	}
@@ -17,9 +19,11 @@ SpriteManager::~SpriteManager()
 		auto it = m_Textures.begin();
 		while (it != m_Textures.end())
 		{
-			delete it->second;
-			it->second = nullptr;
-			it++;
+			if(it->second != nullptr){
+				delete it->second;
+				it->second = nullptr;
+				it++;
+			}
 		}
 		m_Textures.clear();
 	}

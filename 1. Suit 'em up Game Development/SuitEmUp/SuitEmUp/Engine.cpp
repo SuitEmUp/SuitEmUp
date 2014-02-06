@@ -12,6 +12,7 @@
 
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
+#include "GameObjectManager.h"
 
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
@@ -39,6 +40,7 @@ bool Engine::Initialize()
 	m_statemanager = new StateManager;
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
 	m_spritemanager = new SpriteManager;
+	m_gom = new GameObjectManager(m_spritemanager, m_window);
 
 	/*m_drawmanager = new DrawManager();
 	if (!m_drawmanager->initialize(*m_window))
@@ -53,7 +55,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new MainMenu(&m_input));
 		m_statemanager->Attach(new Options(&m_input));
 		m_statemanager->Attach(new Customize(&m_input));
-		m_statemanager->Attach(new Game(&m_input));
+		m_statemanager->Attach(new Game(&m_input, m_gom));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
@@ -74,8 +76,8 @@ void Engine::Run()
 		//m_statemanager->UpdateTime(m_fDeltaTime);
 		m_statemanager->Update();
 		m_window->clear();
-		m_statemanager->Draw(m_window);
-		m_window->draw(*xSprite);
+		m_statemanager->Draw(/*m_window*/);
+		/*m_window->draw(*xSprite);*/
 		m_window->display();
 		//sf::sleep(sf::milliseconds(10));
 		m_input.PostMouseUpdate();
@@ -89,6 +91,19 @@ void Engine::Run()
 };
 void Engine::Cleanup()
 {
+	if(m_gom != nullptr){
+	m_gom->ClearGameObjects();
+	delete m_gom;
+	m_gom=nullptr;
+	}
+	if(m_spritemanager != nullptr){
+	delete m_spritemanager;
+	m_spritemanager=nullptr;
+	}
+	if(m_window != nullptr){
+	delete m_window;
+	m_window=nullptr;
+	}
 	m_statemanager->Cleanup();
 	delete m_statemanager;
 	m_statemanager = nullptr;

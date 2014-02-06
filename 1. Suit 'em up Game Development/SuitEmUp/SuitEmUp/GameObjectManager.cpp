@@ -3,28 +3,50 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
 #include "DrawManager.h"
-#include "Sprite.h"
-#include <iostream>
+#include "SpriteManager.h"
 #include "PlayerObject.h"
 #include "Truck.h"
 #include "Spawner.h"
+#include <iostream>
 
-GameObjectManager::GameObjectManager()
+GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw)
 {
-	//m_truck = new Truck();
-	//m_player = new PlayerObject(m_truck, nullptr);
-	//m_spawner = new Spawner(m_truck);
-	//m_enemies.clear();
-	//m_projectiles.clear();
-	//m_game_over = false;
+	m_spritemanager=sm;
+	m_window=rw;
+	m_truck=nullptr;
+	m_player=nullptr;
+	m_spawner=nullptr;
+	m_enemies.clear();
+	m_player_projectiles.clear();
+	m_enemy_projectiles.clear();
 }
+
 GameObjectManager::~GameObjectManager()
 {
+	delete m_spritemanager;
+	m_spritemanager=nullptr;
+}
+
+void GameObjectManager::CreateGameObjects()
+{
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3));
+	m_player = new PlayerObject(m_truck, m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3));
+	m_spawner = new Spawner(m_truck);
+	m_enemies.clear();
+	m_player_projectiles.clear();
+	m_enemy_projectiles.clear();
+	m_game_over = false;
+}
+
+void GameObjectManager::ClearGameObjects()
+{
 	if(m_truck != nullptr){
+		delete m_truck->GetSprite();
 		delete m_truck;
 		m_truck = nullptr;
 	}
 	if(m_player != nullptr){
+		delete m_player->GetSprite();
 		delete m_player;
 		m_player = nullptr;
 	}
@@ -32,33 +54,64 @@ GameObjectManager::~GameObjectManager()
 		delete m_spawner;
 		m_spawner = nullptr;
 	}
-	// iterator to delete enemies and projectiles
+	for (auto it = m_enemies.begin();it != m_enemies.end();)
+	{
+		if(*it != nullptr) {
+			delete (*it)->GetSprite();
+			delete *it;
+			it++;
+		}
+	
+	}
 }
 //Update
-void GameObjectManager::Update(/*float deltatime*/)
+void GameObjectManager::Update(/*float deltatime*/InputManager* input)
 {
-	//if(m_truck->Update()){
-	//	m_game_over = true;
-	//};
-	//if(m_player->Update()){
-	//	//m_projectiles.push_back(m_player->Bullet());
-	//}
-	//if(m_spawner->Timer()){
-	//	m_enemies.push_back(m_spawner->EnemySpawner());
-	//}
-	//for(int i = 0; i<m_enemies.size(); i++){
-	//	if(m_enemies.at(i)!=nullptr){
-	//		if(m_enemies.at(i)->Update()){
-	//			//m_projectiles.push_back(m_enemies.at(i)->Bullet)
-	//		}
-	//	}
-	//};
-	////m_spawner->KillEnemyIfNeeded();
-	//for(int i=0; i<m_projectiles.size(); i++){
-	//	if(m_projectiles.at(i)->Update()){
-	//		//erase that shit
-	//	};
-	//};
+	if(m_truck->Update()){
+		m_game_over = true;
+	};
+	if(m_player->Update(input)){
+		m_player_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3)));
+	}
+	if(m_spawner->Timer()){
+		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+	}
+	for(int i = 0; i<m_enemies.size(); i++){
+		if(m_enemies.at(i)!=nullptr){
+			if(m_enemies.at(i)->Update()){
+				//m_projectiles.push_back(m_enemies.at(i)->Bullet)
+			}
+		}
+	};
+	
+	for(auto it = m_player_projectiles.begin(); it !=m_player_projectiles.end();){
+		if(*it !=nullptr){
+			if((*it)->Update(m_truck)){
+				delete (*it)->GetSprite();
+				delete *it;
+				*it = nullptr;
+			};
+		};
+		it++;
+	};
+
+	for(auto at = m_player_projectiles.begin(); at != m_player_projectiles.end();){
+		
+			for(auto it = m_enemies.begin(); it != m_enemies.end();){
+				if(*it!=nullptr && *at != nullptr){
+					if(m_spawner->EnemyDestroyer(*it, *at)){
+						delete (*it)->GetSprite();
+						delete (*at)->GetSprite();
+						delete *at;
+						delete *it;
+						*at = nullptr;
+						*it = nullptr;
+					};
+				}
+				it++;
+			};
+		at++;
+	};
 
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
@@ -121,8 +174,20 @@ void GameObjectManager::DetachObject()
 
 }
 
-void GameObjectManager::DrawObject()
+void GameObjectManager::DrawGameObjects()
 {
+	m_window->draw(*m_truck->GetSprite());
+	m_window->draw(*m_player->GetSprite());
+	for(int i=0; i<m_enemies.size(); i++){
+		if(m_enemies.at(i)!=nullptr){
+			m_window->draw(*m_enemies.at(i)->GetSprite());
+		}
+	};
+	for(int i=0; i<m_player_projectiles.size(); i++){
+		if(m_player_projectiles.at(i)!=nullptr){
+			m_window->draw(*m_player_projectiles.at(i)->GetSprite());
+		}
+	};
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
 	//	GameObject *obj = *it;

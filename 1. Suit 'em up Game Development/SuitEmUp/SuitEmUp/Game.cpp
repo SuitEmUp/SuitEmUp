@@ -8,14 +8,16 @@
 #include "PlayerObject.h"
 
 
-Game::Game(InputManager* input) 
+Game::Game(InputManager* input, GameObjectManager* gom) 
 {
+	m_gom = gom;
 	m_input = input;
 	next_state = "";
 };
 
 bool Game::Init()
 {
+	m_gom->CreateGameObjects();
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
@@ -30,16 +32,11 @@ bool Game::Init()
 	//-----------
 	printf("State: Game,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
-	m_gom=new GameObjectManager();
 	return true;
 };
 
 void Game::Exit(){
-	if(m_gom!=nullptr){
-		delete m_gom;
-		m_gom = nullptr;
-	}
-
+	m_gom->ClearGameObjects();
 };
 
 
@@ -72,10 +69,8 @@ void Game::Exit(){
 
 bool Game::Update()
 {
-
-	m_gom->Update();
-
-	if(m_input->IsDown(sf::Keyboard::F1) || m_gom->m_game_over)
+	m_gom->Update(m_input);
+	if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to mainMenu\n");
 		setNextState("MainMenu");
@@ -97,6 +92,9 @@ bool Game::Update()
 }
 
 //draw
+void Game::Draw(/*sf::RenderWindow *p_window*/){
+	m_gom->DrawGameObjects();
+};
 
 std::string Game::Next()
 {

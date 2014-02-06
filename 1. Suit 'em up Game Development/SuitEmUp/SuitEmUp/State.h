@@ -17,7 +17,7 @@ public:
 
 	//virtual bool HandleInput() = 0;
 	virtual bool Update() = 0;
-	virtual void Draw(sf::RenderWindow *p_window) = 0;
+	virtual void Draw(/*sf::RenderWindow *p_window*/) = 0;
 
 	virtual std::string Next() = 0;
 	virtual void setNextState(std::string state) = 0;
