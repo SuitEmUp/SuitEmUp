@@ -3,7 +3,6 @@
 #include "Spawner.h"
 #include "Truck.h"
 #include "EnemyObject.h"
-#include "EnemyProjectile.h"
 #include "PlayerProjectile.h"
 
 
@@ -47,3 +46,15 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 //	PlayerProjectile* playerprojectile = new PlayerProjectile(m_truck, nullptr);
 //	return playerprojectile;
 //};
+
+bool Spawner::EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet){
+	
+	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+
+	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
+
+	if(dist<50) return true;
+	
+	return false;
+}

@@ -8,6 +8,7 @@
 
 class SpriteManager;
 class Truck;
+class PlayerProjectile;
 
 class Spawner{
 public:
@@ -15,6 +16,7 @@ public:
 	bool Timer(/*deltatime*/);
 
 	EnemyObject* EnemySpawner(SpriteManager* sm);
+	bool EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet);
 
 private:
 	float m_time;

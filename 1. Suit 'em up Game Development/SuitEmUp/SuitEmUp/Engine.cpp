@@ -91,6 +91,19 @@ void Engine::Run()
 };
 void Engine::Cleanup()
 {
+	if(m_gom != nullptr){
+	m_gom->ClearGameObjects();
+	delete m_gom;
+	m_gom=nullptr;
+	}
+	if(m_spritemanager != nullptr){
+	delete m_spritemanager;
+	m_spritemanager=nullptr;
+	}
+	if(m_window != nullptr){
+	delete m_window;
+	m_window=nullptr;
+	}
 	m_statemanager->Cleanup();
 	delete m_statemanager;
 	m_statemanager = nullptr;

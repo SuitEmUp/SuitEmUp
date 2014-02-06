@@ -76,7 +76,7 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	m_sprite->setPosition(m_position);
 
 	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
-	m_cooldown-=0.05;
+	m_cooldown-=1;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 	if(input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
 		m_cooldown=1;	//How long the cooldown is

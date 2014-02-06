@@ -10,7 +10,8 @@ class Engine;
 class Truck;
 class PlayerObject;
 class EnemyObject;
-class Projectile;
+class PlayerProjectile;
+class EnemyProjectile;
 class Spawner;
 class SpriteManager;
 class InputManager;
@@ -40,7 +41,9 @@ private:
 	Truck* m_truck;
 	PlayerObject* m_player;
 	std::vector<EnemyObject*> m_enemies;
-	std::vector<Projectile*> m_projectiles;
+	std::vector<PlayerProjectile*> m_player_projectiles;
+	std::vector<EnemyProjectile*> m_enemy_projectiles;
+
 	Spawner* m_spawner;
 	SpriteManager* m_spritemanager;
 	sf::RenderWindow* m_window;
