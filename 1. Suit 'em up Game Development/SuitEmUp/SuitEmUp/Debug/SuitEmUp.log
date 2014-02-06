@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+﻿Build started 2014-02-05 17:37:41.
+     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
+     1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09
+=======
 ﻿Build started 2014-02-06 12:26:11.
      1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
@@ -37,3 +48,4 @@
 Build succeeded.
 
 Time Elapsed 00:00:01.36
+>>>>>>> 9b80ca0acadee8dbc3d3bea506027c160f8e5fe4
