@@ -19,6 +19,8 @@ EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* s
 
 	m_velocity.x=-(speed*delta_x)/dist;	//sets velocity in an outgoing line between player and base
 	m_velocity.y=-(speed*delta_y)/dist;   //
+	const float pi = 3.141592654f;
+	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi));
 };
 
 bool EnemyProjectile::Update(/*deltatime*/Truck* truck){

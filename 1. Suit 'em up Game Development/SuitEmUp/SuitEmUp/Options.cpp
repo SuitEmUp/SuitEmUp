@@ -53,7 +53,7 @@ void Options::Exit(){};
 //	return true;
 //};
 
-bool Options::Update()
+bool Options::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{

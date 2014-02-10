@@ -67,7 +67,7 @@ void Game::Exit(){
 //	return true;
 //};
 
-bool Game::Update()
+bool Game::Update(float deltatime)
 {
 	m_gom->Update(m_input);
 	if(m_input->IsDown(sf::Keyboard::F1)||m_gom->m_game_over)

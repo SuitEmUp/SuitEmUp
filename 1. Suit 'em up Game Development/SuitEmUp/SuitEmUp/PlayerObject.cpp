@@ -75,6 +75,9 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 
 	m_sprite->setPosition(m_position);
 
+	const float pi = 3.141592654f;
+	m_sprite->setRotation((atan2(delta_y/dist2, delta_x/dist2))*(180/pi));
+
 	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
 	m_cooldown-=1;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0

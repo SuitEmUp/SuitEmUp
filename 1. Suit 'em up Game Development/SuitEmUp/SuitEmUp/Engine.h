@@ -12,7 +12,7 @@ namespace sf{
 	class RenderWindow;
 }
 
-class Engine
+class Engine //brum brum
 {
 public:
 	Engine();
@@ -35,8 +35,9 @@ private:
 	
 	//DrawManager *m_drawmanager;
 
-	sf::Clock* m_xDeltaClock;
-	sf::Time* m_xDeltaTime;
+
+	sf::Clock clock;
+	sf::Time time;
 	float m_fDeltaTime;
 	bool m_running;
 
