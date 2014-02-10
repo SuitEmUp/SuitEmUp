@@ -1,3 +1,5 @@
+#define bob 100
+
 //SFML
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
@@ -15,7 +17,6 @@
 #include "MainMenu.h"
 #include "Options.h"
 #include "Customize.h"
-
 
 
 

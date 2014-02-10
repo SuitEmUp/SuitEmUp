@@ -16,7 +16,7 @@ public:
 	bool Init();
 	void Exit();
 
-	bool Update();
+	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/);
 
 	std::string Next();

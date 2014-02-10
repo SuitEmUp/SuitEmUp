@@ -27,8 +27,8 @@ Engine::Engine()
 
 	m_running = false;//Ladbon
 	m_window = nullptr;
-	
-//	m_drawmanager = nullptr;
+
+	//	m_drawmanager = nullptr;
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 
@@ -45,7 +45,7 @@ bool Engine::Initialize()
 	/*m_drawmanager = new DrawManager();
 	if (!m_drawmanager->initialize(*m_window))
 	{
-		return false;
+	return false;
 	}*/
 
 
@@ -70,37 +70,37 @@ void Engine::Run()
 
 	while(m_running)
 	{
-		//deltatime()
-	//	UpdateDeltatime();
+		UpdateDeltatime();
 		m_statemanager->HandleEvents();
-		//m_statemanager->UpdateTime(m_fDeltaTime);
+		m_statemanager->UpdateTime(m_fDeltaTime);
 		m_statemanager->Update();
 		m_window->clear();
 		m_statemanager->Draw(/*m_window*/);
-		/*m_window->draw(*xSprite);*/
 		m_window->display();
-		//sf::sleep(sf::milliseconds(10));
 		m_input.PostMouseUpdate();
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
+<<<<<<< HEAD
 		//std::cout << m_running << std::endl;
+=======
+>>>>>>> 4ebd3bf781b51e63cdfc1bfa1c6c2df1ed1be169
 	}
 	m_window->close();
 };
 void Engine::Cleanup()
 {
 	if(m_gom != nullptr){
-	//m_gom->ClearGameObjects();
-	//delete m_gom;
-	m_gom=nullptr;
+		//m_gom->ClearGameObjects();
+		//delete m_gom;
+		m_gom=nullptr;
 	}
 	if(m_spritemanager != nullptr){
-	delete m_spritemanager;
-	m_spritemanager=nullptr;
+		delete m_spritemanager;
+		m_spritemanager=nullptr;
 	}
 	if(m_window != nullptr){
-	delete m_window;
-	m_window=nullptr;
+		delete m_window;
+		m_window=nullptr;
 	}
 	m_statemanager->Cleanup();
 	delete m_statemanager;
@@ -108,9 +108,8 @@ void Engine::Cleanup()
 };
 void Engine::UpdateDeltatime()
 {
-	*m_xDeltaTime = m_xDeltaClock->getElapsedTime();
-	m_fDeltaTime = m_xDeltaTime->asMilliseconds();
-	m_xDeltaClock->restart();
+	time = clock.restart();
+	m_fDeltaTime = time.asSeconds();
 }
 
 

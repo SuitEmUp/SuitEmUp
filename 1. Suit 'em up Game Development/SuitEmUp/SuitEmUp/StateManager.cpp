@@ -47,7 +47,7 @@ void StateManager::Update()
 {
 	if(current == nullptr) { return; };
 	//UpdateTime(m_deltatime);
-	if(!current->Update()) {
+	if(!current->Update(m_deltatime)) {
 		ChangeState();
 	};
 };

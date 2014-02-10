@@ -7,6 +7,7 @@
 
 #include "SpriteManager.h"
 
+
 class GameObject{
 public:
 	GameObject(){};

@@ -65,7 +65,7 @@ void TitleScreen::Exit(){};
 //	return true;
 //};
 
-bool TitleScreen::Update()
+bool TitleScreen::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 	{
