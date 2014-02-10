@@ -5,6 +5,8 @@
 #include "MainMenu.h"
 #include "InputManager.h"
 
+#include "Button.h"
+
 
 
 
@@ -30,9 +32,26 @@ bool MainMenu::Init()
 	//-----------
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
+
+	m_Buttons.push_back(new Button("StartGame", nullptr));
+
+	
+
 	return true;
 };
-void MainMenu::Exit(){};
+void MainMenu::Exit()
+{
+	for (auto it = m_Buttons.begin();it != m_Buttons.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+
+	}
+	m_Buttons.clear();
+};
+
+
 
 
 

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "State.h"
+#include "Button.h"
 
 namespace sf{
 	class RenderWindow;
@@ -28,6 +29,7 @@ private:
 	InputManager *m_input;
 	std::string tempName_change;
 	
+	std::vector<Button*> m_Buttons;
 
 
 };
