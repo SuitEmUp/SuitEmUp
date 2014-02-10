@@ -2,14 +2,17 @@
 #include "Button.h"
 
 
-ButtonManager::ButtonManager()
-{
 
+ButtonManager::ButtonManager(SpriteManager* m_spritemanager, InputManager *input)
+{
+	m_vButtons.clear();
 };
 
 void ButtonManager::CreateButton(std::string p_Output, sf::Sprite* p_Sprite)
 {
-		//m_Button_Play = new Button(/*gör en sprite ovanför sen behövs sprite och string*/);
+		m_vButtons.push_back(new Button("Bajs", m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3)));
+
+
 };
 
 bool ButtonManager::Update()
