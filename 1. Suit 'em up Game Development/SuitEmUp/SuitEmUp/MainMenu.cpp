@@ -81,7 +81,7 @@ void MainMenu::Exit()
 //	return true;
 //};
 
-bool MainMenu::Update()
+bool MainMenu::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::F2))
 	{

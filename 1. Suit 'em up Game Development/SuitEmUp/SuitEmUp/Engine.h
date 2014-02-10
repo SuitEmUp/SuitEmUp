@@ -32,8 +32,9 @@ private:
 	InputManager m_input;
 	//DrawManager *m_drawmanager;
 
-	sf::Clock* m_xDeltaClock;
-	sf::Time* m_xDeltaTime;
+
+	sf::Clock clock;
+	sf::Time time;
 	float m_fDeltaTime;
 	bool m_running;
 

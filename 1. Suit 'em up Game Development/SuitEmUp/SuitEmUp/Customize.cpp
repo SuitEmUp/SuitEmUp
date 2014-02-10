@@ -62,7 +62,7 @@ void Customize::Exit(){
 //};
 
 
-bool Customize::Update()
+bool Customize::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{

@@ -16,7 +16,7 @@ public:
 	void Exit();
 
 	//bool HandleInput();
-	bool Update();
+	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/){};
 
 	std::string Next();
