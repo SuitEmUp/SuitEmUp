@@ -52,12 +52,12 @@ void StateManager::Update()
 	};
 };
 
-void StateManager::Draw(sf::RenderWindow *p_window)
+void StateManager::Draw(/*sf::RenderWindow *p_window*/)
 {
 	if(current == nullptr) { return; }
 	
 	
-	current->Draw(p_window);
+	current->Draw(/*p_window*/);
 	//Window Updates goes here
 
 	//1. clear

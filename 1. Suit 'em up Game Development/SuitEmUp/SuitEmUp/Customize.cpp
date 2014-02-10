@@ -85,12 +85,12 @@ bool Customize::Update()
 	return true;
 };
 
-void Customize::Draw(sf::RenderWindow *p_window)
+void Customize::Draw(/*sf::RenderWindow *p_window*/)
 {
-	for(unsigned int i = 0; i<m_rects.size(); i++)
+	/*for(unsigned int i = 0; i<m_rects.size(); i++)
 	{
 		p_window->draw(*m_rects[i]);
-	}
+	}*/
 }
 
 std::string Customize::Next()

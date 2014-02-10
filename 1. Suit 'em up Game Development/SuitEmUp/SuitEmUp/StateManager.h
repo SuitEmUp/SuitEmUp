@@ -25,7 +25,7 @@ public:
 	void UpdateTime(float deltatime);
 	void HandleEvents();
 	void Update();
-	void Draw(sf::RenderWindow *p_window);
+	void Draw(/*sf::RenderWindow *p_window*/);
 
 	bool Running() { return m_running; }
 	void Quit() { m_running = false; }

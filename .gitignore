@@ -213,3 +213,18 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+*.exe
+*.obj
+*.lib
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.filters
+*.vcxproj
+*.db
+
+deps
+Debug
+Release

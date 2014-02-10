@@ -2,15 +2,35 @@
 
 #include "EnemyProjectile.h"
 #include "Truck.h"
+#include "EnemyObject.h"
 
-EnemyProjectile::EnemyProjectile(Truck* truck, sf::Sprite* sprite){
-	const float Speed = 1000; //Adjust bullet speed
+EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite){
+	const float speed = 20; //Adjust bullet speed
 	
+	m_sprite=sprite;
+	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+
+	m_position=enemy->GetPosition();
+
 	float delta_x=(m_position.x)-(truck->GetPosition().x);	//x difference between player and base
 	float delta_y=(m_position.y)-(truck->GetPosition().y);	//y difference between player and base
 	
 	float dist = sqrt(delta_x*delta_x + delta_y*delta_y); //distance between player and base
 
-	//m_velocity.x=(speed*deltatime*delta_x)/dist;	//sets velocity in an outgoing line between player and base
-	//m_velocity.y=(speed*deltatime*delta_y)/dist;   //
+	m_velocity.x=-(speed*delta_x)/dist;	//sets velocity in an outgoing line between player and base
+	m_velocity.y=-(speed*delta_y)/dist;   //
+};
+
+bool EnemyProjectile::Update(/*deltatime*/Truck* truck){
+	m_position += m_velocity;
+	m_sprite->setPosition(m_position);
+	float delta_x=truck->GetPosition().x-m_position.x;
+	float delta_y=truck->GetPosition().y-m_position.y;
+	float dist = sqrt((delta_x*delta_x)+(delta_y*delta_y));
+	if(dist>1000) return true;
+	else if(dist<50){
+		truck->Damaged();
+		return true;
+	}
+	return false;
 };

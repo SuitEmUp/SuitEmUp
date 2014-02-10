@@ -4,6 +4,8 @@
 
 #include "GameObject.h"
 
+class EnemyProjectile;
+
 class Truck : public GameObject{
 public:
 	Truck(sf::Sprite* sprite = nullptr);
@@ -11,6 +13,7 @@ public:
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);
 	bool GetType();
+	void Damaged();
 
 private:
 	int m_hp;

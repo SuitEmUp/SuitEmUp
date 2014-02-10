@@ -10,16 +10,21 @@ class Engine;
 class Truck;
 class PlayerObject;
 class EnemyObject;
-class Projectile;
+class PlayerProjectile;
+class EnemyProjectile;
 class Spawner;
+class SpriteManager;
+class InputManager;
 
 class GameObjectManager
 {
 public:
-	GameObjectManager();
+	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw);
 	~GameObjectManager();
 
-	void Update(/*float deltatime*/);
+	void CreateGameObjects();
+	void Update(/*float deltatime*/InputManager* input);
+	void ClearGameObjects();
 
 	void AttachObject(GameObject* object);
 
@@ -28,13 +33,18 @@ public:
 	
 	sf::Vector2f GetStartPosition(GameObject *GO);
 
-	void DrawObject();
+	void DrawGameObjects();
 
+	bool m_game_over;
 private:
 //	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
 	PlayerObject* m_player;
 	std::vector<EnemyObject*> m_enemies;
-	std::vector<Projectile*> m_projectiles;
+	std::vector<PlayerProjectile*> m_player_projectiles;
+	std::vector<EnemyProjectile*> m_enemy_projectiles;
+
 	Spawner* m_spawner;
+	SpriteManager* m_spritemanager;
+	sf::RenderWindow* m_window;
 };
