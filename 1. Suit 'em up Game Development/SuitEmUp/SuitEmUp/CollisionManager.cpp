@@ -27,7 +27,7 @@ CollisionManager::~CollisionManager()
 void CollisionManager::CheckCollision()
 {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// SÅ MINA COLLIDERS SKA JÄMFÖRAS MED VARANDRA OCH SE OM DE COLLIDERAR, OM DET SKAPAS ETT OFFSET VÄRDE MÅSTE DE SKICKAS TILL DIN PARENT(GAMEOBJECT)///
+	// SÅ MINA COLLIDERS SKA JÄMFÖRAS MED VARANDRA OCH SE OM DE COLLIDERAR, OM DET SKAPAS ETT OFFSET VÄRDE MÅSTE DE SKICKAS TILL DIN PARENT(GAMEOBJECT)///hej
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	sf::Vector2f wall_collision(720.0f, 720.0f);
 	sf::Vector2f offset(0.0, 0.0);

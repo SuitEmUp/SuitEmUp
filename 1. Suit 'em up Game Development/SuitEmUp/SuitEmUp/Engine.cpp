@@ -82,10 +82,7 @@ void Engine::Run()
 		m_input.PostMouseUpdate();
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
-<<<<<<< HEAD
 		//std::cout << m_running << std::endl;
-=======
->>>>>>> 4ebd3bf781b51e63cdfc1bfa1c6c2df1ed1be169
 	}
 	m_window->close();
 };
