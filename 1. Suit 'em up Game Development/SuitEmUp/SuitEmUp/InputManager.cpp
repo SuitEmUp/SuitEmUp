@@ -6,7 +6,7 @@
 #include "InputKeys.h"
 #include "SFML\Window.hpp"
 
-
+//hej
 
 InputManager::InputManager() :
 	myMouseX(0),

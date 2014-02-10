@@ -27,7 +27,6 @@ bool EnemyObject::Update(/*deltatime*/){
 	/*End of movement*/
 
 	m_cooldown-=0.02;	//cooldown goes down
-
 	delta_x=m_truck->GetPosition().x-m_position.x;
 	delta_y=m_truck->GetPosition().y-m_position.y;
 
@@ -37,6 +36,8 @@ bool EnemyObject::Update(/*deltatime*/){
 		
 	m_position+=m_velocity;//gets new position from velocity
 	m_sprite->setPosition(m_position);
+	const float pi = 3.141592654f;
+	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi));
 
 	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_cooldown = 1;	//gets cooldown

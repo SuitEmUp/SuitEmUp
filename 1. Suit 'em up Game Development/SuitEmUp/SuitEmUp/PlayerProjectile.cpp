@@ -5,7 +5,7 @@
 #include "Truck.h"
 
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite){
-	const float speed = 20; //Adjust bullet speed
+	const float speed = 15; //Adjust bullet speed
 	
 	m_position = player->GetPosition();
 
@@ -19,4 +19,7 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 
 	m_velocity.x=(speed*delta_x)/dist;	//sets velocity in an outgoing line between player and base
 	m_velocity.y=(speed*delta_y)/dist;   //
+	
+	const float pi = 3.141592654f;
+	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 };

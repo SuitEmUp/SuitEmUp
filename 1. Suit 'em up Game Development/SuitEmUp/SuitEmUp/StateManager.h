@@ -17,7 +17,7 @@ public:
 
 	bool Init(const char* title, int width, int height);
 	void Cleanup();
-
+	//hoppas att det inte är jobbigt att jag lägger kommentarer här och där
 	void Attach(State * state);
 	void SetState(const std::string &type);
 	void ChangeState();

@@ -16,7 +16,7 @@ public:
 	bool Init();
 	void Exit();
 
-	//bool HandleInput();
+	//bool HandleInput(); <-- wat do dis meen?
 	bool Update();
 	void Draw(/*sf::RenderWindow *p_window*/){};
 

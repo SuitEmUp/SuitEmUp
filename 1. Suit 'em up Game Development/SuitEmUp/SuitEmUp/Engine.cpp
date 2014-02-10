@@ -84,8 +84,6 @@ void Engine::Run()
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
 		//std::cout << m_running << std::endl;
-
-		//sf::sleep(sf::seconds(1));
 	}
 	m_window->close();
 };
