@@ -3,6 +3,7 @@
 #include <vector>
 #include "State.h"
 #include "Button.h"
+#include "SpriteManager.h"
 
 namespace sf{
 	class RenderWindow;
@@ -30,6 +31,7 @@ private:
 	std::string tempName_change;
 	
 	std::vector<Button*> m_Buttons;
+	SpriteManager* m_spritemanager;
 
 
 };

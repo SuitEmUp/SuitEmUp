@@ -4,6 +4,7 @@
 
 #include "MainMenu.h"
 #include "InputManager.h"
+#include "SpriteManager.h"
 
 #include "Button.h"
 
@@ -33,7 +34,7 @@ bool MainMenu::Init()
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
-	m_Buttons.push_back(new Button("StartGame", nullptr));
+	
 
 	
 

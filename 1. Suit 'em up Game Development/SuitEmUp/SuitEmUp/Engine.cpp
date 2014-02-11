@@ -13,6 +13,7 @@
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
 #include "GameObjectManager.h"
+#include "ButtonManager.h"
 
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
@@ -41,6 +42,7 @@ bool Engine::Initialize()
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window);
+	m_buttonmanager = new ButtonManager(m_spritemanager, &m_input);
 
 
 	/*m_drawmanager = new DrawManager();
@@ -96,13 +98,21 @@ void Engine::Cleanup()
 		delete m_spritemanager;
 		m_spritemanager=nullptr;
 	}
+	
 	if(m_window != nullptr){
 		delete m_window;
 		m_window=nullptr;
 	}
+	
 	m_statemanager->Cleanup();
 	delete m_statemanager;
 	m_statemanager = nullptr;
+
+	if(m_buttonmanager !=nullptr)
+	{
+		delete m_buttonmanager;
+		m_buttonmanager = nullptr;
+	}
 };
 void Engine::UpdateDeltatime()
 {
