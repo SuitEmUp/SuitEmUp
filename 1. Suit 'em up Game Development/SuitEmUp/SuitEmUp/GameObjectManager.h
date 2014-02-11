@@ -30,14 +30,17 @@ public:
 
 	void DetachObject(GameObject* object);
 	void DetachObject();
-	
+
 	sf::Vector2f GetStartPosition(GameObject *GO);
 
 	void DrawGameObjects();
 
 	bool m_game_over;
+
+	SpriteManager* m_spritemanager; ///noooooo
+	sf::RenderWindow* m_window;
 private:
-//	std::vector<GameObject*> m_gameobject;
+	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
 	PlayerObject* m_player;
 	std::vector<EnemyObject*> m_enemies;
@@ -45,6 +48,6 @@ private:
 	std::vector<EnemyProjectile*> m_enemy_projectiles;
 
 	Spawner* m_spawner;
-	SpriteManager* m_spritemanager;
-	sf::RenderWindow* m_window;
+
+
 };

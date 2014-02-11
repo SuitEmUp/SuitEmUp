@@ -120,9 +120,6 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\MainMenu.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Game.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\TitleScreen.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -174,6 +171,12 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\ChangeStateButton.h">
+      <Filter>Header Files\Objects\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Game.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -196,6 +199,9 @@
     </Filter>
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{51c9bae5-5b90-44b0-9fee-acf3eff700ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Buttons">
+      <UniqueIdentifier>{771520c5-52a1-4683-931d-60e0cffdfc52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

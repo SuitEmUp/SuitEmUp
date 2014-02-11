@@ -10,7 +10,6 @@ ButtonManager::ButtonManager(SpriteManager* m_spritemanager, InputManager *input
 
 void ButtonManager::CreateButton(std::string p_Output, sf::Sprite* p_Sprite)
 {
-		m_vButtons.push_back(new Button("Bajs", m_spritemanager->Load("../data/sprites/virveltuss.png", "Test", 0.3, 0.3)));
 
 
 };

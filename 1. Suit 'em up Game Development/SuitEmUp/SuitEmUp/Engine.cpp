@@ -54,7 +54,7 @@ bool Engine::Initialize()
 	if(m_statemanager->current == nullptr)
 	{
 		m_statemanager->Attach(new TitleScreen(&m_input));
-		m_statemanager->Attach(new MainMenu(&m_input));
+		m_statemanager->Attach(new MainMenu(&m_input, m_gom));
 		m_statemanager->Attach(new Options(&m_input));
 		m_statemanager->Attach(new Customize(&m_input));
 		m_statemanager->Attach(new Game(&m_input, m_gom));
@@ -83,6 +83,7 @@ void Engine::Run()
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
 		//std::cout << m_running << std::endl;
+		
 	}
 	m_window->close();
 };

@@ -7,16 +7,13 @@
 class Button : public GameObject
 {
 public:
-	Button(std::string p_Output, sf::Sprite* p_Sprite);
+	Button(/*std::string p_nextState,*/ sf::Sprite* p_Sprite, int x_Pos, int y_Pos);
 
 	bool Update(/*deltatime*/);
-	std::string GetOutput();
 
 	bool GetType(){ return true;};
 
 private:
-	//sf::Vector2f m_extention;
-	std::string m_output;
-
+	//std::string m_nextState;
 
 };

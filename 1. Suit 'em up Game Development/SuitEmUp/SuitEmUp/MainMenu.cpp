@@ -11,8 +11,9 @@
 
 
 
-MainMenu::MainMenu(InputManager* input) 
+MainMenu::MainMenu(InputManager* input, GameObjectManager* gom) 
 {
+	m_gom = gom;
 	m_input = input;
 	next_state = "";
 };
@@ -34,9 +35,9 @@ bool MainMenu::Init()
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
-	
 
-	
+	m_TestButton = new Button(m_gom->m_spritemanager->Load("../data/sprites/virveltuss.png", "testBuhund"), 100, 200);
+
 
 	return true;
 };
@@ -105,7 +106,12 @@ bool MainMenu::Update(float deltatime)
 	return true;
 }
 
-//draw
+void MainMenu::Draw()
+{
+	m_gom->m_window->draw(*m_TestButton->GetSprite());
+
+
+};
 
 std::string MainMenu::Next()
 {
