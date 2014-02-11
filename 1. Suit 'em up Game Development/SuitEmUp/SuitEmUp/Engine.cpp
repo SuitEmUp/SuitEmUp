@@ -44,6 +44,7 @@ bool Engine::Initialize()
 	m_gom = new GameObjectManager(m_spritemanager, m_window);
 	m_buttonmanager = new ButtonManager(m_spritemanager, &m_input);
 
+
 	/*m_drawmanager = new DrawManager();
 	if (!m_drawmanager->initialize(*m_window))
 	{
@@ -119,7 +120,3 @@ void Engine::UpdateDeltatime()
 	time = clock.restart();
 	m_fDeltaTime = time.asSeconds();
 }
-
-
-
-

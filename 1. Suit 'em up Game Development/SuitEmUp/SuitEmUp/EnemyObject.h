@@ -11,6 +11,9 @@ public:
 	EnemyObject(Truck* truck, sf::Sprite* sprite = nullptr);
 	bool Update(/*deltatime*/);
 	bool GetType();
+	int Damaged(int playerdmg);
+
 private:
 	float m_cooldown;
+	float m_hp;
 };

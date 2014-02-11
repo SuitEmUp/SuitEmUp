@@ -23,7 +23,7 @@ bool Spawner::Timer(/*deltatime*/){
 };
 
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
-	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/virveltuss.png", "Test", 0.1, 0.1));
+	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/ArianaSprite.png", "Test", 1, 1));
 	
 	int q=rand()%2;
 	int y;

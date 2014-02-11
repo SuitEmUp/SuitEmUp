@@ -9,10 +9,11 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
+	speed = 5;
+	m_hp = 20;
 };
 
 bool EnemyObject::Update(/*deltatime*/){
-	const float speed = 5;	//Adjust this to make enemy move faster
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
@@ -37,7 +38,7 @@ bool EnemyObject::Update(/*deltatime*/){
 	m_position+=m_velocity;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
-	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi));
+	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 
 	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_cooldown = 1;	//gets cooldown
@@ -49,3 +50,8 @@ bool EnemyObject::Update(/*deltatime*/){
 bool EnemyObject::GetType(){
 	return true;
 };
+
+int EnemyObject::Damaged(int playerdmg){
+	m_hp-=playerdmg;
+	return m_hp;
+}
