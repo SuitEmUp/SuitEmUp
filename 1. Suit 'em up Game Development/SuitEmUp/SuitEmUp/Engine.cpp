@@ -37,10 +37,11 @@ Engine::Engine()
 
 bool Engine::Initialize()
 {
-	m_statemanager = new StateManager;
+	m_statemanager = new StateManager();
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
-	m_spritemanager = new SpriteManager;
+	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window);
+
 
 	/*m_drawmanager = new DrawManager();
 	if (!m_drawmanager->initialize(*m_window))
@@ -80,10 +81,7 @@ void Engine::Run()
 		m_input.PostMouseUpdate();
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
-<<<<<<< HEAD
 		//std::cout << m_running << std::endl;
-=======
->>>>>>> 4ebd3bf781b51e63cdfc1bfa1c6c2df1ed1be169
 	}
 	m_window->close();
 };
@@ -111,7 +109,3 @@ void Engine::UpdateDeltatime()
 	time = clock.restart();
 	m_fDeltaTime = time.asSeconds();
 }
-
-
-
-

@@ -1,10 +1,13 @@
 #include "Sprite.h"
 
+#include <SFML\Graphics.hpp>
+#include <SFML\Window.hpp>
+
 Sprite::Sprite(sf::Sprite, float x_scale, float y_scale)
 {
-	//m_sprite = sf::Sprite;
-	//m_x = p_x;
-	//m_y = p_y;
-	//m_width = p_width;
-	//m_height = m_height;
+	/*m_sprite = sf::Sprite;
+	m_x = p_x;
+	m_y = p_y;
+	m_width = p_width;
+	m_height = m_height;*/
 };

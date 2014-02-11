@@ -11,13 +11,17 @@ PlayerObject::PlayerObject(Truck* truck, sf::Sprite* sprite)
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
+	speed = 5;
+	m_damage = 1;
 };
 
 bool PlayerObject::Update(/*deltatime*/InputManager* input){
-	const double speed=10.0f;	//Change this to adjust player speed
 
 	m_velocity = sf::Vector2f(0, 0);
 
+	if(input->IsDown(sf::Keyboard::U)){
+		m_damage+=5;
+	}
 	//m_position += m_truck->GetVelocity();	//Lets the player smoothly stick to the truck if we're going to implement truck movement
 
 	double delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
@@ -30,7 +34,7 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	/*MOVEMENT INPUTS*/
 
 	if(input->IsDown(sf::Keyboard::A)){
-		m_velocity.x=-speed*((delta_y)/dist1);	
+		m_velocity.x=-speed*((delta_y)/dist1);
 		m_velocity.y=speed*((delta_x)/dist1);
 		//nothing happens with dist2, but dist1 gets affected by centripetal effects
 	}
@@ -91,4 +95,8 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 
 bool PlayerObject::GetType(){
 	return true;
+};
+
+int PlayerObject::GetDamage(){
+	return m_damage;
 };

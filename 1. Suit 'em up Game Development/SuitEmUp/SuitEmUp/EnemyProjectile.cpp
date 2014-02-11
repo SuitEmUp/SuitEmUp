@@ -5,7 +5,7 @@
 #include "EnemyObject.h"
 
 EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite){
-	const float speed = 20; //Adjust bullet speed
+	speed = 20; //Adjust bullet speed
 	
 	m_sprite=sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);

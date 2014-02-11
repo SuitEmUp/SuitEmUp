@@ -5,8 +5,8 @@
 #include "Truck.h"
 
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite){
-	const float speed = 15; //Adjust bullet speed
-	
+	speed = 20;
+
 	m_position = player->GetPosition();
 
 	m_sprite = sprite;
