@@ -83,6 +83,8 @@ void Engine::Run()
 		m_input.PostMouseUpdate();
 		m_input.PostKeyboardUpdate();
 		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
+		if(m_input.Mouse_isDownOnce(sf::Mouse::Button::Left))
+		{std::cout << "wtf\n";}
 		//std::cout << m_running << std::endl;
 		
 	}
