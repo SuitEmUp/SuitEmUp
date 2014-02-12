@@ -14,7 +14,7 @@ InputManager::InputManager() :
 {
 	//Keyboard
 
-	for(int i = 0; i < KeyCount; i++) {
+	for(int i = 0; i < sf::Keyboard::KeyCount; i++) {
 		m_current[i] = false;
 		m_previous[i] = false;
 	};
@@ -32,8 +32,8 @@ InputManager::~InputManager()
 }
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
 {
-	return m_currentMouse[sf::Mouse::isButtonPressed(button)] 
-	&& !m_previousMouse[sf::Mouse::isButtonPressed(button)];
+	return m_currentMouse[sf::Mouse::Button::Left] 
+	&& !m_previousMouse[sf::Mouse::Button::Left];
 }
 int InputManager::GetMouseX() const
 {
@@ -97,7 +97,7 @@ void InputManager::PostMouseUpdate()
 void InputManager::PostKeyboardUpdate()
 {
 
-	for(int i = 0; i < KeyCount; i++) {
+	for(int i = 0; i < sf::Keyboard::KeyCount; i++) {
 		m_previous[i] = m_current[i];
 	};
 

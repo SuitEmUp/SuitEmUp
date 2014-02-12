@@ -16,15 +16,15 @@ public:
 	bool Init();
 	void Exit();
 
-<<<<<<< HEAD
+
 
 	//bool HandleInput(); <-- wat do dis meen?
 	bool Update();
 
-=======
+
 	//bool HandleInput(); <-- wat do dis meen?
-	bool Update();
->>>>>>> e4cd7658624597c827a42240e9cb5884891ffdda
+
+
 	//bool HandleInput();
 	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/){};
