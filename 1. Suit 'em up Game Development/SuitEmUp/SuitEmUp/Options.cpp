@@ -4,12 +4,6 @@
 #include "Options.h"
 #include "InputManager.h"
 
-Options::Options()
-{
-
-}
-
-
 
 Options::Options(InputManager* input) 
 {

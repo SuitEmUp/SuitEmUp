@@ -15,6 +15,7 @@ public:
 	bool Mouse_isDownOnce(sf::Mouse::Button button) const;
 	int GetMouseY() const;
 	int GetMouseX() const;
+	sf::Vector2i GetMousePos();
 	void HandleInput(bool &running, sf::RenderWindow* window, InputManager *m_input, StateManager *m_state_manager);
 	void PostMouseUpdate();
 	void PostKeyboardUpdate();
@@ -23,6 +24,7 @@ public:
 
 private:
 
+	sf::RenderWindow* m_window;
 	bool m_currentMouse[sf::Mouse::ButtonCount];
 	bool m_previousMouse[sf::Mouse::ButtonCount];
 	bool m_current[256];
@@ -30,4 +32,5 @@ private:
 
 	int myMouseX;                                        
 	int myMouseY;    
+	sf::Vector2i m_mousepos;
 };

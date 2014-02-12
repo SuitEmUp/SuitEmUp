@@ -5,8 +5,9 @@
 #include "InputManager.h"
 #include <iostream>
 
-PlayerObject::PlayerObject(Truck* truck, sf::Sprite* sprite)
+PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite)
 {
+	m_input = input;
 	m_truck = truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
@@ -15,13 +16,26 @@ PlayerObject::PlayerObject(Truck* truck, sf::Sprite* sprite)
 	m_damage = 1;
 };
 
-bool PlayerObject::Update(/*deltatime*/InputManager* input){
+bool PlayerObject::Update(/*deltatime*/){
 
 	m_velocity = sf::Vector2f(0, 0);
 
-	if(input->IsDown(sf::Keyboard::U)){
+	if(m_input->IsDown(sf::Keyboard::U)){
 		m_damage+=5;
 	}
+	if(m_input->IsDown(sf::Keyboard::I)){
+		speed+=5;
+	}
+	if(m_input->IsDown(sf::Keyboard::J)){
+		m_damage-=5;
+	}
+	if(m_input->IsDown(sf::Keyboard::K)){
+		speed-=5;
+	}
+	if(m_input->IsDown(sf::Keyboard::O)){
+		m_truck->Healed();
+	}
+
 	//m_position += m_truck->GetVelocity();	//Lets the player smoothly stick to the truck if we're going to implement truck movement
 
 	double delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
@@ -33,22 +47,22 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 	
 	/*MOVEMENT INPUTS*/
 
-	if(input->IsDown(sf::Keyboard::A)){
+	if(m_input->IsDown(sf::Keyboard::A)){
 		m_velocity.x=-speed*((delta_y)/dist1);
 		m_velocity.y=speed*((delta_x)/dist1);
 		//nothing happens with dist2, but dist1 gets affected by centripetal effects
 	}
-	if(input->IsDown(sf::Keyboard::D)){
+	if(m_input->IsDown(sf::Keyboard::D)){
 		m_velocity.x=speed*((delta_y)/dist1);
 		m_velocity.y=-speed*((delta_x)/dist1);
 		//same as previous
 	}
-	if(input->IsDown(sf::Keyboard::W)){
+	if(m_input->IsDown(sf::Keyboard::W)){
 		m_velocity.x-=speed*((delta_x)/dist1);
 		m_velocity.y-=speed*((delta_y)/dist1);
 		dist2+=speed;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
 	}
-	if(input->IsDown(sf::Keyboard::S)){
+	if(m_input->IsDown(sf::Keyboard::S)){
 		m_velocity.x+=speed*((delta_x)/dist1);
 		m_velocity.y+=speed*((delta_y)/dist1);
 		dist2-=speed;	//Same as previous
@@ -79,13 +93,18 @@ bool PlayerObject::Update(/*deltatime*/InputManager* input){
 
 	m_sprite->setPosition(m_position);
 
+	float delta_X = m_position.x-m_input->GetMousePos().x;
+	float delta_Y = m_position.y-m_input->GetMousePos().y;
+	float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
+	
 	const float pi = 3.141592654f;
-	m_sprite->setRotation((atan2(delta_y/dist2, delta_x/dist2))*(180/pi));
+	m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
+	m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
 
 	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
 	m_cooldown-=1;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	if(input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
+	if(m_input->IsDown(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)) && m_cooldown==0){
 		m_cooldown=1;	//How long the cooldown is
 		return true;	//if this is returned a bullet will be spawned
 	}
@@ -100,3 +119,7 @@ bool PlayerObject::GetType(){
 int PlayerObject::GetDamage(){
 	return m_damage;
 };
+
+sf::Vector2f PlayerObject::GetDirection(){
+	return m_direction;
+}

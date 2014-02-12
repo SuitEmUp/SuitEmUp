@@ -9,8 +9,9 @@
 #include "Spawner.h"
 #include <iostream>
 
-GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw)
+GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input)
 {
+	m_input = input;
 	m_spritemanager=sm;
 	m_window=rw;
 	m_truck=nullptr;	//Make sure everything is cleared.
@@ -30,7 +31,7 @@ void GameObjectManager::CreateGameObjects()
 {
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/virveltuss.png", "Virveltuss", 0.1, 0.1));
-	m_player = new PlayerObject(m_truck, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1));
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1));
 	m_spawner = new Spawner(m_truck);
 	//Clears all vectors
 	m_enemies.clear();
@@ -86,12 +87,12 @@ void GameObjectManager::ClearGameObjects()
 	m_player_projectiles.clear();
 }
 //Update
-void GameObjectManager::Update(/*float deltatime*/InputManager* input)
+void GameObjectManager::Update(/*float deltatime*/)
 {
 	if(m_truck->Update()){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
-	if(m_player->Update(input)){ //When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
+	if(m_player->Update()){ //When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
 	}
 	if(m_spawner->Timer()){ //Keeps track of when enemies spawn
