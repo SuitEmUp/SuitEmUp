@@ -41,7 +41,7 @@ bool Engine::Initialize()
 	m_statemanager = new StateManager();
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
 	m_spritemanager = new SpriteManager();
-	m_gom = new GameObjectManager(m_spritemanager, m_window);
+	m_gom = new GameObjectManager(m_spritemanager, m_window, &m_input);
 	m_buttonmanager = new ButtonManager(m_spritemanager, &m_input);
 
 

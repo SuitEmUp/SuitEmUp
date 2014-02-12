@@ -11,11 +11,11 @@ class InputManager;
 
 class Options : public State {
 public:
-	Options();
 	Options(InputManager * input);
 	bool Init();
 	void Exit();
 
+<<<<<<< HEAD
 
 
 	//bool HandleInput(); <-- wat do dis meen?
@@ -25,6 +25,8 @@ public:
 	//bool HandleInput(); <-- wat do dis meen?
 
 
+=======
+>>>>>>> 74270ce1bf8ce92b7400633a84bf0e92b78e1d34
 	//bool HandleInput();
 	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/){};

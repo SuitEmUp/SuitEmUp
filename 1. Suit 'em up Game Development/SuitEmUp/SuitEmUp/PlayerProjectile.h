@@ -6,6 +6,7 @@
 
 class Truck;
 class PlayerObject;
+class InputManager;
 
 class PlayerProjectile : public Projectile{
 public:
