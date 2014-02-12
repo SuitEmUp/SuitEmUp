@@ -19,11 +19,11 @@ class InputManager;
 class GameObjectManager
 {
 public:
-	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw);
+	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input);
 	~GameObjectManager();
 
 	void CreateGameObjects();
-	void Update(/*float deltatime*/InputManager* input);
+	void Update(/*float deltatime*/);
 	void ClearGameObjects();
 
 	void AttachObject(GameObject* object);
@@ -48,6 +48,6 @@ private:
 	std::vector<EnemyProjectile*> m_enemy_projectiles;
 
 	Spawner* m_spawner;
-
+	InputManager* m_input;
 
 };

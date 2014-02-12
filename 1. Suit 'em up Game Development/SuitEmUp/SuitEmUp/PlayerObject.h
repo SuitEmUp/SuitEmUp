@@ -10,11 +10,14 @@ class InputManager;
 class PlayerObject : public MovingGameObject
 {
 public:
-	PlayerObject(Truck* truck, sf::Sprite* sprite = nullptr);
-	bool Update(/*deltatime*/InputManager* input);
+	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite = nullptr);
+	bool Update(/*deltatime*/);
 	bool GetType();
 	int GetDamage();
+	sf::Vector2f GetDirection();
 private:
+	InputManager* m_input;
 	int m_damage;
 	float m_cooldown;
+	sf::Vector2f m_direction;
 };

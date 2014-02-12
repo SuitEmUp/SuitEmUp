@@ -12,6 +12,7 @@ InputManager::InputManager() :
 	myMouseX(0),
 	myMouseY(0)
 {
+	m_window = nullptr;
 	//Keyboard
 
 	for(int i = 0; i < KeyCount; i++) {
@@ -45,6 +46,7 @@ int InputManager::GetMouseY() const
 }
 void InputManager::HandleInput(bool &running, sf::RenderWindow* window, InputManager *m_input, StateManager *m_state_manager)
 {
+	m_mousepos = sf::Mouse::getPosition(*window);
 	sf::Event event;
 	while(window->pollEvent(event))
 	{
@@ -110,4 +112,8 @@ bool InputManager::IsDown(int key) const
 bool InputManager::IsUp(int key)
 {
 	return !m_current[key];
+}
+
+sf::Vector2i InputManager::GetMousePos(){
+	return m_mousepos;
 }

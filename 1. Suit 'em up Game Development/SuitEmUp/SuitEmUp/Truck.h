@@ -14,6 +14,7 @@ public:
 	void SetVelocity(sf::Vector2f vel);
 	bool GetType();
 	void Damaged();
+	void Healed();
 
 private:
 	int m_hp;

@@ -31,3 +31,7 @@ bool Truck::GetType(){
 void Truck::Damaged(){
 	m_hp--;
 }
+
+void Truck::Healed(){
+	m_hp+=5;
+}
