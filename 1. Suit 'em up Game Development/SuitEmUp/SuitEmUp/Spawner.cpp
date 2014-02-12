@@ -14,9 +14,12 @@ Spawner::Spawner(Truck* truck){
 };
 
 bool Spawner::Timer(/*deltatime*/){
+	
 	m_time+=0.1;
 	if(m_time>m_alarm){
 		m_time=0;
+		m_alarm*=0.9;
+		if(m_alarm<3)m_alarm=3;
 		return true;
 	};
 	return false;
@@ -25,17 +28,33 @@ bool Spawner::Timer(/*deltatime*/){
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/ArianaSprite.png", "Test", 1, 1));
 	
-	int q=rand()%2;
-	int y;
-	if(q==1){
-		y=720;
+	int spawndirection = rand()%2;
+	if(spawndirection == 0){
+		int q=rand()%2;
+		int y;
+		if(q==1){
+			y=720;
+		}
+		else if(q==0){
+			y=0;
+		}
+		int x=rand()%1281;
+		enemy->SetPosition(x, y);
+		return enemy;
 	}
-	else if(q==0){
-		y=0;
+	else if(spawndirection==1){
+		int q=rand()%2;
+		int x;
+		if(q==1){
+			x=0;
+		}
+		else if(q==0){
+			x=1280;
+		}
+		int y=rand()%720;
+		enemy->SetPosition(x, y);
+		return enemy;
 	}
-	int x=rand()%1281;
-	enemy->SetPosition(x, y);
-	return enemy;
 };
 //EnemyProjectile* Spawner::EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck){
 //	EnemyProjectile* enemyprojectile = new EnemyProjectile(m_truck, nullptr);

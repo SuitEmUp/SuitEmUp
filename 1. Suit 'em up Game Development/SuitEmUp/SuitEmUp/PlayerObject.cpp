@@ -13,7 +13,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
 	speed = 5;
-	m_damage = 1;
+	m_damage = 10;
 };
 
 bool PlayerObject::Update(/*deltatime*/){
@@ -104,7 +104,7 @@ bool PlayerObject::Update(/*deltatime*/){
 	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
 	m_cooldown-=1;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	if(m_input->IsDown(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)) && m_cooldown==0){
+	if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
 		m_cooldown=1;	//How long the cooldown is
 		return true;	//if this is returned a bullet will be spawned
 	}
