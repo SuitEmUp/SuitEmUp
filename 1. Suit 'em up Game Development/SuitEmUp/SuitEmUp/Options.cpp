@@ -4,10 +4,6 @@
 #include "Options.h"
 #include "InputManager.h"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d48fd5d8484d4f26bb08806738aad67b3eaa2446
 
 Options::Options(InputManager* input) 
 {
