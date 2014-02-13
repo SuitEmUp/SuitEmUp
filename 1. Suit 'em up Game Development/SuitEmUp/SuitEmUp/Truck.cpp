@@ -15,6 +15,10 @@ bool Truck::Update(){
 	if(m_hp<1) return true;
 	return false;
 };
+int Truck::UpdateHP()
+{
+	return m_hp;
+}
 
 sf::Vector2f Truck::GetVelocity(){
 	return m_velocity;

@@ -15,6 +15,7 @@ class EnemyProjectile;
 class Spawner;
 class SpriteManager;
 class InputManager;
+class HpBar;
 
 class GameObjectManager
 {
@@ -43,9 +44,13 @@ private:
 	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
 	PlayerObject* m_player;
+	HpBar *m_hpbar;
 	std::vector<EnemyObject*> m_enemies;
 	std::vector<PlayerProjectile*> m_player_projectiles;
 	std::vector<EnemyProjectile*> m_enemy_projectiles;
+
+	float minus;
+	float current;
 
 	Spawner* m_spawner;
 	InputManager* m_input;

@@ -8,6 +8,8 @@
 #include "Truck.h"
 #include "Spawner.h"
 #include <iostream>
+#include "HpBar.h"
+
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input)
 {
@@ -20,11 +22,14 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_enemies.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
+	m_hpbar = nullptr;
+
+
 }
 
 GameObjectManager::~GameObjectManager()
 {
-//	m_spritemanager=nullptr;
+	//	m_spritemanager=nullptr;
 }
 
 void GameObjectManager::CreateGameObjects()
@@ -39,10 +44,19 @@ void GameObjectManager::CreateGameObjects()
 	m_enemy_projectiles.clear();
 	//The game is not over
 	m_game_over = false;
+	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar.png", "hpbar", 1,1),
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Border.png", "hpbar", 1,1)));
+	minus = 0.05f;//truck hp stuff
+	current = 1.0f; // truck hp stuff
 }
 
 void GameObjectManager::ClearGameObjects()
 {
+	if(m_hpbar != nullptr)
+	{
+		delete m_hpbar;
+		m_hpbar = nullptr;
+	}
 	//Deletes objects and clears vectors. Sprite deletion is fucked up
 	if(m_truck != nullptr){
 		//delete m_truck->GetSprite();
@@ -64,7 +78,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_enemies.clear();
 	for (auto it = m_enemy_projectiles.begin();it != m_enemy_projectiles.end(); it++)
@@ -73,7 +87,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_enemy_projectiles.clear();
 	for (auto it = m_player_projectiles.begin();it != m_player_projectiles.end(); it++)
@@ -82,7 +96,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_player_projectiles.clear();
 }
@@ -105,15 +119,17 @@ void GameObjectManager::Update(/*float deltatime*/)
 			}
 		}
 	};
-	
+
 
 	for(int i = 0; i< m_enemy_projectiles.size(); i++){ //Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
 		if(m_enemy_projectiles.at(i)->Update(m_truck)){
 			//delete (*it)->GetSprite();
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
+			m_hpbar->GetSprite()->setScale(current -= minus, 1.0);
 		};
 	};
+
 
 	for(int i = 0; i< m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)->Update(m_truck)){
@@ -124,23 +140,23 @@ void GameObjectManager::Update(/*float deltatime*/)
 	};
 
 	for(int i = 0; i < m_player_projectiles.size(); i++){
-		
-			for(int j = 0; j<m_enemies.size(); j++){
-				
-				if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
-						//delete (*it)->GetSprite();
-						//delete (*at)->GetSprite();
-						m_player_projectiles.erase(m_player_projectiles.begin()+i);
-						if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-							m_enemies.erase(m_enemies.begin()+j);
-							--j;
-						}
-						--i;
-						break;
-					};
-				
+
+		for(int j = 0; j<m_enemies.size(); j++){
+
+			if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
+				//delete (*it)->GetSprite();
+				//delete (*at)->GetSprite();
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
+					m_enemies.erase(m_enemies.begin()+j);
+					--j;
+				}
+				--i;
+				break;
 			};
-		
+
+		};
+
 
 	};
 
@@ -163,7 +179,7 @@ sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
 void GameObjectManager::AttachObject(GameObject *object)
 {
 
-//	m_gameobject.push_back(object);
+	//	m_gameobject.push_back(object);
 
 }
 //detach
@@ -209,6 +225,7 @@ void GameObjectManager::DrawGameObjects()
 {
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
+
 	for(int i=0; i<m_enemies.size(); i++){
 		if(m_enemies.at(i)!=nullptr){
 			m_window->draw(*m_enemies.at(i)->GetSprite()); // draws all enemies
@@ -224,6 +241,9 @@ void GameObjectManager::DrawGameObjects()
 			m_window->draw(*m_enemy_projectiles.at(i)->GetSprite());	// draws all enemy projetiles
 		}
 	};
+	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
+	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
+
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
 	//	GameObject *obj = *it;

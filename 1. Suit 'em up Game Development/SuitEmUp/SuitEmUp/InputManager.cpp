@@ -71,6 +71,7 @@ void InputManager::HandleInput(bool &running, sf::RenderWindow* window, InputMan
 				m_input->myMouseX = event.mouseButton.x;
 				m_input->myMouseY = event.mouseButton.y;
 				m_input->m_currentMouse[0] = true;
+				std::cout << myMouseX << " : " << myMouseY << "\n";
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)

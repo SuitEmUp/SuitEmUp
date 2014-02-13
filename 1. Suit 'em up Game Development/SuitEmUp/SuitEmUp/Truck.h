@@ -15,8 +15,9 @@ public:
 	bool GetType();
 	void Damaged();
 	void Healed();
+	int UpdateHP();
 
-private:
+protected:
 	int m_hp;
 	sf::Vector2f m_velocity;
 };
