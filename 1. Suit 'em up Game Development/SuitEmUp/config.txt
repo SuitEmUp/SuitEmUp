@@ -5,3 +5,5 @@ background_r
 background_g
 background_b
 background_a
+menu_top_padding = 225
+button_padding = 75

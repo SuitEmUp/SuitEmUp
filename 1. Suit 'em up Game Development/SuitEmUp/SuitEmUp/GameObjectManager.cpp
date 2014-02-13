@@ -7,6 +7,9 @@
 #include "PlayerObject.h"
 #include "Truck.h"
 #include "Spawner.h"
+#include "Button.h"
+#include "Config.h"
+
 #include <iostream>
 #include "HpBar.h"
 
@@ -19,6 +22,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_truck=nullptr;	//Make sure everything is cleared.
 	m_player=nullptr;
 	m_spawner=nullptr;
+	m_backgound=nullptr;
 	m_enemies.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
@@ -34,6 +38,8 @@ GameObjectManager::~GameObjectManager()
 
 void GameObjectManager::CreateGameObjects()
 {
+	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
+	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/virveltuss.png", "Virveltuss", 0.1, 0.1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1));
@@ -101,20 +107,20 @@ void GameObjectManager::ClearGameObjects()
 	m_player_projectiles.clear();
 }
 //Update
-void GameObjectManager::Update(/*float deltatime*/)
+void GameObjectManager::Update(float deltatime)
 {
-	if(m_truck->Update()){ //When the truck gets 0 hp it returns true.
+	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
-	if(m_player->Update()){ //When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
+	if(m_player->Update(deltatime)){ //When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
 	}
-	if(m_spawner->Timer()){ //Keeps track of when enemies spawn
+	if(m_spawner->Timer(deltatime)){ //Keeps track of when enemies spawn
 		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
 	}
 	for(int i = 0; i<m_enemies.size(); i++){ //Updates all enemies.
 		if(m_enemies.at(i)!=nullptr){
-			if(m_enemies.at(i)->Update()){ //Update returns true when enemy are close to the truck and their fire-cooldown is 0, a bullet is pushbacked into the enemybullet vector
+			if(m_enemies.at(i)->Update(deltatime)){ //Update returns true when enemy are close to the truck and their fire-cooldown is 0, a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i),m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
 			}
 		}
@@ -122,7 +128,7 @@ void GameObjectManager::Update(/*float deltatime*/)
 
 
 	for(int i = 0; i< m_enemy_projectiles.size(); i++){ //Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
-		if(m_enemy_projectiles.at(i)->Update(m_truck)){
+		if(m_enemy_projectiles.at(i)->Update(m_truck, deltatime)){
 			//delete (*it)->GetSprite();
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
@@ -132,7 +138,7 @@ void GameObjectManager::Update(/*float deltatime*/)
 
 
 	for(int i = 0; i< m_player_projectiles.size(); i++){
-		if(m_player_projectiles.at(i)->Update(m_truck)){
+		if(m_player_projectiles.at(i)->Update(m_truck, deltatime)){
 			//delete (*it)->GetSprite();
 			m_player_projectiles.erase(m_player_projectiles.begin()+i);
 			i--;
@@ -223,6 +229,7 @@ void GameObjectManager::DetachObject()
 
 void GameObjectManager::DrawGameObjects()
 {
+	m_window->draw(*m_backgound);
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
@@ -260,3 +267,23 @@ void GameObjectManager::DrawGameObjects()
 	//	}
 	//}
 }
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Buttons//////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+void GameObjectManager::CreateButtons()
+{
+	m_vButtons.push_back(new Button("StartGame", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), (Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
+};
+
+void GameObjectManager::DrawButtons()
+{
+	for(int i=0; i<m_vButtons.size(); i++){
+		if(m_vButtons.at(i)!=nullptr){
+			m_window->draw(*m_vButtons.at(i)->GetSprite()); // draws all buttons
+		}
+	}
+};

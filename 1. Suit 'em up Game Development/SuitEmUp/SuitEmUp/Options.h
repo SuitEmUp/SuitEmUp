@@ -15,6 +15,8 @@ public:
 	bool Init();
 	void Exit();
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -26,6 +28,7 @@ public:
 
 
 
+>>>>>>> 34835adb749fcccff0354d793377c779c54e8845
 	//bool HandleInput();
 	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/){};

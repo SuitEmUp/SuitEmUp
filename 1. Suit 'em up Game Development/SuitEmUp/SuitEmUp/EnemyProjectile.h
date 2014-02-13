@@ -11,5 +11,5 @@ class EnemyObject;
 class EnemyProjectile : public Projectile{
 public:
 	EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite = nullptr);
-	bool Update(Truck* truck);
+	bool Update(Truck* truck, float deltatime);
 };

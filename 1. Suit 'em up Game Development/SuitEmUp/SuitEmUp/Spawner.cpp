@@ -13,9 +13,9 @@ Spawner::Spawner(Truck* truck){
 	srand(time(NULL));
 };
 
-bool Spawner::Timer(/*deltatime*/){
+bool Spawner::Timer(float deltatime){
 	
-	m_time+=0.1;
+	m_time+=deltatime*4;
 	if(m_time>m_alarm){
 		m_time=0;
 		m_alarm*=0.9;
@@ -26,7 +26,7 @@ bool Spawner::Timer(/*deltatime*/){
 };
 
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
-	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/ArianaSprite.png", "Test", 1, 1));
+	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/BanditEn.png", "Bandit1", 1, 1));
 	
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){

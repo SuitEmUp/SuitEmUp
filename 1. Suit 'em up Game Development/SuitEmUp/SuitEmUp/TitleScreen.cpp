@@ -4,11 +4,12 @@
 
 #include "TitleScreen.h"
 #include "InputManager.h"
+#include "SpriteManager.h"
 
 
 
 
-TitleScreen::TitleScreen(InputManager* input) 
+TitleScreen::TitleScreen(InputManager *input, GameObjectManager* gom) 
 {
 	m_input = input;
 	next_state = "";
@@ -28,8 +29,7 @@ bool TitleScreen::Init()
 	//m_InputManager = nullptr;
 
 	//-----------
-
-
+	
 
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
@@ -37,33 +37,6 @@ bool TitleScreen::Init()
 };
 void TitleScreen::Exit(){};
 
-
-
-//bool MainMenu::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//		
-//	}
-//	return true;
-//};
 
 bool TitleScreen::Update(float deltatime)
 {
@@ -76,7 +49,10 @@ bool TitleScreen::Update(float deltatime)
 	return true;
 }
 
-//draw
+void TitleScreen::Draw()
+{
+
+};
 
 std::string TitleScreen::Next()
 {

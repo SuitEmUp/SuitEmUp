@@ -6,7 +6,7 @@
 #include "InputManager.h"
 
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite){
-	speed = 20;
+	speed = 2000;
 
 	m_position = player->GetPosition();
 
@@ -22,5 +22,5 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 	m_velocity.y-=speed*player->GetDirection().x;   //
 	
 	const float pi = 3.141592654f;
-	m_sprite->setRotation((atan2(player->GetDirection().x, player->GetDirection().y))*(180/pi)+180);
+	m_sprite->setRotation((atan2(player->GetDirection().x, player->GetDirection().y))*(180/pi));
 };

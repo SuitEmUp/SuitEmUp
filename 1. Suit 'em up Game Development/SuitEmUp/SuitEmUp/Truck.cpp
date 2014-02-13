@@ -10,7 +10,7 @@ Truck::Truck(sf::Sprite* sprite){
 	m_position=sf::Vector2f(1280/2, 720/2);
 };
 
-bool Truck::Update(){
+bool Truck::Update(float deltatime){
 	m_sprite->setPosition(m_position);
 	if(m_hp<1) return true;
 	return false;

@@ -8,6 +8,6 @@ class Truck;
 
 class Projectile : public MovingGameObject{
 public:
-	bool Update(/*deltatime*/Truck* truck);
+	bool Update(Truck* truck, float deltatime);
 	bool GetType();
 };

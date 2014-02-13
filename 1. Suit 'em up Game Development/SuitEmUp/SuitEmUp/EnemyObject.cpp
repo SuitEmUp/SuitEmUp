@@ -9,11 +9,11 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
-	speed = 5;
+	speed = 200;
 	m_hp = 20;
 };
 
-bool EnemyObject::Update(/*deltatime*/){
+bool EnemyObject::Update(float deltatime){
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
@@ -35,7 +35,7 @@ bool EnemyObject::Update(/*deltatime*/){
 
 	if(dist<200)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		
-	m_position+=m_velocity;//gets new position from velocity
+	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
