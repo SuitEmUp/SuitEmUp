@@ -4,13 +4,13 @@
 #include "Truck.h"
 #include "EnemyObject.h"
 
-EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite){
+EnemyProjectile::EnemyProjectile(Truck* truck, sf::Vector2f start, sf::Sprite* sprite){
 	speed = 2000; //Adjust bullet speed
 	
 	m_sprite=sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 
-	m_position=enemy->GetPosition();
+	m_position=start;
 
 	float delta_x=(m_position.x)-(truck->GetPosition().x);	//x difference between player and base
 	float delta_y=(m_position.y)-(truck->GetPosition().y);	//y difference between player and base

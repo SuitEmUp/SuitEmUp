@@ -6,6 +6,8 @@
 #include "SpriteManager.h"
 #include "PlayerObject.h"
 #include "Truck.h"
+#include "EnemyObject.h"
+#include "SuperEnemy.h"
 #include "Spawner.h"
 #include "Button.h"
 #include "Config.h"
@@ -22,6 +24,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_spawner=nullptr;
 	m_backgound=nullptr;
 	m_enemies.clear();
+	m_supers.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
 }
@@ -37,10 +40,12 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/virveltuss.png", "Virveltuss", 0.1, 0.1));
-	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1));
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1),
+		m_spritemanager->Load("../data/sprites/SuperBandit.png", "WOHO", 2, 2));
 	m_spawner = new Spawner(m_truck);
 	//Clears all vectors
 	m_enemies.clear();
+	m_supers.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
 	//The game is not over
@@ -73,6 +78,15 @@ void GameObjectManager::ClearGameObjects()
 
 	}
 	m_enemies.clear();
+	for (auto it = m_supers.begin();it != m_supers.end(); it++)
+	{
+		if(*it != nullptr) {
+			//delete (*it)->GetSprite();
+			delete *it;
+		}
+
+	}
+	m_supers.clear();
 	for (auto it = m_enemy_projectiles.begin();it != m_enemy_projectiles.end(); it++)
 	{
 		if(*it != nullptr) {
@@ -99,15 +113,25 @@ void GameObjectManager::Update(float deltatime)
 		m_game_over = true;
 	};
 	if(m_player->Update(deltatime)){ //When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
-		m_player_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+		m_player_projectiles.push_back(new PlayerProjectile(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3), m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "Needle", 1, 1)));
 	}
 	if(m_spawner->Timer(deltatime)){ //Keeps track of when enemies spawn
-		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+		int c=rand()%5;
+		if(c>0) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+		else m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
 	}
 	for(int i = 0; i<m_enemies.size(); i++){ //Updates all enemies.
 		if(m_enemies.at(i)!=nullptr){
 			if(m_enemies.at(i)->Update(deltatime)){ //Update returns true when enemy are close to the truck and their fire-cooldown is 0, a bullet is pushbacked into the enemybullet vector
-				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i),m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i)->GetPosition(),m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+			}
+		}
+	};
+
+	for(int i = 0; i<m_supers.size(); i++){ //Updates all enemies.
+		if(m_supers.at(i)!=nullptr){
+			if(m_supers.at(i)->Update(deltatime)){ //Update returns true when enemy are close to the truck and their fire-cooldown is 0, a bullet is pushbacked into the enemybullet vector
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_supers.at(i)->GetPosition(),m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
 			}
 		}
 	};
@@ -144,12 +168,26 @@ void GameObjectManager::Update(float deltatime)
 				--i;
 				break;
 			};
-
 		};
-
-
 	};
 
+	for(int i = 0; i < m_player_projectiles.size(); i++){
+		for(int j = 0; j<m_supers.size(); j++){
+
+			if(m_spawner->SuperDestroyer(m_supers.at(j), m_player_projectiles.at(i))){
+				//delete (*it)->GetSprite();
+				//delete (*at)->GetSprite();
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
+					m_supers.erase(m_supers.begin()+j);
+					--j;
+				}
+				--i;
+				break;
+			};
+
+		};
+	};
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
 	//	GameObject *obj = *it;
@@ -219,6 +257,11 @@ void GameObjectManager::DrawGameObjects()
 	for(int i=0; i<m_enemies.size(); i++){
 		if(m_enemies.at(i)!=nullptr){
 			m_window->draw(*m_enemies.at(i)->GetSprite()); // draws all enemies
+		}
+	};
+	for(int i=0; i<m_supers.size(); i++){
+		if(m_supers.at(i)!=nullptr){
+			m_window->draw(*m_supers.at(i)->GetSprite()); // draws all enemies
 		}
 	};
 	for(int i=0; i<m_player_projectiles.size(); i++){

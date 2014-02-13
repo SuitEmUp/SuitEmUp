@@ -13,6 +13,7 @@ class Engine;
 class Truck;
 class PlayerObject;
 class EnemyObject;
+class SuperEnemy;
 class PlayerProjectile;
 class EnemyProjectile;
 class Spawner;
@@ -55,16 +56,14 @@ private:
 	Truck* m_truck;
 	PlayerObject* m_player;
 	std::vector<EnemyObject*> m_enemies;
+	std::vector<SuperEnemy*> m_supers;
+
 	std::vector<PlayerProjectile*> m_player_projectiles;
 	std::vector<EnemyProjectile*> m_enemy_projectiles;
 
 	Spawner* m_spawner;
 	InputManager* m_input;
 
-<<<<<<< HEAD
 	sf::Sprite* m_backgound;
-=======
 	std::vector<Button*> m_vButtons;
-
->>>>>>> f5626915c20a6be1bbda3a8fdc293ecd9796d345
 };

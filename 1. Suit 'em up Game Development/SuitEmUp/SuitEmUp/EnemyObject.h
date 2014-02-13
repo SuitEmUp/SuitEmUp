@@ -13,7 +13,7 @@ public:
 	bool GetType();
 	int Damaged(int playerdmg);
 
-private:
+protected:
 	float m_cooldown;
 	float m_hp;
 };

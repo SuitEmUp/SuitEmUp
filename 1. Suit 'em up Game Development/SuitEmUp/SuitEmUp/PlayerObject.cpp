@@ -5,12 +5,15 @@
 #include "InputManager.h"
 #include <iostream>
 
-PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite)
+PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
 {
+	m_update = update;
 	m_input = input;
 	m_truck = truck;
-	m_sprite = sprite;
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	m_unupdate = sprite;
+	m_sprite = m_unupdate;
+	m_update->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	m_unupdate->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
 	speed = 500;
 	m_damage = 10;
@@ -18,6 +21,12 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 
 bool PlayerObject::Update(float deltatime)
 {
+	if(m_damage>20){
+		m_sprite = m_update;
+	}
+	if(m_damage<20){
+		m_sprite = m_unupdate;
+	}
 
 	m_velocity = sf::Vector2f(0, 0);
 
@@ -128,6 +137,7 @@ bool PlayerObject::GetType()
 {
 	return true;
 };
+
 
 int PlayerObject::GetDamage()
 {

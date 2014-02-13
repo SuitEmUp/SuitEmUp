@@ -5,12 +5,24 @@
 #include "Truck.h"
 #include "InputManager.h"
 
-PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite){
+PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update){
 	speed = 2000;
 
 	m_position = player->GetPosition();
 
-	m_sprite = sprite;
+	m_unupdate = sprite;
+	m_update = update;
+	
+	if(player->GetDamage()>=20){
+		m_sprite = m_update;
+		m_sprite->setScale(player->GetDamage()/10, player->GetDamage()/10);
+	}
+	else{
+		m_sprite = m_unupdate;
+		m_sprite->setScale(player->GetDamage()/10, player->GetDamage()/10);
+	}
+
+
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 
 	//x difference between player and base
