@@ -7,6 +7,7 @@
 
 PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
 {
+	m_position = sf::Vector2f(400, 400);
 	m_update = update;
 	m_input = input;
 	m_truck = truck;
@@ -21,15 +22,15 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 
 bool PlayerObject::Update(float deltatime)
 {
-	if(m_damage>20){
+	if(m_damage>100){
 		m_sprite = m_update;
 	}
-	if(m_damage<20){
+	else{
 		m_sprite = m_unupdate;
 	}
 
 	m_velocity = sf::Vector2f(0, 0);
-
+	//UP/DOWN-GRADES
 	if(m_input->IsDown(sf::Keyboard::U)){
 		m_damage+=5;
 	}
@@ -139,7 +140,7 @@ bool PlayerObject::GetType()
 };
 
 
-int PlayerObject::GetDamage()
+float PlayerObject::GetDamage()
 {
 	return m_damage;
 };

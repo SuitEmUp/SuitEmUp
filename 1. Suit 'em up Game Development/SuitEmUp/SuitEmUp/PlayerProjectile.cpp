@@ -13,13 +13,13 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 	m_unupdate = sprite;
 	m_update = update;
 	
-	if(player->GetDamage()>=20){
+	if(player->GetDamage()>=100){
 		m_sprite = m_update;
-		m_sprite->setScale(player->GetDamage()/10, player->GetDamage()/10);
+		m_sprite->setScale((player->GetDamage()-80)/20, (player->GetDamage()-80)/100);
 	}
 	else{
 		m_sprite = m_unupdate;
-		m_sprite->setScale(player->GetDamage()/10, player->GetDamage()/10);
+		m_sprite->setScale(player->GetDamage()/20, player->GetDamage()/20);
 	}
 
 

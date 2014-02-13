@@ -19,11 +19,9 @@ class EnemyProjectile;
 class Spawner;
 class SpriteManager;
 class InputManager;
-<<<<<<< HEAD
+
 class HpBar;
-=======
 class Button;
->>>>>>> c42c71919f772c39d66c58414c85ae2c7030474d
 
 class GameObjectManager
 {

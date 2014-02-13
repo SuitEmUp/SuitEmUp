@@ -44,9 +44,9 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/virveltuss.png", "Virveltuss", 0.1, 0.1));
-	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSprite.png", "Ariana's sprite", 1, 1),
-		m_spritemanager->Load("../data/sprites/SuperBandit.png", "WOHO", 2, 2));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana's sprite", 1, 1),
+		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "WOHO", 1, 1));
 	m_spawner = new Spawner(m_truck);
 	//Clears all vectors
 	m_enemies.clear();
@@ -56,8 +56,8 @@ void GameObjectManager::CreateGameObjects()
 	//The game is not over
 	m_game_over = false;
 	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar.png", "hpbar", 1,1),
-		(m_spritemanager->Load("../data/sprites/HP_Bar_Border.png", "hpbar", 1,1)));
-	minus = 0.05f;//truck hp stuff
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Border.png", "hpborder", 1,1)));
+	minus = 0.2;//truck hp stuff
 	current = 1.0f; // truck hp stuff
 }
 
@@ -156,7 +156,6 @@ void GameObjectManager::Update(float deltatime)
 			//delete (*it)->GetSprite();
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
-			m_hpbar->GetSprite()->setScale(current -= minus, 1.0);
 		};
 	};
 
@@ -204,6 +203,11 @@ void GameObjectManager::Update(float deltatime)
 
 		};
 	};
+	float lol = m_truck->UpdateHP()/20;
+	if(lol>1){
+		lol=1;
+	}
+	m_hpbar->GetSprite()->setScale(lol, 1.0);
 	//for (auto it = m_gameobject.begin(); it != m_gameobject.end(); ++it)
 	//{
 	//	GameObject *obj = *it;
