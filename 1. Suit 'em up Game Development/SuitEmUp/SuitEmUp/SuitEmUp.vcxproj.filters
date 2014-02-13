@@ -85,9 +85,13 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" />
+>>>>>>> 220c6fc7f08bf2ef3105631421133e3ec4d5c099
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Collider.h">
@@ -180,9 +184,13 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Game.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\HpBar.h" />
+>>>>>>> 220c6fc7f08bf2ef3105631421133e3ec4d5c099
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

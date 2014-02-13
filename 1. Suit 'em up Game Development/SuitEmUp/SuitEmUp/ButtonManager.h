@@ -6,6 +6,7 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
+
 class InputManager;
 
 class ButtonManager
