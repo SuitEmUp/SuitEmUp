@@ -7,6 +7,9 @@
 #include "PlayerObject.h"
 #include "Truck.h"
 #include "Spawner.h"
+#include "Button.h"
+#include "Config.h"
+
 #include <iostream>
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input)
@@ -25,7 +28,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 
 GameObjectManager::~GameObjectManager()
 {
-//	m_spritemanager=nullptr;
+	//	m_spritemanager=nullptr;
 }
 
 void GameObjectManager::CreateGameObjects()
@@ -67,7 +70,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_enemies.clear();
 	for (auto it = m_enemy_projectiles.begin();it != m_enemy_projectiles.end(); it++)
@@ -76,7 +79,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_enemy_projectiles.clear();
 	for (auto it = m_player_projectiles.begin();it != m_player_projectiles.end(); it++)
@@ -85,7 +88,7 @@ void GameObjectManager::ClearGameObjects()
 			//delete (*it)->GetSprite();
 			delete *it;
 		}
-	
+
 	}
 	m_player_projectiles.clear();
 }
@@ -108,7 +111,7 @@ void GameObjectManager::Update(float deltatime)
 			}
 		}
 	};
-	
+
 
 	for(int i = 0; i< m_enemy_projectiles.size(); i++){ //Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
 		if(m_enemy_projectiles.at(i)->Update(m_truck, deltatime)){
@@ -127,23 +130,23 @@ void GameObjectManager::Update(float deltatime)
 	};
 
 	for(int i = 0; i < m_player_projectiles.size(); i++){
-		
-			for(int j = 0; j<m_enemies.size(); j++){
-				
-				if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
-						//delete (*it)->GetSprite();
-						//delete (*at)->GetSprite();
-						m_player_projectiles.erase(m_player_projectiles.begin()+i);
-						if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-							m_enemies.erase(m_enemies.begin()+j);
-							--j;
-						}
-						--i;
-						break;
-					};
-				
+
+		for(int j = 0; j<m_enemies.size(); j++){
+
+			if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
+				//delete (*it)->GetSprite();
+				//delete (*at)->GetSprite();
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
+					m_enemies.erase(m_enemies.begin()+j);
+					--j;
+				}
+				--i;
+				break;
 			};
-		
+
+		};
+
 
 	};
 
@@ -166,7 +169,7 @@ sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
 void GameObjectManager::AttachObject(GameObject *object)
 {
 
-//	m_gameobject.push_back(object);
+	//	m_gameobject.push_back(object);
 
 }
 //detach
@@ -244,3 +247,23 @@ void GameObjectManager::DrawGameObjects()
 	//	}
 	//}
 }
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////Buttons//////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+void GameObjectManager::CreateButtons()
+{
+	m_vButtons.push_back(new Button("StartGame", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), (Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
+	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), (Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
+};
+
+void GameObjectManager::DrawButtons()
+{
+	for(int i=0; i<m_vButtons.size(); i++){
+		if(m_vButtons.at(i)!=nullptr){
+			m_window->draw(*m_vButtons.at(i)->GetSprite()); // draws all buttons
+		}
+	}
+};

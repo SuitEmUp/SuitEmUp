@@ -33,5 +33,5 @@ private:
 	
 	std::vector<Button*> m_Buttons;
 	GameObjectManager* m_gom;
-	Button* m_TestButton;
+
 };

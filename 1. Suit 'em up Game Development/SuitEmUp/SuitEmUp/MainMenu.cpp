@@ -7,6 +7,7 @@
 #include "SpriteManager.h"
 
 #include "Button.h"
+#include "Config.h"
 
 
 
@@ -36,7 +37,10 @@ bool MainMenu::Init()
 	printf("F1 - F4 to Change States\n");
 
 
-	m_TestButton = new Button(m_gom->m_spritemanager->Load("../data/sprites/virveltuss.png", "testBuhund"), 100, 200);
+	//m_TestButton = new Button(m_gom->m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), (Config::getInt("window_w", 0)/2 - 119), 150);
+
+	m_gom->CreateButtons();
+
 
 
 	return true;
@@ -52,36 +56,6 @@ void MainMenu::Exit()
 	}
 	m_Buttons.clear();
 };
-
-
-
-
-
-//bool MainMenu::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//		
-//	}
-//	return true;
-//};
 
 bool MainMenu::Update(float deltatime)
 {
@@ -108,8 +82,8 @@ bool MainMenu::Update(float deltatime)
 
 void MainMenu::Draw()
 {
-	m_gom->m_window->draw(*m_TestButton->GetSprite());
-
+	//m_gom->m_window->draw(*m_TestButton->GetSprite());
+	m_gom->DrawButtons();
 
 };
 

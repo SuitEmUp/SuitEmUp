@@ -4,6 +4,9 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 
+
+
+
 class Game;
 class GameObject;
 class Engine;
@@ -15,6 +18,7 @@ class EnemyProjectile;
 class Spawner;
 class SpriteManager;
 class InputManager;
+class Button;
 
 class GameObjectManager
 {
@@ -39,6 +43,13 @@ public:
 
 	SpriteManager* m_spritemanager; ///noooooo
 	sf::RenderWindow* m_window;
+
+
+	//Button related stuff?
+
+	void CreateButtons();
+	void DrawButtons();
+
 private:
 	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
@@ -50,5 +61,10 @@ private:
 	Spawner* m_spawner;
 	InputManager* m_input;
 
+<<<<<<< HEAD
 	sf::Sprite* m_backgound;
+=======
+	std::vector<Button*> m_vButtons;
+
+>>>>>>> f5626915c20a6be1bbda3a8fdc293ecd9796d345
 };
