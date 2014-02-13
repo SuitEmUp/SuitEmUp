@@ -3,8 +3,8 @@
 #include "Projectile.h"
 #include "Truck.h"
 
-bool Projectile::Update(/*deltatime*/Truck* truck){
-	m_position += m_velocity;
+bool Projectile::Update(Truck* truck, float deltatime){
+	m_position += m_velocity*deltatime;
 	m_sprite->setPosition(m_position);
 	float delta_x=truck->GetPosition().x-m_position.x;
 	float delta_y=truck->GetPosition().y-m_position.y;

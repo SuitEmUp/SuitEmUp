@@ -12,11 +12,12 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
-	speed = 5;
+	speed = 500;
 	m_damage = 10;
 };
 
-bool PlayerObject::Update(/*deltatime*/){
+bool PlayerObject::Update(float deltatime)
+{
 
 	m_velocity = sf::Vector2f(0, 0);
 
@@ -60,12 +61,12 @@ bool PlayerObject::Update(/*deltatime*/){
 	if(m_input->IsDown(sf::Keyboard::W)){
 		m_velocity.x-=speed*((delta_x)/dist1);
 		m_velocity.y-=speed*((delta_y)/dist1);
-		dist2+=speed;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
+		dist2+=speed*deltatime;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
 	}
 	if(m_input->IsDown(sf::Keyboard::S)){
 		m_velocity.x+=speed*((delta_x)/dist1);
 		m_velocity.y+=speed*((delta_y)/dist1);
-		dist2-=speed;	//Same as previous
+		dist2-=speed*deltatime;	//Same as previous
 	}
 	/*END OF MOVEMENT INPUTS*/
 
@@ -75,7 +76,7 @@ bool PlayerObject::Update(/*deltatime*/){
 	}
 
 	
-	m_position+=m_velocity;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
+	m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
 	delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
 	delta_y = m_truck->GetPosition().y - m_position.y;
@@ -89,7 +90,18 @@ bool PlayerObject::Update(/*deltatime*/){
 
 
 	//std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
-	
+	if(m_position.x<0){
+		m_position.x=0;
+	}
+	if(m_position.x>1280){
+		m_position.x=1280;
+	}
+	if(m_position.y<0){
+		m_position.y=0;
+	}
+	if(m_position.y>720){
+		m_position.y=720;
+	}
 
 	m_sprite->setPosition(m_position);
 
@@ -112,14 +124,17 @@ bool PlayerObject::Update(/*deltatime*/){
 };
 
 
-bool PlayerObject::GetType(){
+bool PlayerObject::GetType()
+{
 	return true;
 };
 
-int PlayerObject::GetDamage(){
+int PlayerObject::GetDamage()
+{
 	return m_damage;
 };
 
-sf::Vector2f PlayerObject::GetDirection(){
+sf::Vector2f PlayerObject::GetDirection()
+{
 	return m_direction;
 }

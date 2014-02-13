@@ -1,33 +1,17 @@
-﻿Build started 2014-02-12 15:57:09.
+﻿Build started 2014-02-13 10:41:29.
      1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Collider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MovingGameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Sprite.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SpriteManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp"
-         Button.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\button.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         Level.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp"
+         Truck.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
-         main.cpp
-         Truck.cpp
-         SpriteManager.cpp
          Spawner.cpp
          Projectile.cpp
          PlayerProjectile.cpp
          PlayerObject.cpp
-         MovingGameObject.cpp
-         MainMenu.cpp
          GameObjectManager.cpp
-         GameObject.cpp
-         Game.cpp
-         Engine.cpp
          EnemyProjectile.cpp
          EnemyObject.cpp
-         CollisionManager.cpp
-         Collider.cpp
-         ButtonManager.cpp
-         Sprite.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
          Debug\ButtonManager.obj
@@ -62,4 +46,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.23
+Time Elapsed 00:00:01.96

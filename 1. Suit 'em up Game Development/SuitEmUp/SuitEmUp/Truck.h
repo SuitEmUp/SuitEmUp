@@ -9,7 +9,7 @@ class EnemyProjectile;
 class Truck : public GameObject{
 public:
 	Truck(sf::Sprite* sprite = nullptr);
-	bool Update(/*deltatime*/);
+	bool Update(float deltatime);
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);
 	bool GetType();

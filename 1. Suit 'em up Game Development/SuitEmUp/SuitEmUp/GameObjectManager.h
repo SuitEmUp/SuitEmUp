@@ -23,7 +23,7 @@ public:
 	~GameObjectManager();
 
 	void CreateGameObjects();
-	void Update(/*float deltatime*/);
+	void Update(float deltatime);
 	void ClearGameObjects();
 
 	void AttachObject(GameObject* object);
@@ -50,4 +50,5 @@ private:
 	Spawner* m_spawner;
 	InputManager* m_input;
 
+	sf::Sprite* m_backgound;
 };

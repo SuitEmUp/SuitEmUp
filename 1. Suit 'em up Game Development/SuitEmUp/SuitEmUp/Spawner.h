@@ -13,7 +13,7 @@ class PlayerProjectile;
 class Spawner{
 public:
 	Spawner(Truck* truck);
-	bool Timer(/*deltatime*/);
+	bool Timer(float deltatime);
 
 	EnemyObject* EnemySpawner(SpriteManager* sm);
 	bool EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet);

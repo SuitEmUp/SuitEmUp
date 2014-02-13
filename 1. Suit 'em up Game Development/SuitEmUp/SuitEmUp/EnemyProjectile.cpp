@@ -5,7 +5,7 @@
 #include "EnemyObject.h"
 
 EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* sprite){
-	speed = 20; //Adjust bullet speed
+	speed = 2000; //Adjust bullet speed
 	
 	m_sprite=sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
@@ -23,8 +23,8 @@ EnemyProjectile::EnemyProjectile(Truck* truck, EnemyObject* enemy, sf::Sprite* s
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi));
 };
 
-bool EnemyProjectile::Update(/*deltatime*/Truck* truck){
-	m_position += m_velocity;
+bool EnemyProjectile::Update(Truck* truck, float deltatime){
+	m_position += m_velocity*deltatime;
 	m_sprite->setPosition(m_position);
 	float delta_x=truck->GetPosition().x-m_position.x;
 	float delta_y=truck->GetPosition().y-m_position.y;
