@@ -8,7 +8,6 @@ C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMU
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\MOVINGGAMEOBJECT.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\OPTIONS.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\PLAYEROBJECT.OBJ
-C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\PLAYERPROJECTILE.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\PROJECTILE.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\SPAWNER.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\SPRITE.OBJ
@@ -29,9 +28,6 @@ C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMU
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\ENGINE.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\GAME.OBJ
 C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\SUITEMUP\DEBUG\VC110.PDB
-C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\DEBUG\SUITEMUP.ILK
-C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\DEBUG\SUITEMUP.EXE
-C:\USERS\FOTZE\DOCUMENTS\GITHUB\SUITEMUP\1. SUIT 'EM UP GAME DEVELOPMENT\SUITEMUP\DEBUG\SUITEMUP.PDB
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Button.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\ButtonManager.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Collider.obj
@@ -52,7 +48,6 @@ C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmU
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\MovingGameObject.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Options.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\PlayerObject.obj
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\PlayerProjectile.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Projectile.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Spawner.obj
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\Sprite.obj
@@ -65,15 +60,5 @@ C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmU
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\cl.command.1.tlog
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\CL.read.1.tlog
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\CL.write.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link-cvtres.read.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link-cvtres.write.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link-rc.read.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link-rc.write.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link.command.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link.read.1.tlog
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\link.write.1.tlog
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\vc110.idb
 C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Debug\vc110.pdb
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.ilk

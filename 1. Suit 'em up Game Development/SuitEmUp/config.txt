@@ -7,4 +7,4 @@ background_b
 background_a
 menu_top_padding = 225
 button_padding = 75
-hud_padding = 75
+hud_padding = 50
