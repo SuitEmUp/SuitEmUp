@@ -24,4 +24,4 @@ sf::Sprite *HpBar::Sprite2()
 bool HpBar::GetType()
 {
 	return true;
-}
+} 

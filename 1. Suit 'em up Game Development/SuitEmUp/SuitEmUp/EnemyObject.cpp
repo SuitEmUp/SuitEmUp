@@ -10,7 +10,7 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
 	speed = 200;
-	m_hp = 20;
+	m_hp = 2;
 };
 
 bool EnemyObject::Update(float deltatime){

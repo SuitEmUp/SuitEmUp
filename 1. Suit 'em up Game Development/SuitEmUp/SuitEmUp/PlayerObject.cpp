@@ -16,8 +16,8 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_update->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_unupdate->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
-	speed = 500;
-	m_damage = 10;
+	speed = 400;
+	m_damage = 1;
 };
 
 bool PlayerObject::Update(float deltatime)
