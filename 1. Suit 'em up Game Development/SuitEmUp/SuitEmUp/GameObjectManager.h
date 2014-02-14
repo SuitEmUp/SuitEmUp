@@ -64,9 +64,6 @@ private:
 	std::vector<PlayerProjectile*> m_player_projectiles;
 	std::vector<EnemyProjectile*> m_enemy_projectiles;
 
-	float minus;
-	float current;
-
 	Spawner* m_spawner;
 	InputManager* m_input;
 

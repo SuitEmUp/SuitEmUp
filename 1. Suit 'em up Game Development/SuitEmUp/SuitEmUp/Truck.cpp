@@ -6,7 +6,7 @@
 Truck::Truck(sf::Sprite* sprite){
 	m_sprite = sprite;
 	m_sprite->setOrigin((m_sprite->getLocalBounds().width)/2, (m_sprite->getLocalBounds().height)/2);
-	m_hp = 20;
+	m_hp = 100;
 	m_position=sf::Vector2f(1280/2, 720/2);
 };
 
