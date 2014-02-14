@@ -7,4 +7,12 @@ background_b
 background_a
 menu_top_padding = 225
 button_padding = 75
+<<<<<<< HEAD
 hud_padding = 50
+=======
+<<<<<<< HEAD
+hud_padding = 75
+=======
+hud_padding = 75
+>>>>>>> afb1dcd14bb2df321b0227f2380f31a919a14d67
+>>>>>>> 70803cc30535464ef09dedd08fbcc348dc89dc7b
