@@ -7,9 +7,9 @@ SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
 	m_truck=truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
-	m_cooldown = 0;
+	m_cooldown = 1;
 	speed = 200;
-	m_hp = 100;
+	m_hp = 5;
 };
 
 bool SuperEnemy::Update(float deltatime){
@@ -40,7 +40,7 @@ bool SuperEnemy::Update(float deltatime){
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 
 	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
-		m_cooldown = 0.2;	//gets cooldown
+		m_cooldown = 1;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
 	else return false;//doesn't matter if false is returned.

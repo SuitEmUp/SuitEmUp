@@ -94,7 +94,11 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 	
+<<<<<<< HEAD
 	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 2, 2));
+=======
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1.0, 1.0));
+>>>>>>> 44737fdb39e3c3fedabacb87472f59994011bda2
 	
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
