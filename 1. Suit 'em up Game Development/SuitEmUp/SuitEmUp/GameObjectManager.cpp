@@ -57,8 +57,9 @@ void GameObjectManager::CreateGameObjects()
 	m_enemy_projectiles.clear();
 	//The game is not over
 	m_game_over = false;
-	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar.png", "hpbar", 1,1),
-		(m_spritemanager->Load("../data/sprites/HP_Bar_Border.png", "hpborder", 1,1)));
+	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 
 }
 
@@ -301,6 +302,9 @@ void GameObjectManager::DrawGameObjects()
 
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
+	m_window->draw(*m_hpbar->Sprite3());
+
+
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
@@ -330,7 +334,7 @@ void GameObjectManager::DrawGameObjects()
 		}
 	};
 }
-////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
