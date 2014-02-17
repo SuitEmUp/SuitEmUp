@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "Engine.h"
 class InputManager;
 
 namespace sf{
@@ -12,7 +13,7 @@ class State
 public:
 	virtual ~State() {};
 	
-	virtual bool Init() = 0;
+	virtual bool Init(Engine*) = 0;
 	virtual void Exit() = 0;
 
 	//virtual bool HandleInput() = 0;

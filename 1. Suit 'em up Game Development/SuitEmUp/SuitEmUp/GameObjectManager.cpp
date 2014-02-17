@@ -201,6 +201,12 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
+				int chance = rand()%20;
+					if(chance == 15)
+					{
+					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+					}
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -219,10 +225,16 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
+					int chance = rand()%10;
+					if(chance == 1)
+					{
 					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+					}
 					m_supers.erase(m_supers.begin()+j);
+					
 					//SCORE COUNT
+					
 					--j;
 				}
 				--i;

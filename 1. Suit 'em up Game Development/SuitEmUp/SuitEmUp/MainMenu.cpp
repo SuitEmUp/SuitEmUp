@@ -12,15 +12,18 @@
 
 
 
-MainMenu::MainMenu(InputManager* input, GameObjectManager* gom) 
+MainMenu::MainMenu(InputManager* input, Engine *engine) 
 {
-	m_gom = gom;
+	m_gom = engine->m_gom;
 	m_input = input;
 	next_state = "";
+
 };
 
-bool MainMenu::Init()
+bool MainMenu::Init(Engine *engine)
 {
+	
+	m_engine = engine;
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }

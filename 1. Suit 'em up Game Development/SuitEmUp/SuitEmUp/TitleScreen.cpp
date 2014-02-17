@@ -9,14 +9,18 @@
 
 
 
-TitleScreen::TitleScreen(InputManager *input, GameObjectManager* gom) 
+TitleScreen::TitleScreen(InputManager *input, Engine* engine) 
 {
 	m_input = input;
 	next_state = "";
+	
+	
 };
 
-bool TitleScreen::Init()
+bool TitleScreen::Init(Engine* engine)
 {
+	m_engine = engine;
+	m_gom = m_engine->m_gom;
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
@@ -29,7 +33,7 @@ bool TitleScreen::Init()
 	//m_InputManager = nullptr;
 
 	//-----------
-	
+	m_background = m_engine->m_spritemanager->Load("title.png", "bakgrund", 1.0, 1.0);
 
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
@@ -46,12 +50,13 @@ bool TitleScreen::Update(float deltatime)
 		setNextState("MainMenu");
 		return false;
 	};
+	
+	
 	return true;
 }
 
 void TitleScreen::Draw()
 {
-
 };
 
 std::string TitleScreen::Next()
