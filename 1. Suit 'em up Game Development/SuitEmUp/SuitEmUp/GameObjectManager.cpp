@@ -352,17 +352,23 @@ void GameObjectManager::DrawGameObjects()
 
 void GameObjectManager::CreateButtons()
 {
-	m_vButtons.push_back(new Button("StartGame", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), 
+	m_vButtons.push_back(new Button(m_input, "StartGame", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
-	
-	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+
+	m_vButtons.push_back(new Button(m_input, "HighScore", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
-	
-	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+
+	m_vButtons.push_back(new Button(m_input, "Options", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
-	
-	m_vButtons.push_back(new Button("QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+
+	m_vButtons.push_back(new Button(m_input, "QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
+};
+
+void GameObjectManager::UpdateButtons()
+{
+
+
 };
 
 void GameObjectManager::DrawButtons()

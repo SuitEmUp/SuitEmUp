@@ -1,13 +1,23 @@
+-Window stuff-
+
 fullscreen = false
 window_w = 1280
 window_h = 720
-background_r
-background_g
-background_b
-background_a
+
+
+-GUI related stuff-
+
 menu_top_padding = 225
 button_padding = 75
+<<<<<<< HEAD
 hud_padding = 50
 hud_padding = 75
 hud_padding = 75
 
+=======
+
+
+-PlayerStats-
+
+hud_padding = 50
+>>>>>>> 31ad7471a55c211a66d5a587bad5ccfca363f3c2
