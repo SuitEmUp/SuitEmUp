@@ -12,6 +12,7 @@
 #include "Button.h"
 #include "Config.h"
 #include "RepairKit.h"
+#include "SniperGirl.h"
 
 #include <iostream>
 #include "HpBar.h"
@@ -28,6 +29,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_backgound=nullptr;
 	m_enemies.clear();
 	m_supers.clear();
+	m_girls.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
 	m_vRepairKits.clear();
@@ -45,13 +47,14 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 1, 1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana's sprite", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "WOHO", 1, 1));
 	m_spawner = new Spawner(m_truck);
 	//Clears all vectors
 	m_enemies.clear();
 	m_supers.clear();
+	m_girls.clear();
 	m_vRepairKits.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
@@ -65,6 +68,7 @@ void GameObjectManager::CreateGameObjects()
 
 void GameObjectManager::ClearGameObjects()
 {
+
 	if(m_hpbar != nullptr)
 	{
 		delete m_hpbar;
@@ -103,6 +107,15 @@ void GameObjectManager::ClearGameObjects()
 
 	}
 	m_supers.clear();
+	for (auto it = m_girls.begin();it != m_girls.end(); it++)
+	{
+		if(*it != nullptr) {
+			//delete (*it)->GetSprite();
+			delete *it;
+		}
+
+	}
+	m_girls.clear();
 	for (auto it = m_enemy_projectiles.begin();it != m_enemy_projectiles.end(); it++)
 	{
 		if(*it != nullptr) {
@@ -145,9 +158,10 @@ void GameObjectManager::Update(float deltatime)
 	}
 	if(m_spawner->Timer(deltatime)){ 
 		//Keeps track of when enemies spawn
-		int c=rand()%5;
-		if(c>0) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
-		else m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+		int c=rand()%10;
+		if(c>3) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+		else if(c<3) m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+		else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
 	}
 	for(int i = 0; i<m_enemies.size(); i++){ 
 		//Updates all enemies.
@@ -172,12 +186,23 @@ void GameObjectManager::Update(float deltatime)
 			}
 		}
 	};
+	for(int i = 0; i<m_girls.size(); i++){ 
+		//Updates all enemies.
+		if(m_girls.at(i)!=nullptr){
+			if(m_girls.at(i)->Update(deltatime)){ 
+				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
+				//a bullet is pushbacked into the enemybullet vector
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_girls.at(i)->GetPosition(),
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+			}
+		}
+	};
 
 
 	for(int i = 0; i< m_enemy_projectiles.size(); i++){ 
 		//Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
 		if(m_enemy_projectiles.at(i)->Update(m_truck, deltatime)){
-			//delete (*it)->GetSprite();
+			delete m_enemy_projectiles.at(i)->GetSprite();
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
 		};
@@ -186,7 +211,7 @@ void GameObjectManager::Update(float deltatime)
 
 	for(int i = 0; i< m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)->Update(m_truck, deltatime)){
-			//delete (*it)->GetSprite();
+			delete m_player_projectiles.at(i)->GetSprite();
 			m_player_projectiles.erase(m_player_projectiles.begin()+i);
 			i--;
 		};
@@ -201,6 +226,7 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
+					delete m_enemies.at(j)->GetSprite();
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -217,10 +243,12 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->SuperDestroyer(m_supers.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
+				delete m_player_projectiles.at(i)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+					delete m_supers.at(j)->GetSprite();
 					m_supers.erase(m_supers.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -231,10 +259,35 @@ void GameObjectManager::Update(float deltatime)
 
 		};
 	};
+
+	for(int i = 0; i < m_player_projectiles.size(); i++){
+		for(int j = 0; j<m_girls.size(); j++){
+
+			if(m_spawner->SniperDestroyer(m_girls.at(j), m_player_projectiles.at(i))){
+				//delete (*it)->GetSprite();
+				//delete (*at)->GetSprite();
+				delete m_player_projectiles.at(i)->GetSprite();
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
+					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+					delete m_girls.at(j)->GetSprite();
+					m_girls.erase(m_girls.begin()+j);
+					//SCORE COUNT
+					--j;
+				}
+				--i;
+				break;
+			};
+
+		};
+	};
+
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
  			m_truck->Healed();
+			delete m_vRepairKits.at(i)->GetSprite();
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
 			i--;
 		};
@@ -321,6 +374,11 @@ void GameObjectManager::DrawGameObjects()
 	for(int i=0; i<m_supers.size(); i++){
 		if(m_supers.at(i)!=nullptr){
 			m_window->draw(*m_supers.at(i)->GetSprite()); // draws all enemies
+		}
+	};
+	for(int i=0; i<m_girls.size(); i++){
+		if(m_girls.at(i)!=nullptr){
+			m_window->draw(*m_girls.at(i)->GetSprite()); // draws all enemies
 		}
 	};
 	for(int i=0; i<m_player_projectiles.size(); i++){

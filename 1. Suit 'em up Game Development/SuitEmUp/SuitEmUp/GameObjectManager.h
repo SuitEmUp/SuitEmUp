@@ -20,6 +20,7 @@ class Spawner;
 class SpriteManager;
 class InputManager;
 class RepairKit;
+class SniperGirl;
 
 class HpBar;
 class Button;
@@ -61,6 +62,7 @@ private:
 	HpBar *m_hpbar;
 	std::vector<EnemyObject*> m_enemies;
 	std::vector<SuperEnemy*> m_supers;
+	std::vector<SniperGirl*> m_girls;
 
 	std::vector<PlayerProjectile*> m_player_projectiles;
 	std::vector<EnemyProjectile*> m_enemy_projectiles;

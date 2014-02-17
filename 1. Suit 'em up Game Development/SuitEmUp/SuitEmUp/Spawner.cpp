@@ -5,6 +5,7 @@
 #include "EnemyObject.h"
 #include "SuperEnemy.h"
 #include "PlayerProjectile.h"
+#include "SniperGirl.h"
 
 
 Spawner::Spawner(Truck* truck){
@@ -20,7 +21,7 @@ bool Spawner::Timer(float deltatime){
 	if(m_time>m_alarm){
 		m_time=0;
 		m_alarm*=0.9;
-		if(m_alarm<3)m_alarm=3;
+		if(m_alarm<2.5) m_alarm=2.5;
 		return true;
 	};
 	return false;
@@ -95,8 +96,55 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 	return false;
 }
 
+bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
+	
+	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+
+	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
+
+	if(dist<50) return true;
+	
+	return false;
+}
+
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
-	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1.0, 1.0));
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1, 1));
+	
+	int spawndirection = rand()%2;
+	if(spawndirection == 0){
+		int q=rand()%2;
+		int y;
+		if(q==1){
+			y=720;
+		}
+		else if(q==0){
+			y=0;
+		}
+		int x=rand()%1281;
+		enemy->SetPosition(x, y);
+		return enemy;
+	}
+	else if(spawndirection==1){
+		int q=rand()%2;
+		int x;
+		if(q==1){
+			x=0;
+		}
+		else if(q==0){
+			x=1280;
+		}
+		int y=rand()%720;
+		enemy->SetPosition(x, y);
+		return enemy;
+	}
+	delete enemy;
+	enemy=nullptr;
+	return nullptr;
+};
+
+SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
+	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/Bandit_2.png", "SniperBandit", 1, 1));
 	
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){

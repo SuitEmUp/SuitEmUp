@@ -32,14 +32,14 @@ bool SuperEnemy::Update(float deltatime){
 
 	dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 
-	if(dist<200)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
+	if(dist<150)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 
-	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
+	if(dist<150 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_cooldown = 1;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
@@ -53,4 +53,4 @@ bool SuperEnemy::GetType(){
 int SuperEnemy::Damaged(int playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
-}
+};

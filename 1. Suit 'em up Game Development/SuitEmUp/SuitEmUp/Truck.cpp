@@ -12,6 +12,7 @@ Truck::Truck(sf::Sprite* sprite){
 
 bool Truck::Update(float deltatime){
 	m_sprite->setPosition(m_position);
+	if(m_hp>100){m_hp=100;}
 	if(m_hp<1) return true;
 	return false;
 };
