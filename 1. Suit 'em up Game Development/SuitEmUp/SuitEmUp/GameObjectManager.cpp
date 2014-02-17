@@ -11,6 +11,7 @@
 #include "Spawner.h"
 #include "Button.h"
 #include "Config.h"
+#include "RepairKit.h"
 
 #include <iostream>
 #include "HpBar.h"
@@ -29,6 +30,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_supers.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
+	m_vRepairKits.clear();
 	m_hpbar = nullptr;
 
 
@@ -50,12 +52,14 @@ void GameObjectManager::CreateGameObjects()
 	//Clears all vectors
 	m_enemies.clear();
 	m_supers.clear();
+	m_vRepairKits.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
 	//The game is not over
 	m_game_over = false;
-	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar.png", "hpbar", 1,1),
-		(m_spritemanager->Load("../data/sprites/HP_Bar_Border.png", "hpborder", 1,1)));
+	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
+		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 
 }
 
@@ -117,6 +121,15 @@ void GameObjectManager::ClearGameObjects()
 
 	}
 	m_player_projectiles.clear();
+	for (auto it = m_vRepairKits.begin();it != m_vRepairKits.end(); it++)
+	{
+		if(*it != nullptr) {
+			//delete (*it)->GetSprite();
+			delete *it;
+		}
+
+	}
+	m_vRepairKits.clear();
 }
 //Update
 void GameObjectManager::Update(float deltatime)
@@ -189,6 +202,7 @@ void GameObjectManager::Update(float deltatime)
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_enemies.erase(m_enemies.begin()+j);
+					//SCORE COUNT
 					--j;
 				}
 				--i;
@@ -205,13 +219,24 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
+					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
 					m_supers.erase(m_supers.begin()+j);
+					//SCORE COUNT
 					--j;
 				}
 				--i;
 				break;
 			};
 
+		};
+	};
+	for(int i = 0; i< m_vRepairKits.size(); i++){
+		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
+			//delete (*it)->GetSprite();
+ 			m_truck->Healed();
+			m_vRepairKits.erase(m_vRepairKits.begin()+i);
+			i--;
 		};
 	};
 	float lol = m_truck->UpdateHP()/100;
@@ -277,9 +302,17 @@ void GameObjectManager::DrawGameObjects()
 
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
+	m_window->draw(*m_hpbar->Sprite3());
+
+
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
+	for(int i=0; i<m_vRepairKits.size(); i++){
+		if(m_vRepairKits.at(i)!=nullptr){
+			m_window->draw(*m_vRepairKits.at(i)->GetSprite()); // draws all RepairKits
+		}
+	};
 	for(int i=0; i<m_enemies.size(); i++){
 		if(m_enemies.at(i)!=nullptr){
 			m_window->draw(*m_enemies.at(i)->GetSprite()); // draws all enemies
@@ -301,7 +334,7 @@ void GameObjectManager::DrawGameObjects()
 		}
 	};
 }
-////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
