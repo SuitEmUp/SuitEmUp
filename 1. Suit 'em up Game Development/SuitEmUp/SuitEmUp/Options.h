@@ -17,7 +17,7 @@ public:
 
 	//bool HandleInput();
 	bool Update(float deltatime);
-	void Draw(/*sf::RenderWindow *p_window*/){};
+	void Draw(/*sf::RenderWindow *p_window*/);
 
 	std::string Next();
 	void setNextState(std::string state);
@@ -29,5 +29,4 @@ private:
 	std::string next_state;
 	InputManager* m_input;
 	std::string tempName_change;
-
 };

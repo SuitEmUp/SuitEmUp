@@ -33,7 +33,10 @@ bool TitleScreen::Init(Engine* engine)
 	//m_InputManager = nullptr;
 
 	//-----------
-	m_background = m_engine->m_spritemanager->Load("title.png", "bakgrund", 1.0, 1.0);
+
+
+	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
+
 
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
@@ -52,11 +55,15 @@ bool TitleScreen::Update(float deltatime)
 	};
 	
 	
+
+	
 	return true;
 }
 
 void TitleScreen::Draw()
 {
+	
+	m_engine->m_window->draw(*m_xbackground);
 };
 
 std::string TitleScreen::Next()
