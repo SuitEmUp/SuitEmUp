@@ -57,6 +57,9 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
+	delete enemy;
+	enemy=nullptr;
+	return nullptr;
 };
 //EnemyProjectile* Spawner::EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck){
 //	EnemyProjectile* enemyprojectile = new EnemyProjectile(m_truck, nullptr);
@@ -93,7 +96,10 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 }
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 4c7192e126055f24c3b21ff3ef05814d9a8cab55
 	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1.0, 1.0));
 	
 	int spawndirection = rand()%2;
@@ -123,4 +129,7 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
+	delete enemy;
+	enemy=nullptr;
+	return nullptr;
 };

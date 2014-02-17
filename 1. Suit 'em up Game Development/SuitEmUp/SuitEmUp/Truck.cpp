@@ -37,5 +37,5 @@ void Truck::Damaged(){
 }
 
 void Truck::Healed(){
-	m_hp+=5;
+	m_hp+=100;
 }

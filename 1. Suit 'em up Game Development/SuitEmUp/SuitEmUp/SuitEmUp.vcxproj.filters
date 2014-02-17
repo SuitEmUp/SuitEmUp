@@ -31,6 +31,8 @@
     <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Utils.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.h" />
@@ -66,5 +68,7 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Truck.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Utils.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\DamageIncrease.h" />
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Score.h" />
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\RepairKit.h" />
   </ItemGroup>
 </Project>
