@@ -8,15 +8,16 @@
 #include "PlayerObject.h"
 
 
-Game::Game(InputManager* input, GameObjectManager* gom) 
+Game::Game(InputManager* input, Engine *engine) 
 {
-	m_gom = gom;
+	m_gom = engine->m_gom;
 	m_input = input;
 	next_state = "";
 };
 
-bool Game::Init()
+bool Game::Init(Engine *engine)
 {
+	m_engine = engine;
 	m_gom->CreateGameObjects();
 	//-----------
 	//sf::Font font;

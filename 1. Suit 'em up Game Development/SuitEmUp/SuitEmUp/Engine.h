@@ -22,7 +22,7 @@ public:
 	void Run();
 	void Cleanup();
 	void UpdateDeltatime(); //ladbon
-private:
+public:
 	StateManager* m_statemanager;
 	sf::RenderWindow* m_window;
 

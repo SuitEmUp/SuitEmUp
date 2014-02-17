@@ -12,8 +12,8 @@ class GameObjectManager;
 
 class Game : public State {
 public:
-	Game(InputManager *input, GameObjectManager* gom);
-	bool Init();
+	Game(InputManager *input, Engine *engine);
+	bool Init(Engine *engine);
 	void Exit();
 
 	bool Update(float deltatime);
@@ -24,6 +24,7 @@ public:
 	bool IsType(const std::string &type);
 
 private:
+	Engine *m_engine;
 	std::string next_state;
 	InputManager *m_input;
 	std::string tempName_change;

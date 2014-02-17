@@ -3,13 +3,14 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 #include <string>
+#include "InputManager.h"
 
 class Button : public GameObject
 {
 public:
-	Button(std::string p_ButtonName, sf::Sprite* p_Sprite, int x_Pos, int y_Pos);
+	Button(InputManager* p_input, std::string p_ButtonName, sf::Sprite* p_Sprite, int x_Pos, int y_Pos);
 
-	bool Update(/*deltatime*/);
+	std::string Update();
 
 	bool GetType(){return true;};
 
@@ -17,5 +18,6 @@ public:
 
 private:
 	std::string m_Type;
+	InputManager* m_input;
 
 };
