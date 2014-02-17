@@ -62,7 +62,6 @@ bool TitleScreen::Update(float deltatime)
 
 void TitleScreen::Draw()
 {
-	
 	m_engine->m_window->draw(*m_xbackground);
 };
 

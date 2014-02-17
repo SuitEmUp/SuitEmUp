@@ -226,16 +226,16 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-<<<<<<< HEAD
+
 					delete m_enemies.at(j)->GetSprite();
-=======
+
 				int chance = rand()%20;
 					if(chance == 15)
 					{
-					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
+						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
 					}
->>>>>>> 3b249d3c7d29b499bad311b0b23267fb3c38b58c
+
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -260,11 +260,10 @@ void GameObjectManager::Update(float deltatime)
 					{
 					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
-<<<<<<< HEAD
+
 					delete m_supers.at(j)->GetSprite();
-=======
-					}
->>>>>>> 3b249d3c7d29b499bad311b0b23267fb3c38b58c
+	}
+
 					m_supers.erase(m_supers.begin()+j);
 					
 					//SCORE COUNT

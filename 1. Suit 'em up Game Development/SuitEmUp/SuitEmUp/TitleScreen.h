@@ -29,7 +29,7 @@ private:
 	std::string next_state;
 	InputManager *m_input;
 	std::string tempName_change;
-
+	
 	Engine* m_engine;
 	GameObjectManager* m_gom;
 	sf::Sprite *m_xbackground;

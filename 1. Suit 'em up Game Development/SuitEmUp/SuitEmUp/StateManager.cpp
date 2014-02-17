@@ -3,7 +3,7 @@
 
 StateManager::StateManager(){
 	current = nullptr;
-	m_running = true;
+//	m_running = true;
 	//m_deltatime  = 0.0f; //Ladbon
 	this->engine = engine;
 };

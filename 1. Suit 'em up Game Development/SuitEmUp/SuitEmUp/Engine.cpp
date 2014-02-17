@@ -73,7 +73,7 @@ void Engine::Run()
 	while(m_running)
 	{
 		UpdateDeltatime();
-		m_statemanager->HandleEvents();
+	//	m_statemanager->HandleEvents();
 		m_statemanager->Update(m_fDeltaTime);
 		m_window->clear();
 		m_statemanager->Draw(/*m_window*/);
