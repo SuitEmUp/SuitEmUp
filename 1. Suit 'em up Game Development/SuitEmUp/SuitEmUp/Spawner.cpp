@@ -57,6 +57,9 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
+	delete enemy;
+	enemy=nullptr;
+	return nullptr;
 };
 //EnemyProjectile* Spawner::EnemyProjectileSpawner(EnemyObject* enemy, Truck* truck){
 //	EnemyProjectile* enemyprojectile = new EnemyProjectile(m_truck, nullptr);
@@ -122,4 +125,7 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
+	delete enemy;
+	enemy=nullptr;
+	return nullptr;
 };
