@@ -59,24 +59,36 @@ void MainMenu::Exit()
 
 bool MainMenu::Update(float deltatime)
 {
-	if(m_input->IsDown(sf::Keyboard::F2))
+
+	for(int i = 0; i < m_gom->m_vButtons.size(); i++)
 	{
-		printf("Next State set to Game\n");
-		setNextState("Game");
-		return false;
-	};
+		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
+			printf("Click SUCCESSSSS\n");
+			printf("Next State set to Game\n");
+			setNextState("Game");
+			return false;
+		}
+		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+			printf("Click SUCCESSSSS\n");
+			printf("Next State set to Options\n");
+			setNextState("Options");
+			return false;
+		}
+		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+			printf("Click SUCCESSSSS\n");
+			//Exit Game
+			return false;
+
+		}
+	}
+
 	if(m_input->IsDown(sf::Keyboard::F3))
 	{
 		printf("Next State set to Customize\n");
 		setNextState("Customize");
 		return false;
 	};
-	if(m_input->IsDown(sf::Keyboard::F4))
-	{
-		printf("Next State set to Options\n");
-		setNextState("Options");
-		return false;
-	};
+
 	return true;
 }
 

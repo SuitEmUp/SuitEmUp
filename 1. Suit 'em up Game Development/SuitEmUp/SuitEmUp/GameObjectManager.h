@@ -51,8 +51,11 @@ public:
 	//Button related stuff?
 
 	void CreateButtons();
+	void UpdateButtons();
 	void DrawButtons();
 
+
+	std::vector<Button*> m_vButtons;
 private:
 	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
@@ -68,5 +71,5 @@ private:
 	InputManager* m_input;
 
 	sf::Sprite* m_backgound;
-	std::vector<Button*> m_vButtons;
+
 };
