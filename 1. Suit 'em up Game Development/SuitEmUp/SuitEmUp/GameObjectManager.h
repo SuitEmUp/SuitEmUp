@@ -19,6 +19,7 @@ class EnemyProjectile;
 class Spawner;
 class SpriteManager;
 class InputManager;
+class RepairKit;
 
 class HpBar;
 class Button;
@@ -69,4 +70,6 @@ private:
 
 	sf::Sprite* m_backgound;
 	std::vector<Button*> m_vButtons;
+
+	std::vector<RepairKit*> m_vRepairKits;
 };
