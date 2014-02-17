@@ -29,7 +29,6 @@ Engine::Engine()
 	m_running = false;//Ladbon
 	m_window = nullptr;
 
-	//	m_drawmanager = nullptr;
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 
@@ -91,8 +90,7 @@ void Engine::Run()
 void Engine::Cleanup()
 {
 	if(m_gom != nullptr){
-		//m_gom->ClearGameObjects();
-		//delete m_gom;
+
 		m_gom=nullptr;
 	}
 	if(m_spritemanager != nullptr){

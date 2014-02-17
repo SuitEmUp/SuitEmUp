@@ -32,8 +32,8 @@ private:
 
 	Engine* m_engine;
 	GameObjectManager* m_gom;
+	sf::Sprite *m_xbackground;
 
-	sf::Sprite *m_background;
 
 
 };
