@@ -147,11 +147,8 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/Bandit_2.png", "SniperBandit", 1, 1));
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
+	
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;

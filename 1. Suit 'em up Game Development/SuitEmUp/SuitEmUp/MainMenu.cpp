@@ -12,18 +12,17 @@
 
 
 
-MainMenu::MainMenu(InputManager* input, Engine *engine) 
+MainMenu::MainMenu(Engine *engine) 
 {
-	m_gom = engine->m_gom;
-	m_input = input;
+	m_engine = engine;
 	next_state = "";
-
+	m_input = m_engine->m_input;
 };
 
-bool MainMenu::Init(Engine *engine)
+bool MainMenu::Init()
 {
 	
-	m_engine = engine;
+	
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
@@ -42,7 +41,7 @@ bool MainMenu::Init(Engine *engine)
 
 	//m_TestButton = new Button(m_gom->m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), (Config::getInt("window_w", 0)/2 - 119), 150);
 
-	m_gom->CreateButtons();
+	m_engine->m_gom->CreateButtons();
 
 
 
@@ -63,21 +62,21 @@ void MainMenu::Exit()
 bool MainMenu::Update(float deltatime)
 {
 
-	for(int i = 0; i < m_gom->m_vButtons.size(); i++)
+	for(int i = 0; i < m_engine->m_gom->m_vButtons.size(); i++)
 	{
-		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");
 			return false;
 		}
-		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Options\n");
 			setNextState("Options");
 			return false;
 		}
-		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
 			printf("Click SUCCESSSSS\n");
 			//Exit Game
 			return false;
@@ -98,7 +97,7 @@ bool MainMenu::Update(float deltatime)
 void MainMenu::Draw()
 {
 	//m_gom->m_window->draw(*m_TestButton->GetSprite());
-	m_gom->DrawButtons();
+	m_engine->m_gom->DrawButtons();
 
 };
 

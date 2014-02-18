@@ -9,18 +9,17 @@
 
 
 
-TitleScreen::TitleScreen(InputManager *input, Engine* engine) 
+TitleScreen::TitleScreen(Engine* engine) 
 {
-	m_input = input;
+	m_engine = engine;
 	next_state = "";
-	
+	m_input = m_engine->m_input;
 	
 };
 
-bool TitleScreen::Init(Engine* engine)
+bool TitleScreen::Init()
 {
-	m_engine = engine;
-	m_gom = m_engine->m_gom;
+	
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }

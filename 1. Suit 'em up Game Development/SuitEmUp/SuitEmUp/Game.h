@@ -6,14 +6,11 @@
 namespace sf{
 	class RenderWindow;
 }
-
 class InputManager;
-class GameObjectManager;
-
 class Game : public State {
 public:
-	Game(InputManager *input, Engine *engine);
-	bool Init(Engine *engine);
+	Game(Engine *engine);
+	bool Init();
 	void Exit();
 
 	bool Update(float deltatime);
@@ -25,8 +22,7 @@ public:
 
 private:
 	Engine *m_engine;
-	std::string next_state;
 	InputManager *m_input;
+	std::string next_state;
 	std::string tempName_change;
-	GameObjectManager* m_gom;
 };

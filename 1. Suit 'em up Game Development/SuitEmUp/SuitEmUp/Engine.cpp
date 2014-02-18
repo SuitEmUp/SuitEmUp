@@ -28,7 +28,7 @@ Engine::Engine()
 
 	m_running = false;//Ladbon
 	m_window = nullptr;
-
+	m_input = nullptr;
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 
@@ -39,25 +39,26 @@ bool Engine::Initialize()
 {
 	m_statemanager = new StateManager();
 	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
+	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
-	m_gom = new GameObjectManager(m_spritemanager, m_window, &m_input);
-	m_buttonmanager = new ButtonManager(m_spritemanager, &m_input);
-	
+	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
+	m_buttonmanager = new ButtonManager(m_spritemanager, m_input);
+
+
 	if(m_window == nullptr)
 	{
 		return false;
 	}
 
-	m_statemanager->SetInput(&m_input);
-
-	if(m_statemanager->current == nullptr)
+	//m_statemanager->SetInput(m_input);
+	
+	if(m_statemanager != nullptr)
 	{
-		m_statemanager->engine = this;
-		m_statemanager->Attach(new TitleScreen(&m_input, this));
-		m_statemanager->Attach(new MainMenu(&m_input, this));
-		m_statemanager->Attach(new Options(&m_input, this));
-		m_statemanager->Attach(new Customize(&m_input, this));
-		m_statemanager->Attach(new Game(&m_input, this));
+		m_statemanager->Attach(new TitleScreen(this));
+		m_statemanager->Attach(new MainMenu(this));
+		m_statemanager->Attach(new Options(this));
+		m_statemanager->Attach(new Customize(this));
+		m_statemanager->Attach(new Game(	this));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
@@ -67,23 +68,20 @@ bool Engine::Initialize()
 };
 void Engine::Run()
 {
-	//sf::Sprite* xSprite = m_spritemanager->Load("../assets/gfx/b.png", "testbutton");
-
-
 	while(m_running)
 	{
 		UpdateDeltatime();
-	//	m_statemanager->HandleEvents();
+		//	m_statemanager->HandleEvents();
 		m_statemanager->Update(m_fDeltaTime);
 		m_window->clear();
 		m_statemanager->Draw(/*m_window*/);
 		m_window->display();
-		m_input.PostMouseUpdate();
-		m_input.PostKeyboardUpdate();
-		m_input.HandleInput(m_running, m_window, &m_input, m_statemanager);
-		
+		m_input->PostMouseUpdate();
+		m_input->PostKeyboardUpdate();
+		m_input->HandleInput(m_running, m_input, m_statemanager);
+
 		//std::cout << m_running << std::endl;
-		
+
 	}
 	m_window->close();
 };
@@ -97,12 +95,12 @@ void Engine::Cleanup()
 		delete m_spritemanager;
 		m_spritemanager=nullptr;
 	}
-	
+
 	if(m_window != nullptr){
 		delete m_window;
 		m_window=nullptr;
 	}
-	
+
 	m_statemanager->Cleanup();
 	delete m_statemanager;
 	m_statemanager = nullptr;

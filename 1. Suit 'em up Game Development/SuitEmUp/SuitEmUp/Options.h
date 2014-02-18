@@ -11,8 +11,8 @@ class InputManager;
 
 class Options : public State {
 public:
-	Options(InputManager *input, Engine* engine);
-	bool Init(Engine*);
+	Options(Engine* engine);
+	bool Init();
 	void Exit();
 
 	//bool HandleInput();
@@ -24,9 +24,8 @@ public:
 	bool IsType(const std::string &type);
 
 private:
-	Engine* m_engine;
-	GameObjectManager* m_gom;
+	Engine *m_engine;
+	InputManager *m_input;
 	std::string next_state;
-	InputManager* m_input;
 	std::string tempName_change;
 };

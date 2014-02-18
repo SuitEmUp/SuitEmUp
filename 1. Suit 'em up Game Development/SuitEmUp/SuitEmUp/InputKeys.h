@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 
 #define KEYBOARD_SIZE 282
 
@@ -107,4 +107,4 @@ enum KeyboardKeys
 	F15,
 	Pause,
 	KeyCount
-};*/
+};

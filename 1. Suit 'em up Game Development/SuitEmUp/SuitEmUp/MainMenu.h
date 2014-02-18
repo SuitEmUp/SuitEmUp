@@ -14,8 +14,8 @@ class InputManager;
 
 class MainMenu : public State {
 public:
-	MainMenu(InputManager *input, Engine *engine);
-	bool Init(Engine *engine);
+	MainMenu(Engine *engine);
+	bool Init();
 	void Exit();
 
 	//bool HandleInput();
@@ -32,6 +32,6 @@ private:
 	std::string tempName_change;
 	Engine *m_engine;
 	std::vector<Button*> m_Buttons;
-	GameObjectManager* m_gom;
+	
 
 };

@@ -10,13 +10,13 @@ class InputManager {
 	friend class Engine;
 public:
 
-	InputManager();
+	InputManager(sf::RenderWindow* window);
 	~InputManager();
 	bool Mouse_isDownOnce(sf::Mouse::Button button) const;
 	int GetMouseY() const;
 	int GetMouseX() const;
 	sf::Vector2i GetMousePos();
-	void HandleInput(bool &running, sf::RenderWindow* window, InputManager *m_input, StateManager *m_state_manager);
+	void HandleInput(bool &running,InputManager *m_input, StateManager *m_state_manager);
 	void PostMouseUpdate();
 	void PostKeyboardUpdate();
 	bool IsDown(int key) const;

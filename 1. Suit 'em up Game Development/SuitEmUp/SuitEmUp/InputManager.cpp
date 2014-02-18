@@ -8,11 +8,11 @@
 
 //hej
 
-InputManager::InputManager() :
+InputManager::InputManager(sf::RenderWindow* window) :
 	myMouseX(0),
 	myMouseY(0)
-{
-	m_window = nullptr;
+{ 
+	m_window = window;
 	//Keyboard
 
 	for(int i = 0; i < sf::Keyboard::KeyCount; i++) {
@@ -44,11 +44,11 @@ int InputManager::GetMouseY() const
 {
 	return myMouseY;
 }
-void InputManager::HandleInput(bool &running, sf::RenderWindow* window, InputManager *m_input, StateManager *m_state_manager)
+void InputManager::HandleInput(bool &running, InputManager *m_input, StateManager *m_state_manager)
 {
-	m_mousepos = sf::Mouse::getPosition(*window);
+	m_mousepos = sf::Mouse::getPosition(*m_window);
 	sf::Event event;
-	while(window->pollEvent(event))
+	while(m_window->pollEvent(event))
 	{
 		if(event.type == sf::Event::Closed)
 		{
@@ -71,7 +71,7 @@ void InputManager::HandleInput(bool &running, sf::RenderWindow* window, InputMan
 				m_input->myMouseX = event.mouseButton.x;
 				m_input->myMouseY = event.mouseButton.y;
 				m_input->m_currentMouse[0] = true;
-				std::cout << myMouseX << " : " << myMouseY << "\n";
+				std::cout << myMouseX << " : " << myMouseY << "\n";		
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)

@@ -5,17 +5,18 @@
 #include "InputManager.h"
 
 
-Options::Options(InputManager *input, Engine* engine) 
+Options::Options(Engine* engine) 
 {
-	m_input = input;
+	
 	next_state = "";
 	m_engine = engine;
+	m_input = m_engine->m_input;
 
 };
 
-bool Options::Init(Engine* engine)
+bool Options::Init()
 {
-	m_gom = m_engine->m_gom;
+	
 	printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";

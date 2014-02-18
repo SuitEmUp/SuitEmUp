@@ -12,8 +12,8 @@ class InputManager;
 
 class Customize : public State {
 public:
-	Customize(InputManager* input, Engine *engine);
-	bool Init(Engine *engine);
+	Customize(Engine *engine);
+	bool Init();
 	void Exit();
 
 	//bool HandleInput();
@@ -25,10 +25,9 @@ public:
 
 private:
 	std::string next_state;
-	GameObjectManager *m_gom;
 	Engine *m_engine;
-	std::string tempName_change;
 	InputManager *m_input;
+	std::string tempName_change;
 	std::vector<sf::RectangleShape*> m_rects;
 
 };

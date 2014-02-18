@@ -10,7 +10,7 @@ namespace sf{
 
 class StateManager
 {
-	friend class Engine;
+	//friend class Engine;
 public:
 	StateManager();
 	~StateManager();
@@ -29,8 +29,8 @@ public:
 
 	bool Running() { return m_running; }
 	void Quit() { m_running = false; }
-	void SetInput(InputManager *input);
-	Engine *engine;
+//	void SetInput(InputManager *input);
+	
 private:
 	std::vector<State*> states;
 	State* current;

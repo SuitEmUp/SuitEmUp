@@ -5,7 +5,7 @@ StateManager::StateManager(){
 	current = nullptr;
 //	m_running = true;
 	//m_deltatime  = 0.0f; //Ladbon
-	this->engine = engine;
+	//this->engine = engine;
 };
 
 StateManager::~StateManager() 
@@ -79,7 +79,7 @@ void StateManager::SetState(const std::string &type)
 			current = states[i];
 			//current->deltatime = 0.0f;
 			//current->ticks = 0;
-			current->Init(engine);
+			current->Init(/*engine*/);
 		}
 	}
 };
@@ -101,13 +101,13 @@ void StateManager::ChangeState()
 			current = states[i];
 			//current->deltatime = 0.0f;
 			//current->ticks = 0;
-			current->Init(engine);
+			current->Init(/*engine*/);
 		}
 	}
 };
-void StateManager::SetInput(InputManager *input)
-{
-	m_input = input;
+//void StateManager::SetInput(InputManager *input)
+//{
+//	m_input = input;
 
-}
+//}
 

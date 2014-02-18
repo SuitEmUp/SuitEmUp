@@ -8,17 +8,16 @@
 #include "PlayerObject.h"
 
 
-Game::Game(InputManager* input, Engine *engine) 
-{
-	m_gom = engine->m_gom;
-	m_input = input;
-	next_state = "";
-};
-
-bool Game::Init(Engine *engine)
+Game::Game(Engine *engine) 
 {
 	m_engine = engine;
-	m_gom->CreateGameObjects();
+	next_state = "";
+	m_input = m_engine->m_input;
+};
+
+bool Game::Init()
+{
+	m_engine->m_gom->CreateGameObjects();
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
@@ -37,7 +36,7 @@ bool Game::Init(Engine *engine)
 };
 
 void Game::Exit(){
-	m_gom->ClearGameObjects();
+	m_engine->m_gom->ClearGameObjects();
 };
 
 
@@ -70,8 +69,8 @@ void Game::Exit(){
 
 bool Game::Update(float deltatime)
 {
-	m_gom->Update(deltatime);
-	if(m_input->IsDown(sf::Keyboard::F1)||m_gom->m_game_over)
+	m_engine->m_gom->Update(deltatime);
+	if(m_input->IsDown(sf::Keyboard::F1)||m_engine->m_gom->m_game_over)
 	{
 		printf("Next State set to mainMenu\n");
 		setNextState("MainMenu");
@@ -94,7 +93,7 @@ bool Game::Update(float deltatime)
 
 //draw
 void Game::Draw(/*sf::RenderWindow *p_window*/){
-	m_gom->DrawGameObjects();
+	m_engine->m_gom->DrawGameObjects();
 };
 
 std::string Game::Next()

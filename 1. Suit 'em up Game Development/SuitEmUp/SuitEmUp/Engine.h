@@ -31,7 +31,7 @@ public:
 
 	GameObjectManager* m_gom;
 	//ladbon
-	InputManager m_input;
+	InputManager *m_input;
 	
 	//DrawManager *m_drawmanager;
 

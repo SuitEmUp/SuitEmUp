@@ -74,16 +74,10 @@ private:
 	InputManager* m_input;
 
 	sf::Sprite* m_backgound;
-<<<<<<< HEAD
-
-	std::vector<RepairKit*> m_vRepairKits;
-=======
-
-
 
 	//std::vector<Button*> m_vButtons;
 
 	std::vector<RepairKit*> m_vRepairKits;
 
->>>>>>> 1a6c8b5360e57be636a0346d92d080beb822115b
+
 };

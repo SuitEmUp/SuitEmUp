@@ -47,7 +47,7 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 1, 1));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana's sprite", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "WOHO", 1, 1));
 	m_spawner = new Spawner(m_truck);
@@ -226,23 +226,20 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-<<<<<<< HEAD
+
 
 					delete m_enemies.at(j)->GetSprite();
 
-=======
+
 					delete m_enemies.at(j)->GetSprite();
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
 				int chance = rand()%20;
 					if(chance == 15)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
 					}
-<<<<<<< HEAD
 
-=======
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
+
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -267,15 +264,14 @@ void GameObjectManager::Update(float deltatime)
 					{
 					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
-<<<<<<< HEAD
+
 
 					delete m_supers.at(j)->GetSprite();
 	}
 
-=======
+
 					delete m_supers.at(j)->GetSprite();
 					}
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
 					m_supers.erase(m_supers.begin()+j);
 					
 					//SCORE COUNT
@@ -287,7 +283,7 @@ void GameObjectManager::Update(float deltatime)
 			};
 
 		};
-	};
+	
 
 	for(int i = 0; i < m_player_projectiles.size(); i++){
 		for(int j = 0; j<m_girls.size(); j++){
@@ -321,6 +317,7 @@ void GameObjectManager::Update(float deltatime)
 			i--;
 		};
 	};
+
 	float lol = m_truck->UpdateHP()/100;
 	if(lol>1){
 		lol=1;

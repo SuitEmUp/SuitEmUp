@@ -8,16 +8,16 @@
 
 
 
-Customize::Customize(InputManager* input, Engine *engine) 
-{
-	m_input = input;
-	next_state = "";
-	m_gom = engine->m_gom;
-};
-
-bool Customize::Init(Engine *engine)
+Customize::Customize(Engine *engine) 
 {
 	m_engine = engine;
+	next_state = "";
+	m_input = m_engine->m_input;
+
+};
+
+bool Customize::Init()
+{
 	tempName_change = "02";
 
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
