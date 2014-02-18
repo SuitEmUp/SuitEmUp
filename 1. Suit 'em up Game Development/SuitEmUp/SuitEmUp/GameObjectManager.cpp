@@ -230,8 +230,6 @@ void GameObjectManager::Update(float deltatime)
 
 					delete m_enemies.at(j)->GetSprite();
 
-
-					delete m_enemies.at(j)->GetSprite();
 				int chance = rand()%20;
 					if(chance == 15)
 					{
@@ -262,16 +260,10 @@ void GameObjectManager::Update(float deltatime)
 					int chance = rand()%10;
 					if(chance == 1)
 					{
-					m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
-
-
-					delete m_supers.at(j)->GetSprite();
-	}
-
-
-					delete m_supers.at(j)->GetSprite();
+						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
 					}
+					delete m_supers.at(j)->GetSprite();
 					m_supers.erase(m_supers.begin()+j);
 					
 					//SCORE COUNT
@@ -283,6 +275,7 @@ void GameObjectManager::Update(float deltatime)
 			};
 
 		};
+	};
 	
 
 	for(int i = 0; i < m_player_projectiles.size(); i++){

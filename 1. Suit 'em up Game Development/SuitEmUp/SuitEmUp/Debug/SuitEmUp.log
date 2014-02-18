@@ -1,120 +1,16 @@
-<<<<<<< HEAD
-﻿Build started 2014-02-18 15:08:58.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 20:25:20.
-     1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp"
-         MainMenu.cpp
-     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(63): warning C4018: '<' : signed/unsigned mismatch
-       Link:
-         D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 16:19:37.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 15:26:32.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp"
-         Spawner.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(15): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(23): warning C4305: '*=' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(45): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(58): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(126): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(161): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(174): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         GameObjectManager.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(156): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(166): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(173): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(178): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(185): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(189): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(196): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(202): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(212): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(220): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(222): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(246): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(247): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(254): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(275): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(276): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(283): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(298): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(376): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(381): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(386): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(391): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(396): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(401): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(434): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 16:01:50.
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 14:55:37.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp"
-         PlayerObject.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(63): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(66): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(69): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(72): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-=======
-<<<<<<< HEAD
-﻿Build started 2014-02-17 15:04:45.
->>>>>>> b4c7503bbab3a80ae02683321a8354795e148ae6
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
+﻿Build started 2014-02-18 16:02:01.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp"
-         GameObjectManager.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(156): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(166): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(173): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(178): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(185): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(189): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(196): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(202): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(212): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(220): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(222): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(228): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(253): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(254): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(261): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(288): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(289): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(296): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(311): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(390): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(395): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(400): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(405): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(410): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(415): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(448): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp"
+         Customize.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(70): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Compiling...
+         main.cpp
+         Engine.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
-<<<<<<< HEAD
-=======
->>>>>>> 1a6c8b5360e57be636a0346d92d080beb822115b
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
          Debug\ButtonManager.obj
          Debug\Collider.obj
          Debug\CollisionManager.obj
@@ -147,59 +43,9 @@
          Debug\TitleScreen.obj
          Debug\StateManager.obj
          Debug\Utils.obj
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
          SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
      1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:01.24
-=======
-<<<<<<< HEAD
-Time Elapsed 00:00:01.25
-=======
-<<<<<<< HEAD
-Time Elapsed 00:00:01.26
-=======
-Time Elapsed 00:00:00.96
-=======
-<<<<<<< HEAD
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
-         SuitEmUp.vcxproj -> C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-<<<<<<< HEAD
-Time Elapsed 00:00:01.29
-=======
-Time Elapsed 00:00:01.21
-=======
->>>>>>> 1a6c8b5360e57be636a0346d92d080beb822115b
-         SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-<<<<<<< HEAD
-Time Elapsed 00:00:01.89
-=======
-<<<<<<< HEAD
-Time Elapsed 00:00:01.06
-=======
-Time Elapsed 00:00:17.15
->>>>>>> 4c7192e126055f24c3b21ff3ef05814d9a8cab55
->>>>>>> 31ad7471a55c211a66d5a587bad5ccfca363f3c2
->>>>>>> 3b249d3c7d29b499bad311b0b23267fb3c38b58c
->>>>>>> b4c7503bbab3a80ae02683321a8354795e148ae6
->>>>>>> 1a6c8b5360e57be636a0346d92d080beb822115b
->>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
+Time Elapsed 00:00:02.61

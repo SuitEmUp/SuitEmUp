@@ -5,7 +5,6 @@
 
 #include "Button.h"
 #include "SpriteManager.h"
-#include "GameObjectManager.h"
 
 
 namespace sf{
@@ -16,18 +15,8 @@ class InputManager;
 
 class Customize : public State {
 public:
-<<<<<<< HEAD
 	Customize(Engine *engine);
 	bool Init();
-=======
-<<<<<<< HEAD
-	Customize(InputManager* input, GameObjectManager* gom);
-	bool Init();
-=======
-	Customize(InputManager* input, Engine *engine);
-	bool Init(Engine *engine);
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 	void Exit();
 
 	//bool HandleInput();
@@ -43,7 +32,6 @@ private:
 	InputManager *m_input;
 	std::string tempName_change;
 	std::vector<sf::RectangleShape*> m_rects;
-
 	std::vector<Button*> m_CutomizeButtons;
-	GameObjectManager* m_gom;
+
 };

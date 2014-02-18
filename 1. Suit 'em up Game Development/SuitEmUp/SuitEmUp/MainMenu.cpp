@@ -70,15 +70,13 @@ bool MainMenu::Update(float deltatime)
 			setNextState("Game");
 			return false;
 		}
-<<<<<<< HEAD
+
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
-=======
-		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
 			printf("Click SUCCESSSSS\n");
 			printf("HighScore-state does not exist\n");
 		}
-		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "Options"){
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Options\n");
 			setNextState("Options");

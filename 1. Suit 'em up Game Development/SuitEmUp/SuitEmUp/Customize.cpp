@@ -11,21 +11,11 @@
 #include "GameObjectManager.h"
 
 
-<<<<<<< HEAD
-Customize::Customize(InputManager* input, GameObjectManager* gom) 
-=======
 
-<<<<<<< HEAD
+
 Customize::Customize(Engine *engine) 
 {
 	m_engine = engine;
-=======
-Customize::Customize(InputManager* input, Engine *engine) 
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
-{
-	m_input = input;
-	m_gom = gom;
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 	next_state = "";
 	m_input = m_engine->m_input;
 
@@ -42,7 +32,7 @@ bool Customize::Init()
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
-	m_gom->CreateCusomizationButtons();
+	m_engine->m_gom->CreateCusomizationButtons();
 
 	return true;
 };
@@ -77,9 +67,10 @@ bool Customize::Update(float deltatime)
 	};
 
 
-	for(int i = 0; i < m_gom->m_vCustomizeButtons.size(); i++)
+	for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
 	{
-		if(m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" && m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit")
+		if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
+			&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit")
 		{
 			printf("Click SUCCESSSSS\n");
 			printf("Suit Upgraded\n");
@@ -90,7 +81,7 @@ bool Customize::Update(float deltatime)
 
 void Customize::Draw()
 {
-	m_gom->DrawCustomizationButtons();
+	m_engine->m_gom->DrawCustomizationButtons();
 }
 
 std::string Customize::Next()

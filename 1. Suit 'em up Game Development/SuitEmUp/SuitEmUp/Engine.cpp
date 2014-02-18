@@ -54,28 +54,12 @@ bool Engine::Initialize()
 	
 	if(m_statemanager != nullptr)
 	{
-<<<<<<< HEAD
+
 		m_statemanager->Attach(new TitleScreen(this));
 		m_statemanager->Attach(new MainMenu(this));
 		m_statemanager->Attach(new Options(this));
 		m_statemanager->Attach(new Customize(this));
 		m_statemanager->Attach(new Game(	this));
-=======
-<<<<<<< HEAD
-		m_statemanager->Attach(new TitleScreen(&m_input, m_gom));
-		m_statemanager->Attach(new MainMenu(&m_input, m_gom));
-		m_statemanager->Attach(new Options(&m_input));
-		m_statemanager->Attach(new Customize(&m_input, m_gom));
-		m_statemanager->Attach(new Game(&m_input, m_gom));
-=======
-		m_statemanager->engine = this;
-		m_statemanager->Attach(new TitleScreen(&m_input, this));
-		m_statemanager->Attach(new MainMenu(&m_input, this));
-		m_statemanager->Attach(new Options(&m_input, this));
-		m_statemanager->Attach(new Customize(&m_input, this));
-		m_statemanager->Attach(new Game(&m_input, this));
->>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
->>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
