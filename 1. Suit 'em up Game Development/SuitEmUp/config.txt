@@ -9,6 +9,8 @@ window_h = 720
 
 menu_top_padding = 225
 button_padding = 75
+customize_padding_big = 45
+customize_padding_small = 6
 
 
 -PlayerStats-

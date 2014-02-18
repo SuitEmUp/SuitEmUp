@@ -57,7 +57,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new TitleScreen(&m_input, m_gom));
 		m_statemanager->Attach(new MainMenu(&m_input, m_gom));
 		m_statemanager->Attach(new Options(&m_input));
-		m_statemanager->Attach(new Customize(&m_input));
+		m_statemanager->Attach(new Customize(&m_input, m_gom));
 		m_statemanager->Attach(new Game(&m_input, m_gom));
 		m_statemanager->SetState("TitleScreen");
 	}

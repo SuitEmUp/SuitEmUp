@@ -367,3 +367,43 @@ void GameObjectManager::DrawButtons()
 		}
 	}
 };
+
+void GameObjectManager::CreateCusomizationButtons()
+{
+	//Top Suit
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeSuit"), 
+		104, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
+		295, Config::getInt("customize_padding_big", 0)));
+	
+	//Top Weapon
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
+		354, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", m_spritemanager->Load("../data/buttons/upgrade_weapon.png", "UpgradeWeapon"), 
+		413, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeWeaponRight"), 
+		873, Config::getInt("customize_padding_big", 0)));
+
+	//Top Truck
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+		932, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeTruck"), 
+		991, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
+		1182, Config::getInt("customize_padding_big", 0)));
+
+	//back
+	m_vCustomizeButtons.push_back(new Button(m_input, "Back", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
+		Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64))));
+		
+};
+void GameObjectManager::DrawCustomizationButtons()
+{
+		for(int i=0; i<m_vCustomizeButtons.size(); i++){
+		if(m_vCustomizeButtons.at(i)!=nullptr){
+			m_window->draw(*m_vCustomizeButtons.at(i)->GetSprite()); // draws all buttons
+		}
+	}
+}

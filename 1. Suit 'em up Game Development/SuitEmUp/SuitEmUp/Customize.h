@@ -3,6 +3,10 @@
 #include <vector>
 #include "State.h"
 
+#include "Button.h"
+#include "SpriteManager.h"
+#include "GameObjectManager.h"
+
 
 namespace sf{
 	class RectangleShape;
@@ -12,7 +16,7 @@ class InputManager;
 
 class Customize : public State {
 public:
-	Customize(InputManager* input);
+	Customize(InputManager* input, GameObjectManager* gom);
 	bool Init();
 	void Exit();
 
@@ -30,4 +34,6 @@ private:
 	InputManager *m_input;
 	std::vector<sf::RectangleShape*> m_rects;
 
+	std::vector<Button*> m_CutomizeButtons;
+	GameObjectManager* m_gom;
 };

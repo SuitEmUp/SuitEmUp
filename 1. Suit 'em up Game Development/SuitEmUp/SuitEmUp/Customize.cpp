@@ -5,12 +5,16 @@
 
 #include "Customize.h"
 #include "InputManager.h"
+#include "Config.h"
+#include "Button.h"
+#include "SpriteManager.h"
+#include "GameObjectManager.h"
 
 
-
-Customize::Customize(InputManager* input) 
+Customize::Customize(InputManager* input, GameObjectManager* gom) 
 {
 	m_input = input;
+	m_gom = gom;
 	next_state = "";
 };
 
@@ -25,6 +29,8 @@ bool Customize::Init()
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
+	m_gom->CreateCusomizationButtons();
+
 	return true;
 };
 void Customize::Exit(){
@@ -35,32 +41,6 @@ void Customize::Exit(){
 	}
 	m_rects.clear();
 };
-
-//bool Customize::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//	}
-//	return true;
-//};
-
 
 bool Customize::Update(float deltatime)
 {
@@ -82,15 +62,22 @@ bool Customize::Update(float deltatime)
 		setNextState("Options");
 		return false;
 	};
+
+
+	for(int i = 0; i < m_gom->m_vCustomizeButtons.size(); i++)
+	{
+		if(m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" && m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit")
+		{
+			printf("Click SUCCESSSSS\n");
+			printf("Suit Upgraded\n");
+		}
+	}
 	return true;
 };
 
-void Customize::Draw(/*sf::RenderWindow *p_window*/)
+void Customize::Draw()
 {
-	/*for(unsigned int i = 0; i<m_rects.size(); i++)
-	{
-		p_window->draw(*m_rects[i]);
-	}*/
+	m_gom->DrawCustomizationButtons();
 }
 
 std::string Customize::Next()
