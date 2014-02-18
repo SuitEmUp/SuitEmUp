@@ -29,7 +29,6 @@ Engine::Engine()
 	m_running = false;//Ladbon
 	m_window = nullptr;
 
-	//	m_drawmanager = nullptr;
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 
@@ -43,22 +42,30 @@ bool Engine::Initialize()
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, &m_input);
 	m_buttonmanager = new ButtonManager(m_spritemanager, &m_input);
-
-
-	/*m_drawmanager = new DrawManager();
-	if (!m_drawmanager->initialize(*m_window))
+	
+	if(m_window == nullptr)
 	{
-	return false;
-	}*/
+		return false;
+	}
 
+	m_statemanager->SetInput(&m_input);
 
 	if(m_statemanager->current == nullptr)
 	{
+<<<<<<< HEAD
 		m_statemanager->Attach(new TitleScreen(&m_input, m_gom));
 		m_statemanager->Attach(new MainMenu(&m_input, m_gom));
 		m_statemanager->Attach(new Options(&m_input));
 		m_statemanager->Attach(new Customize(&m_input, m_gom));
 		m_statemanager->Attach(new Game(&m_input, m_gom));
+=======
+		m_statemanager->engine = this;
+		m_statemanager->Attach(new TitleScreen(&m_input, this));
+		m_statemanager->Attach(new MainMenu(&m_input, this));
+		m_statemanager->Attach(new Options(&m_input, this));
+		m_statemanager->Attach(new Customize(&m_input, this));
+		m_statemanager->Attach(new Game(&m_input, this));
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
@@ -74,9 +81,8 @@ void Engine::Run()
 	while(m_running)
 	{
 		UpdateDeltatime();
-		m_statemanager->HandleEvents();
-		m_statemanager->UpdateTime(m_fDeltaTime);
-		m_statemanager->Update();
+	//	m_statemanager->HandleEvents();
+		m_statemanager->Update(m_fDeltaTime);
 		m_window->clear();
 		m_statemanager->Draw(/*m_window*/);
 		m_window->display();
@@ -92,8 +98,7 @@ void Engine::Run()
 void Engine::Cleanup()
 {
 	if(m_gom != nullptr){
-		//m_gom->ClearGameObjects();
-		//delete m_gom;
+
 		m_gom=nullptr;
 	}
 	if(m_spritemanager != nullptr){

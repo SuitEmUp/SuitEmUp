@@ -13,8 +13,8 @@ class InputManager;
 
 class TitleScreen : public State {
 public:
-	TitleScreen(InputManager *input, GameObjectManager* gom);
-	bool Init();
+	TitleScreen(InputManager *input, Engine* engine);
+	bool Init(Engine*);
 	void Exit();
 
 	//bool HandleInput();
@@ -29,12 +29,11 @@ private:
 	std::string next_state;
 	InputManager *m_input;
 	std::string tempName_change;
-
-
-	GameObjectManager* m_gom;
-
-	sf::Sprite* m_background;
 	
+	Engine* m_engine;
+	GameObjectManager* m_gom;
+	sf::Sprite *m_xbackground;
+
 
 
 };

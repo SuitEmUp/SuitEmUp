@@ -11,15 +11,22 @@
 #include "GameObjectManager.h"
 
 
+<<<<<<< HEAD
 Customize::Customize(InputManager* input, GameObjectManager* gom) 
+=======
+
+Customize::Customize(InputManager* input, Engine *engine) 
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
 {
 	m_input = input;
 	m_gom = gom;
 	next_state = "";
+	m_gom = engine->m_gom;
 };
 
-bool Customize::Init()
+bool Customize::Init(Engine *engine)
 {
+	m_engine = engine;
 	tempName_change = "02";
 
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));

@@ -22,21 +22,21 @@ public:
 	void SetState(const std::string &type);
 	void ChangeState();
 
-	void UpdateTime(float deltatime);
+	//void UpdateTime(float deltatime);
 	void HandleEvents();
-	void Update();
+	void Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/);
 
 	bool Running() { return m_running; }
 	void Quit() { m_running = false; }
-		void SetInput(InputManager *input);
+	void SetInput(InputManager *input);
+	Engine *engine;
 private:
 	std::vector<State*> states;
 	State* current;
 	bool m_running;
-//ladbon
+	//ladbon
 	InputManager *m_input;
-	unsigned int iTicks();
-	float m_deltatime;
+
 
 };

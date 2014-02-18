@@ -5,14 +5,17 @@
 #include "InputManager.h"
 
 
-Options::Options(InputManager* input) 
+Options::Options(InputManager *input, Engine* engine) 
 {
 	m_input = input;
 	next_state = "";
+	m_engine = engine;
+
 };
 
-bool Options::Init()
+bool Options::Init(Engine* engine)
 {
+	m_gom = m_engine->m_gom;
 	printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";
@@ -70,8 +73,10 @@ bool Options::Update(float deltatime)
 	return true;
 };
 
-//draw
+void Options::Draw()
+{
 
+};
 std::string Options::Next()
 {
 	return next_state;

@@ -3,8 +3,9 @@
 
 StateManager::StateManager(){
 	current = nullptr;
-	m_running = true;
-	m_deltatime  = 0.0f; //Ladbon
+//	m_running = true;
+	//m_deltatime  = 0.0f; //Ladbon
+	this->engine = engine;
 };
 
 StateManager::~StateManager() 
@@ -32,10 +33,10 @@ void StateManager::Cleanup()
 	this->Quit();
 };
 
-void StateManager::UpdateTime(float DeltaTime)
+/*void StateManager::UpdateTime(float deltaTime)
 {
-	m_deltatime = DeltaTime; 
-};
+	m_deltatime = deltaTime; 
+};*/
 
 void StateManager::HandleEvents()
 {
@@ -43,11 +44,11 @@ void StateManager::HandleEvents()
 
 };
 
-void StateManager::Update()
+void StateManager::Update(float deltatime)
 {
 	if(current == nullptr) { return; };
 	//UpdateTime(m_deltatime);
-	if(!current->Update(m_deltatime)) {
+	if(!current->Update(deltatime)) {
 		ChangeState();
 	};
 };
@@ -78,7 +79,7 @@ void StateManager::SetState(const std::string &type)
 			current = states[i];
 			//current->deltatime = 0.0f;
 			//current->ticks = 0;
-			current->Init();
+			current->Init(engine);
 		}
 	}
 };
@@ -100,7 +101,7 @@ void StateManager::ChangeState()
 			current = states[i];
 			//current->deltatime = 0.0f;
 			//current->ticks = 0;
-			current->Init();
+			current->Init(engine);
 		}
 	}
 };
