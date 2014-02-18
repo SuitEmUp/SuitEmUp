@@ -5,12 +5,27 @@
 
 #include "Customize.h"
 #include "InputManager.h"
+#include "Config.h"
+#include "Button.h"
+#include "SpriteManager.h"
+#include "GameObjectManager.h"
 
 
+<<<<<<< HEAD
+Customize::Customize(InputManager* input, GameObjectManager* gom) 
+=======
 
+<<<<<<< HEAD
 Customize::Customize(Engine *engine) 
 {
 	m_engine = engine;
+=======
+Customize::Customize(InputManager* input, Engine *engine) 
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
+{
+	m_input = input;
+	m_gom = gom;
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 	next_state = "";
 	m_input = m_engine->m_input;
 
@@ -27,6 +42,8 @@ bool Customize::Init()
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
+	m_gom->CreateCusomizationButtons();
+
 	return true;
 };
 void Customize::Exit(){
@@ -37,32 +54,6 @@ void Customize::Exit(){
 	}
 	m_rects.clear();
 };
-
-//bool Customize::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//	}
-//	return true;
-//};
-
 
 bool Customize::Update(float deltatime)
 {
@@ -84,15 +75,22 @@ bool Customize::Update(float deltatime)
 		setNextState("Options");
 		return false;
 	};
+
+
+	for(int i = 0; i < m_gom->m_vCustomizeButtons.size(); i++)
+	{
+		if(m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" && m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit")
+		{
+			printf("Click SUCCESSSSS\n");
+			printf("Suit Upgraded\n");
+		}
+	}
 	return true;
 };
 
-void Customize::Draw(/*sf::RenderWindow *p_window*/)
+void Customize::Draw()
 {
-	/*for(unsigned int i = 0; i<m_rects.size(); i++)
-	{
-		p_window->draw(*m_rects[i]);
-	}*/
+	m_gom->DrawCustomizationButtons();
 }
 
 std::string Customize::Next()

@@ -55,9 +55,12 @@ public:
 	void CreateButtons();
 	void UpdateButtons();
 	void DrawButtons();
+	void CreateCusomizationButtons();
+	void DrawCustomizationButtons();
 
 
 	std::vector<Button*> m_vButtons;
+	std::vector<Button*> m_vCustomizeButtons;
 private:
 	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
@@ -74,10 +77,28 @@ private:
 	InputManager* m_input;
 
 	sf::Sprite* m_backgound;
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+	//std::vector<Button*> m_vButtons;
+
+	std::vector<RepairKit*> m_vRepairKits;
+=======
+	std::vector<RepairKit*> m_vRepairKits;
+=======
+
+
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 
 	//std::vector<Button*> m_vButtons;
 
 	std::vector<RepairKit*> m_vRepairKits;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1a6c8b5360e57be636a0346d92d080beb822115b
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 };

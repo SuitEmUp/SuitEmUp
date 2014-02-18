@@ -70,7 +70,15 @@ bool MainMenu::Update(float deltatime)
 			setNextState("Game");
 			return false;
 		}
+<<<<<<< HEAD
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+=======
+		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
+			printf("Click SUCCESSSSS\n");
+			printf("HighScore-state does not exist\n");
+		}
+		if(m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Options\n");
 			setNextState("Options");
@@ -78,9 +86,8 @@ bool MainMenu::Update(float deltatime)
 		}
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
 			printf("Click SUCCESSSSS\n");
+			printf("This button doesnt work yet\n");
 			//Exit Game
-			return false;
-
 		}
 	}
 

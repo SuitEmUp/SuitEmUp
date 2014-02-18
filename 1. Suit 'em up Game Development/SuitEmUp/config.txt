@@ -9,11 +9,24 @@ window_h = 720
 
 menu_top_padding = 225
 button_padding = 75
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+customize_padding_big = 45
+customize_padding_small = 6
+=======
+<<<<<<< HEAD
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 hud_padding = 75
 hud_padding = 50
 hud_padding = 75
 hud_padding = 75
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 
 
 -PlayerStats-

@@ -109,6 +109,10 @@ bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
 }
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
+<<<<<<< HEAD
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1.0, 1.0));
+	
+=======
 
 	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1, 1));
 	
@@ -148,7 +152,12 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/Bandit_2.png", "SniperBandit", 1, 1));
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 362b744d6d0c051201142fe8cd2320b62781b99a
+>>>>>>> 5ff85ee799fbfebce5ebe69859d48c834abc72e4
+>>>>>>> cd4987c04e00677ea80ba874e4a1270b05829907
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
