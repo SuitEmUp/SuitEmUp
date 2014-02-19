@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 ﻿Build started 2014-02-19 17:00:15.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Rebuild target(s)).
+=======
+<<<<<<< HEAD
+﻿Build started 2014-02-18 19:57:03.
+     1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp"
+         main.cpp
+       Link:
+         D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
+=======
+﻿Build started 2014-02-19 14:14:45.
+     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+>>>>>>> b2caa496b4f23603cdab6c19ce1b831265541fea
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Collider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Config.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\InputManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MovingGameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Options.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Sprite.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SpriteManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp" TitleScreen.cpp StateManager.cpp "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Utils.cpp"
          Utils.cpp
@@ -101,7 +115,12 @@
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\button.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
          Generating Code...
        Link:
+<<<<<<< HEAD
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
+=======
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
+>>>>>>> 1aab41f00fa2133592d96cc6bacef5ec0f547b13
+>>>>>>> b2caa496b4f23603cdab6c19ce1b831265541fea
          Debug\ButtonManager.obj
          Debug\Collider.obj
          Debug\CollisionManager.obj
@@ -134,9 +153,27 @@
          Debug\TitleScreen.obj
          Debug\StateManager.obj
          Debug\Utils.obj
+<<<<<<< HEAD
          SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
      1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
 Time Elapsed 00:00:19.70
+=======
+<<<<<<< HEAD
+         SuitEmUp.vcxproj -> C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
+     1>Done Building Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.71
+=======
+         SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
+     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.40
+>>>>>>> 1aab41f00fa2133592d96cc6bacef5ec0f547b13
+>>>>>>> b2caa496b4f23603cdab6c19ce1b831265541fea

@@ -1,4 +1,3 @@
-#define bob 100
 
 //SFML
 #include <SFML\Window.hpp>
