@@ -4,9 +4,6 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 
-
-
-
 class Game;
 class GameObject;
 class Engine;
@@ -49,7 +46,6 @@ public:
 	SpriteManager* m_spritemanager; ///noooooo
 	sf::RenderWindow* m_window;
 
-
 	//Button related stuff?
 
 	void CreateButtons();
@@ -58,14 +54,15 @@ public:
 	void CreateCusomizationButtons();
 	void DrawCustomizationButtons();
 
-
 	std::vector<Button*> m_vButtons;
 	std::vector<Button*> m_vCustomizeButtons;
+
 private:
 	//	std::vector<GameObject*> m_gameobject;
 	Truck* m_truck;
 	PlayerObject* m_player;
 	HpBar *m_hpbar;
+
 	std::vector<EnemyObject*> m_enemies;
 	std::vector<SuperEnemy*> m_supers;
 	std::vector<SniperGirl*> m_girls;
@@ -81,7 +78,5 @@ private:
 	//std::vector<Button*> m_vButtons;
 
 	std::vector<RepairKit*> m_vRepairKits;
-
-
 
 };

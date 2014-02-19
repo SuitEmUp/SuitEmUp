@@ -29,5 +29,4 @@ protected:
 	sf::Vector2f m_position;
 	sf::Sprite* m_sprite;
 	float m_radius;
-
 };

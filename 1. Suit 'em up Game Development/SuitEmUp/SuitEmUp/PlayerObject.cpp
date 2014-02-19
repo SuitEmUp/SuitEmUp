@@ -4,9 +4,14 @@
 #include "Truck.h"
 #include "InputManager.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
 
 PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
 {
+	m_buffer = new sf::SoundBuffer();
+	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
+	m_sound = new sf::Sound();
+	m_sound->setBuffer(*m_buffer);
 	m_position = sf::Vector2f(600, 400);
 	m_update = update;
 	m_input = input;
@@ -196,10 +201,18 @@ bool PlayerObject::Update(float deltatime)
 	m_cooldown-=1;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 	if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
+		m_sound->play();
 		m_cooldown=1;	//How long the cooldown is
 		return true;	//if this is returned a bullet will be spawned
 	}
 	return false; //if this is returned nothing will happen
+};
+
+PlayerObject::~PlayerObject(){
+	delete m_buffer;
+	m_buffer = nullptr;
+	delete m_sound;
+	m_sound = nullptr;
 };
 
 bool PlayerObject::GetType()

@@ -9,6 +9,7 @@ class Truck;
 class EnemyObject : public MovingGameObject{
 public:
 	EnemyObject(Truck* truck, sf::Sprite* sprite = nullptr);
+	~EnemyObject();
 	bool Update(float deltatime);
 	bool GetType();
 	int Damaged(int playerdmg);

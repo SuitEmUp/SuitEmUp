@@ -9,6 +9,7 @@ class Truck;
 class SuperEnemy : public MovingGameObject{
 public:
 	SuperEnemy(Truck* truck, sf::Sprite* sprite = nullptr);
+	~SuperEnemy();
 	bool Update(float deltatime);
 	bool GetType();
 	int Damaged(int playerdmg);

@@ -11,6 +11,7 @@ class PlayerObject : public MovingGameObject
 {
 public:
 	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite = nullptr, sf::Sprite* update = nullptr);
+	~PlayerObject();
 	bool Update(float deltatime);
 	bool GetType();
 	float GetDamage();

@@ -48,8 +48,8 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
-	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana's sprite", 1, 1),
-		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "WOHO", 1, 1));
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
+		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
 	//Clears all vectors
 	m_enemies.clear();
@@ -153,8 +153,8 @@ void GameObjectManager::Update(float deltatime)
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
-			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3), 
-			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "Needle", 1, 1)));
+			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
+			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1)));
 	}
 	if(m_spawner->Timer(deltatime)){ 
 		//Keeps track of when enemies spawn
@@ -170,7 +170,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -182,7 +182,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_supers.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -193,7 +193,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_girls.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "Test", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -234,7 +234,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 15)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
 
@@ -261,7 +261,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 1)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
-							m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 					delete m_supers.at(j)->GetSprite();
 					m_supers.erase(m_supers.begin()+j);
@@ -288,7 +288,7 @@ void GameObjectManager::Update(float deltatime)
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Wut", 1, 1)));
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					delete m_girls.at(j)->GetSprite();
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
