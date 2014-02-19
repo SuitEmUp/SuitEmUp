@@ -9,6 +9,7 @@ class Truck;
 class SniperGirl : public MovingGameObject{
 public:
 	SniperGirl(Truck* truck, sf::Sprite* sprite = nullptr);
+	~SniperGirl();
 	bool Update(float deltatime);
 	bool GetType();
 	int Damaged(int playerdmg);

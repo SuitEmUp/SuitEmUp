@@ -5,6 +5,10 @@
 #include <iostream>
 
 EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
+	m_buffer = new sf::SoundBuffer();
+	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
+	m_sound = new sf::Sound();
+	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
@@ -42,9 +46,17 @@ bool EnemyObject::Update(float deltatime){
 
 	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_cooldown = 1;	//gets cooldown
+		m_sound->play();
 		return true;	//if this is returned a bullet will spawn
 	}
 	else return false;//doesn't matter if false is returned.
+};
+
+EnemyObject::~EnemyObject(){
+	delete m_buffer;
+	m_buffer =nullptr;
+	delete m_sound;
+	m_sound = nullptr;
 };
 
 bool EnemyObject::GetType(){
