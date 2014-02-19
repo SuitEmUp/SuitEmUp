@@ -18,7 +18,7 @@ class SpriteManager;
 class InputManager;
 class RepairKit;
 class SniperGirl;
-
+class Score;
 class HpBar;
 class Button;
 
@@ -62,7 +62,8 @@ private:
 	Truck* m_truck;
 	PlayerObject* m_player;
 	HpBar *m_hpbar;
-
+	Score *m_xscore;
+	int enemyscore;
 	std::vector<EnemyObject*> m_enemies;
 	std::vector<SuperEnemy*> m_supers;
 	std::vector<SniperGirl*> m_girls;

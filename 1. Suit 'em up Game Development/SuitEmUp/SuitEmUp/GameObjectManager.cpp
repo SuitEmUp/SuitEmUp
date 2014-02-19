@@ -13,6 +13,7 @@
 #include "Config.h"
 #include "RepairKit.h"
 #include "SniperGirl.h"
+#include "Score.h"
 
 #include <iostream>
 #include "HpBar.h"
@@ -34,7 +35,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_enemy_projectiles.clear();
 	m_vRepairKits.clear();
 	m_hpbar = nullptr;
-
+	m_xscore = nullptr;
 
 }
 
@@ -63,7 +64,7 @@ void GameObjectManager::CreateGameObjects()
 	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
-
+	m_xscore = new Score();
 }
 
 void GameObjectManager::ClearGameObjects()
@@ -88,6 +89,12 @@ void GameObjectManager::ClearGameObjects()
 	if(m_spawner != nullptr){
 		delete m_spawner;
 		m_spawner = nullptr;
+	}
+	//DELETES SCORE
+	if(m_xscore !=nullptr)
+	{
+		delete m_xscore;
+		m_xscore = nullptr;
 	}
 	for (auto it = m_enemies.begin();it != m_enemies.end(); it++)
 	{
@@ -226,7 +233,7 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*at)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-
+					
 
 					delete m_enemies.at(j)->GetSprite();
 
@@ -240,6 +247,7 @@ void GameObjectManager::Update(float deltatime)
 
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
+					m_xscore->PutInScore(enemyscore = 10);
 					--j;
 				}
 				--i;
@@ -267,7 +275,7 @@ void GameObjectManager::Update(float deltatime)
 					m_supers.erase(m_supers.begin()+j);
 					
 					//SCORE COUNT
-					
+					m_xscore->PutInScore(enemyscore = 25);
 					--j;
 				}
 				--i;
@@ -292,6 +300,7 @@ void GameObjectManager::Update(float deltatime)
 					delete m_girls.at(j)->GetSprite();
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
+					m_xscore->PutInScore(enemyscore = 50);
 					--j;
 				}
 				--i;
@@ -316,6 +325,8 @@ void GameObjectManager::Update(float deltatime)
 		lol=1;
 	}
 	m_hpbar->GetSprite()->setScale(lol, 1.0);
+
+
 
 }
 
@@ -374,11 +385,13 @@ void GameObjectManager::DrawGameObjects()
 
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
-	m_window->draw(*m_hpbar->Sprite3());
+	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
 
 
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
+
+	m_window->draw(m_xscore->DrawScore());
 
 	for(int i=0; i<m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)!=nullptr){
