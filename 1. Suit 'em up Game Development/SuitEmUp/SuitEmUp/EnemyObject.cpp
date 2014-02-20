@@ -53,10 +53,15 @@ bool EnemyObject::Update(float deltatime){
 };
 
 EnemyObject::~EnemyObject(){
+	if(m_buffer != nullptr)
+	{
 	delete m_buffer;
 	m_buffer =nullptr;
+	}
+	if(m_sound !=nullptr){
 	delete m_sound;
 	m_sound = nullptr;
+	}
 };
 
 bool EnemyObject::GetType(){

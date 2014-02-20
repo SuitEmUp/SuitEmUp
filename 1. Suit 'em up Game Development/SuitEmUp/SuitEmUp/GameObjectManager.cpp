@@ -170,7 +170,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -182,7 +182,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_supers.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -193,7 +193,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_girls.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "EnemyBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}
 	};
@@ -203,6 +203,7 @@ void GameObjectManager::Update(float deltatime)
 		//Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
 		if(m_enemy_projectiles.at(i)->Update(m_truck, deltatime)){
 			delete m_enemy_projectiles.at(i)->GetSprite();
+			delete m_enemy_projectiles[i];
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
 		};
@@ -212,6 +213,7 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)->Update(m_truck, deltatime)){
 			delete m_player_projectiles.at(i)->GetSprite();
+			delete m_player_projectiles[i];
 			m_player_projectiles.erase(m_player_projectiles.begin()+i);
 			i--;
 		};
@@ -224,20 +226,22 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
+				delete m_player_projectiles.at(i)->GetSprite();
+				delete m_player_projectiles[i];
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
 
 					delete m_enemies.at(j)->GetSprite();
 
-				int chance = rand()%20;
+					int chance = rand()%20;
 					if(chance == 15)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
-
+					delete m_enemies[j];
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -254,7 +258,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->SuperDestroyer(m_supers.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
-				delete m_player_projectiles.at(i)->GetSprite();
+				//delete m_player_projectiles.at(i)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%10;
@@ -264,6 +268,7 @@ void GameObjectManager::Update(float deltatime)
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 					delete m_supers.at(j)->GetSprite();
+					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 					
 					//SCORE COUNT
@@ -290,6 +295,7 @@ void GameObjectManager::Update(float deltatime)
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					delete m_girls.at(j)->GetSprite();
+					delete m_girls[j];
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
 					--j;
@@ -306,6 +312,7 @@ void GameObjectManager::Update(float deltatime)
 			//delete (*it)->GetSprite();
  			m_truck->Healed();
 			delete m_vRepairKits.at(i)->GetSprite();
+			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
 			i--;
 		};
