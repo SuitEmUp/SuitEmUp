@@ -28,7 +28,9 @@ SpriteManager::~SpriteManager()
 		m_Textures.clear();
 	}
 
-}; // Faktumet är ju att man absolut inte bör koda med bokstäverna åäö eftersom att inte allas tangentbord har dessa bokstäver
+}; 
+
+// Faktumet är ju att man absolut inte bör koda med bokstäverna åäö eftersom att inte allas tangentbord har dessa bokstäver
 
 sf::Sprite* SpriteManager::Load(const std::string &filename, const std::string spritename, float x_scale, float y_scale)
 {
@@ -53,5 +55,3 @@ sf::Sprite* SpriteManager::Load(const std::string &filename, const std::string s
 	return xSprite; //returnera den nya spriten
 
 };
-
-

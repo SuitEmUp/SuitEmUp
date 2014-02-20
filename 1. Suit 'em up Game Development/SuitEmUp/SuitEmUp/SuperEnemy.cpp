@@ -52,10 +52,15 @@ bool SuperEnemy::Update(float deltatime){
 };
 
 SuperEnemy::~SuperEnemy(){
+	if(m_buffer != nullptr)
+	{
 	delete m_buffer;
-	m_buffer = nullptr;
+	m_buffer =nullptr;
+	}
+	if(m_sound !=nullptr){
 	delete m_sound;
 	m_sound = nullptr;
+	}
 };
 
 bool SuperEnemy::GetType(){

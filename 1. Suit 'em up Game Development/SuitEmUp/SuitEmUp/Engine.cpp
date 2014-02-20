@@ -88,10 +88,6 @@ void Engine::Run()
 };
 void Engine::Cleanup()
 {
-	if(m_gom != nullptr){
-
-		m_gom=nullptr;
-	}
 	if(m_spritemanager != nullptr){
 		delete m_spritemanager;
 		m_spritemanager=nullptr;
@@ -105,6 +101,10 @@ void Engine::Cleanup()
 	m_statemanager->Cleanup();
 	delete m_statemanager;
 	m_statemanager = nullptr;
+
+	if(m_gom != nullptr){
+		m_gom=nullptr;
+	}
 
 	if(m_buttonmanager !=nullptr)
 	{
