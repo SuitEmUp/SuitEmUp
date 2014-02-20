@@ -279,12 +279,8 @@ void GameObjectManager::Update(float deltatime)
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
-					//SCORE COUNT
-<<<<<<< HEAD
-
-=======
 					m_xscore->PutInScore(enemyscore = 25);
->>>>>>> 7244a7957f01cc5b457c3a4d02de146d9a2f9cd2
+
 					--j;
 				}
 				--i;
