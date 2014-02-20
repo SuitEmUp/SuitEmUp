@@ -4,19 +4,25 @@
 
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
-#include "GameObject.h"
-#include "GameObjectManager.h"
+
+class Button;
 
 class PlayerObject;
 
-class Score : public GameObject
+class Score
 {
-	friend class GameObjectManager;
 public:
-	
-	Score(sf::Sprite *m_Score, sf::Text *score);
 
+	Score();
+	~Score(){};
+	int GetScore();
+	void PutInScore(int enemykillscore);
+	void BuyEquipment(Button *xbutton);
+	sf::Text DrawScore();
+	
 private:
-	Truck *m_truck;
-	PlayerObject *m_player;
+	int m_score;
+	sf::Text score;
+	sf::Font font;
 };
+
