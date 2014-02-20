@@ -245,7 +245,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 15)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
 					delete m_enemies[j];
@@ -278,9 +278,13 @@ void GameObjectManager::Update(float deltatime)
 					delete m_supers.at(j)->GetSprite();
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
-					
+
 					//SCORE COUNT
+<<<<<<< HEAD
+
+=======
 					m_xscore->PutInScore(enemyscore = 25);
+>>>>>>> 7244a7957f01cc5b457c3a4d02de146d9a2f9cd2
 					--j;
 				}
 				--i;
@@ -289,7 +293,7 @@ void GameObjectManager::Update(float deltatime)
 
 		};
 	};
-	
+
 
 	for(int i = 0; i < m_player_projectiles.size(); i++){
 		for(int j = 0; j<m_girls.size(); j++){
@@ -319,7 +323,7 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
- 			m_truck->Healed();
+			m_truck->Healed();
 			delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
@@ -437,16 +441,17 @@ void GameObjectManager::DrawGameObjects()
 
 void GameObjectManager::CreateButtons()
 {
-	m_vButtons.push_back(new Button(m_input, "StartGame", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), 
+	m_vButtons.push_back(new Button(m_input, "StartGame", "Square", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"),
+
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_vButtons.push_back(new Button(m_input, "HighScore", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_vButtons.push_back(new Button(m_input, "Options", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
-	m_vButtons.push_back(new Button(m_input, "QuitGame", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "QuitGame", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
 };
 
@@ -468,37 +473,47 @@ void GameObjectManager::DrawButtons()
 void GameObjectManager::CreateCusomizationButtons()
 {
 	//Top Suit
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
 		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeSuit"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeSuit"), 
 		104, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
 		295, Config::getInt("customize_padding_big", 0)));
-	
+
 	//Top Weapon
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
 		354, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", m_spritemanager->Load("../data/buttons/upgrade_weapon.png", "UpgradeWeapon"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", "Square", m_spritemanager->Load("../data/buttons/upgrade_weapon.png", "UpgradeWeapon"), 
 		413, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeWeaponRight"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeWeaponRight"), 
 		873, Config::getInt("customize_padding_big", 0)));
 
 	//Top Truck
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
 		932, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeTruck"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeTruck"), 
 		991, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
 		1182, Config::getInt("customize_padding_big", 0)));
 
 	//back
-	m_vCustomizeButtons.push_back(new Button(m_input, "Back", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
+	m_vCustomizeButtons.push_back(new Button(m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
 		Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64))));
-		
+
+	//Trinkets
+	m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
+		1020, 463));
+	m_vCustomizeButtons.push_back(new Button(m_input, "Slot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot2"),
+		1150, 500));
+	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
+		1046, 591));
+
+
+
 };
 void GameObjectManager::DrawCustomizationButtons()
 {
-		for(int i=0; i<m_vCustomizeButtons.size(); i++){
+	for(int i=0; i<m_vCustomizeButtons.size(); i++){
 		if(m_vCustomizeButtons.at(i)!=nullptr){
 			m_window->draw(*m_vCustomizeButtons.at(i)->GetSprite()); // draws all buttons
 		}

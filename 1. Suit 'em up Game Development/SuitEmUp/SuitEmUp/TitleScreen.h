@@ -30,6 +30,7 @@ private:
 	std::string tempName_change;
 	Engine* m_engine;
 	InputManager *m_input;
+
 	sf::Sprite *m_xbackground;
 
 
