@@ -8,7 +8,7 @@
 class Button : public GameObject
 {
 public:
-	Button(InputManager* p_input, std::string p_ButtonName, sf::Sprite* p_Sprite, int x_Pos, int y_Pos);
+	Button(InputManager* p_input, std::string p_ButtonName, std::string p_shape, sf::Sprite* p_Sprite, int x_Pos, int y_Pos);
 
 	std::string Update();
 
@@ -18,6 +18,8 @@ public:
 
 private:
 	std::string m_Type;
+	std::string m_Shape;
 	InputManager* m_input;
+
 
 };

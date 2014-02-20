@@ -34,4 +34,14 @@ private:
 	std::vector<sf::RectangleShape*> m_rects;
 	std::vector<Button*> m_CutomizeButtons;
 
+	//backgrounds and stuff
+	sf::Sprite* m_border;
+	sf::Sprite* m_suit;
+	sf::Sprite* m_weapon;
+	sf::Sprite* m_truck;
+
+	int m_currentSuit;
+	int m_currentWeapon;
+	int m_currentTruck;
+
 };
