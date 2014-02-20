@@ -105,9 +105,9 @@ void StateManager::ChangeState()
 		}
 	}
 };
+
 //void StateManager::SetInput(InputManager *input)
 //{
 //	m_input = input;
 
 //}
-

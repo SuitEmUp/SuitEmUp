@@ -39,9 +39,16 @@ private:
 	sf::Sprite* m_suit;
 	sf::Sprite* m_weapon;
 	sf::Sprite* m_truck;
+	sf::Sprite* m_statbox;
+	sf::Sprite* m_trinketbox;
 
 	int m_currentSuit;
 	int m_currentWeapon;
 	int m_currentTruck;
+
+	bool m_trinketboxactivator;
+	bool m_trinketboxlock;
+	sf::Sprite* m_trinketboxsprite;
+
 
 };

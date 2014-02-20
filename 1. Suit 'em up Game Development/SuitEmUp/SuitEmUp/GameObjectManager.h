@@ -24,6 +24,7 @@ class Button;
 
 class GameObjectManager
 {
+	friend class Customize;
 public:
 	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input);
 	~GameObjectManager();
@@ -51,11 +52,16 @@ public:
 	void CreateButtons();
 	void UpdateButtons();
 	void DrawButtons();
+
 	void CreateCusomizationButtons();
 	void DrawCustomizationButtons();
 
+	void CreateTrinketButtons();
+	void DrawTrinketButtons();
+
 	std::vector<Button*> m_vButtons;
 	std::vector<Button*> m_vCustomizeButtons;
+	std::vector<Button*> m_vTrinketButtons;
 
 private:
 	//	std::vector<GameObject*> m_gameobject;
