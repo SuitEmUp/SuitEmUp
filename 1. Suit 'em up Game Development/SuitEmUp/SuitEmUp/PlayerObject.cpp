@@ -33,6 +33,38 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 
 bool PlayerObject::Update(float deltatime)
 {
+	//sets suit stats
+	if(m_suittype == "Level1")
+	{
+
+	}
+	if(m_suittype == "Level2")
+	{
+
+	}
+	if(m_suittype == "Level3")
+	{
+
+	}
+	//sets weapon stats
+	if(m_weapontype == "Revolver")
+	{
+		m_sprite = m_unupdate;
+		m_damage = 1;
+		m_attackspeed = 0.3;
+	}
+	if(m_weapontype == "Needlegun")
+	{
+		m_sprite = m_update;
+		m_damage = 4;
+		m_attackspeed = 0.85f;
+	}
+	if(m_weapontype == "ArmCannon")
+	{
+		m_sprite = m_unupdate;
+		m_damage = 0.2f;
+		m_attackspeed = 0.02;
+	}
 	if(m_damage>100){
 		m_sprite = m_update;
 	}
@@ -65,8 +97,8 @@ bool PlayerObject::Update(float deltatime)
 
 	double dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
 	double dist2=dist1;	//The distance from the truck we want to have
-						//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
-	
+	//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
+
 	/*MOVEMENT INPUTS*/
 
 	//// NORMAL MOVEMENT
@@ -128,7 +160,7 @@ bool PlayerObject::Update(float deltatime)
 
 
 	////std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
-	
+
 	//VIKTOR STYLE
 	if(m_input->IsDown(sf::Keyboard::A)){
 		m_velocity.x=-speed*((delta_y)/dist1);
@@ -140,7 +172,7 @@ bool PlayerObject::Update(float deltatime)
 		m_velocity.y=-speed*((delta_x)/dist1);
 		//same as previous
 	}
-	
+
 	//END OF MOVEMENT INPUTS
 
 	//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
@@ -148,7 +180,7 @@ bool PlayerObject::Update(float deltatime)
 		dist2=100;
 	}
 
-	
+
 	m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
 	delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
@@ -181,7 +213,7 @@ bool PlayerObject::Update(float deltatime)
 	float delta_X = m_truck->GetPosition().x-m_position.x;
 	float delta_Y = m_truck->GetPosition().y-m_position.y;
 	float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
-	
+
 	const float pi = 3.141592654f;
 	m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
 	m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
@@ -195,7 +227,7 @@ bool PlayerObject::Update(float deltatime)
 			m_sound2->setPitch(2);
 			m_sound2->play();}
 		else{
-		m_sound->play();
+			m_sound->play();
 		}
 		m_cooldown=0.3 ;	//How long the cooldown is
 		return true;	//if this is returned a bullet will be spawned
@@ -243,3 +275,18 @@ sf::Vector2f PlayerObject::GetDirection()
 {
 	return m_direction;
 }
+
+void PlayerObject::SetSuitType(std::string p_suittype)
+{
+	m_suittype = p_suittype;
+};
+
+void PlayerObject::SetWeaponType(std::string p_weapontype)
+{
+	m_weapontype = p_weapontype;
+};
+
+void PlayerObject::SetTruckType(std::string p_trucktype)
+{
+	m_trucktype = p_trucktype;
+};

@@ -237,7 +237,7 @@ void GameObjectManager::Update(float deltatime)
 				delete m_player_projectiles[i];
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
-					
+
 
 					delete m_enemies.at(j)->GetSprite();
 
@@ -279,8 +279,14 @@ void GameObjectManager::Update(float deltatime)
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
+<<<<<<< HEAD
+					//SCORE COUNT
+
+					m_xscore->PutInScore(enemyscore = 25);
+=======
 					m_xscore->PutInScore(enemyscore = 25);
 
+>>>>>>> 2df08d6ec3d9d429046746362f6b1d6610cf0dff
 					--j;
 				}
 				--i;
@@ -515,3 +521,52 @@ void GameObjectManager::DrawCustomizationButtons()
 		}
 	}
 }
+
+void GameObjectManager::CreateTrinketButtons()
+{
+	//ifstates for sprites needed, this will do for testing the layout
+
+	//top row
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+		75 + 123/2, 222));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*1) + (50*2), 222));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*2) + (50*3), 222));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*3) + (50*4), 222));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*4) + (50*5), 222));
+	
+	//mid row
+		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+		156 + 123/2, 343));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		156 + (123*1) + (50*2), 343));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		156 + (123*2) + (50*3), 343));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		156 + (123*3) + (50*4), 343));
+
+	//bot row
+		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+		75 + 123/2, 464));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*1) + (50*2), 464));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*2) + (50*3), 464));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*3) + (50*4), 464));
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+		75 + (123*4) + (50*5), 464));
+
+};
+
+void GameObjectManager::DrawTrinketButtons()
+{
+		for(int i=0; i<m_vTrinketButtons.size(); i++){
+		if(m_vTrinketButtons.at(i)!=nullptr){
+			m_window->draw(*m_vTrinketButtons.at(i)->GetSprite()); // draws all buttons
+		}
+	}
+};
