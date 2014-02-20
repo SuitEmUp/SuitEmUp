@@ -3,6 +3,7 @@
 #pragma once
 
 #include "MovingGameObject.h"
+#include <SFML/Audio.hpp>
 
 class Truck;
 class InputManager;
@@ -23,4 +24,6 @@ private:
 	sf::Vector2f m_direction;
 	sf::Sprite* m_update;
 	sf::Sprite* m_unupdate;
+	sf::SoundBuffer* m_buffer2;
+	sf::Sound* m_sound2;
 };

@@ -4,8 +4,10 @@
 #include "Truck.h"
 #include "EnemyObject.h"
 
-EnemyProjectile::EnemyProjectile(Truck* truck, sf::Vector2f start, sf::Sprite* sprite){
+EnemyProjectile::EnemyProjectile(float damage, Truck* truck, sf::Vector2f start, sf::Sprite* sprite){
 	speed = 2000; //Adjust bullet speed
+
+	m_damage = damage;
 	
 	m_sprite=sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
@@ -31,8 +33,12 @@ bool EnemyProjectile::Update(Truck* truck, float deltatime){
 	float dist = sqrt((delta_x*delta_x)+(delta_y*delta_y));
 	if(dist>1000) return true;
 	else if(dist<50){
-		truck->Damaged();
+		truck->Damaged(m_damage);
 		return true;
 	}
 	return false;
+}
+
+float EnemyProjectile::GetDamage(){
+	return m_damage;
 };

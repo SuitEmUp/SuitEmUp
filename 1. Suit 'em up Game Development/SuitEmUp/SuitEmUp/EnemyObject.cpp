@@ -5,6 +5,7 @@
 #include <iostream>
 
 EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
+	m_damage = 1;
 	m_buffer = new sf::SoundBuffer();
 	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
 	m_sound = new sf::Sound();
@@ -13,7 +14,7 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
-	speed = 200;
+	speed = 150;
 	m_hp = 2;
 };
 
@@ -72,3 +73,7 @@ int EnemyObject::Damaged(int playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
 }
+
+float EnemyObject::GetDamage(){
+	return m_damage;
+};

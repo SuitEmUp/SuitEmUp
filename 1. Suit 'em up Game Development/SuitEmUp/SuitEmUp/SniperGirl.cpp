@@ -4,8 +4,9 @@
 #include "Truck.h"
 
 SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
+	m_damage = 9;
 	m_buffer = new sf::SoundBuffer();
-	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
+	m_buffer->loadFromFile("../data/sounds/Sniper.wav");
 	m_sound = new sf::Sound();
 	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
@@ -13,7 +14,7 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 50;
-	m_hp = 5;
+	m_hp = 7;
 };
 
 bool SniperGirl::Update(float deltatime){
@@ -45,7 +46,7 @@ bool SniperGirl::Update(float deltatime){
 
 	if(dist<400 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_sound->play();
-		m_cooldown = 0.5;	//gets cooldown
+		m_cooldown = 3;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
 	else return false;//doesn't matter if false is returned.
@@ -70,4 +71,8 @@ bool SniperGirl::GetType(){
 int SniperGirl::Damaged(int playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
+};
+
+float SniperGirl::GetDamage(){
+	return m_damage;
 };
