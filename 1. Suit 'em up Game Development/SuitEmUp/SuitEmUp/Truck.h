@@ -13,7 +13,7 @@ public:
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);
 	bool GetType();
-	void Damaged();
+	void Damaged(float damage);
 	void Healed();
 	float UpdateHP();
 

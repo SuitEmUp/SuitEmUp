@@ -33,8 +33,8 @@ bool Truck::GetType(){
 	return true;
 };
 
-void Truck::Damaged(){
-	m_hp--;
+void Truck::Damaged(float damage){
+	m_hp-= damage;
 }
 
 void Truck::Healed(){

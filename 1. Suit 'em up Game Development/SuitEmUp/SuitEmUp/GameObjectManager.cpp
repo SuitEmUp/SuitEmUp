@@ -176,7 +176,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_enemies.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
-				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_enemies.at(i)->GetPosition(),
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_enemies.at(i)->GetDamage(), m_truck, m_enemies.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}
@@ -188,7 +188,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_supers.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
-				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_supers.at(i)->GetPosition(),
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_supers.at(i)->GetDamage(), m_truck, m_supers.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}
@@ -199,7 +199,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_girls.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
-				m_enemy_projectiles.push_back(new EnemyProjectile(m_truck, m_girls.at(i)->GetPosition(),
+				m_enemy_projectiles.push_back(new EnemyProjectile(m_girls.at(i)->GetDamage(), m_truck, m_girls.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
 			}
 		}

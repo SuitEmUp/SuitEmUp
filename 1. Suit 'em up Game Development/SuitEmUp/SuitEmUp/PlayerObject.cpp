@@ -5,13 +5,17 @@
 #include "InputManager.h"
 #include <iostream>
 #include <SFML/Audio.hpp>
-
+#include "Config.h"
 PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
 {
+	m_buffer2 = new sf::SoundBuffer();
+	m_buffer2->loadFromFile("../data/sounds/Bow.wav");
 	m_buffer = new sf::SoundBuffer();
 	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
 	m_sound = new sf::Sound();
 	m_sound->setBuffer(*m_buffer);
+	m_sound2 = new sf::Sound();
+	m_sound2->setBuffer(*m_buffer2);
 	m_position = sf::Vector2f(600, 400);
 	m_update = update;
 	m_input = input;
@@ -23,6 +27,8 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_cooldown = 0;
 	speed = 400;
 	m_damage = 1;
+	//vapen 1
+	//if(Config::getInt("current_weapon", 0) == 0)
 };
 
 bool PlayerObject::Update(float deltatime)
@@ -184,6 +190,13 @@ bool PlayerObject::Update(float deltatime)
 	if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
 	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 	if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
+		if(m_damage>100){
+			m_sound2->setVolume(200);
+			m_sound2->setPitch(2);
+			m_sound2->play();}
+		else{
+		m_sound->play();
+		}
 		m_cooldown=0.3 ;	//How long the cooldown is
 		return true;	//if this is returned a bullet will be spawned
 	}
