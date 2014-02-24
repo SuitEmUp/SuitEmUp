@@ -99,7 +99,7 @@ bool PlayerObject::Update(float deltatime)
 	double dist2=dist1;	//The distance from the truck we want to have
 	//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
 
-	/*MOVEMENT INPUTS*/
+	//MOVEMENT INPUTS
 
 	//// NORMAL MOVEMENT
 	//if(m_input->IsDown(sf::Keyboard::A)){
@@ -117,70 +117,35 @@ bool PlayerObject::Update(float deltatime)
 
 	//m_position += m_velocity*deltatime;
 
-	////Special Movement
-	//if(m_input->IsDown(sf::Keyboard::A)){
-	//	m_velocity.x=-speed*((delta_y)/dist1);
-	//	m_velocity.y=speed*((delta_x)/dist1);
-	//	//nothing happens with dist2, but dist1 gets affected by centripetal effects
-	//}
-	//if(m_input->IsDown(sf::Keyboard::D)){
-	//	m_velocity.x=speed*((delta_y)/dist1);
-	//	m_velocity.y=-speed*((delta_x)/dist1);
-	//	//same as previous
-	//}
-	//if(m_input->IsDown(sf::Keyboard::W)){
-	//	m_velocity.x-=speed*((delta_x)/dist1);
-	//	m_velocity.y-=speed*((delta_y)/dist1);
-	//	dist2+=speed*deltatime;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
-	//}
-	//if(m_input->IsDown(sf::Keyboard::S)){
-	//	m_velocity.x+=speed*((delta_x)/dist1);
-	//	m_velocity.y+=speed*((delta_y)/dist1);
-	//	dist2-=speed*deltatime;	//Same as previous
-	//}
-	///*END OF MOVEMENT INPUTS*/
-
-	////We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
-	//if(dist2<100){
-	//	dist2=100;
-	//}
-
-	//
-	//m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
-
-	//delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
-	//delta_y = m_truck->GetPosition().y - m_position.y;
-
-	//dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
-	//double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
-
-
-	//m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
-	//m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
-
-
-	////std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
-
-	//VIKTOR STYLE
+	/*Special Movement*/
 	if(m_input->IsDown(sf::Keyboard::A)){
 		m_velocity.x=-speed*((delta_y)/dist1);
 		m_velocity.y=speed*((delta_x)/dist1);
-		//nothing happens with dist2, but dist1 gets affected by centripetal effects
+		/*nothing happens with dist2, but dist1 gets affected by centripetal effects*/
 	}
 	if(m_input->IsDown(sf::Keyboard::D)){
 		m_velocity.x=speed*((delta_y)/dist1);
 		m_velocity.y=-speed*((delta_x)/dist1);
-		//same as previous
+		/*same as previous*/
 	}
-
-	//END OF MOVEMENT INPUTS
+	if(m_input->IsDown(sf::Keyboard::W)){
+		m_velocity.x-=speed*((delta_x)/dist1);
+		m_velocity.y-=speed*((delta_y)/dist1);
+		dist2+=speed*deltatime;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
+	}
+	if(m_input->IsDown(sf::Keyboard::S)){
+		m_velocity.x+=speed*((delta_x)/dist1);
+		m_velocity.y+=speed*((delta_y)/dist1);
+		dist2-=speed*deltatime;	//Same as previous
+	}
+		/*END OF MOVEMENT INPUTS*/
 
 	//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
 	if(dist2<100){
 		dist2=100;
 	}
 
-
+	
 	m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
 	delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
@@ -192,6 +157,41 @@ bool PlayerObject::Update(float deltatime)
 
 	m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
 	m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
+
+
+	////std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
+
+	//VIKTOR STYLE
+	/*if(m_input->IsDown(sf::Keyboard::A)){
+		m_velocity.x=-speed*((delta_y)/dist1);
+		m_velocity.y=speed*((delta_x)/dist1);
+		nothing happens with dist2, but dist1 gets affected by centripetal effects
+	}
+	if(m_input->IsDown(sf::Keyboard::D)){
+		m_velocity.x=speed*((delta_y)/dist1);
+		m_velocity.y=-speed*((delta_x)/dist1);
+		same as previous
+	}*/
+
+	//END OF MOVEMENT INPUTS
+
+	//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
+	//if(dist2<100){
+	//	dist2=100;
+	//}
+
+
+	//m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
+
+	//delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
+	//delta_y = m_truck->GetPosition().y - m_position.y;  //y-difference between truck and player
+
+	//dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
+	//double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
+
+
+	//m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
+	//m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
 
 	//LIMITS
 	if(m_position.x<0){
@@ -209,7 +209,11 @@ bool PlayerObject::Update(float deltatime)
 
 	m_sprite->setPosition(m_position);
 
+<<<<<<< HEAD
 	////VIKTOR FIRESTYLE
+=======
+	//VIKTOR FIRESTYLE
+>>>>>>> cdc548a603ad4fc2cb7e3f3cccf83c567a12731c
 	//float delta_X = m_truck->GetPosition().x-m_position.x;
 	//float delta_Y = m_truck->GetPosition().y-m_position.y;
 	//float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
