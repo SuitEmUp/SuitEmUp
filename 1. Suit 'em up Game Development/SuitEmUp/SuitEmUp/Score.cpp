@@ -7,7 +7,7 @@
 
 Score::	Score()
 {
-	m_score = 0; 
+	m_score = 5000; 
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
@@ -27,9 +27,9 @@ void Score::PutInScore(int enemykillscore)
 {
 	m_score += enemykillscore;
 }
-void Score::BuyEquipment(Button *xbutton)
+void Score::BuyEquipment(int buyequipment)
 {
-
+	m_score -= buyequipment;
 }
 sf::Text Score::DrawScore()
 {

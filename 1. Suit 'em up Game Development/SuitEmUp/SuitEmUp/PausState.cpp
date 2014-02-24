@@ -70,8 +70,6 @@ bool PausState::Update(float deltatime)
 {
 
 
-		//m_engine->m_gom->DrawGameObjects();
-
 		for(int i=0; i<m_buttons.size();i++)
 		{
 			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")

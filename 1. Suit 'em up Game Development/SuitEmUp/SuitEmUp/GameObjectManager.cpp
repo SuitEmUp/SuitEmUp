@@ -319,6 +319,10 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
+			
+			//score
+			//m_xscore->PutInScore(enemyscore = 35);
+			
 			m_truck->Healed();
 		//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
@@ -595,3 +599,13 @@ void GameObjectManager::EraseTrinketButtons(){
 	};
 	m_vTrinketButtons.clear();
 };
+
+void GameObjectManager::Buy(int value)
+{
+	m_xscore->BuyEquipment(value);
+}
+int GameObjectManager::GetScore(int m_value)
+{
+	m_value = m_xscore->GetScore();
+	return m_value;
+}

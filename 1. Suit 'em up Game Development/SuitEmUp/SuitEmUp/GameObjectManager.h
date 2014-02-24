@@ -47,7 +47,13 @@ public:
 	SpriteManager* m_spritemanager; ///noooooo
 	sf::RenderWindow* m_window;
 
+
+
 	//Button related stuff?
+
+
+	void Buy(int value);
+	int GetScore(int m_value);
 
 	void CreateButtons();
 	void UpdateButtons();
