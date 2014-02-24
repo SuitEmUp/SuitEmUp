@@ -20,8 +20,8 @@ bool Spawner::Timer(float deltatime){
 	m_time+=deltatime*4;
 	if(m_time>m_alarm){
 		m_time=0;
-		m_alarm*=0.9;
-		if(m_alarm<2.9) m_alarm=2.9;
+		m_alarm*=0.9f;
+		if(m_alarm<2.9f) m_alarm=2.9f;
 		return true;
 	};
 	return false;

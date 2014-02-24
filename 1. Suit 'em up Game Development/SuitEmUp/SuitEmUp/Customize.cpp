@@ -77,6 +77,8 @@ bool Customize::Init()
 	return true;
 };
 void Customize::Exit(){
+	m_engine->m_gom->EraseCustomizationButtons();
+	m_engine->m_gom->EraseTrinketButtons();
 	for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
 		delete m_rects[i];
@@ -163,7 +165,7 @@ bool Customize::Update(float deltatime)
 				m_suit->setPosition(45, 114);
 			}
 			//Prev Suit
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked"
 				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeSuitLeft")
 			{
 				if(m_currentSuit == 0)
