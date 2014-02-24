@@ -48,7 +48,7 @@ void GameObjectManager::CreateGameObjects()
 	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_backgound->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
@@ -279,14 +279,8 @@ void GameObjectManager::Update(float deltatime)
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
-<<<<<<< HEAD
-					//SCORE COUNT
-
-					m_xscore->PutInScore(enemyscore = 25);
-=======
 					m_xscore->PutInScore(enemyscore = 25);
 
->>>>>>> 2df08d6ec3d9d429046746362f6b1d6610cf0dff
 					--j;
 				}
 				--i;

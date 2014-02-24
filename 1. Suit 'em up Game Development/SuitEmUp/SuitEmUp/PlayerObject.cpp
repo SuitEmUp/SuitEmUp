@@ -209,47 +209,47 @@ bool PlayerObject::Update(float deltatime)
 
 	m_sprite->setPosition(m_position);
 
-	//VIKTOR FIRESTYLE
-	float delta_X = m_truck->GetPosition().x-m_position.x;
-	float delta_Y = m_truck->GetPosition().y-m_position.y;
-	float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
-
-	const float pi = 3.141592654f;
-	m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
-	m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
-
-	m_cooldown-=deltatime;
-	if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
-	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
-		if(m_damage>100){
-			m_sound2->setVolume(200);
-			m_sound2->setPitch(2);
-			m_sound2->play();}
-		else{
-			m_sound->play();
-		}
-		m_cooldown=0.3 ;	//How long the cooldown is
-		return true;	//if this is returned a bullet will be spawned
-	}
-
-	//// MOUSE FIRE
-	//float delta_X = m_position.x-m_input->GetMousePos().x;
-	//float delta_Y = m_position.y-m_input->GetMousePos().y;
+	////VIKTOR FIRESTYLE
+	//float delta_X = m_truck->GetPosition().x-m_position.x;
+	//float delta_Y = m_truck->GetPosition().y-m_position.y;
 	//float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
-	//
+
 	//const float pi = 3.141592654f;
 	//m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
 	//m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
 
-	////m_cooldown-=deltatime;		//reduces cooldown until you can fire again
-	//m_cooldown-=1;
+	//m_cooldown-=deltatime;
+	//if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
 	//if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	//if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
-	//	m_sound->play();
-	//	m_cooldown=1;	//How long the cooldown is
+	//if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
+	//	if(m_damage>100){
+	//		m_sound2->setVolume(200);
+	//		m_sound2->setPitch(2);
+	//		m_sound2->play();}
+	//	else{
+	//		m_sound->play();
+	//	}
+	//	m_cooldown=0.3 ;	//How long the cooldown is
 	//	return true;	//if this is returned a bullet will be spawned
 	//}
+
+	// MOUSE FIRE
+	float delta_X = m_position.x-m_input->GetMousePos().x;
+	float delta_Y = m_position.y-m_input->GetMousePos().y;
+	float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
+	
+	const float pi = 3.141592654f;
+	m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
+	m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
+
+	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
+	m_cooldown-=1;
+	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
+	if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
+		m_sound->play();
+		m_cooldown=1;	//How long the cooldown is
+		return true;	//if this is returned a bullet will be spawned
+	}
 	return false; //if this is returned nothing will happen
 };
 
