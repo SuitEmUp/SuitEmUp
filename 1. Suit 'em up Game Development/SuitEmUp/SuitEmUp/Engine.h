@@ -40,7 +40,7 @@ public:
 	sf::Time time;
 	float m_fDeltaTime;
 	bool m_running;
-
+	int m_paused;
 
 
 };
