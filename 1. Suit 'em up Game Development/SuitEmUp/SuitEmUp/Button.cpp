@@ -37,8 +37,8 @@ std::string Button::Update()
 
 	if(m_Shape == "Circle")
 	{
-		int dx = (m_input->GetMousePos().x - m_position.x);
-		int dy = (m_input->GetMousePos().y - m_position.y);
+		float dx = (m_input->GetMousePos().x - m_position.x);
+		float dy = (m_input->GetMousePos().y - m_position.y);
 
 		float hyp = sqrt((dx*dx)+(dy*dy));
 

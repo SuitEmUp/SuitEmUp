@@ -48,7 +48,7 @@ void GameObjectManager::CreateGameObjects()
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_background->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
@@ -177,7 +177,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_enemies.at(i)->GetDamage(), m_truck, m_enemies.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -189,7 +189,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_supers.at(i)->GetDamage(), m_truck, m_supers.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -200,7 +200,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_girls.at(i)->GetDamage(), m_truck, m_girls.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -209,7 +209,7 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_enemy_projectiles.size(); i++){ 
 		//Updates all enemy projectiles. The return true if they collide with the truck. The truck is also damaged.
 		if(m_enemy_projectiles.at(i)->Update(m_truck, deltatime)){
-			delete m_enemy_projectiles.at(i)->GetSprite();
+			//delete m_enemy_projectiles.at(i)->GetSprite();
 			delete m_enemy_projectiles[i];
 			m_enemy_projectiles.erase(m_enemy_projectiles.begin()+i);
 			i--;
@@ -219,7 +219,7 @@ void GameObjectManager::Update(float deltatime)
 
 	for(int i = 0; i< m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)->Update(m_truck, deltatime)){
-			delete m_player_projectiles.at(i)->GetSprite();
+			//delete m_player_projectiles.at(i)->GetSprite();
 			delete m_player_projectiles[i];
 			m_player_projectiles.erase(m_player_projectiles.begin()+i);
 			i--;
@@ -233,13 +233,13 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
-				delete m_player_projectiles.at(i)->GetSprite();
+				//delete m_player_projectiles.at(i)->GetSprite();
 				delete m_player_projectiles[i];
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
 
-					delete m_enemies.at(j)->GetSprite();
+				//	delete m_enemies.at(j)->GetSprite();
 
 					int chance = rand()%20;
 					if(chance == 15)
@@ -275,17 +275,11 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-					delete m_supers.at(j)->GetSprite();
+				//	delete m_supers.at(j)->GetSprite();
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
-
-					//SCORE COUNT
-
 					m_xscore->PutInScore(enemyscore = 25);
-
-					m_xscore->PutInScore(enemyscore = 25);
-
 
 					--j;
 				}
@@ -308,7 +302,7 @@ void GameObjectManager::Update(float deltatime)
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
-					delete m_girls.at(j)->GetSprite();
+				//	delete m_girls.at(j)->GetSprite();
 					delete m_girls[j];
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
@@ -326,7 +320,7 @@ void GameObjectManager::Update(float deltatime)
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
 			m_truck->Healed();
-			delete m_vRepairKits.at(i)->GetSprite();
+		//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
 			i--;
@@ -564,9 +558,40 @@ void GameObjectManager::CreateTrinketButtons()
 
 void GameObjectManager::DrawTrinketButtons()
 {
-		for(int i=0; i<m_vTrinketButtons.size(); i++){
+	for(int i=0; i<m_vTrinketButtons.size(); i++){
 		if(m_vTrinketButtons.at(i)!=nullptr){
 			m_window->draw(*m_vTrinketButtons.at(i)->GetSprite()); // draws all buttons
 		}
 	}
+
+};
+
+void GameObjectManager::EraseButtons(){
+	for(int i = 0; i< m_vButtons.size(); i++){
+		//delete m_vButtons.at(i)->GetSprite();
+		delete m_vButtons[i];
+		m_vButtons.erase(m_vButtons.begin()+i);
+		i--;
+	};
+	m_vButtons.clear();
+};
+
+void GameObjectManager::EraseCustomizationButtons(){
+	for(int i = 0; i < m_vCustomizeButtons.size(); i++){
+	//	delete m_vCustomizeButtons.at(i)->GetSprite();
+		delete m_vCustomizeButtons[i];
+		m_vCustomizeButtons.erase(m_vCustomizeButtons.begin()+i);
+		i--;
+	};
+	m_vCustomizeButtons.clear();
+};
+
+void GameObjectManager::EraseTrinketButtons(){
+	for(int i = 0; i < m_vTrinketButtons.size(); i++){
+	//	delete m_vTrinketButtons.at(i)->GetSprite();
+		delete m_vTrinketButtons[i];
+		m_vTrinketButtons.erase(m_vTrinketButtons.begin()+i);
+		i--;
+	};
+	m_vTrinketButtons.clear();
 };

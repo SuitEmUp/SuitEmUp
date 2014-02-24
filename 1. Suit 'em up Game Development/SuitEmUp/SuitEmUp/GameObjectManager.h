@@ -52,12 +52,15 @@ public:
 	void CreateButtons();
 	void UpdateButtons();
 	void DrawButtons();
+	void EraseButtons();
 
 	void CreateCusomizationButtons();
 	void DrawCustomizationButtons();
+	void EraseCustomizationButtons();
 
 	void CreateTrinketButtons();
 	void DrawTrinketButtons();
+	void EraseTrinketButtons();
 
 	std::vector<Button*> m_vButtons;
 	std::vector<Button*> m_vCustomizeButtons;

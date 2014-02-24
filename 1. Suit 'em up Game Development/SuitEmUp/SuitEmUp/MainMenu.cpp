@@ -50,14 +50,7 @@ bool MainMenu::Init()
 };
 void MainMenu::Exit()
 {
-	for (auto it = m_Buttons.begin();it != m_Buttons.end(); it++)
-	{
-		if(*it != nullptr) {
-			delete *it;
-		}
-
-	}
-	m_Buttons.clear();
+	m_engine->m_gom->EraseButtons();
 };
 
 bool MainMenu::Update(float deltatime)
