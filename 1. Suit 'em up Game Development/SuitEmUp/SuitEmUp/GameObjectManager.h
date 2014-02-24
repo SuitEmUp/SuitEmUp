@@ -80,9 +80,7 @@ private:
 	Spawner* m_spawner;
 	InputManager* m_input;
 
-	sf::Sprite* m_backgound;
-
-	//std::vector<Button*> m_vButtons;
+	sf::Sprite* m_background;
 
 	std::vector<RepairKit*> m_vRepairKits;
 

@@ -9,6 +9,7 @@
 #include "Customize.h"
 #include "Game.h"
 #include "TitleScreen.h"
+#include "PausState.h"
 
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
@@ -33,6 +34,9 @@ Engine::Engine()
 	m_spritemanager = nullptr;
 
 	m_fDeltaTime = 0.01f;
+
+
+	m_paused = 1; // false 
 };
 
 bool Engine::Initialize()
@@ -60,6 +64,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new Options(this));
 		m_statemanager->Attach(new Customize(this));
 		m_statemanager->Attach(new Game(	this));
+		m_statemanager->Attach(new PausState(this));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;

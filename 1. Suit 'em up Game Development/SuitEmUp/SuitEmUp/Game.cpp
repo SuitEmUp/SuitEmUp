@@ -13,11 +13,18 @@ Game::Game(Engine *engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
-};
+	m_engine->m_paused = 1;
 
+
+};
 bool Game::Init()
 {
-	m_engine->m_gom->CreateGameObjects();
+
+	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
+	{
+		printf("nu aer vi haer inne\n");
+		m_engine->m_gom->CreateGameObjects();
+	}
 	//-----------
 	//sf::Font font;
 	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
@@ -36,7 +43,14 @@ bool Game::Init()
 };
 
 void Game::Exit(){
-	m_engine->m_gom->ClearGameObjects();
+
+
+	if(m_engine->m_paused == 1)
+	{
+		m_engine->m_gom->ClearGameObjects();
+	};
+
+
 };
 
 
@@ -88,6 +102,15 @@ bool Game::Update(float deltatime)
 		setNextState("Options");
 		return false;
 	};
+
+	if(m_input->IsDown(sf::Keyboard::P))
+	{
+		printf("Next State set to PausState\n");
+		setNextState("PausState");
+		m_engine->m_paused = 2;
+		return false;
+	};
+
 	return true;
 }
 

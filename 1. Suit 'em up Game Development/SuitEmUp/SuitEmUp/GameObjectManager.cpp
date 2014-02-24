@@ -27,7 +27,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_truck=nullptr;	//Make sure everything is cleared.
 	m_player=nullptr;
 	m_spawner=nullptr;
-	m_backgound=nullptr;
+	m_background=nullptr;
 	m_enemies.clear();
 	m_supers.clear();
 	m_girls.clear();
@@ -45,8 +45,8 @@ GameObjectManager::~GameObjectManager()
 }
 void GameObjectManager::CreateGameObjects()
 {
-	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
-	m_backgound->setPosition(0,0);
+	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
+	m_background->setPosition(0,0);
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck.png", "Truck", 2, 2));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
@@ -394,7 +394,7 @@ void GameObjectManager::DetachObject()
 
 void GameObjectManager::DrawGameObjects()
 {
-	m_window->draw(*m_backgound);
+	m_window->draw(*m_background);
 
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar

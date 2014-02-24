@@ -1,3 +1,5 @@
+//Customize.cpp
+
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
@@ -307,6 +309,14 @@ bool Customize::Update(float deltatime)
 			{
 				m_trinketboxactivator = true;
 			}
+			
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update()== "Clicked" && m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
+			{
+				printf("Next State set to Game\n");
+				setNextState("Game");
+				return false;
+			}		
+
 		}
 
 
