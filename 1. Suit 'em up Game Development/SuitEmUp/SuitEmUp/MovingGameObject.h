@@ -21,7 +21,7 @@ public:
 	void SetSound(sf::Sound* sound);
 
 protected:
-	int speed;
+	float speed;
 	sf::Vector2f m_velocity;
 	Truck* m_truck;
 	sf::SoundBuffer* m_buffer;

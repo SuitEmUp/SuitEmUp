@@ -1,16 +1,52 @@
-<<<<<<< HEAD
-﻿Build started 2014-02-24 10:37:08.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2014-02-24 12:47:33.
+     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Collider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\CollisionManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Config.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EnemyProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\InputManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Level.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MovingGameObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Options.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Sprite.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SpriteManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp" TitleScreen.cpp StateManager.cpp "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Utils.cpp"
+         Utils.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(28): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned long', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(84): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(119): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(120): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\utils.cpp(121): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         StateManager.cpp
+         TitleScreen.cpp
+         Truck.cpp
+         SuperEnemy.cpp
+         SpriteManager.cpp
+         Sprite.cpp
+         Spawner.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(15): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(45): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(58): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(126): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(139): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(163): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(176): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         SniperGirl.cpp
+         Score.cpp
+         RepairKit.cpp
+         Projectile.cpp
+         PlayerProjectile.cpp
+         PlayerObject.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(255): warning C4305: '=' : truncation from 'double' to 'float'
+         Options.cpp
+         MovingGameObject.cpp
+         MainMenu.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(65): warning C4018: '<' : signed/unsigned mismatch
+         main.cpp
+         Level.cpp
+         InputManager.cpp
+         Generating Code...
+         Compiling...
+         HpBar.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\hpbar.cpp(13): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\hpbar.cpp(15): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\hpbar.cpp(17): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
          GameObjectManager.cpp
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(163): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(173): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(180): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(185): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(192): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(196): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(203): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(209): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(220): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(229): warning C4018: '<' : signed/unsigned mismatch
@@ -32,29 +68,22 @@
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(462): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(512): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(561): warning C4018: '<' : signed/unsigned mismatch
+         GameObject.cpp
+         Game.cpp
+         Engine.cpp
+         EnemyProjectile.cpp
+         EnemyObject.cpp
+         Customize.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(123): warning C4018: '<' : signed/unsigned mismatch
+         Config.cpp
+         CollisionManager.cpp
+         Collider.cpp
+         ButtonManager.cpp
+         Button.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\button.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
-=======
-﻿Build started 2014-02-21 14:46:39.
-     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp"
-         PlayerObject.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(54): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(66): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(122): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(123): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(127): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(128): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(132): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(133): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(137): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(138): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(158): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\playerobject.cpp(159): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
->>>>>>> cdc548a603ad4fc2cb7e3f3cccf83c567a12731c
          Debug\ButtonManager.obj
          Debug\Collider.obj
          Debug\CollisionManager.obj
@@ -87,18 +116,9 @@
          Debug\TitleScreen.obj
          Debug\StateManager.obj
          Debug\Utils.obj
-<<<<<<< HEAD
          SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.73
-=======
-         SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.54
->>>>>>> cdc548a603ad4fc2cb7e3f3cccf83c567a12731c
+Time Elapsed 00:00:20.47

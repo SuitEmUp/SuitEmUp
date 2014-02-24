@@ -32,7 +32,7 @@ bool EnemyObject::Update(float deltatime){
 	m_velocity.y = speed*delta_y/dist;
 	/*End of movement*/
 
-	m_cooldown-=0.02;	//cooldown goes down
+	m_cooldown-=0.02f;	//cooldown goes down
 	delta_x=m_truck->GetPosition().x-m_position.x;
 	delta_y=m_truck->GetPosition().y-m_position.y;
 

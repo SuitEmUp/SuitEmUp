@@ -177,7 +177,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_enemies.at(i)->GetDamage(), m_truck, m_enemies.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -189,7 +189,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_supers.at(i)->GetDamage(), m_truck, m_supers.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -200,7 +200,7 @@ void GameObjectManager::Update(float deltatime)
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_girls.at(i)->GetDamage(), m_truck, m_girls.at(i)->GetPosition(),
-					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3)));
+					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
 		}
 	};
@@ -279,19 +279,8 @@ void GameObjectManager::Update(float deltatime)
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
-<<<<<<< HEAD
 					m_xscore->PutInScore(enemyscore = 25);
 
-=======
-
-					//SCORE COUNT
-
-					m_xscore->PutInScore(enemyscore = 25);
-
-					m_xscore->PutInScore(enemyscore = 25);
-
-
->>>>>>> cdc548a603ad4fc2cb7e3f3cccf83c567a12731c
 					--j;
 				}
 				--i;

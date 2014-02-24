@@ -33,6 +33,8 @@ private:
 	sf::SoundBuffer* m_buffer2;
 	sf::Sound* m_sound2;
 
+	std::string m_firetype;
+	std::string m_controltype;
 
 	std::string m_suittype;
 	std::string m_weapontype;

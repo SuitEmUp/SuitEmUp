@@ -18,5 +18,5 @@ public:
 protected:
 	float m_damage;
 	float m_cooldown;
-	float m_hp;
+	int m_hp;
 };

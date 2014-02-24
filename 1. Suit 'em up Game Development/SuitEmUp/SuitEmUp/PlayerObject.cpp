@@ -27,6 +27,8 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_cooldown = 0;
 	speed = 400;
 	m_damage = 1;
+	m_controltype = "Special";
+	m_firetype = "Mouse";
 	//vapen 1
 	//if(Config::getInt("current_weapon", 0) == 0)
 };
@@ -51,7 +53,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 1;
-		m_attackspeed = 0.3;
+		m_attackspeed = 0.3f;
 	}
 	if(m_weapontype == "Needlegun")
 	{
@@ -63,7 +65,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 0.2f;
-		m_attackspeed = 0.02;
+		m_attackspeed = 0.02f;
 	}
 	if(m_damage>100){
 		m_sprite = m_update;
@@ -73,6 +75,24 @@ bool PlayerObject::Update(float deltatime)
 	}
 
 	m_velocity = sf::Vector2f(0, 0);
+
+	if(m_input->IsDown(sf::Keyboard::B)){
+		m_controltype = "Special";
+	}
+	if(m_input->IsDown(sf::Keyboard::N)){
+		m_controltype = "Normal";
+	}
+	if(m_input->IsDown(sf::Keyboard::M)){
+		m_controltype = "Viktor";
+	}
+
+	if(m_input->IsDown(sf::Keyboard::C)){
+		m_firetype = "Mouse";
+	}
+	if(m_input->IsDown(sf::Keyboard::V)){
+		m_firetype = "Viktor";
+	}
+
 	//UP/DOWN-GRADES
 	if(m_input->IsDown(sf::Keyboard::U)){
 		m_damage+=5;
@@ -92,106 +112,108 @@ bool PlayerObject::Update(float deltatime)
 
 	//m_position += m_truck->GetVelocity();	//Lets the player smoothly stick to the truck if we're going to implement truck movement
 
-	double delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
-	double delta_y = m_truck->GetPosition().y - m_position.y;		//y-difference between truck and player
+	float delta_x = m_truck->GetPosition().x - m_position.x;		//x-difference between truck and player
+	float delta_y = m_truck->GetPosition().y - m_position.y;		//y-difference between truck and player
 
-	double dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
-	double dist2=dist1;	//The distance from the truck we want to have
+	float dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
+	float dist2=dist1;	//The distance from the truck we want to have
 	//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
 
 	//MOVEMENT INPUTS
+	if(m_controltype == "Normal"){
+		// NORMAL MOVEMENT
+		if(m_input->IsDown(sf::Keyboard::A)){
+			m_velocity.x=-speed;
+		}
+		if(m_input->IsDown(sf::Keyboard::D)){
+			m_velocity.x=speed;
+		}
+		if(m_input->IsDown(sf::Keyboard::W)){
+			m_velocity.y=-speed;
+		}
+		if(m_input->IsDown(sf::Keyboard::S)){
+			m_velocity.y=speed;
+		}
 
-	//// NORMAL MOVEMENT
-	//if(m_input->IsDown(sf::Keyboard::A)){
-	//	m_velocity.x=-speed;
-	//}
-	//if(m_input->IsDown(sf::Keyboard::D)){
-	//	m_velocity.x=speed;
-	//}
-	//if(m_input->IsDown(sf::Keyboard::W)){
-	//	m_velocity.y=-speed;
-	//}
-	//if(m_input->IsDown(sf::Keyboard::S)){
-	//	m_velocity.y=speed;
-	//}
-
-	//m_position += m_velocity*deltatime;
-
-	/*Special Movement*/
-	if(m_input->IsDown(sf::Keyboard::A)){
-		m_velocity.x=-speed*((delta_y)/dist1);
-		m_velocity.y=speed*((delta_x)/dist1);
-		/*nothing happens with dist2, but dist1 gets affected by centripetal effects*/
-	}
-	if(m_input->IsDown(sf::Keyboard::D)){
-		m_velocity.x=speed*((delta_y)/dist1);
-		m_velocity.y=-speed*((delta_x)/dist1);
-		/*same as previous*/
-	}
-	if(m_input->IsDown(sf::Keyboard::W)){
-		m_velocity.x-=speed*((delta_x)/dist1);
-		m_velocity.y-=speed*((delta_y)/dist1);
-		dist2+=speed*deltatime;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
-	}
-	if(m_input->IsDown(sf::Keyboard::S)){
-		m_velocity.x+=speed*((delta_x)/dist1);
-		m_velocity.y+=speed*((delta_y)/dist1);
-		dist2-=speed*deltatime;	//Same as previous
-	}
-		/*END OF MOVEMENT INPUTS*/
-
-	//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
-	if(dist2<100){
-		dist2=100;
+		m_position += m_velocity*deltatime;
 	}
 
-	
-	m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
+	if(m_controltype == "Special"){
+		/*Special Movement*/
+		if(m_input->IsDown(sf::Keyboard::A)){
+			m_velocity.x=-speed*((delta_y)/dist1);
+			m_velocity.y=speed*((delta_x)/dist1);
+			/*nothing happens with dist2, but dist1 gets affected by centripetal effects*/
+		}
+		if(m_input->IsDown(sf::Keyboard::D)){
+			m_velocity.x=speed*((delta_y)/dist1);
+			m_velocity.y=-speed*((delta_x)/dist1);
+			/*same as previous*/
+		}
+		if(m_input->IsDown(sf::Keyboard::W)){
+			m_velocity.x-=speed*((delta_x)/dist1);
+			m_velocity.y-=speed*((delta_y)/dist1);
+			dist2+=speed*deltatime;	//Here dist2 is increased, since we go further from the truck (dist1 is increased too)
+		}
+		if(m_input->IsDown(sf::Keyboard::S)){
+			m_velocity.x+=speed*((delta_x)/dist1);
+			m_velocity.y+=speed*((delta_y)/dist1);
+			dist2-=speed*deltatime;	//Same as previous
+		}
+			/*END OF MOVEMENT INPUTS*/
 
-	delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
-	delta_y = m_truck->GetPosition().y - m_position.y;
+		//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
+		if(dist2<100){
+			dist2=100;
+		}
 
-	dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
-	double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
+		
+		m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
+
+		delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
+		delta_y = m_truck->GetPosition().y - m_position.y;
+
+		dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
+		float offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
 
 
-	m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
-	m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
-
-
-	////std::cout << "offset:" << offset << "  dist1:" << dist1 << "  dist2:" << dist2 << std::endl;
-
-	//VIKTOR STYLE
-	/*if(m_input->IsDown(sf::Keyboard::A)){
-		m_velocity.x=-speed*((delta_y)/dist1);
-		m_velocity.y=speed*((delta_x)/dist1);
-		nothing happens with dist2, but dist1 gets affected by centripetal effects
+		m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
+		m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
 	}
-	if(m_input->IsDown(sf::Keyboard::D)){
-		m_velocity.x=speed*((delta_y)/dist1);
-		m_velocity.y=-speed*((delta_x)/dist1);
-		same as previous
-	}*/
 
-	//END OF MOVEMENT INPUTS
+	if(m_controltype == "Viktor"){
+		//VIKTOR STYLE
+		if(m_input->IsDown(sf::Keyboard::A)){
+			m_velocity.x=-speed*((delta_y)/dist1);
+			m_velocity.y=speed*((delta_x)/dist1);
+		//	nothing happens with dist2, but dist1 gets affected by centripetal effects
+		}
+		if(m_input->IsDown(sf::Keyboard::D)){
+			m_velocity.x=speed*((delta_y)/dist1);
+			m_velocity.y=-speed*((delta_x)/dist1);
+		//	same as previous
+		}
 
-	//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
-	//if(dist2<100){
-	//	dist2=100;
-	//}
+		//END OF MOVEMENT INPUTS
+
+		//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
+		if(dist2<100){
+			dist2=100;
+		}
 
 
-	//m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
+		m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
-	//delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
-	//delta_y = m_truck->GetPosition().y - m_position.y;  //y-difference between truck and player
+		delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
+		delta_y = m_truck->GetPosition().y - m_position.y;  //y-difference between truck and player
 
-	//dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
-	//double offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
+		dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//current distance from middle
+		float offset = dist1-dist2;	//how much off it is from the distance from the middle that we want
 
 
-	//m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
-	//m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
+		m_position.x+=(offset*delta_x)/dist1;	//adjusting x to be what we want
+		m_position.y+=(offset*delta_y)/dist1;	//adjusting y to be what we want
+	}
 
 	//LIMITS
 	if(m_position.x<0){
@@ -209,50 +231,49 @@ bool PlayerObject::Update(float deltatime)
 
 	m_sprite->setPosition(m_position);
 
-<<<<<<< HEAD
-	////VIKTOR FIRESTYLE
-=======
-	//VIKTOR FIRESTYLE
->>>>>>> cdc548a603ad4fc2cb7e3f3cccf83c567a12731c
-	//float delta_X = m_truck->GetPosition().x-m_position.x;
-	//float delta_Y = m_truck->GetPosition().y-m_position.y;
-	//float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
+	if(m_firetype == "Viktor"){
+		//Viktor FireStyle
+		float delta_X = m_truck->GetPosition().x-m_position.x;
+		float delta_Y = m_truck->GetPosition().y-m_position.y;
+		float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
 
-	//const float pi = 3.141592654f;
-	//m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
-	//m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
+		const float pi = 3.141592654f;
+		m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
+		m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
 
-	//m_cooldown-=deltatime;
-	//if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
-	//if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	//if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
-	//	if(m_damage>100){
-	//		m_sound2->setVolume(200);
-	//		m_sound2->setPitch(2);
-	//		m_sound2->play();}
-	//	else{
-	//		m_sound->play();
-	//	}
-	//	m_cooldown=0.3 ;	//How long the cooldown is
-	//	return true;	//if this is returned a bullet will be spawned
-	//}
-
-	// MOUSE FIRE
-	float delta_X = m_position.x-m_input->GetMousePos().x;
-	float delta_Y = m_position.y-m_input->GetMousePos().y;
-	float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
+		m_cooldown-=deltatime;
+		if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
+		if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
+		if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
+			if(m_damage>100){
+				m_sound2->setVolume(200);
+				m_sound2->setPitch(2);
+				m_sound2->play();}
+			else{
+				m_sound->play();
+			}
+			m_cooldown=0.3 ;	//How long the cooldown is
+			return true;	//if this is returned a bullet will be spawned
+		}
+	}
+	if(m_firetype == "Mouse"){
+		// MOUSE FIRE
+		float delta_X = m_position.x-m_input->GetMousePos().x;
+		float delta_Y = m_position.y-m_input->GetMousePos().y;
+		float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
 	
-	const float pi = 3.141592654f;
-	m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
-	m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
+		const float pi = 3.141592654f;
+		m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
+		m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
 
-	//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
-	m_cooldown-=1;
-	if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-	if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
-		m_sound->play();
-		m_cooldown=1;	//How long the cooldown is
-		return true;	//if this is returned a bullet will be spawned
+		//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
+		m_cooldown-=1;
+		if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
+		if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
+			m_sound->play();
+			m_cooldown=1;	//How long the cooldown is
+			return true;	//if this is returned a bullet will be spawned
+		}
 	}
 	return false; //if this is returned nothing will happen
 };
