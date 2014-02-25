@@ -48,7 +48,7 @@ void GameObjectManager::CreateGameObjects()
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_background->setPosition(0,0);
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1));
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1), m_spritemanager->Load("../data/sprites/truck_lvl2.png", "Truck2", 1, 1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
@@ -610,7 +610,10 @@ int GameObjectManager::GetScore(int m_value)
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
+<<<<<<< HEAD
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
+=======
+>>>>>>> fb3f3161f7e6072f1d6a901b619763fd1f308038
