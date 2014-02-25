@@ -47,7 +47,13 @@ public:
 	SpriteManager* m_spritemanager; ///noooooo
 	sf::RenderWindow* m_window;
 
+
+
 	//Button related stuff?
+
+
+	void Buy(int value);
+	int GetScore(int m_value);
 
 	void CreateButtons();
 	void UpdateButtons();
@@ -83,9 +89,7 @@ private:
 	Spawner* m_spawner;
 	InputManager* m_input;
 
-	sf::Sprite* m_backgound;
-
-	//std::vector<Button*> m_vButtons;
+	sf::Sprite* m_background;
 
 	std::vector<RepairKit*> m_vRepairKits;
 

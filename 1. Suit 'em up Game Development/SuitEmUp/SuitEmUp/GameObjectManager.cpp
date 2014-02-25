@@ -27,7 +27,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_truck=nullptr;	//Make sure everything is cleared.
 	m_player=nullptr;
 	m_spawner=nullptr;
-	m_backgound=nullptr;
+	m_background=nullptr;
 	m_enemies.clear();
 	m_supers.clear();
 	m_girls.clear();
@@ -45,8 +45,8 @@ GameObjectManager::~GameObjectManager()
 }
 void GameObjectManager::CreateGameObjects()
 {
-	m_backgound = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
-	m_backgound->setPosition(0,0);
+	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
+	m_background->setPosition(0,0);
 	//Creates all objects that exists from the beginning
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1), m_spritemanager->Load("../data/sprites/truck_lvl2.png", "Truck2", 1, 1));
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
@@ -319,6 +319,10 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
+			
+			//score
+			//m_xscore->PutInScore(enemyscore = 35);
+			
 			m_truck->Healed();
 		//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
@@ -388,7 +392,7 @@ void GameObjectManager::DetachObject()
 
 void GameObjectManager::DrawGameObjects()
 {
-	m_window->draw(*m_backgound);
+	m_window->draw(*m_background);
 
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
@@ -595,3 +599,13 @@ void GameObjectManager::EraseTrinketButtons(){
 	};
 	m_vTrinketButtons.clear();
 };
+
+void GameObjectManager::Buy(int value)
+{
+	m_xscore->BuyEquipment(value);
+}
+int GameObjectManager::GetScore(int m_value)
+{
+	m_value = m_xscore->GetScore();
+	return m_value;
+}

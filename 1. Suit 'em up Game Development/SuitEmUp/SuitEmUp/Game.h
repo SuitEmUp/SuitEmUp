@@ -25,4 +25,5 @@ private:
 	InputManager *m_input;
 	std::string next_state;
 	std::string tempName_change;
+	int paused;
 };

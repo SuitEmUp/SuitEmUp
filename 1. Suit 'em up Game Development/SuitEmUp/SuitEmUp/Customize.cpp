@@ -1,3 +1,5 @@
+//Customize.cpp
+
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
@@ -25,6 +27,10 @@ Customize::Customize(Engine *engine)
 	m_currentSuit = Config::getInt("current_suit", 0);
 	m_currentWeapon = Config::getInt("current_weapon", 0);
 	m_currentTruck = Config::getInt("current_truck", 0);
+	howmuchitcosts_suit = 1000;
+	howmuchitcosts_weapon = 1500;
+	howmuchitcosts_truck = 1200;
+	howmuchitcosts_trinket = 500;
 
 };
 
@@ -33,11 +39,6 @@ bool Customize::Init()
 	tempName_change = "02";
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 	m_rects.push_back(rectangle);
-
-	printf("State: Customize, Initialized\n");
-	printf("F1 - F4 to Change States\n");
-
-
 
 	//Background, borders
 
@@ -70,7 +71,8 @@ bool Customize::Init()
 	m_engine->m_gom->CreateCusomizationButtons();
 	m_engine->m_gom->CreateTrinketButtons();
 
-
+	printf("State: Customize, Initialized\n");
+	printf("F1 - F4 to Change States\n");
 
 	return true;
 };
@@ -106,6 +108,10 @@ bool Customize::Update(float deltatime)
 		return false;
 	};
 
+	//update score
+	howmuchmoneyihave = m_engine->m_gom->GetScore(howmuchmoneyihave);
+
+
 	if(m_trinketboxactivator){
 		if(m_input->GetMousePos().x <= m_trinketboxsprite->getPosition().x || m_input->GetMousePos().y <= m_trinketboxsprite->getPosition().y
 			|| m_input->GetMousePos().x >= (m_trinketboxsprite->getPosition().x + m_trinketboxsprite->getLocalBounds().width)
@@ -130,10 +136,16 @@ bool Customize::Update(float deltatime)
 
 			//Upgrade Suit
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit")
+				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
 			{
+				//score
+				m_engine->m_gom->Buy(howmuchitcosts_suit);
+				howmuchitcosts_suit + 1500;
+				printf("KOEPT SUIT\N");
 				printf("Click SUCCESSSSS\n");
 				printf("Suit Upgraded\n");
+
+
 			}
 			//Next Suit
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
@@ -194,6 +206,21 @@ bool Customize::Update(float deltatime)
 			//Weapon Stuff
 			//----------------------
 
+			//Upgrade Weapon
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
+				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave)
+			{
+				//score
+				m_engine->m_gom->Buy(howmuchitcosts_weapon);
+				howmuchitcosts_weapon + 1500;
+				printf("KOEPT SUIT\N");
+				printf("Click SUCCESSSSS\n");
+				printf("Suit Upgraded\n");
+
+
+			}
+
+
 			//Next Weapon
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
 				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
@@ -253,6 +280,20 @@ bool Customize::Update(float deltatime)
 			//Truck Stuff
 			//----------------------
 
+			//Upgrade Truck
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
+				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
+			{
+				//score
+				m_engine->m_gom->Buy(howmuchitcosts_truck);
+				howmuchitcosts_truck + 1500;
+				printf("KOEPT SUIT\n");
+				printf("Click SUCCESSSSS\n");
+				printf("Suit Upgraded\n");
+
+
+			}
+
 			//Next Truck
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
 				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeTruckRight")
@@ -309,6 +350,14 @@ bool Customize::Update(float deltatime)
 			{
 				m_trinketboxactivator = true;
 			}
+
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update()== "Clicked" && m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
+			{
+				printf("Next State set to Game\n");
+				setNextState("Game");
+				return false;
+			}		
+
 		}
 
 

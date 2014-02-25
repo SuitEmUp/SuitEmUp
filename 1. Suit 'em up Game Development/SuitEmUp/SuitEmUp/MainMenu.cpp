@@ -17,6 +17,7 @@ MainMenu::MainMenu(Engine *engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
+	
 };
 
 bool MainMenu::Init()
@@ -61,6 +62,7 @@ bool MainMenu::Update(float deltatime)
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");
+			m_engine->m_paused = 3; //through mainmenu
 			return false;
 		}
 

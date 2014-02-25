@@ -5,8 +5,6 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
-class Button;
-
 class PlayerObject;
 
 class Score
@@ -17,7 +15,7 @@ public:
 	~Score(){};
 	int GetScore();
 	void PutInScore(int enemykillscore);
-	void BuyEquipment(Button *xbutton);
+	void BuyEquipment(int enemykillscore);
 	sf::Text DrawScore();
 	
 private:

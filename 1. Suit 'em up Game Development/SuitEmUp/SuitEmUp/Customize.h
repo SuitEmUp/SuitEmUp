@@ -50,5 +50,9 @@ private:
 	bool m_trinketboxlock;
 	sf::Sprite* m_trinketboxsprite;
 
-
+	int howmuchitcosts_suit;
+	int howmuchitcosts_weapon;
+	int howmuchitcosts_truck;
+	int howmuchitcosts_trinket;
+	int howmuchmoneyihave;
 };
