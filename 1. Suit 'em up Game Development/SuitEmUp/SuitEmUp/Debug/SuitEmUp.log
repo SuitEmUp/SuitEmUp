@@ -1,36 +1,9 @@
-﻿Build started 2014-02-24 15:35:36.
+﻿Build started 2014-02-24 20:06:41.
      1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp"
-         GameObjectManager.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(163): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(173): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(185): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(196): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(209): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(220): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(229): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(231): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(239): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(263): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(264): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(271): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(294): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(295): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(302): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(319): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(403): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(408): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(413): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(418): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(423): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(428): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(462): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(512): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(561): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(570): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(580): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(590): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp"
+         Customize.cpp
+     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(125): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Button.obj
          Debug\ButtonManager.obj
@@ -70,4 +43,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.41
+Time Elapsed 00:00:02.53
