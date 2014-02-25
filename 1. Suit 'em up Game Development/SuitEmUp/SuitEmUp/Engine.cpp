@@ -10,6 +10,7 @@
 #include "Game.h"
 #include "TitleScreen.h"
 #include "PausState.h"
+#include "DieState.h"
 
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
@@ -65,6 +66,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new Customize(this));
 		m_statemanager->Attach(new Game(	this));
 		m_statemanager->Attach(new PausState(this));
+		m_statemanager->Attach(new DieState(this));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;

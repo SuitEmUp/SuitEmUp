@@ -22,21 +22,10 @@ bool Game::Init()
 
 	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
 	{
-		printf("nu aer vi haer inne\n");
+		printf("\n nu aer vi haer inne \n");
 		m_engine->m_gom->CreateGameObjects();
 	}
-	//-----------
-	//sf::Font font;
-	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
-	//sf::Text text;
-	//text.setFont(font);
-	//text.setString("Is this working?");
-	//text.setCharacterSize(24);
-	//text.setColor(sf::Color::Red);
-
-	//m_InputManager = nullptr;
-
-	//-----------
+	
 	printf("State: Game,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	return true;
@@ -52,39 +41,11 @@ void Game::Exit(){
 
 
 };
-
-
-
-//bool MainMenu::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//		
-//	}
-//	return true;
-//};
-
 bool Game::Update(float deltatime)
 {
 	m_engine->m_gom->Update(deltatime);
-	if(m_input->IsDown(sf::Keyboard::F1)||m_engine->m_gom->m_game_over)
+
+	if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to mainMenu\n");
 		setNextState("MainMenu");
@@ -110,12 +71,18 @@ bool Game::Update(float deltatime)
 		m_engine->m_paused = 2;
 		return false;
 	};
+	if(m_engine->m_gom->m_game_over)
+	{
+		printf("Next State set to DieState\n");
+		setNextState("DieState");
+		m_engine->m_paused = 2;
+		
+		return false;
+	}
 
 	return true;
 }
-
-//draw
-void Game::Draw(/*sf::RenderWindow *p_window*/){
+void Game::Draw(){
 	m_engine->m_gom->DrawGameObjects();
 };
 

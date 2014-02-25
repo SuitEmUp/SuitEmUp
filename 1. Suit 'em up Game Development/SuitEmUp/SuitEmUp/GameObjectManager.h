@@ -54,6 +54,7 @@ public:
 
 	void Buy(int value);
 	int GetScore(int m_value);
+	void Dead();
 
 	void CreateButtons();
 	void UpdateButtons();
