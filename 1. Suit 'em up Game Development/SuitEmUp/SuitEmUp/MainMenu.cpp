@@ -23,24 +23,8 @@ MainMenu::MainMenu(Engine *engine)
 bool MainMenu::Init()
 {
 	
-	
-	//-----------
-	//sf::Font font;
-	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
-	//sf::Text text;
-	//text.setFont(font);
-	//text.setString("Is this working?");
-	//text.setCharacterSize(24);
-	//text.setColor(sf::Color::Red);
-
-	//m_InputManager = nullptr;
-
-	//-----------
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
-
-
-	//m_TestButton = new Button(m_gom->m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"), (Config::getInt("window_w", 0)/2 - 119), 150);
 
 	m_engine->m_gom->CreateButtons();
 
@@ -83,20 +67,11 @@ bool MainMenu::Update(float deltatime)
 			//Exit Game
 		}
 	}
-
-	if(m_input->IsDown(sf::Keyboard::F3))
-	{
-		printf("Next State set to Customize\n");
-		setNextState("Customize");
-		return false;
-	};
-
 	return true;
 }
 
 void MainMenu::Draw()
 {
-	//m_gom->m_window->draw(*m_TestButton->GetSprite());
 	m_engine->m_gom->DrawButtons();
 
 };

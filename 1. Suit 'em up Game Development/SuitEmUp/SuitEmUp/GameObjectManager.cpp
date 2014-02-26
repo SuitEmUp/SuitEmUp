@@ -157,6 +157,7 @@ void GameObjectManager::Update(float deltatime)
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
+
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
@@ -402,7 +403,7 @@ void GameObjectManager::DrawGameObjects()
 	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
-	m_window->draw(m_xscore->DrawScore());
+	m_window->draw(m_xscore->DrawScore()); // draws score
 
 	for(int i=0; i<m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)!=nullptr){
@@ -609,3 +610,10 @@ int GameObjectManager::GetScore(int m_value)
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
+<<<<<<< HEAD
+void GameObjectManager::Dead()
+{
+	m_window->draw(m_xscore->DrawWhenDead());
+}
+=======
+>>>>>>> fb3f3161f7e6072f1d6a901b619763fd1f308038

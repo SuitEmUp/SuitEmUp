@@ -7,7 +7,7 @@
 
 Score::	Score()
 {
-	m_score = 5000; 
+	m_score = 0; 
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
@@ -35,6 +35,15 @@ sf::Text Score::DrawScore()
 {
 	std::ostringstream ss;
 	ss << "Score: " << GetScore();
+	score.setString( ss.str());
+	return score;
+}
+sf::Text Score::DrawWhenDead()
+{
+	score.setCharacterSize(20);
+	score.setPosition(150.f, 100.f);
+	std::ostringstream ss;
+	ss << "\t\t\t\t\t\t\tYou have lost your truck\n \t\tyou have been left defenseless against the bandits.\n \t\t\t\t\t\t\t\tYour Score: " << GetScore();
 	score.setString( ss.str());
 	return score;
 }
