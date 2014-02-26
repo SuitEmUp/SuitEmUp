@@ -14,4 +14,5 @@ public:
 	bool GetType(){};
 private:
 	float m_duration;
+//	sf::Vector2f hey[i];
 };
