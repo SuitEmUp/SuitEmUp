@@ -5,20 +5,42 @@
 #include <vector>
 #include <string>
 #include <SFML\Window.hpp>
+#include <SFML\Graphics.hpp>
 
 class Particles;
 class Picture;
 
-class EyeCandy{
+class EyeCandy : public sf::Drawable, public sf::Transformable{
 public:
+
 	EyeCandy();
 	~EyeCandy();
 
-	Particles* ParticlesCreator(std::string* p_type);
-	Picture* PictureCreator();
+	void ParticleCreator(std::string* p_type, sf::Vector2f p_position);
+	void PictureCreator(sf::Vector2f p_position);
 
-	void ParticlesDestroyer(std::vector<Particles*> p_particles);
-	void PictureDestroyer(std::vector<Picture*> p_pictures);
+	void Update(float deltatime);
+	void DrawParticles(float deltatime, sf::RenderWindow* renderwindow);
 
-	sf::Vector2f position;
+	void PictureDestroyer();
+	void ParticleDestroyer();
+
+private:
+	struct Particle{
+		float m_duration;
+		sf::Vector2f m_direction;
+		sf::Vector2f m_position;
+		float m_speed;
+	};
+
+	int count;
+
+	sf::Vector2f m_startpos;
+	sf::Vector2f m_destination;
+	std::string m_type;
+	int m_amount;
+	std::vector<Particle*> m_particles;
+	std::vector<sf::VertexArray> m_vertices;
+	float m_distance;
+	
 };

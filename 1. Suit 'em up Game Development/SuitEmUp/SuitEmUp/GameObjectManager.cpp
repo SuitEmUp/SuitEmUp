@@ -509,8 +509,6 @@ void GameObjectManager::CreateCusomizationButtons()
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
 		1046, 591));
 
-
-
 };
 void GameObjectManager::DrawCustomizationButtons()
 {
@@ -616,4 +614,7 @@ void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe
