@@ -38,40 +38,40 @@ bool PlayerObject::Update(float deltatime)
 	//sets suit stats
 	if(m_suittype == "Level1")
 	{
-
+		speed = 400;
+		printf("Suit Level 1 woopwoop");
 	}
 	if(m_suittype == "Level2")
 	{
-
+		speed = 500;
+		printf("Suit Level 2 woopwoop");
 	}
 	if(m_suittype == "Level3")
 	{
-
+		speed = 600;
+		printf("Suit Level 3 woopwoop");
 	}
 	//sets weapon stats
 	if(m_weapontype == "Revolver")
 	{
+		printf("Revolver Equiped");
 		m_sprite = m_unupdate;
 		m_damage = 1;
 		m_attackspeed = 0.3f;
 	}
 	if(m_weapontype == "Needlegun")
 	{
+		printf("Needlegun Equiped");
 		m_sprite = m_update;
 		m_damage = 4;
 		m_attackspeed = 0.85f;
 	}
 	if(m_weapontype == "ArmCannon")
 	{
+		printf("ArmCannon Equiped");
 		m_sprite = m_unupdate;
 		m_damage = 0.2f;
 		m_attackspeed = 0.02f;
-	}
-	if(m_damage>100){
-		m_sprite = m_update;
-	}
-	else{
-		m_sprite = m_unupdate;
 	}
 
 	m_velocity = sf::Vector2f(0, 0);
@@ -160,14 +160,14 @@ bool PlayerObject::Update(float deltatime)
 			m_velocity.y+=speed*((delta_y)/dist1);
 			dist2-=speed*deltatime;	//Same as previous
 		}
-			/*END OF MOVEMENT INPUTS*/
+		/*END OF MOVEMENT INPUTS*/
 
 		//We don't want the player to go inside a certain radius of the truck, therefore we limit its distance from it
 		if(dist2<100){
 			dist2=100;
 		}
 
-		
+
 		m_position+=m_velocity*deltatime;	//Here the player gets its new position, but it might not be the right one if any centripetal effects has occurred or the player has gone too close to our base.
 
 		delta_x = m_truck->GetPosition().x - m_position.x;	//x-difference between truck and player
@@ -186,12 +186,12 @@ bool PlayerObject::Update(float deltatime)
 		if(m_input->IsDown(sf::Keyboard::A)){
 			m_velocity.x=-speed*((delta_y)/dist1);
 			m_velocity.y=speed*((delta_x)/dist1);
-		//	nothing happens with dist2, but dist1 gets affected by centripetal effects
+			//	nothing happens with dist2, but dist1 gets affected by centripetal effects
 		}
 		if(m_input->IsDown(sf::Keyboard::D)){
 			m_velocity.x=speed*((delta_y)/dist1);
 			m_velocity.y=-speed*((delta_x)/dist1);
-		//	same as previous
+			//	same as previous
 		}
 
 		//END OF MOVEMENT INPUTS
@@ -261,7 +261,7 @@ bool PlayerObject::Update(float deltatime)
 		float delta_X = m_position.x-m_input->GetMousePos().x;
 		float delta_Y = m_position.y-m_input->GetMousePos().y;
 		float dist3 = sqrt(delta_X*delta_X+delta_Y*delta_Y);
-	
+
 		const float pi = 3.141592654f;
 		m_direction = sf::Vector2f(delta_Y/dist3, delta_X/dist3);
 		m_sprite->setRotation((atan2(delta_Y/dist3, delta_X/dist3))*(180/pi));
@@ -320,4 +320,19 @@ void PlayerObject::SetWeaponType(std::string p_weapontype)
 void PlayerObject::SetTruckType(std::string p_trucktype)
 {
 	m_trucktype = p_trucktype;
+};
+
+std::string PlayerObject::GetWeaponType()
+{
+	return m_weapontype;
+};
+
+std::string PlayerObject::GetSuitType()
+{
+	return m_suittype;
+};
+
+std::string PlayerObject::GetTruckType()
+{
+	return m_trucktype;
 };

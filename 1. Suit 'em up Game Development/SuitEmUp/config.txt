@@ -14,8 +14,10 @@ customize_padding_small = 6
 hud_padding = 75
 
 -PlayerStats-
-current_suit = 2;
-current_weapon = 0;
-current_truck = 0;
+current_suit = 0
+current_weapon = 0
+current_truck = 0
+
+weapons_available = 1
 
 

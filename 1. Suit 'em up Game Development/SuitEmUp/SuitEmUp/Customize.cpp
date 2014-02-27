@@ -23,6 +23,8 @@ Customize::Customize(Engine *engine)
 	m_input = m_engine->m_input;
 	m_trinketboxactivator = false;
 	m_trinketboxlock = false;
+	m_weapons_available = Config::getInt("weapons_available", 0);
+	m_currentSuit = Config::getInt("current_suit", 0);
 
 	m_currentSuit = Config::getInt("current_suit", 0);
 	m_currentWeapon = Config::getInt("current_weapon", 0);
@@ -31,6 +33,8 @@ Customize::Customize(Engine *engine)
 	howmuchitcosts_weapon = 1500;
 	howmuchitcosts_truck = 1200;
 	howmuchitcosts_trinket = 500;
+
+
 
 };
 
@@ -130,236 +134,147 @@ bool Customize::Update(float deltatime)
 
 		for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
 		{
-			//----------------------
-			//Suit Stuff
-			//----------------------
-
-			//Upgrade Suit
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked")
 			{
-				//score
-				m_engine->m_gom->Buy(howmuchitcosts_suit);
-				howmuchitcosts_suit + 1500;
-				printf("KOEPT SUIT\N");
-				printf("Click SUCCESSSSS\n");
-				printf("Suit Upgraded\n");
+				//----------------------
+				//Suit Stuff
+				//----------------------
 
+				//Upgrade Suit
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
+				{
+					//score
+					m_engine->m_gom->Buy(howmuchitcosts_suit);
+					howmuchitcosts_suit + 1500;
+					if(m_currentSuit == 0)
+					{
+						m_engine->m_gom->m_player->SetSuitType("Level2");
+						m_currentSuit = 1;
+						Config::set("current_suit","1");
+						printf("Suit Upgraded\n");
+					}
+					else if(m_currentSuit == 1)
+					{
+						m_engine->m_gom->m_player->SetSuitType("Level3");
+						m_currentSuit = 2;
+						Config::set("current_suit","2");
+						printf("Suit Upgraded\n");
+					}
+				}
+				//----------------------
+				//Weapon Stuff
+				//----------------------
+
+				//Upgrade Weapon
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave && m_weapons_available != 3)
+				{
+					std::cout << m_weapons_available << std::endl;
+					//score
+					m_engine->m_gom->Buy(howmuchitcosts_weapon);
+					howmuchitcosts_weapon + 1500;
+					if(m_weapons_available == 1)
+					{
+						m_weapons_available = 2;
+						Config::set("weapons_available","2");
+						printf("Needlegun is now available!\n");
+
+					}
+					else if(m_weapons_available == 2)
+					{
+						m_weapons_available = 3;
+						Config::set("weapons_available","3");
+						printf("ArmCannon is now available!\n");
+					}
+					std::cout << m_weapons_available << std::endl;
+
+				}
+
+
+				//Next Weapon
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
+				{
+					if(m_currentWeapon == 0 && (m_weapons_available == 2 || m_weapons_available >= 3))
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "1");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
+					}
+					else if(m_currentWeapon == 1 && (m_weapons_available == 3 || m_weapons_available >= 3))
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "2");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
+					}
+					else if(m_currentWeapon == 2 && (m_weapons_available == 1 || m_weapons_available >= 3))
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "0");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Revolver");
+					}
+					m_weapon->setPosition(354, 114);
+				}
+				//Prev Weapon
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
+				{
+					if(m_currentWeapon == 0 && m_weapons_available == 3)
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "2");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
+					}
+
+					else if(m_currentWeapon == 1 || (m_currentWeapon == 0 && m_weapons_available == 2))
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "0");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Revolver");
+					}
+					else if(m_currentWeapon == 2)
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "1");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
+					}
+					m_weapon->setPosition(354, 114);
+				}
+				//----------------------
+				//Truck Stuff
+				//----------------------
+
+				//Upgrade Truck
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
+				{
+					//score
+					m_engine->m_gom->Buy(howmuchitcosts_truck);
+					howmuchitcosts_truck + 1500;
+					printf("KOEPT SUIT\n");
+					printf("Click SUCCESSSSS\n");
+					printf("Suit Upgraded\n");
+
+
+				}
+
+				//TrinketBox
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Slot1")
+				{
+					m_trinketboxactivator = true;
+				}
+
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
+				{
+					printf("Next State set to Game\n");
+					setNextState("Game");
+					return false;
+				}		
 
 			}
-			//Next Suit
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeSuitRight")
-			{
-				if(m_currentSuit == 0)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "1");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level2");
-				}
-				else if(m_currentSuit == 1)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "2");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level3");
-				}
-				else if(m_currentSuit == 2)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "0");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level1");
-				}
-				m_suit->setPosition(45, 114);
-			}
-			//Prev Suit
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked"
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeSuitLeft")
-			{
-				if(m_currentSuit == 0)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "2");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level3");
-				}
-
-				else if(m_currentSuit == 1)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "0");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level1");
-				}
-				else if(m_currentSuit == 2)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "suit", 1.0, 1.0);
-					Config::set("current_suit", "1");
-					m_currentSuit = Config::getInt("current_suit", 0);
-					//m_engine->m_gom->m_player->SetSuitType("Level2");
-				}
-				m_suit->setPosition(45, 114);
-			}
-			//----------------------
-			//Weapon Stuff
-			//----------------------
-
-			//Upgrade Weapon
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave)
-			{
-				//score
-				m_engine->m_gom->Buy(howmuchitcosts_weapon);
-				howmuchitcosts_weapon + 1500;
-				printf("KOEPT SUIT\N");
-				printf("Click SUCCESSSSS\n");
-				printf("Suit Upgraded\n");
-
-
-			}
-
-
-			//Next Weapon
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
-			{
-				if(m_currentWeapon == 0)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "1");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("Needlegun");
-				}
-				else if(m_currentWeapon == 1)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "2");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
-				}
-				else if(m_currentWeapon == 2)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "0");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("Revolver");
-				}
-				m_weapon->setPosition(354, 114);
-			}
-			//Prev Weapon
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
-			{
-				if(m_currentWeapon == 0)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "2");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
-				}
-
-				else if(m_currentWeapon == 1)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "0");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("Revolver");
-				}
-				else if(m_currentWeapon == 2)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "1");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					//m_engine->m_gom->m_player->SetWeaponType("Needlegun");
-				}
-				m_weapon->setPosition(354, 114);
-			}
-			//----------------------
-			//Truck Stuff
-			//----------------------
-
-			//Upgrade Truck
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
-			{
-				//score
-				m_engine->m_gom->Buy(howmuchitcosts_truck);
-				howmuchitcosts_truck + 1500;
-				printf("KOEPT SUIT\n");
-				printf("Click SUCCESSSSS\n");
-				printf("Suit Upgraded\n");
-
-
-			}
-
-			//Next Truck
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeTruckRight")
-			{
-				if(m_currentTruck == 0)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "1");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-				else if(m_currentTruck == 1)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "2");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-				else if(m_currentTruck == 2)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "0");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-				m_truck->setPosition(932, 114);
-			}
-			//Prev Truck
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeTruckLeft")
-			{
-				if(m_currentTruck == 0)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "2");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-
-				else if(m_currentTruck == 1)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "0");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-				else if(m_currentTruck == 2)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "truck", 1.0, 1.0);
-					Config::set("current_truck", "1");
-					m_currentTruck = Config::getInt("current_truck", 0);
-				}
-				m_truck->setPosition(932, 114);
-			}
-
-			//TrinketBox
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked" 
-				&& m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Slot1")
-			{
-				m_trinketboxactivator = true;
-			}
-
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update()== "Clicked" && m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
-			{
-				printf("Next State set to Game\n");
-				setNextState("Game");
-				return false;
-			}		
-
 		}
-
 
 	}
 	if(m_trinketboxlock)

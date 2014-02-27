@@ -21,5 +21,6 @@ protected:
 	sf::Sprite* m_update;
 	sf::Sprite* m_unupdate;
 	float m_hp;
+	float m_maxhp;
 	sf::Vector2f m_velocity;
 };

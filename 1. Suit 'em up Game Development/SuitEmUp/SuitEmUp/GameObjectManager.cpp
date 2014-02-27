@@ -474,12 +474,12 @@ void GameObjectManager::DrawButtons()
 void GameObjectManager::CreateCusomizationButtons()
 {
 	//Top Suit
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+//	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+	//	Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeSuit"), 
 		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeSuit"), 
-		104, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
-		295, Config::getInt("customize_padding_big", 0)));
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
+		//295, Config::getInt("customize_padding_big", 0)));
 
 	//Top Weapon
 	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
@@ -490,12 +490,12 @@ void GameObjectManager::CreateCusomizationButtons()
 		873, Config::getInt("customize_padding_big", 0)));
 
 	//Top Truck
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+		//932, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeTruck"), 
 		932, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeTruck"), 
-		991, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
-		1182, Config::getInt("customize_padding_big", 0)));
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
+		//1182, Config::getInt("customize_padding_big", 0)));
 
 	//back
 	m_vCustomizeButtons.push_back(new Button(m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
@@ -605,15 +605,15 @@ void GameObjectManager::Buy(int value)
 {
 	m_xscore->BuyEquipment(value);
 }
+
 int GameObjectManager::GetScore(int m_value)
 {
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
-<<<<<<< HEAD
+
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-=======
->>>>>>> fb3f3161f7e6072f1d6a901b619763fd1f308038
+

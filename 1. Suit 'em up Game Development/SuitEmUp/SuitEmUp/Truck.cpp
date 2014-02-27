@@ -10,6 +10,7 @@ Truck::Truck(sf::Sprite* sprite, sf::Sprite* sprite2)
 	m_unupdate = sprite;
 	m_unupdate->setOrigin((m_unupdate->getLocalBounds().width)/2, (m_unupdate->getLocalBounds().height)/2);
 	m_sprite = m_unupdate;
+	m_maxhp = 100;
 	m_hp = 100;
 	m_position=sf::Vector2f(1280/2, 720/2);
 };
@@ -17,7 +18,7 @@ Truck::Truck(sf::Sprite* sprite, sf::Sprite* sprite2)
 bool Truck::Update(float deltatime)
 {
 	m_sprite->setPosition(m_position);
-	if(m_hp>100){m_hp=100;}
+	if(m_hp>m_maxhp){m_hp=m_maxhp;}
 	if(m_hp >75){m_sprite = m_update;}
 	else m_sprite = m_unupdate;
 	if(m_hp<1) return true;
