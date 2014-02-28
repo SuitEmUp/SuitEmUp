@@ -26,4 +26,5 @@ private:
 	std::string next_state;
 	std::string tempName_change;
 	int paused;
+	float m_deltatime;
 };

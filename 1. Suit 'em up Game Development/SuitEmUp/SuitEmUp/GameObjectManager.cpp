@@ -164,10 +164,8 @@ void GameObjectManager::Update(float deltatime)
 		m_game_over = true;
 	};
 	m_eyecandy->Update(deltatime);
-	m_eyecandy->DrawParticles(deltatime, m_window);
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
-		m_eyecandy->ParticleCreator("Player", m_player->GetPosition());
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1)));
@@ -243,6 +241,8 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
+				m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+
 				delete m_player_projectiles[i];
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
@@ -276,7 +276,7 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
-				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%10;
 					if(chance == 1)
@@ -285,6 +285,7 @@ void GameObjectManager::Update(float deltatime)
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 				//	delete m_supers.at(j)->GetSprite();
+					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -292,6 +293,7 @@ void GameObjectManager::Update(float deltatime)
 
 					--j;
 				}
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				--i;
 				break;
 			};
@@ -306,6 +308,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->SniperDestroyer(m_girls.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
+				m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				delete m_player_projectiles.at(i)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
@@ -399,7 +402,7 @@ void GameObjectManager::DetachObject()
 
 }
 
-void GameObjectManager::DrawGameObjects()
+void GameObjectManager::DrawGameObjects(float deltatime)
 {
 	m_window->draw(*m_background);
 
@@ -443,6 +446,7 @@ void GameObjectManager::DrawGameObjects()
 			m_window->draw(*m_enemy_projectiles.at(i)->GetSprite());	// draws all enemy projetiles
 		}
 	};
+	m_eyecandy->DrawEyeCandy(deltatime, m_window);
 }
 //////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////

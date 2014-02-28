@@ -41,7 +41,7 @@ public:
 
 	sf::Vector2f GetStartPosition(GameObject *GO);
 
-	void DrawGameObjects();
+	void DrawGameObjects(float deltatime);
 
 	bool m_game_over;
 

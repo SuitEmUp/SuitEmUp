@@ -79,7 +79,7 @@ bool Spawner::EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet){
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
-	if(dist<50) return true;
+	if(dist<25) return true;
 	
 	return false;
 }
@@ -91,7 +91,7 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
-	if(dist<50) return true;
+	if(dist<25) return true;
 	
 	return false;
 }
@@ -103,7 +103,7 @@ bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
-	if(dist<50) return true;
+	if(dist<25) return true;
 	
 	return false;
 }

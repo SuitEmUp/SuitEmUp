@@ -16,3 +16,7 @@ bool Projectile::Update(Truck* truck, float deltatime){
 bool Projectile::GetType(){
 	return true;
 };
+
+float Projectile::GetRotation(){
+	return m_rotation;
+}

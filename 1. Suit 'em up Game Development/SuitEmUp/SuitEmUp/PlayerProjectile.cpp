@@ -37,5 +37,6 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 	m_velocity.y-=speed*player->GetDirection().x;   //
 	
 	const float pi = 3.141592654f;
-	m_sprite->setRotation((atan2(player->GetDirection().x, player->GetDirection().y))*(180/pi));
+	m_rotation = (atan2(player->GetDirection().x, player->GetDirection().y))*(180/pi);
+	m_sprite->setRotation(m_rotation);
 };
