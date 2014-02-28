@@ -9,15 +9,16 @@
 
 class Particles;
 class Picture;
+class SpriteManager;
 
-class EyeCandy : public sf::Drawable, public sf::Transformable{
+class EyeCandy{
 public:
 
 	EyeCandy();
 	~EyeCandy();
 
-	void ParticleCreator(std::string* p_type, sf::Vector2f p_position);
-	void PictureCreator(sf::Vector2f p_position);
+	void ParticleCreator(char* p_type, sf::Vector2f p_position);
+	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position);
 
 	void Update(float deltatime);
 	void DrawParticles(float deltatime, sf::RenderWindow* renderwindow);
@@ -39,8 +40,10 @@ private:
 	sf::Vector2f m_destination;
 	std::string m_type;
 	int m_amount;
+	std::vector<sf::Sprite*> m_pictures;
 	std::vector<Particle*> m_particles;
-	std::vector<sf::VertexArray> m_vertices;
+	sf::Vertex* m_vertices;
+	//float<*>
 	float m_distance;
 	
 };

@@ -21,6 +21,7 @@ class SniperGirl;
 class Score;
 class HpBar;
 class Button;
+class EyeCandy;
 
 class GameObjectManager
 {
@@ -75,6 +76,7 @@ public:
 
 private:
 	//	std::vector<GameObject*> m_gameobject;
+	EyeCandy* m_eyecandy;
 	Truck* m_truck;
 	PlayerObject* m_player;
 	HpBar *m_hpbar;

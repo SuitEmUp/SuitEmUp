@@ -14,6 +14,7 @@
 #include "RepairKit.h"
 #include "SniperGirl.h"
 #include "Score.h"
+#include "EyeCandy.h"
 
 #include <iostream>
 #include "HpBar.h"
@@ -36,7 +37,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_vRepairKits.clear();
 	m_hpbar = nullptr;
 	m_xscore = nullptr;
-
+	m_eyecandy = nullptr;
 }
 
 GameObjectManager::~GameObjectManager()
@@ -65,10 +66,15 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
+	m_eyecandy = new EyeCandy();
 }
 
 void GameObjectManager::ClearGameObjects()
 {
+	if(m_eyecandy != nullptr){
+		delete m_eyecandy;
+		m_eyecandy = nullptr;
+	};
 
 	if(m_hpbar != nullptr)
 	{
@@ -157,9 +163,11 @@ void GameObjectManager::Update(float deltatime)
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
-
+	m_eyecandy->Update(deltatime);
+	m_eyecandy->DrawParticles(deltatime, m_window);
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
+		m_eyecandy->ParticleCreator("Player", m_player->GetPosition());
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1)));
