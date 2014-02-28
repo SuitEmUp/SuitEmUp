@@ -55,4 +55,6 @@ private:
 	int howmuchitcosts_truck;
 	int howmuchitcosts_trinket;
 	int howmuchmoneyihave;
+
+	int m_weapons_available;
 };

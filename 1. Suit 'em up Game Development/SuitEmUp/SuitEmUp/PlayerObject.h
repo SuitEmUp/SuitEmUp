@@ -22,6 +22,10 @@ public:
 	void SetWeaponType(std::string p_weapontype);
 	void SetTruckType(std::string p_trucktype);
 
+	std::string GetWeaponType();
+	std::string GetSuitType();
+	std::string GetTruckType();
+
 private:
 	InputManager* m_input;
 	float m_damage;

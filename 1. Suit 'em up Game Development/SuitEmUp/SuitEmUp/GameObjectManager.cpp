@@ -14,6 +14,7 @@
 #include "RepairKit.h"
 #include "SniperGirl.h"
 #include "Score.h"
+#include "EyeCandy.h"
 
 #include <iostream>
 #include "HpBar.h"
@@ -36,7 +37,7 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 	m_vRepairKits.clear();
 	m_hpbar = nullptr;
 	m_xscore = nullptr;
-
+	m_eyecandy = nullptr;
 }
 
 GameObjectManager::~GameObjectManager()
@@ -85,12 +86,20 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
+<<<<<<< HEAD
 
 
+=======
+	m_eyecandy = new EyeCandy();
+>>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
 }
 
 void GameObjectManager::ClearGameObjects()
 {
+	if(m_eyecandy != nullptr){
+		delete m_eyecandy;
+		m_eyecandy = nullptr;
+	};
 
 	if(m_hpbar != nullptr)
 	{
@@ -179,7 +188,7 @@ void GameObjectManager::Update(float deltatime)
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
-
+	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
@@ -257,6 +266,8 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
+				m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+
 				delete m_player_projectiles[i];
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
@@ -290,7 +301,7 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
-				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%10;
 					if(chance == 1)
@@ -298,7 +309,12 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
+<<<<<<< HEAD
 					//	delete m_supers.at(j)->GetSprite();
+=======
+				//	delete m_supers.at(j)->GetSprite();
+					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
+>>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -306,6 +322,7 @@ void GameObjectManager::Update(float deltatime)
 
 					--j;
 				}
+				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				--i;
 				break;
 			};
@@ -320,6 +337,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->SniperDestroyer(m_girls.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
+				m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				delete m_player_projectiles.at(i)->GetSprite();
 				m_player_projectiles.erase(m_player_projectiles.begin()+i);
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
@@ -413,7 +431,7 @@ void GameObjectManager::DetachObject()
 
 }
 
-void GameObjectManager::DrawGameObjects()
+void GameObjectManager::DrawGameObjects(float deltatime)
 {
 	m_window->draw(*m_background);
 
@@ -457,6 +475,7 @@ void GameObjectManager::DrawGameObjects()
 			m_window->draw(*m_enemy_projectiles.at(i)->GetSprite());	// draws all enemy projetiles
 		}
 	};
+	m_eyecandy->DrawEyeCandy(deltatime, m_window);
 }
 //////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////
@@ -496,12 +515,12 @@ void GameObjectManager::DrawButtons()
 void GameObjectManager::CreateCusomizationButtons()
 {
 	//Top Suit
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+//	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+	//	Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeSuit"), 
 		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeSuit"), 
-		104, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
-		295, Config::getInt("customize_padding_big", 0)));
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
+		//295, Config::getInt("customize_padding_big", 0)));
 
 	//Top Weapon
 	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
@@ -512,12 +531,12 @@ void GameObjectManager::CreateCusomizationButtons()
 		873, Config::getInt("customize_padding_big", 0)));
 
 	//Top Truck
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
+		//932, Config::getInt("customize_padding_big", 0)));
+	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeTruck"), 
 		932, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/upgrade_suit.png", "UpgradeTruck"), 
-		991, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
-		1182, Config::getInt("customize_padding_big", 0)));
+	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
+		//1182, Config::getInt("customize_padding_big", 0)));
 
 	//back
 	m_vCustomizeButtons.push_back(new Button(m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
@@ -530,8 +549,6 @@ void GameObjectManager::CreateCusomizationButtons()
 		1150, 500));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
 		1046, 591));
-
-
 
 };
 void GameObjectManager::DrawCustomizationButtons()
@@ -627,14 +644,26 @@ void GameObjectManager::Buy(int value)
 {
 	m_xscore->BuyEquipment(value);
 }
+
 int GameObjectManager::GetScore(int m_value)
 {
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
 
+<<<<<<< HEAD
 	void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
 
+=======
+void GameObjectManager::Dead()
+{
+	m_window->draw(m_xscore->DrawWhenDead());
+}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe
+>>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b

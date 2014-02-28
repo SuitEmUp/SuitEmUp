@@ -17,12 +17,15 @@ MainMenu::MainMenu(Engine *engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
-	
+
+	int test = Config::getInt("window_w", 0);
+
+
 };
 
 bool MainMenu::Init()
 {
-	
+
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 

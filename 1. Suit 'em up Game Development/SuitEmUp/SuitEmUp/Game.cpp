@@ -44,6 +44,7 @@ void Game::Exit(){
 bool Game::Update(float deltatime)
 {
 	m_engine->m_gom->Update(deltatime);
+	m_deltatime = deltatime;
 
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
@@ -83,7 +84,7 @@ bool Game::Update(float deltatime)
 	return true;
 }
 void Game::Draw(){
-	m_engine->m_gom->DrawGameObjects();
+	m_engine->m_gom->DrawGameObjects(m_deltatime);
 };
 
 std::string Game::Next()

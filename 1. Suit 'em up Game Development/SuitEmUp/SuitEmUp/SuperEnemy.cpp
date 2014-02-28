@@ -42,7 +42,8 @@ bool SuperEnemy::Update(float deltatime){
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
-	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
+	rotation = (atan2(delta_y/dist, delta_x/dist))*(180/pi)+180;
+	m_sprite->setRotation(rotation);
 
 	if(dist<120 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_sound->play();
@@ -75,4 +76,8 @@ int SuperEnemy::Damaged(int playerdmg){
 
 float SuperEnemy::GetDamage(){
 	return m_damage;
+};
+
+float SuperEnemy::GetRotation(){
+	return rotation;
 };

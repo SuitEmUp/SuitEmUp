@@ -14,8 +14,10 @@ public:
 	bool GetType();
 	int Damaged(int playerdmg);
 	float GetDamage();
+	float GetRotation();
 
 protected:
+	float rotation;
 	float m_damage;
 	float m_cooldown;
 	int m_hp;
