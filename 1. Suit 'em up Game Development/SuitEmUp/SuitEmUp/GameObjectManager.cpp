@@ -45,13 +45,32 @@ GameObjectManager::~GameObjectManager()
 }
 void GameObjectManager::CreateGameObjects()
 {
+	//background
+
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_background->setPosition(0,0);
+	
 	//Creates all objects that exists from the beginning
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/truck_lvl1.png", "Truck", 1, 1), m_spritemanager->Load("../data/sprites/truck_lvl2.png", "Truck2", 1, 1));
+	
+
+
+	//ANIMATIONS TRUCK
+	
+	m_truck = new Truck(m_spritemanager->Load("../data/sprites/TruckLVLOneSpriteSheet.png", "Truck_Animation_lv1",1, 1), 
+		m_spritemanager->Load("../data/sprites/truck_lvl2.png", "Truck2", 1, 1));
+
+	//------------------------------------------------------------------
+	
+	
+	
+	
+	
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
+	
+
+
 	//Clears all vectors
 	m_enemies.clear();
 	m_supers.clear();
@@ -59,12 +78,15 @@ void GameObjectManager::CreateGameObjects()
 	m_vRepairKits.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
+	
 	//The game is not over
 	m_game_over = false;
 	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
+
+
 }
 
 void GameObjectManager::ClearGameObjects()
@@ -240,7 +262,7 @@ void GameObjectManager::Update(float deltatime)
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
 
-				//	delete m_enemies.at(j)->GetSprite();
+					//	delete m_enemies.at(j)->GetSprite();
 
 					int chance = rand()%20;
 					if(chance == 15)
@@ -276,7 +298,7 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-				//	delete m_supers.at(j)->GetSprite();
+					//	delete m_supers.at(j)->GetSprite();
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -303,7 +325,7 @@ void GameObjectManager::Update(float deltatime)
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
-				//	delete m_girls.at(j)->GetSprite();
+					//	delete m_girls.at(j)->GetSprite();
 					delete m_girls[j];
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
@@ -320,12 +342,12 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
-			
+
 			//score
 			//m_xscore->PutInScore(enemyscore = 35);
-			
+
 			m_truck->Healed();
-		//	delete m_vRepairKits.at(i)->GetSprite();
+			//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
 			i--;
@@ -395,12 +417,12 @@ void GameObjectManager::DrawGameObjects()
 {
 	m_window->draw(*m_background);
 
+	m_window->draw(*m_truck->GetSprite()); //Draws truck
+
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
 	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
 
-
-	m_window->draw(*m_truck->GetSprite()); //Draws truck
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
 	m_window->draw(m_xscore->DrawScore()); // draws score
@@ -536,9 +558,9 @@ void GameObjectManager::CreateTrinketButtons()
 		75 + (123*3) + (50*4), 222));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*4) + (50*5), 222));
-	
+
 	//mid row
-		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		156 + 123/2, 343));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		156 + (123*1) + (50*2), 343));
@@ -548,7 +570,7 @@ void GameObjectManager::CreateTrinketButtons()
 		156 + (123*3) + (50*4), 343));
 
 	//bot row
-		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		75 + 123/2, 464));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*1) + (50*2), 464));
@@ -583,7 +605,7 @@ void GameObjectManager::EraseButtons(){
 
 void GameObjectManager::EraseCustomizationButtons(){
 	for(int i = 0; i < m_vCustomizeButtons.size(); i++){
-	//	delete m_vCustomizeButtons.at(i)->GetSprite();
+		//	delete m_vCustomizeButtons.at(i)->GetSprite();
 		delete m_vCustomizeButtons[i];
 		m_vCustomizeButtons.erase(m_vCustomizeButtons.begin()+i);
 		i--;
@@ -593,7 +615,7 @@ void GameObjectManager::EraseCustomizationButtons(){
 
 void GameObjectManager::EraseTrinketButtons(){
 	for(int i = 0; i < m_vTrinketButtons.size(); i++){
-	//	delete m_vTrinketButtons.at(i)->GetSprite();
+		//	delete m_vTrinketButtons.at(i)->GetSprite();
 		delete m_vTrinketButtons[i];
 		m_vTrinketButtons.erase(m_vTrinketButtons.begin()+i);
 		i--;
@@ -610,10 +632,9 @@ int GameObjectManager::GetScore(int m_value)
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
-<<<<<<< HEAD
-void GameObjectManager::Dead()
+
+	void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-=======
->>>>>>> fb3f3161f7e6072f1d6a901b619763fd1f308038
+
