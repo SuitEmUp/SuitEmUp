@@ -32,5 +32,11 @@ private:
 	Engine *m_engine;
 	std::vector<Button*> m_Buttons;
 
+	sf::Sprite* m_logo;
+	sf::Sprite* m_glow1;
+	sf::Sprite* m_glow2;
+	sf::Sprite* m_glow3;
+	sf::Sprite* m_glow4;
+
 
 };

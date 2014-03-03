@@ -34,11 +34,15 @@ private:
 	std::string tempName_change;
 	Engine* m_engine;
 	InputManager *m_input;
-    //bool paused;
+	//bool paused;
 	sf::Sprite *m_xbackground;
 
 	//buttons
 
 	std::vector<sf::RectangleShape*> m_rects;
 	std::vector<Button*> m_xbuttons;
+
+	sf::Sprite* m_glow1;
+	sf::Sprite* m_glow2;
+	sf::Sprite* m_glow3;
 };

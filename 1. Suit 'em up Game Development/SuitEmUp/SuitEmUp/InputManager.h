@@ -13,6 +13,7 @@ public:
 	InputManager(sf::RenderWindow* window);
 	~InputManager();
 	bool Mouse_isDownOnce(sf::Mouse::Button button) const;
+	bool Mouse_isDown(sf::Mouse::Button button) const;
 	int GetMouseY() const;
 	int GetMouseX() const;
 	sf::Vector2i GetMousePos();

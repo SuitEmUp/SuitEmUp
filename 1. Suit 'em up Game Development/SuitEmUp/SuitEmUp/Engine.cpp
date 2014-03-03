@@ -43,7 +43,7 @@ Engine::Engine()
 bool Engine::Initialize()
 {
 	m_statemanager = new StateManager();
-	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window");
+	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window"/*, sf::Style::Fullscreen*/);
 	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
@@ -95,6 +95,13 @@ void Engine::Run()
 };
 void Engine::Cleanup()
 {
+	//Resets stuff in the config-file
+	Config::set("current_suit", "0");
+	Config::set("current_weapon", "0");
+	Config::set("current_truck", "0");
+	Config::set("weapons_available", "1");
+	Config::renew();
+
 	if(m_spritemanager != nullptr){
 		delete m_spritemanager;
 		m_spritemanager=nullptr;

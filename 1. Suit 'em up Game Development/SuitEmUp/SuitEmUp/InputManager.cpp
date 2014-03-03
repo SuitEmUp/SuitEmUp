@@ -36,6 +36,13 @@ bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
 	return m_currentMouse[sf::Mouse::Button::Left] 
 	&& !m_previousMouse[sf::Mouse::Button::Left];
 }
+
+bool InputManager::Mouse_isDown(sf::Mouse::Button button) const
+{
+	return m_currentMouse[sf::Mouse::Button::Left];
+};
+
+
 int InputManager::GetMouseX() const
 {
 	return myMouseX;

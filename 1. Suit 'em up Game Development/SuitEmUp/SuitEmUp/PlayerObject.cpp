@@ -29,6 +29,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_damage = 1;
 	m_controltype = "Special";
 	m_firetype = "Mouse";
+	m_weapontype = "Revolver";
 	//vapen 1
 	//if(Config::getInt("current_weapon", 0) == 0)
 };
@@ -54,24 +55,27 @@ bool PlayerObject::Update(float deltatime)
 	//sets weapon stats
 	if(m_weapontype == "Revolver")
 	{
-		printf("Revolver Equiped");
 		m_sprite = m_unupdate;
 		m_damage = 1;
 		m_attackspeed = 0.3f;
 	}
 	if(m_weapontype == "Needlegun")
 	{
-		printf("Needlegun Equiped");
 		m_sprite = m_update;
 		m_damage = 4;
 		m_attackspeed = 0.85f;
 	}
 	if(m_weapontype == "ArmCannon")
 	{
-		printf("ArmCannon Equiped");
 		m_sprite = m_unupdate;
-		m_damage = 0.2f;
-		m_attackspeed = 0.02f;
+		m_damage = 1;
+		m_attackspeed = 0.000000001f;
+	}
+	if(m_weapontype == "Sniper")
+	{
+		m_sprite = m_unupdate;
+		m_damage = 50.0f;
+		m_attackspeed = 1.5f;
 	}
 
 	m_velocity = sf::Vector2f(0, 0);
@@ -252,7 +256,8 @@ bool PlayerObject::Update(float deltatime)
 			else{
 				m_sound->play();
 			}
-			m_cooldown=0.3 ;	//How long the cooldown is
+			m_cooldown=m_attackspeed;
+			//How long the cooldown is
 			return true;	//if this is returned a bullet will be spawned
 		}
 	}
@@ -269,18 +274,34 @@ bool PlayerObject::Update(float deltatime)
 		//m_cooldown-=deltatime;		//reduces cooldown until you can fire again
 		m_cooldown-=1;
 		if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
-		if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
-			if(m_damage>100){
-				m_sound2->setVolume(200);
-				m_sound2->setPitch(2);
-				m_sound2->play();}
-			else{
-				m_sound->play();
+
+		if(m_weapontype != "ArmCannon")
+			if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/)
+			{
+				if(m_damage>100){
+					m_sound2->setVolume(200);
+					m_sound2->setPitch(2);
+					m_sound2->play();}
+				else{
+					m_sound->play();
+				}
+				m_cooldown=1;	//How long the cooldown is
+				return true;	//if this is returned a bullet will be spawned
 			}
-			m_cooldown=1;	//How long the cooldown is
-			return true;	//if this is returned a bullet will be spawned
-		}
+			if(m_weapontype == "ArmCannon")
+				if(m_input->Mouse_isDown(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
+					if(m_damage>100){
+						m_sound2->setVolume(200);
+						m_sound2->setPitch(2);
+						m_sound2->play();}
+					else{
+						m_sound->play();
+					}
+					m_cooldown=1;	//How long the cooldown is
+					return true;	//if this is returned a bullet will be spawned
+				}
 	}
+
 	return false; //if this is returned nothing will happen
 };
 

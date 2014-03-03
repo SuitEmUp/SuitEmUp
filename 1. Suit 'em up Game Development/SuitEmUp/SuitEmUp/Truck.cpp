@@ -35,9 +35,12 @@ Truck::Truck(sf::Sprite* sprite, sf::Sprite* sprite2)
 bool Truck::Update(float deltatime)
 {
 	m_sprite->setPosition(m_position);
+<<<<<<< HEAD
 	m_truck_lowhp->update(deltatime, 0);
 	m_truck_hp->update(deltatime, 1);
 	if(m_hp>m_maxhp){m_hp=m_maxhp;}
+=======
+>>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
 
 
 
@@ -52,6 +55,12 @@ bool Truck::Update(float deltatime)
 	}
 
 
+<<<<<<< HEAD
+=======
+	if(m_hp>m_maxhp){m_hp=m_maxhp;}
+	if(m_hp >75){m_sprite = m_update;}
+	else m_sprite = m_unupdate;
+>>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
 	if(m_hp<1) return true;
 	return false;
 };

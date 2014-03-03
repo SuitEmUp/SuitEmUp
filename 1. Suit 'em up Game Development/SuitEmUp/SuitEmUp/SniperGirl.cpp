@@ -68,7 +68,7 @@ bool SniperGirl::GetType(){
 	return true;
 };
 
-int SniperGirl::Damaged(int playerdmg){
+float SniperGirl::Damaged(float playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
 };

@@ -17,6 +17,7 @@ public:
 	EyeCandy();
 	~EyeCandy();
 
+	void ShockCreator(sf::Vector2f p_position);
 	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
 	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
 
@@ -47,7 +48,9 @@ private:
 	int m_amount;
 	std::vector<Picture*> m_pictures;
 	std::vector<Particle*> m_particles;
+	std::vector<Particle*> m_shocks;
 	std::vector<sf::RectangleShape*> m_rectangles;
+	std::vector<sf::RectangleShape*> m_squares;
 	//float<*>
 	float m_distance;
 	

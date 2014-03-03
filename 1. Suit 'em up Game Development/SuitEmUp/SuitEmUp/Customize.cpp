@@ -23,12 +23,7 @@ Customize::Customize(Engine *engine)
 	m_input = m_engine->m_input;
 	m_trinketboxactivator = false;
 	m_trinketboxlock = false;
-	m_weapons_available = Config::getInt("weapons_available", 0);
-	m_currentSuit = Config::getInt("current_suit", 0);
 
-	m_currentSuit = Config::getInt("current_suit", 0);
-	m_currentWeapon = Config::getInt("current_weapon", 0);
-	m_currentTruck = Config::getInt("current_truck", 0);
 	howmuchitcosts_suit = 1000;
 	howmuchitcosts_weapon = 1500;
 	howmuchitcosts_truck = 1200;
@@ -40,6 +35,14 @@ Customize::Customize(Engine *engine)
 
 bool Customize::Init()
 {
+
+	m_weapons_available = Config::getInt("weapons_available", 0);
+	m_currentSuit = Config::getInt("current_suit", 0);
+
+	m_currentSuit = Config::getInt("current_suit", 0);
+	m_currentWeapon = Config::getInt("current_weapon", 0);
+	m_currentTruck = Config::getInt("current_truck", 0);
+
 	tempName_change = "02";
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 	m_rects.push_back(rectangle);
@@ -48,22 +51,22 @@ bool Customize::Init()
 
 	m_border = m_engine->m_spritemanager->Load("../data/misc/customization/border.png", "Backgrund", 1.0, 1.0);
 
-	if(m_currentSuit == 0) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "SuitL", 1.0, 1.0);
-	else if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "SuitU", 1.0, 1.0);
-	else if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "SuitR", 1.0, 1.0);
+	if(m_currentSuit == 0) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "Suit1", 1.0, 1.0);
+	else if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
+	else if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
 	m_suit->setPosition(45, 114);
 
-	if(m_currentWeapon == 0)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "WeaponL", 1.0, 1.0);
-	else if(m_currentWeapon == 1)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "WeaponU", 1.0, 1.0);
-	else if(m_currentWeapon == 2)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "WeaponR", 1.0, 1.0);
+	if(m_currentWeapon == 0)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "Weapon1", 1.0, 1.0);
+	else if(m_currentWeapon == 1)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "Weapon2", 1.0, 1.0);
+	else if(m_currentWeapon == 2)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "Weapon3", 1.0, 1.0);
 	m_weapon->setPosition(354, 114);
 
-	if(m_currentTruck == 0)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "TruckL", 1.0, 1.0);
-	else if(m_currentTruck == 1)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "TruckU", 1.0, 1.0);
-	else if(m_currentTruck == 2)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "TruckR", 1.0, 1.0);
+	if(m_currentTruck == 0)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "Truck1", 1.0, 1.0);
+	else if(m_currentTruck == 1)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
+	else if(m_currentTruck == 2)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
 	m_truck->setPosition(932, 114);
 
-	m_statbox = m_engine->m_spritemanager->Load("../data/misc/customization/stats_box.png", "StatBoc", 1.0, 1.0);
+	m_statbox = m_engine->m_spritemanager->Load("../data/misc/customization/stats_box.png", "StatBox", 1.0, 1.0);
 	m_statbox->setPosition(354, 373);
 
 	m_trinketbox = m_engine->m_spritemanager->Load("../data/misc/customization/trinkets_box.png", "TrinketBox", 1.0, 1.0);
@@ -74,6 +77,15 @@ bool Customize::Init()
 	//Buttons
 	m_engine->m_gom->CreateCusomizationButtons();
 	m_engine->m_gom->CreateTrinketButtons();
+
+	if(m_input->IsDown(sf::Keyboard::Tab))
+	{
+		m_pauselock = true;
+	}
+	else if(m_input->IsUp(sf::Keyboard::Tab))
+	{
+		m_pauselock = false;
+	}
 
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
@@ -93,6 +105,10 @@ void Customize::Exit(){
 
 bool Customize::Update(float deltatime)
 {
+
+
+
+
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to MainMenu\n");
@@ -127,6 +143,7 @@ bool Customize::Update(float deltatime)
 			}
 		}
 	}
+
 
 
 	if(!m_trinketboxactivator)
@@ -185,8 +202,11 @@ bool Customize::Update(float deltatime)
 						Config::set("weapons_available","3");
 						printf("ArmCannon is now available!\n");
 					}
-					std::cout << m_weapons_available << std::endl;
+					else if(m_weapons_available == 3){printf("Upgrade already complete\n");}
+					else {printf("Upgrade failed");}
 
+					std::cout << m_weapons_available << std::endl;
+					Config::renew();
 				}
 
 
@@ -214,8 +234,9 @@ bool Customize::Update(float deltatime)
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("Revolver");
 					}
-					m_weapon->setPosition(354, 114);
 				}
+
+				m_weapon->setPosition(354, 114);
 				//Prev Weapon
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
 				{
@@ -271,9 +292,16 @@ bool Customize::Update(float deltatime)
 					printf("Next State set to Game\n");
 					setNextState("Game");
 					return false;
-				}		
+				}
+
 
 			}
+		}
+		if(m_input->IsUp(sf::Keyboard::Tab) && Config::getInt("quickcustomize",0) == 1 && m_pauselock == true)
+		{
+			printf("Next State set to Game\n");
+			setNextState("Game");
+			return false;
 		}
 
 	}
@@ -285,6 +313,7 @@ bool Customize::Update(float deltatime)
 
 	return true;
 };
+
 
 void Customize::Draw()
 {

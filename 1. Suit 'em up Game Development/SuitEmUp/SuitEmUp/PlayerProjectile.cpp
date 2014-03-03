@@ -5,18 +5,26 @@
 #include "Truck.h"
 #include "InputManager.h"
 
-PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update){
-	speed = 2000;
+PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update, sf::Sprite* updatedupdate){
+	
+	if(player->GetWeaponType() == "ArmCannon"){
+	speed = 1000;
+	}
+
+	else{speed = 2000;}
 
 	m_position = player->GetPosition();
 
+	m_updatedupdate = updatedupdate;
 	m_unupdate = sprite;
 	m_update = update;
+	if(player->GetWeaponType() == "ArmCannon"){
+		m_sprite = m_updatedupdate;
+	}
 
-
-	if(player->GetWeaponType() == "Needlegun"){
+	else if(player->GetWeaponType() == "Needlegun"){
 		m_sprite = m_update;
-
+		type = "Needle";
 		//m_sprite->setScale((player->GetDamage()-80)/20, (player->GetDamage()-80)/100);
 	}
 	else{
