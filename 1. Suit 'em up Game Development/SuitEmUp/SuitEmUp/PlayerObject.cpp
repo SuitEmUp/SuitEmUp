@@ -68,7 +68,7 @@ bool PlayerObject::Update(float deltatime)
 	if(m_weapontype == "ArmCannon")
 	{
 		m_sprite = m_unupdate;
-		m_damage = 0.2f;
+		m_damage = 1;
 		m_attackspeed = 0.000000001f;
 	}
 	if(m_weapontype == "Sniper")
@@ -256,7 +256,8 @@ bool PlayerObject::Update(float deltatime)
 			else{
 				m_sound->play();
 			}
-			m_cooldown=0.3 ;	//How long the cooldown is
+			m_cooldown=m_attackspeed;
+			//How long the cooldown is
 			return true;	//if this is returned a bullet will be spawned
 		}
 	}
