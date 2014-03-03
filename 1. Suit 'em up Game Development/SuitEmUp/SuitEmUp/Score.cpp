@@ -15,7 +15,7 @@ Score::	Score()
 	score.setFont(font);
 	score.setCharacterSize(25);
 	score.setColor(sf::Color::Black);
-	score.move(1050.f, 0.f);	
+	score.move(1030.f, 0.f);	
 	score.setStyle(sf::Text::Bold);
 
 }

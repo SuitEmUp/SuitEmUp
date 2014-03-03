@@ -18,9 +18,8 @@ public:
 	bool Init();
 	void Exit();
 
-	//bool HandleInput();
 	bool Update(float deltatime);
-	void Draw(/*sf::RenderWindow *p_window*/);
+	void Draw();
 
 	std::string Next();
 	void setNextState(std::string state);

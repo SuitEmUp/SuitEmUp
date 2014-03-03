@@ -23,5 +23,6 @@ private:
 	int m_score;
 	sf::Text score;
 	sf::Font font;
+
 };
 

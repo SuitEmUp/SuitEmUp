@@ -16,7 +16,7 @@ PausState::PausState(Engine* engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
-	//paused = true;
+
 };
 
 bool PausState::Init()
@@ -76,21 +76,18 @@ bool PausState::Update(float deltatime)
 			{
 				printf("Next State set to GameState\n");
 				setNextState("Game");
-				//paused = false;
 				return false;
 			}
 			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Customization")
 			{
 				printf("Next State set to Customize\n");
 				setNextState("Customize");
-				//paused = false;
 				return false;
 			}
 			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
 			{
 				printf("Next State set to MainMenu\n");
 				setNextState("MainMenu");
-				//paused = false;
 				return false;
 			}
 

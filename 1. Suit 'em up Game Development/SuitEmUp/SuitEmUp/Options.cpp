@@ -26,31 +26,6 @@ bool Options::Init()
 
 void Options::Exit(){};
 
-//bool Options::HandleInput()
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-//	{
-//		setNextState("");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-//	{
-//		setNextState("Options");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
-//	{
-//		setNextState("Customize");
-//		return false;
-//	}
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4))
-//	{
-//		setNextState("Game");
-//		return false;
-//	}
-//	return true;
-//};
-
 bool Options::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::F1))
