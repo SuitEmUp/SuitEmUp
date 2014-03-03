@@ -9,18 +9,19 @@
 
 class Particles;
 class Picture;
+class SpriteManager;
 
-class EyeCandy : public sf::Drawable, public sf::Transformable{
+class EyeCandy{
 public:
 
 	EyeCandy();
 	~EyeCandy();
 
-	void ParticleCreator(std::string* p_type, sf::Vector2f p_position);
-	void PictureCreator(sf::Vector2f p_position);
+	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
+	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
 
 	void Update(float deltatime);
-	void DrawParticles(float deltatime, sf::RenderWindow* renderwindow);
+	void DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow);
 
 	void PictureDestroyer();
 	void ParticleDestroyer();
@@ -33,14 +34,21 @@ private:
 		float m_speed;
 	};
 
+	struct Picture{
+		float duration;
+		sf::Sprite* picture;
+	};
+
 	int count;
 
 	sf::Vector2f m_startpos;
 	sf::Vector2f m_destination;
 	std::string m_type;
 	int m_amount;
+	std::vector<Picture*> m_pictures;
 	std::vector<Particle*> m_particles;
-	std::vector<sf::VertexArray> m_vertices;
+	std::vector<sf::RectangleShape*> m_rectangles;
+	//float<*>
 	float m_distance;
 	
 };
