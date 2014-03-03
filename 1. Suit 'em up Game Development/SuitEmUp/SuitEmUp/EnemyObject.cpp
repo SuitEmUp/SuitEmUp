@@ -69,7 +69,7 @@ bool EnemyObject::GetType(){
 	return true;
 };
 
-int EnemyObject::Damaged(int playerdmg){
+float EnemyObject::Damaged(float playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
 }

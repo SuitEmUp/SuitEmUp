@@ -86,12 +86,8 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
-<<<<<<< HEAD
 
-
-=======
 	m_eyecandy = new EyeCandy();
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
 }
 
 void GameObjectManager::ClearGameObjects()
@@ -193,7 +189,7 @@ void GameObjectManager::Update(float deltatime)
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
-			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.5, 0.5)));
+			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
 	}
 	if(m_spawner->Timer(deltatime)){ 
 		//Keeps track of when enemies spawn
@@ -273,13 +269,9 @@ void GameObjectManager::Update(float deltatime)
 				
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
-<<<<<<< HEAD
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/DeadBandit.png", "BanditCorpse", 1.2, 1.2), m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+160);
-				//	delete m_enemies.at(j)->GetSprite();
-=======
 
 					//	delete m_enemies.at(j)->GetSprite();
->>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea
 
 					int chance = rand()%20;
 					if(chance == 15)
@@ -323,16 +315,10 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-<<<<<<< HEAD
-					//	delete m_supers.at(j)->GetSprite();
-=======
-<<<<<<< HEAD
-					//	delete m_supers.at(j)->GetSprite();
-=======
+
 				//	delete m_supers.at(j)->GetSprite();
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
->>>>>>> 45c3c67cd682a04e7f79332ec82439fdb3a78059
+
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -678,25 +664,7 @@ int GameObjectManager::GetScore(int m_value)
 	return m_value;
 }
 
-<<<<<<< HEAD
-	void GameObjectManager::Dead()
-{
-	m_window->draw(m_xscore->DrawWhenDead());
-}
-
-=======
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
->>>>>>> 45c3c67cd682a04e7f79332ec82439fdb3a78059
->>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea

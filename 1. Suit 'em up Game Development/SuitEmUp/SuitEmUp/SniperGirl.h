@@ -12,11 +12,11 @@ public:
 	~SniperGirl();
 	bool Update(float deltatime);
 	bool GetType();
-	int Damaged(int playerdmg);
+	float Damaged(float playerdmg);
 	float GetDamage();
 
 protected:
 	float m_cooldown;
-	int m_hp;
+	float m_hp;
 	float m_damage;
 };

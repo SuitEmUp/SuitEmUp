@@ -69,7 +69,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 0.2f;
-		m_attackspeed = 0.02f;
+		m_attackspeed = 0.000000001f;
 	}
 	if(m_weapontype == "Sniper")
 	{

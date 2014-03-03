@@ -69,7 +69,7 @@ bool SuperEnemy::GetType(){
 	return true;
 };
 
-int SuperEnemy::Damaged(int playerdmg){
+float SuperEnemy::Damaged(float playerdmg){
 	m_hp-=playerdmg;
 	return m_hp;
 };

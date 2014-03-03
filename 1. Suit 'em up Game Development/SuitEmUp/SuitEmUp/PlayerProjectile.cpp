@@ -6,7 +6,12 @@
 #include "InputManager.h"
 
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update, sf::Sprite* updatedupdate){
-	speed = 2000;
+	
+	if(player->GetWeaponType() == "ArmCannon"){
+	speed = 1000;
+	}
+
+	else{speed = 2000;}
 
 	m_position = player->GetPosition();
 
