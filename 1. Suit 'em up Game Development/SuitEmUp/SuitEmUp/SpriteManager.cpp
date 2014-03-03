@@ -46,7 +46,6 @@ sf::Sprite* SpriteManager::Load(const std::string &filename, const std::string s
 		m_Textures.insert(xTexturePair);
 		it = m_Textures.find(filename);
 	}
-
 	sf::Sprite* xSprite = new sf::Sprite; //skapa en ny sprite
 	xSprite->setTexture(*it->second); //sätt spritens textur
 	xSprite->setScale(x_scale, y_scale); //sätt scale

@@ -240,7 +240,7 @@ void GameObjectManager::Update(float deltatime)
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
 
-				//	delete m_enemies.at(j)->GetSprite();
+					//	delete m_enemies.at(j)->GetSprite();
 
 					int chance = rand()%20;
 					if(chance == 15)
@@ -276,7 +276,7 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-				//	delete m_supers.at(j)->GetSprite();
+					//	delete m_supers.at(j)->GetSprite();
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -303,7 +303,7 @@ void GameObjectManager::Update(float deltatime)
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
-				//	delete m_girls.at(j)->GetSprite();
+					//	delete m_girls.at(j)->GetSprite();
 					delete m_girls[j];
 					m_girls.erase(m_girls.begin()+j);
 					//SCORE COUNT
@@ -320,12 +320,12 @@ void GameObjectManager::Update(float deltatime)
 	for(int i = 0; i< m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
 			//delete (*it)->GetSprite();
-			
+
 			//score
 			//m_xscore->PutInScore(enemyscore = 35);
-			
+
 			m_truck->Healed();
-		//	delete m_vRepairKits.at(i)->GetSprite();
+			//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);
 			i--;
@@ -474,12 +474,12 @@ void GameObjectManager::DrawButtons()
 void GameObjectManager::CreateCusomizationButtons()
 {
 	//Top Suit
-//	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
+	//	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
 	//	Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
 	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeSuit"), 
 		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
-		//295, Config::getInt("customize_padding_big", 0)));
+	//295, Config::getInt("customize_padding_big", 0)));
 
 	//Top Weapon
 	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
@@ -491,11 +491,11 @@ void GameObjectManager::CreateCusomizationButtons()
 
 	//Top Truck
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
-		//932, Config::getInt("customize_padding_big", 0)));
+	//932, Config::getInt("customize_padding_big", 0)));
 	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeTruck"), 
 		932, Config::getInt("customize_padding_big", 0)));
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
-		//1182, Config::getInt("customize_padding_big", 0)));
+	//1182, Config::getInt("customize_padding_big", 0)));
 
 	//back
 	m_vCustomizeButtons.push_back(new Button(m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
@@ -534,9 +534,9 @@ void GameObjectManager::CreateTrinketButtons()
 		75 + (123*3) + (50*4), 222));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*4) + (50*5), 222));
-	
+
 	//mid row
-		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		156 + 123/2, 343));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		156 + (123*1) + (50*2), 343));
@@ -546,7 +546,7 @@ void GameObjectManager::CreateTrinketButtons()
 		156 + (123*3) + (50*4), 343));
 
 	//bot row
-		m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		75 + 123/2, 464));
 	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*1) + (50*2), 464));
@@ -581,7 +581,7 @@ void GameObjectManager::EraseButtons(){
 
 void GameObjectManager::EraseCustomizationButtons(){
 	for(int i = 0; i < m_vCustomizeButtons.size(); i++){
-	//	delete m_vCustomizeButtons.at(i)->GetSprite();
+		//	delete m_vCustomizeButtons.at(i)->GetSprite();
 		delete m_vCustomizeButtons[i];
 		m_vCustomizeButtons.erase(m_vCustomizeButtons.begin()+i);
 		i--;
@@ -591,7 +591,7 @@ void GameObjectManager::EraseCustomizationButtons(){
 
 void GameObjectManager::EraseTrinketButtons(){
 	for(int i = 0; i < m_vTrinketButtons.size(); i++){
-	//	delete m_vTrinketButtons.at(i)->GetSprite();
+		//	delete m_vTrinketButtons.at(i)->GetSprite();
 		delete m_vTrinketButtons[i];
 		m_vTrinketButtons.erase(m_vTrinketButtons.begin()+i);
 		i--;
@@ -614,7 +614,3 @@ void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe

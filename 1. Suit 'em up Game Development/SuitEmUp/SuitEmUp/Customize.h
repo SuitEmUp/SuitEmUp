@@ -26,6 +26,9 @@ public:
 	void setNextState(std::string state);
 	bool IsType(const std::string &type);
 
+
+
+
 private:
 	std::string next_state;
 	Engine *m_engine;
@@ -57,4 +60,5 @@ private:
 	int howmuchmoneyihave;
 
 	int m_weapons_available;
+	bool m_pauselock;
 };

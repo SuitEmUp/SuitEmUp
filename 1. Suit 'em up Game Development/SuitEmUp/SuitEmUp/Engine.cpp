@@ -95,6 +95,13 @@ void Engine::Run()
 };
 void Engine::Cleanup()
 {
+	//Resets stuff in the config-file
+	Config::set("current_suit", "0");
+	Config::set("current_weapon", "0");
+	Config::set("current_truck", "0");
+	Config::set("weapons_available", "1");
+	Config::renew();
+
 	if(m_spritemanager != nullptr){
 		delete m_spritemanager;
 		m_spritemanager=nullptr;

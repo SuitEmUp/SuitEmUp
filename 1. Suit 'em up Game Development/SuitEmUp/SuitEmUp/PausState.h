@@ -29,6 +29,8 @@ public:
 	std::string Next();
 	void setNextState(std::string state);
 	bool IsType(const std::string &type);
+	
+	
 
 private:
 	std::string next_state;
@@ -42,4 +44,8 @@ private:
 
 	std::vector<sf::RectangleShape*> m_rects;
 	std::vector<Button*> m_buttons;
+
+	sf::Sprite* m_glow1;
+	sf::Sprite* m_glow2;
+	sf::Sprite* m_glow3;
 };

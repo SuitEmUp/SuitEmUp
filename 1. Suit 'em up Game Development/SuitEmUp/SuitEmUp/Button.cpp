@@ -25,10 +25,15 @@ std::string Button::Update()
 		{
 			if(m_input->GetMousePos().y > m_position.y && m_input->GetMousePos().y < m_position.y + m_sprite->getLocalBounds().height)
 			{
+				
 				if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left))
 				{
 					printf("Button Clicked!\n");
 					return "Clicked";
+				}
+				else
+				{
+					return "Hovering";
 				}
 				//m_sprite == annan sprite
 			}
