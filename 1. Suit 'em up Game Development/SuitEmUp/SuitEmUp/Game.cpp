@@ -6,6 +6,7 @@
 #include "InputManager.h"
 #include "GameObjectManager.h"
 #include "PlayerObject.h"
+#include "Config.h"
 
 
 Game::Game(Engine *engine) 
@@ -52,10 +53,11 @@ bool Game::Update(float deltatime)
 		setNextState("MainMenu");
 		return false;
 	};
-	if(m_input->IsDown(sf::Keyboard::F3))
+	if(m_input->IsDown(sf::Keyboard::Tab) && Config::getInt("quickcustomize",0) == 1)
 	{
 		printf("Next State set to Customize\n");
 		setNextState("Customize");
+		m_engine->m_paused = 2;
 		return false;
 	};
 	if(m_input->IsDown(sf::Keyboard::F4))

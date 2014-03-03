@@ -17,11 +17,17 @@ DieState::DieState(Engine* engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
-	
+
 };
 
 bool DieState::Init()
 {
+	//Resets stuff in the config-file
+	Config::set("current_suit", "0");
+	Config::set("current_weapon", "0");
+	Config::set("current_truck", "0");
+	Config::set("weapons_available", "1");
+	Config::renew();
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_xbackground->setPosition(0,0);
@@ -32,7 +38,7 @@ bool DieState::Init()
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"),
+	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "HighScore"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
@@ -40,10 +46,19 @@ bool DieState::Init()
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
+	m_glow1 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow1",  1.0f, 1.0f);
+	m_glow1->setPosition(Config::getInt("window_w", 0)/2 - 119, Config::getInt("menu_top_padding", 0));
+
+	m_glow2 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow2",  1.0f, 1.0f);
+	m_glow2->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)));
+
+	m_glow3 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow3",  1.0f, 1.0f);
+	m_glow3->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)*2));
+
 	/*m_xbuttons.push_back(new Button(m_input, "QuitGame", "Square",m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 
-		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));*/
-		
+	(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));*/
+
 
 	printf("State: DieState,  Initialized\n");
 	return true;
@@ -71,31 +86,31 @@ bool DieState::Update(float deltatime)
 {
 
 
-		for(int i=0; i<m_xbuttons.size();i++)
+	for(int i=0; i<m_xbuttons.size();i++)
+	{
+		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Retry")
 		{
-			if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Retry")
-			{
-				printf("Next State set to GameState\n");
-				setNextState("Game");
-				m_engine->m_paused = 1;
-				return false;
-			}
-		/*	if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Customization")
-			{
-				printf("Next State set to highScore\n");
-				setNextState("HighScore");
-				
-				return false;
-			}*/
-			if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Main")
-			{
-				printf("Next State set to MainMenu\n");
-				setNextState("MainMenu");
-				
-				return false;
-			}
-
+			printf("Next State set to GameState\n");
+			setNextState("Game");
+			m_engine->m_paused = 1;
+			return false;
 		}
+		/*	if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Customization")
+		{
+		printf("Next State set to highScore\n");
+		setNextState("HighScore");
+
+		return false;
+		}*/
+		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Main")
+		{
+			printf("Next State set to MainMenu\n");
+			setNextState("MainMenu");
+
+			return false;
+		}
+
+	}
 
 	return  true;
 }
@@ -112,6 +127,20 @@ void DieState::Draw()
 	}
 
 	m_engine->m_gom->Dead();
+
+	for(int i = 0; i < m_xbuttons.size(); i++)
+	{
+		if(m_xbuttons.at(i)->Update() == "Hovering" && m_xbuttons.at(i)->GetType2() == "Retry"){
+			m_engine->m_window->draw(*m_glow1);
+		};
+		if(m_xbuttons.at(i)->Update() == "Hovering" && m_xbuttons.at(i)->GetType2() == "HighScore"){
+			m_engine->m_window->draw(*m_glow2);
+		};
+		if(m_xbuttons.at(i)->Update() == "Hovering" && m_xbuttons.at(i)->GetType2() == "Main"){
+			m_engine->m_window->draw(*m_glow3);
+		};
+	};
+
 
 };
 

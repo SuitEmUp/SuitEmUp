@@ -1,22 +1,22 @@
--Window stuff-
-
-fullscreen = false
 window_w = 1280
+<<<<<<< HEAD
 window_h = 720
 
 -GUI related stuff-
 
 menu_top_padding = 225
+=======
+>>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea
 button_padding = 75
 customize_padding_big = 45
-customize_padding_small = 6
+window_h = 720
+current_truck = 0
+fullscreen = false
+menu_top_padding = 225
 hud_padding = 75
-
--PlayerStats-
+logoypos = 75
 current_suit = 0
 current_weapon = 0
-current_truck = 0
-
+quickcustomize = 1
 weapons_available = 1
-
 
