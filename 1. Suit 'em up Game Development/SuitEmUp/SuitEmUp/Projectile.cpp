@@ -17,6 +17,10 @@ bool Projectile::GetType(){
 	return true;
 };
 
+std::string Projectile::GetType2(){
+	return type;
+};
+
 float Projectile::GetRotation(){
 	return m_rotation;
 }

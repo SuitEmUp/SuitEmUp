@@ -168,7 +168,7 @@ void GameObjectManager::Update(float deltatime)
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
-			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1)));
+			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.5, 0.5)));
 	}
 	if(m_spawner->Timer(deltatime)){ 
 		//Keeps track of when enemies spawn
@@ -241,13 +241,14 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
-				m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
-
-				delete m_player_projectiles[i];
-				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_player->GetWeaponType() == "ArmCannon"){
+					m_eyecandy->ShockCreator(m_enemies.at(j)->GetPosition());
+				}
+				else m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+				
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 
-
+					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/DeadBandit.png", "BanditCorpse", 1.2, 1.2), m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+160);
 				//	delete m_enemies.at(j)->GetSprite();
 
 					int chance = rand()%20;
@@ -263,7 +264,12 @@ void GameObjectManager::Update(float deltatime)
 					m_xscore->PutInScore(enemyscore = 10);
 					--j;
 				}
-				--i;
+				if(m_player_projectiles[i]->GetType2() != "Needle"){
+					delete m_player_projectiles[i];
+					m_player_projectiles.erase(m_player_projectiles.begin()+i);
+					--i;
+				}
+				
 				break;
 			};
 		};
@@ -276,7 +282,10 @@ void GameObjectManager::Update(float deltatime)
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
 				//delete m_player_projectiles.at(i)->GetSprite();
-				m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+				if(m_player->GetWeaponType() == "ArmCannon"){
+					m_eyecandy->ShockCreator(m_supers.at(j)->GetPosition());
+				}
+				else m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%10;
 					if(chance == 1)
@@ -293,8 +302,11 @@ void GameObjectManager::Update(float deltatime)
 
 					--j;
 				}
-				m_player_projectiles.erase(m_player_projectiles.begin()+i);
-				--i;
+				if(m_player_projectiles[i]->GetType2() != "Needle"){
+					delete m_player_projectiles[i];
+					m_player_projectiles.erase(m_player_projectiles.begin()+i);
+					--i;
+				}
 				break;
 			};
 
@@ -308,9 +320,10 @@ void GameObjectManager::Update(float deltatime)
 			if(m_spawner->SniperDestroyer(m_girls.at(j), m_player_projectiles.at(i))){
 				//delete (*it)->GetSprite();
 				//delete (*at)->GetSprite();
-				m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
-				delete m_player_projectiles.at(i)->GetSprite();
-				m_player_projectiles.erase(m_player_projectiles.begin()+i);
+				if(m_player->GetWeaponType() == "ArmCannon"){
+					m_eyecandy->ShockCreator(m_girls.at(j)->GetPosition());
+				}
+				else m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
@@ -321,7 +334,11 @@ void GameObjectManager::Update(float deltatime)
 					m_xscore->PutInScore(enemyscore = 50);
 					--j;
 				}
-				--i;
+				if(m_player_projectiles[i]->GetType2() != "Needle"){
+					delete m_player_projectiles[i];
+					m_player_projectiles.erase(m_player_projectiles.begin()+i);
+					--i;
+				}
 				break;
 			};
 
@@ -357,6 +374,7 @@ sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
 {
 	return GO->GetPosition();
 }
+
 void GameObjectManager::AttachObject(GameObject *object)
 {
 
@@ -626,7 +644,3 @@ void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe

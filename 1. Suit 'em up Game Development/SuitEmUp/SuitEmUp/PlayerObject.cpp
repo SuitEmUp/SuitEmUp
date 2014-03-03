@@ -29,6 +29,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_damage = 1;
 	m_controltype = "Special";
 	m_firetype = "Mouse";
+	m_weapontype = "Revolver";
 	//vapen 1
 	//if(Config::getInt("current_weapon", 0) == 0)
 };

@@ -4,7 +4,6 @@ fullscreen = false
 window_w = 1280
 window_h = 720
 
-
 -GUI related stuff-
 
 menu_top_padding = 225
