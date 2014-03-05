@@ -87,15 +87,8 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
 
-<<<<<<< HEAD
-
-
 
 	m_eyecandy = new EyeCandy();
-
-=======
-	m_eyecandy = new EyeCandy();
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
 }
 
 void GameObjectManager::ClearGameObjects()
@@ -324,13 +317,13 @@ void GameObjectManager::Update(float deltatime)
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
-<<<<<<< HEAD
+
 					//	delete m_supers.at(j)->GetSprite();
 
 					//	delete m_supers.at(j)->GetSprite();
-=======
+
 				//	delete m_supers.at(j)->GetSprite();
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
+
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
 
 					delete m_supers[j];
@@ -388,7 +381,7 @@ void GameObjectManager::Update(float deltatime)
 			//delete (*it)->GetSprite();
 
 			//score
-			//m_xscore->PutInScore(enemyscore = 35);
+			m_xscore->PutInScore(enemyscore = 35);
 
 			m_truck->Healed();
 			//	delete m_vRepairKits.at(i)->GetSprite();
@@ -412,55 +405,7 @@ sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
 {
 	return GO->GetPosition();
 }
-<<<<<<< HEAD
-=======
 
-void GameObjectManager::AttachObject(GameObject *object)
-{
-
-	//	m_gameobject.push_back(object);
-
-}
-//detach
-void GameObjectManager::DetachObject(GameObject *object)
-{
-	//for (auto it = m_gameobject.begin();it != m_gameobject.end();)
-	//{
-	//	GameObject *obj = *it;
-	//	if (obj = object)
-	//	{
-	//		if(obj != nullptr)
-	//		{
-	//			/*delete (*it)->GetCollider();*/
-	//			
-	//			delete *it;
-	//			*it = nullptr;
-	//		//	auto old = it;
-	//			//m_gameobject.pop_back();
-	//		}
-
-	//		it++;
-	//	}
-	//}
-}
-
-void GameObjectManager::DetachObject()
-{
-	//for( auto it = m_gameobject.begin();it != m_gameobject.end(); ) 
-	//{	
-
-	//	/*delete (*it)->GetCollider();*/
-	//	delete (*it)->GetSprite();
-	//	delete *it;
-	//	/*auto old = it;
-
-	//	it++;*/
-	//	m_gameobject.erase(it);		
-	//}
-
-}
-
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
 void GameObjectManager::DrawGameObjects(float deltatime)
 {
 	m_window->draw(*m_background);
@@ -505,6 +450,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 			m_window->draw(*m_enemy_projectiles.at(i)->GetSprite());	// draws all enemy projetiles
 		}
 	};
+
 	m_eyecandy->DrawEyeCandy(deltatime, m_window);
 }
 //////////////////////////////////////////////////////////////////////////// :)
@@ -680,15 +626,9 @@ int GameObjectManager::GetScore(int m_value)
 	m_value = m_xscore->GetScore();
 	return m_value;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
+
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23

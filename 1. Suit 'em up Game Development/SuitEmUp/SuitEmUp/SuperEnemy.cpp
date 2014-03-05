@@ -15,9 +15,20 @@ SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
 	m_cooldown = 1;
 	speed = 210;
 	m_hp = 5;
+
+	//animation
+	m_animation = nullptr;
+
+	AddAnimation(sprite);
+	
+	m_sprite->setOrigin(50/2, 40/2);
+	m_animation->update(0.1f, 0);
 };
 
 bool SuperEnemy::Update(float deltatime){
+	
+	//animation
+	m_animation->update(deltatime, 0);
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
@@ -37,8 +48,11 @@ bool SuperEnemy::Update(float deltatime){
 
 	dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 
-	if(dist<120)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
-		
+	if(dist<120)
+	{	
+		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
+		m_animation->PausAnimation();
+	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
@@ -46,6 +60,7 @@ bool SuperEnemy::Update(float deltatime){
 	m_sprite->setRotation(rotation);
 
 	if(dist<120 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
+		m_animation->PausAnimation();
 		m_sound->play();
 		m_cooldown = 1;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
@@ -81,3 +96,12 @@ float SuperEnemy::GetDamage(){
 float SuperEnemy::GetRotation(){
 	return rotation;
 };
+
+void SuperEnemy::AddAnimation(sf::Sprite *sprite)
+{
+	m_animation = new Animation(sprite, 0.2, false, true);
+	m_animation->addFrame(sf::IntRect (8, 22, 50, 40));
+	m_animation->addFrame(sf::IntRect (73, 19, 50, 40));
+
+
+}

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "MovingGameObject.h"
+#include "Animation.h"
 
 class Truck;
 
@@ -16,9 +17,13 @@ public:
 	float GetDamage();
 	float GetRotation();
 
+	void AddAnimation(sf::Sprite *sprite);
+
 protected:
 	float rotation;
 	float m_damage;
 	float m_cooldown;
 	float m_hp;
+
+	Animation *m_animation;
 };

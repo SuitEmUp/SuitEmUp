@@ -86,4 +86,9 @@ sf::Sprite* Animation::getCurrentFrame(int number)
  	return m_sprite;
 	//return m_sprites.at(number);
 }
-
+void Animation::PausAnimation()
+{
+	if(m_paused == false) {m_paused = true;}
+	//if(m_paused == false) {m_paused = true;}
+	
+}

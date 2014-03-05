@@ -83,9 +83,6 @@ bool PausState::Update(float deltatime)
 
 	for(int i=0; i<m_buttons.size();i++)
 	{
-		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")
-		{
-<<<<<<< HEAD
 			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")
 			{
 				printf("Next State set to GameState\n");
@@ -105,28 +102,7 @@ bool PausState::Update(float deltatime)
 				return false;
 			}
 
-=======
-			printf("Next State set to GameState\n");
-			setNextState("Game");
-			//paused = false;
-			return false;
-		}
-		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Customization")
-		{
-			printf("Next State set to Customize\n");
-			setNextState("Customize");
-			//paused = false;
-			return false;
-		}
-		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
-		{
-			printf("Next State set to MainMenu\n");
-			setNextState("MainMenu");
-			//paused = false;
-			return false;
->>>>>>> d413d21c586e212ba61bc5eba381c97ccb209b23
-		}
-
+	
 	}
 
 	return  true;

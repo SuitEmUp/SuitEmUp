@@ -22,7 +22,7 @@ public:
 
 	sf::Sprite* getCurrentFrame(int number);
 
-
+	void PausAnimation();
 	//extragrejer EJ IMPLEMENTERADE
 
 	//void setAnimation(const Animation& animation);
