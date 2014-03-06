@@ -13,9 +13,6 @@ public:
 
 	sf::Sprite* Load(const std::string &filename, const std::string spritename, float x_scale = 1.0, float y_scale = 1.0);
 	
-	Animation* LoadAnimatedSprite(const std::string &xfilename, const std::string xspritename, float frameTime, bool paused, bool looped,
-		float x_scale = 1.0, float y_scale = 1.0);
-
 	void SpriteManager::DestroyAnimation();
 
 private:
@@ -24,5 +21,3 @@ private:
 
 	
 };
-//laban was here
-// So was seamus :I

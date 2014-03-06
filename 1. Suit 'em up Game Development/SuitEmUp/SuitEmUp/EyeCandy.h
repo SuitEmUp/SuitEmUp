@@ -20,6 +20,8 @@ public:
 	void ShockCreator(sf::Vector2f p_position);
 	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
 	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
+	void TextCreator(sf::Text p_text, sf::Vector2f p_position);
+
 
 	void Update(float deltatime);
 	void DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow);
@@ -53,5 +55,14 @@ private:
 	std::vector<sf::RectangleShape*> m_squares;
 	//float<*>
 	float m_distance;
+
+	//text
+		struct Text{
+		float duration_text;
+		sf::Text texts;
+	};
+
+
+	std::vector<Text> m_texts;
 	
 };

@@ -4,6 +4,7 @@
 #include "Truck.h"
 
 SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
+	
 	m_damage = 9;
 	m_buffer = new sf::SoundBuffer();
 	m_buffer->loadFromFile("../data/sounds/Sniper.wav");
@@ -11,13 +12,24 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 50;
 	m_hp = 7;
+
+		//Animation
+
+	m_animation = nullptr;
+	AddAnimation(sprite);
+	
+	m_sprite->setOrigin(82/2, 34/2);
+	m_animation->update(0.1f, 0);
 };
 
 bool SniperGirl::Update(float deltatime){
+
+		//animation
+	m_animation->update(deltatime, 0);
+
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
@@ -37,8 +49,11 @@ bool SniperGirl::Update(float deltatime){
 
 	dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 
-	if(dist<400)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
-		
+	if(dist<400)		
+	{	
+		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
+		m_animation->PausAnimation();
+	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
@@ -76,3 +91,10 @@ float SniperGirl::Damaged(float playerdmg){
 float SniperGirl::GetDamage(){
 	return m_damage;
 };
+void SniperGirl::AddAnimation(sf::Sprite *sprite)
+{
+	m_animation = new Animation(sprite, 0.2, false, true);
+	m_animation->addFrame(sf::IntRect (0, 0, 82, 34));
+	m_animation->addFrame(sf::IntRect (86, 0, 82, 34));
+
+}

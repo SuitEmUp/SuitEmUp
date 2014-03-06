@@ -11,6 +11,7 @@
 #include "TitleScreen.h"
 #include "PausState.h"
 #include "DieState.h"
+#include "HighScoreState.h"
 
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
@@ -43,7 +44,7 @@ Engine::Engine()
 bool Engine::Initialize()
 {
 	m_statemanager = new StateManager();
-	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window"/*, sf::Style::Fullscreen*/);
+	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Fullscreen);
 	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
@@ -67,6 +68,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new Game(	this));
 		m_statemanager->Attach(new PausState(this));
 		m_statemanager->Attach(new DieState(this));
+		m_statemanager->Attach(new HighScore(this));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;

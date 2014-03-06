@@ -12,14 +12,22 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 0;
 	speed = 150;
 	m_hp = 2;
+
+	//Animation
+
+	m_animation = nullptr;
+	AddAnimation(sprite);
+	
+	m_sprite->setOrigin(29/2, 35/2);
+	m_animation->update(0.1f, 0);
 };
 
 bool EnemyObject::Update(float deltatime){
-
+	//animation
+	m_animation->update(deltatime, 0);
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
 	float delta_y=m_truck->GetPosition().y-m_position.y;
@@ -38,8 +46,11 @@ bool EnemyObject::Update(float deltatime){
 
 	dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 
-	if(dist<200)	m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
-		
+	if(dist<200)
+	{	
+		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
+		m_animation->PausAnimation();
+	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
 	const float pi = 3.141592654f;
@@ -53,7 +64,10 @@ bool EnemyObject::Update(float deltatime){
 	else return false;//doesn't matter if false is returned.
 };
 
-EnemyObject::~EnemyObject(){
+EnemyObject::~EnemyObject()
+{
+	
+	
 	if(m_buffer != nullptr)
 	{
 	delete m_buffer;
@@ -63,6 +77,8 @@ EnemyObject::~EnemyObject(){
 	delete m_sound;
 	m_sound = nullptr;
 	}
+
+
 };
 
 bool EnemyObject::GetType(){
@@ -77,3 +93,11 @@ float EnemyObject::Damaged(float playerdmg){
 float EnemyObject::GetDamage(){
 	return m_damage;
 };
+void EnemyObject::AddAnimation(sf::Sprite *sprite)
+{
+	m_animation = new Animation(sprite, 0.2, false, true);
+	m_animation->addFrame(sf::IntRect (32, 80, 29, 35));
+	m_animation->addFrame(sf::IntRect (95, 78, 29, 35));
+
+}
+

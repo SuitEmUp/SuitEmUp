@@ -7,7 +7,7 @@
 
 Score::	Score()
 {
-	m_score = 200010; 
+	m_score = 10000; 
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
@@ -15,7 +15,7 @@ Score::	Score()
 	score.setFont(font);
 	score.setCharacterSize(25);
 	score.setColor(sf::Color::Black);
-	score.move(1050.f, 0.f);	
+	score.move(1030.f, 0.f);	
 	score.setStyle(sf::Text::Bold);
 
 }
@@ -33,13 +33,23 @@ void Score::BuyEquipment(int buyequipment)
 }
 sf::Text Score::DrawScore()
 {
+	score.setColor(sf::Color::Black);
 	std::ostringstream ss;
 	ss << "Score: " << GetScore();
 	score.setString( ss.str());
 	return score;
 }
+sf::Text Score::FeedbackScore(int enemykillscore)
+{
+	std::ostringstream ss;
+	ss << enemykillscore;
+	score.setString( ss.str());
+	score.setColor(sf::Color::Yellow);
+	return score;
+}
 sf::Text Score::DrawWhenDead()
 {
+	score.setColor(sf::Color::Black);
 	score.setCharacterSize(20);
 	score.setPosition(150.f, 100.f);
 	std::ostringstream ss;

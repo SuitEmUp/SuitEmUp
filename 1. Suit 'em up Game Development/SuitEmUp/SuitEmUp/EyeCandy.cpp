@@ -143,8 +143,24 @@ void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
 			if(i<0) i=0;
 		}
 	};
+	for(int i = 0; i<m_texts.size(); i++){
+		renderwindow->draw(m_texts.at(i).texts);
+		m_texts.at(i).duration_text -= deltatime;
+		if(m_texts.at(i).duration_text < 0){
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	}
 };
-
 void EyeCandy::PictureDestroyer(){};
-
 void EyeCandy::ParticleDestroyer(){};
+void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
+{
+	Text t_text;
+	t_text.duration_text = 3;
+	t_text.texts = p_text;
+	t_text.texts.setPosition(p_position);
+	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);
+	m_texts.push_back(t_text);
+};

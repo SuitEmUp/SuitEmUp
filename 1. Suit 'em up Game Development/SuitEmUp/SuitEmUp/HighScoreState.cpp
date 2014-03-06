@@ -1,11 +1,13 @@
+//HighScoreState.cpp
+
 #include <iostream>
 #include <SFML\Window.hpp>
 
-#include "Options.h"
+#include "HighScoreState.h"
 #include "InputManager.h"
 
 
-Options::Options(Engine* engine) 
+HighScore::HighScore(Engine* engine) 
 {
 	
 	next_state = "";
@@ -14,7 +16,7 @@ Options::Options(Engine* engine)
 
 };
 
-bool Options::Init()
+bool HighScore::Init()
 {
 	
 	printf("State: Options,   Initialized\n");
@@ -24,9 +26,9 @@ bool Options::Init()
 	return true;
 };
 
-void Options::Exit(){};
+void HighScore::Exit(){};
 
-bool Options::Update(float deltatime)
+bool HighScore::Update(float deltatime)
 {
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
@@ -49,23 +51,22 @@ bool Options::Update(float deltatime)
 	return true;
 };
 
-void Options::Draw()
+void HighScore::Draw()
 {
 
 };
-std::string Options::Next()
+std::string HighScore::Next()
 {
 	return next_state;
 };
 
-void Options::setNextState(std::string state)
+void HighScore::setNextState(std::string state)
 {
 	next_state = state;
 };
 
-bool Options::IsType(const std::string &type)
+bool HighScore::IsType(const std::string &type)
 {
-	return type.compare("Options") == 0;
+	return type.compare("HighScore") == 0;
 };
-
 

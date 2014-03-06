@@ -14,28 +14,23 @@ TitleScreen::TitleScreen(Engine* engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
-	
+
+	start_game.setString("Press Enter/Space to continue");
+
+	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+
+	start_game.setFont(font);
+	start_game.setCharacterSize(25);
+	start_game.setColor(sf::Color::Yellow);
+	start_game.move(325.f, 650.f);	
+	start_game.setStyle(sf::Text::Bold);
+
 };
 
 bool TitleScreen::Init()
 {
-	
-	//-----------
-	//sf::Font font;
-	//if (!font.loadFromFile("../assets/fonts/AdobeGothicStd-Bold")) { printf("Could not load font\n"); }
-	//sf::Text text;
-	//text.setFont(font);
-	//text.setString("Is this working?");
-	//text.setCharacterSize(24);
-	//text.setColor(sf::Color::Red);
-
-	//m_InputManager = nullptr;
-
-	//-----------
-
-
 	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
-
 
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
@@ -52,16 +47,13 @@ bool TitleScreen::Update(float deltatime)
 		setNextState("MainMenu");
 		return false;
 	};
-	
-	
-
-	
 	return true;
 }
 
 void TitleScreen::Draw()
 {
 	m_engine->m_window->draw(*m_xbackground);
+	m_engine->m_window->draw(start_game);
 };
 
 std::string TitleScreen::Next()
