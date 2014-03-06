@@ -30,6 +30,8 @@ bool MainMenu::Init()
 	printf("State: MainMenu,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
+	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
+
 	m_logo = m_engine->m_spritemanager->Load("../data/misc/PlaceholderLogo.png", "Logo", 1.0f, 1.0f);
 	m_logo->setOrigin(m_logo->getLocalBounds().width / 2, 0);
 	m_logo->setPosition(Config::getInt("window_w", 0) / 2, Config::getInt("logoypos", 0));
@@ -92,6 +94,7 @@ bool MainMenu::Update(float deltatime)
 
 void MainMenu::Draw()
 {
+	m_engine->m_window->draw(*m_xbackground);
 	m_engine->m_gom->DrawButtons();
 	m_engine->m_window->draw(*m_logo);
 

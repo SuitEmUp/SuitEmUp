@@ -38,5 +38,5 @@ private:
 	sf::Sprite* m_glow3;
 	sf::Sprite* m_glow4;
 
-
+	sf::Sprite *m_xbackground;
 };
