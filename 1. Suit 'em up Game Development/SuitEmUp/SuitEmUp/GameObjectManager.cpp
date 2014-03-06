@@ -50,26 +50,26 @@ void GameObjectManager::CreateGameObjects()
 
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_background->setPosition(0,0);
-	
+
 	//Creates all objects that exists from the beginning
-	
+
 
 
 	//ANIMATIONS TRUCK
-	
+
 	m_truck = new Truck(m_spritemanager->Load("../data/sprites/TruckLVLOneSpriteSheet.png", "Truck_Animation_lv1",1, 1), 
 		m_spritemanager->Load("../data/sprites/truck_lvl2.png", "Truck2", 1, 1));
 
 	//------------------------------------------------------------------
-	
-	
-	
-	
-	
+
+
+
+
+
 	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1),
 		m_spritemanager->Load("../data/sprites/ArianaLevel2Sprite.png", "Ariana2", 1, 1));
 	m_spawner = new Spawner(m_truck);
-	
+
 
 
 	//Clears all vectors
@@ -79,19 +79,15 @@ void GameObjectManager::CreateGameObjects()
 	m_vRepairKits.clear();
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
-	
+
 	//The game is not over
 	m_game_over = false;
 	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Border_2.png", "hpborder", 1,1)), 
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
-<<<<<<< HEAD
 
-
-=======
 	m_eyecandy = new EyeCandy();
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
 }
 
 void GameObjectManager::ClearGameObjects()
@@ -190,6 +186,12 @@ void GameObjectManager::Update(float deltatime)
 	};
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
+		if(m_player->GetWeaponType() == "BoomWosh")
+		{
+			m_eyecandy->BoomWoshCreator(m_player->GetPosition(), m_input->GetMousePos());
+
+		}
+
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
@@ -309,16 +311,8 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-<<<<<<< HEAD
 					//	delete m_supers.at(j)->GetSprite();
-=======
-<<<<<<< HEAD
-					//	delete m_supers.at(j)->GetSprite();
-=======
-				//	delete m_supers.at(j)->GetSprite();
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
->>>>>>> 45c3c67cd682a04e7f79332ec82439fdb3a78059
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -547,12 +541,12 @@ void GameObjectManager::CreateCusomizationButtons()
 		Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64))));
 
 	//Trinkets
-	m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
+	/*m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
 		1020, 463));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot2"),
 		1150, 500));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
-		1046, 591));
+		1046, 591));*/
 
 };
 void GameObjectManager::DrawCustomizationButtons()
@@ -655,22 +649,7 @@ int GameObjectManager::GetScore(int m_value)
 	return m_value;
 }
 
-<<<<<<< HEAD
-	void GameObjectManager::Dead()
-{
-	m_window->draw(m_xscore->DrawWhenDead());
-}
-
-=======
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 6127de5ede7fdb4cdf3c17c8865cf8aa346e3afe
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
->>>>>>> 45c3c67cd682a04e7f79332ec82439fdb3a78059

@@ -35,6 +35,10 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 
 bool PlayerObject::Update(float deltatime)
 {
+	if(m_input->IsDown(sf::Keyboard::L))
+	{
+		m_weapontype = "BoomWosh";
+	}
 	//sets suit stats
 	if(m_suittype == "Level1")
 	{
@@ -70,7 +74,7 @@ bool PlayerObject::Update(float deltatime)
 		m_damage = 0.2f;
 		m_attackspeed = 0.02f;
 	}
-	if(m_weapontype == "Sniper")
+	if(m_weapontype == "BoomWosh")
 	{
 		m_sprite = m_unupdate;
 		m_damage = 50.0f;

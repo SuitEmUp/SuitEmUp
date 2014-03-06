@@ -28,7 +28,6 @@ bool Truck::Update(float deltatime)
 
 	m_sprite = m_truck->getCurrentFrame();
 	m_sprite->setPosition(m_position);
-<<<<<<< HEAD
 
 	if(m_hp>100){m_hp=100;}
 
@@ -40,11 +39,10 @@ bool Truck::Update(float deltatime)
 		m_sprite = m_unupdate;
 	}
 
-=======
+
 	if(m_hp>m_maxhp){m_hp=m_maxhp;}
 	if(m_hp >75){m_sprite = m_update;}
 	else m_sprite = m_unupdate;
->>>>>>> 32b049fefab13acf44020ef1b6a8dd8103b20a5b
 	if(m_hp<1) return true;
 	return false;
 };
