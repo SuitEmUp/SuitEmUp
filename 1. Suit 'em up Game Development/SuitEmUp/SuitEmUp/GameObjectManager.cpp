@@ -389,9 +389,6 @@ void GameObjectManager::Update(float deltatime)
 		lol=1;
 	}
 	m_hpbar->GetSprite()->setScale(lol, 1.0);
-
-
-
 }
 
 sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)

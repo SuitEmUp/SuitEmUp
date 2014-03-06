@@ -31,17 +31,17 @@ bool Truck::Update(float deltatime)
 
 	if(m_hp>100){m_hp=100;}
 
-	if(m_hp >75){m_sprite = m_unupdate;}
+	//if(m_hp >75){m_sprite = m_unupdate;}
 
-	else 
-	{
-		m_unupdate = m_update;	
-		m_sprite = m_unupdate;
-	}
+	//else 
+	//{
+	//	m_unupdate = m_update;	
+	//	m_sprite = m_unupdate;
+	//}
 
 	if(m_hp>m_maxhp){m_hp=m_maxhp;}
-	if(m_hp >75){m_sprite = m_update;}
-	else m_sprite = m_unupdate;
+//	if(m_hp >75){m_sprite = m_update;}
+//	else m_sprite = m_unupdate;
 	if(m_hp<1) return true;
 	return false;
 };

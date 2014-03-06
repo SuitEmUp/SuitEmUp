@@ -76,7 +76,7 @@ void EyeCandy::ShockCreator(sf::Vector2f p_position){
 		rect->setSize(sf::Vector2f(5, 5));
 		randomm = (rand()%(2));
 		if(randomm == 0){
-			rect->setFillColor(sf::Color::Blue);
+			rect->setFillColor(sf::Color(255, 30, 200, 0xff));
 		}
 		else if (randomm == 1){
 			rect->setFillColor(sf::Color::White);
