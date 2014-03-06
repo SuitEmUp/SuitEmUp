@@ -18,6 +18,7 @@ public:
 	void BuyEquipment(int enemykillscore);
 	sf::Text DrawScore();
 	sf::Text DrawWhenDead();
+	sf::Text FeedbackScore(int enemykillscore);
 	
 private:
 	int m_score;

@@ -12,7 +12,6 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 50;
 	m_hp = 7;
@@ -22,7 +21,7 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	m_animation = nullptr;
 	AddAnimation(sprite);
 	
-	m_sprite->setOrigin(33/2, 81/2);
+	m_sprite->setOrigin(82/2, 34/2);
 	m_animation->update(0.1f, 0);
 };
 
@@ -95,7 +94,7 @@ float SniperGirl::GetDamage(){
 void SniperGirl::AddAnimation(sf::Sprite *sprite)
 {
 	m_animation = new Animation(sprite, 0.2, false, true);
-	m_animation->addFrame(sf::IntRect (0, 0, 33, 81));
-	m_animation->addFrame(sf::IntRect (38, 0, 33, 81));
+	m_animation->addFrame(sf::IntRect (0, 0, 82, 34));
+	m_animation->addFrame(sf::IntRect (86, 0, 82, 34));
 
 }
