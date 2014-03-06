@@ -27,9 +27,15 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 
 	for(int i = 0; i<(rand()%(300-250+1))+250; i++){
 		Particle* partickel = new Particle;
+<<<<<<< HEAD
 		int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
 
 		partickel->m_direction = sf::Vector2f(sin(randomm)/10+(p_direction.x)/-500, cos(randomm)/10+(p_direction.y)/-500);
+=======
+		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
+		
+		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/1000, cos(randomm)+(p_direction.y)/1000);
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 
 		partickel->m_position = p_position;
 		partickel->m_speed = (rand()%(200-100+1))+100;
@@ -47,6 +53,54 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 
 		m_rectangles.push_back(rect);
 	};
+	for(int i = 0; i<(rand()%(50-30+1))+30; i++){
+		Particle* partickel = new Particle;
+		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
+		
+		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/500, cos(randomm)+(p_direction.y)/500);
+
+		partickel->m_position = p_position;
+		partickel->m_speed = -((rand()%(200-50+1))+50);
+		partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
+
+		m_particles.push_back(partickel);	
+
+		sf::RectangleShape* rect = new sf::RectangleShape;
+		rect->setPosition(p_position);
+		rect->setSize(sf::Vector2f(5, 5));
+		rect->setFillColor(sf::Color::Red);
+
+		m_rectangles.push_back(rect);
+	};
+};
+
+void EyeCandy::ShockCreator(sf::Vector2f p_position){
+	for(int i = 0; i<(rand()%(150-100+1))+100; i++){
+		Particle* partickel = new Particle;
+		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
+		
+		partickel->m_direction = sf::Vector2f(sin(randomm), cos(randomm));
+
+		partickel->m_position = p_position;
+		partickel->m_speed = (rand()%(200-50+1))+50;
+		partickel->m_duration = 0.1*((rand()%(200-100+1))+1);
+
+		m_shocks.push_back(partickel);	
+
+		sf::RectangleShape* rect = new sf::RectangleShape;
+		rect->setPosition(p_position);
+		rect->setSize(sf::Vector2f(5, 5));
+		randomm = (rand()%(2));
+		if(randomm == 0){
+			rect->setFillColor(sf::Color(255, 30, 200, 0xff));
+		}
+		else if (randomm == 1){
+			rect->setFillColor(sf::Color::White);
+		};
+
+		m_squares.push_back(rect);
+	};
+	
 };
 
 void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation)
@@ -110,6 +164,7 @@ void EyeCandy::Update(float deltatime){
 			if(i<0) i=0;
 		}
 	};
+<<<<<<< HEAD
 	for(int i = 0; i<m_boomwoshticles.size(); i++){
 		m_boomwoshticles.at(i)->m_duration -= deltatime;
 
@@ -136,12 +191,24 @@ void EyeCandy::Update(float deltatime){
 		if(m_boomwoshticles.at(i)->m_duration < 0 || distance < 25){
 			m_boomwoshticles.erase(m_boomwoshticles.begin()+i);
 			m_recticles.erase(m_recticles.begin()+i);
+=======
+	for(int i = 0; i<m_shocks.size(); i++){
+		m_shocks.at(i)->m_duration -= deltatime;
+		m_shocks.at(i)->m_position += m_shocks.at(i)->m_speed * m_shocks.at(i)->m_direction * deltatime;
+		
+		if(m_shocks.at(i)->m_duration < 0){
+			m_shocks.erase(m_shocks.begin()+i);
+			m_squares.erase(m_squares.begin()+i);
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 			i--;
 			if(i<0) i=0;
 		}
 	};
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 };
 
 void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
@@ -150,9 +217,16 @@ void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
 		renderwindow->draw(*m_rectangles.at(i));
 		m_rectangles.at(i)->setScale(m_rectangles.at(i)->getScale().x * 0.9, m_rectangles.at(i)->getScale().y * 0.9);
 	};
+<<<<<<< HEAD
 	for(int i = 0; i<m_boomwoshticles.size(); i++){
 		m_recticles.at(i)->setPosition(m_boomwoshticles.at(i)->m_position);
 		renderwindow->draw(*m_recticles.at(i));
+=======
+	for(int i = 0; i<m_squares.size(); i++){
+		m_squares.at(i)->setPosition(m_shocks.at(i)->m_position);
+		renderwindow->draw(*m_squares.at(i));
+		m_squares.at(i)->setScale(m_squares.at(i)->getScale().x * 0.9, m_squares.at(i)->getScale().y * 0.9);
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 	};
 	for(int i = 0; i<m_pictures.size(); i++){
 		renderwindow->draw(*m_pictures.at(i)->picture);
@@ -163,8 +237,24 @@ void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
 			if(i<0) i=0;
 		}
 	};
+	for(int i = 0; i<m_texts.size(); i++){
+		renderwindow->draw(m_texts.at(i).texts);
+		m_texts.at(i).duration_text -= deltatime;
+		if(m_texts.at(i).duration_text < 0){
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	}
 };
-
 void EyeCandy::PictureDestroyer(){};
-
 void EyeCandy::ParticleDestroyer(){};
+void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
+{
+	Text t_text;
+	t_text.duration_text = 3;
+	t_text.texts = p_text;
+	t_text.texts.setPosition(p_position);
+	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);
+	m_texts.push_back(t_text);
+};

@@ -20,9 +20,8 @@ public:
 	bool Init();
 	void Exit();
 
-	//bool HandleInput();
 	bool Update(float deltatime);
-	void Draw(/*sf::RenderWindow *p_window*/);
+	void Draw();
 
 	std::string Next();
 	void setNextState(std::string state);
@@ -43,6 +42,10 @@ private:
 	sf::Sprite* m_glow3;
 	sf::Sprite* m_glow4;
 
+<<<<<<< HEAD
 	bool m_canclick;
 	bool m_oneclicklock;
+=======
+	sf::Sprite *m_xbackground;
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 };

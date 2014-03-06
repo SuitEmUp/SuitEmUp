@@ -11,6 +11,7 @@
 Spawner::Spawner(Truck* truck){
 	m_truck = truck;
 	m_time=0;
+	m_wavenumber = 0;
 	m_alarm=20;
 	srand(time(NULL));
 };
@@ -29,7 +30,7 @@ bool Spawner::Timer(float deltatime){
 
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
-	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/BanditEnBlack.png", "Bandit1", 1, 1));
+	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "Bandit1", 1, 1));
 	
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -110,7 +111,7 @@ bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
-	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/SuperBandit.png", "SuperBandit", 1.0, 1.0));
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "SuperBandit", 1.0, 1.0));
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -146,8 +147,7 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
 SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
-	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/Bandit_2.png", "SniperBandit", 1, 1));
-
+	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1));
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -179,4 +179,42 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 	delete enemy;
 	enemy=nullptr;
 	return nullptr;
+};
+
+sf::Vector3i Spawner::Wave(){
+	// vilken våg man är på
+	m_wavenumber +=1;
+
+	if (m_wavenumber == 1){ return sf::Vector3i(100, 1, 1); m_hpmultiplier = 1;}
+	if (m_wavenumber == 2){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 3){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 4){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 5){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.8;}
+	if (m_wavenumber == 6){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2;}
+	if (m_wavenumber == 7){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 8){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 9){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.6;}
+	if (m_wavenumber == 10){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.8;}
+	if (m_wavenumber == 11){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 3;}
+}
+
+float Spawner::GetHpMultiplier(){
+	return m_hpmultiplier;
+}
+
+std::vector<EnemyObject*> Spawner::EnemySpawner2(float deltatime, int numberofenemies){
+	m_koeffecient = numberofenemies*2;
+	m_enemytime+=deltatime;
+	m_spawningenemies = m_koeffecient*m_enemytime;
+	std::vector<EnemyObject*> t_enemies;
+	if(m_spawningenemies >=1){
+		int t_spawningenemies = m_spawningenemies;
+		for(int i = 0; i<t_spawningenemies; i++){
+			//t_enemies.push_back(new enemy);
+		}
+		m_spawningenemies -= t_spawningenemies;
+	}
+
+
+	return t_enemies;
 };

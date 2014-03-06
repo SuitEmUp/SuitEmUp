@@ -21,12 +21,14 @@ Customize::Customize(Engine *engine)
 	m_engine = engine;
 	next_state = "";
 	m_input = m_engine->m_input;
+<<<<<<< HEAD
 	m_weapons_available = Config::getInt("weapons_available", 0);
 	m_currentSuit = Config::getInt("current_suit", 0);
+=======
+	m_trinketboxactivator = false;
+	m_trinketboxlock = false;
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 
-	m_currentSuit = Config::getInt("current_suit", 0);
-	m_currentWeapon = Config::getInt("current_weapon", 0);
-	m_currentTruck = Config::getInt("current_truck", 0);
 	howmuchitcosts_suit = 1000;
 	howmuchitcosts_weapon = 1500;
 	howmuchitcosts_truck = 1200;
@@ -38,6 +40,14 @@ Customize::Customize(Engine *engine)
 
 bool Customize::Init()
 {
+
+	m_weapons_available = Config::getInt("weapons_available", 0);
+	m_currentSuit = Config::getInt("current_suit", 0);
+
+	m_currentSuit = Config::getInt("current_suit", 0);
+	m_currentWeapon = Config::getInt("current_weapon", 0);
+	m_currentTruck = Config::getInt("current_truck", 0);
+
 	tempName_change = "02";
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 	m_rects.push_back(rectangle);

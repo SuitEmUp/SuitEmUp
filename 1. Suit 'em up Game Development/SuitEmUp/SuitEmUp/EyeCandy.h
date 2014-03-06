@@ -17,9 +17,15 @@ public:
 	EyeCandy();
 	~EyeCandy();
 
+	void ShockCreator(sf::Vector2f p_position);
 	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
 	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
+<<<<<<< HEAD
 	void BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destination);
+=======
+	void TextCreator(sf::Text p_text, sf::Vector2f p_position);
+
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 
 	void Update(float deltatime);
 	void DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow);
@@ -52,10 +58,24 @@ private:
 	int m_amount;
 	std::vector<Picture*> m_pictures;
 	std::vector<Particle*> m_particles;
+	std::vector<Particle*> m_shocks;
 	std::vector<sf::RectangleShape*> m_rectangles;
+<<<<<<< HEAD
 	std::vector<Particle*> m_boomwoshticles;
 	std::vector<sf::RectangleShape*> m_recticles;
+=======
+	std::vector<sf::RectangleShape*> m_squares;
+>>>>>>> da935df01ef3f881b05a41ced616b1ee798d740f
 	//float<*>
 	float m_distance;
+
+	//text
+		struct Text{
+		float duration_text;
+		sf::Text texts;
+	};
+
+
+	std::vector<Text> m_texts;
 	
 };

@@ -10,32 +10,31 @@ namespace sf{
 
 class StateManager
 {
-	//friend class Engine;
+
 public:
 	StateManager();
 	~StateManager();
 
 	bool Init(const char* title, int width, int height);
 	void Cleanup();
-	//hoppas att det inte är jobbigt att jag lägger kommentarer här och där
+
 	void Attach(State * state);
 	void SetState(const std::string &type);
 	void ChangeState();
 
-	//void UpdateTime(float deltatime);
+
 	void HandleEvents();
 	void Update(float deltatime);
-	void Draw(/*sf::RenderWindow *p_window*/);
+	void Draw();
 
 	bool Running() { return m_running; }
 	void Quit() { m_running = false; }
-//	void SetInput(InputManager *input);
+
 	
 private:
 	std::vector<State*> states;
 	State* current;
 	bool m_running;
-	//ladbon
 	InputManager *m_input;
 
 

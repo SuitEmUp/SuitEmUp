@@ -29,6 +29,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_damage = 1;
 	m_controltype = "Special";
 	m_firetype = "Mouse";
+	m_weapontype = "Revolver";
 	//vapen 1
 	//if(Config::getInt("current_weapon", 0) == 0)
 };
@@ -71,8 +72,8 @@ bool PlayerObject::Update(float deltatime)
 	if(m_weapontype == "ArmCannon")
 	{
 		m_sprite = m_unupdate;
-		m_damage = 0.2f;
-		m_attackspeed = 0.02f;
+		m_damage = 1;
+		m_attackspeed = 0.000000001f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{
@@ -259,7 +260,8 @@ bool PlayerObject::Update(float deltatime)
 			else{
 				m_sound->play();
 			}
-			m_cooldown=0.3 ;	//How long the cooldown is
+			m_cooldown=m_attackspeed;
+			//How long the cooldown is
 			return true;	//if this is returned a bullet will be spawned
 		}
 	}

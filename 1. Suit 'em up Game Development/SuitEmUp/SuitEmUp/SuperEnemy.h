@@ -3,6 +3,7 @@
 #pragma once
 
 #include "MovingGameObject.h"
+#include "Animation.h"
 
 class Truck;
 
@@ -12,13 +13,17 @@ public:
 	~SuperEnemy();
 	bool Update(float deltatime);
 	bool GetType();
-	int Damaged(int playerdmg);
+	float Damaged(float playerdmg);
 	float GetDamage();
 	float GetRotation();
+
+	void AddAnimation(sf::Sprite *sprite);
 
 protected:
 	float rotation;
 	float m_damage;
 	float m_cooldown;
-	int m_hp;
+	float m_hp;
+
+	Animation *m_animation;
 };

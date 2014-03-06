@@ -22,9 +22,8 @@ public:
 	bool Init();
 	void Exit();
 
-	//bool HandleInput();
 	bool Update(float deltatime);
-	void Draw(/*sf::RenderWindow *p_window*/);
+	void Draw();
 
 	std::string Next();
 	void setNextState(std::string state);
@@ -37,7 +36,7 @@ private:
 	std::string tempName_change;
 	Engine* m_engine;
 	InputManager *m_input;
-    //bool paused;
+ 
 	sf::Sprite *m_vbackground;
 
 	//buttons
