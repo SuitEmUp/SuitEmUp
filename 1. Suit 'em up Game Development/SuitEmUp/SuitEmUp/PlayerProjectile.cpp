@@ -20,6 +20,9 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 	m_update = update;
 	if(player->GetWeaponType() == "ArmCannon"){
 		m_sprite = m_updatedupdate;
+		m_sprite->setColor(sf::Color(255, 255, 255, 0xff));
+		m_sprite->setColor(sf::Color(255, 255, 255, 0xff));
+		m_sprite->setColor(sf::Color(255, 255, 255, 0xff));
 	}
 
 	else if(player->GetWeaponType() == "Needlegun"){

@@ -23,9 +23,26 @@ public:
 	bool SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet);
 	bool SniperDestroyer(SniperGirl* girl, PlayerProjectile* bullet);
 
+	void KillCounter();
+	bool SpawnAlarm();
+
+	std::vector<EnemyObject*> EnemySpawner2(float deltatime, int numberofenemies);
+
+	float GetHpMultiplier();
+
+	sf::Vector3i Wave();
+
+
 private:
+
 	float m_time;
 	float m_alarm;
+	float m_hpmultiplier;
+	int m_wavenumber;
+
+	float m_enemytime;
+	float m_koeffecient;
+	float m_spawningenemies;
 
 	Truck* m_truck;
 };
