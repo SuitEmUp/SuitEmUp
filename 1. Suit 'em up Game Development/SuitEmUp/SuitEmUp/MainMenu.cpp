@@ -84,6 +84,8 @@ bool MainMenu::Update(float deltatime)
 			return false;
 		}
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+
+			m_engine->m_running = false;
 			printf("Click SUCCESSSSS\n");
 			printf("This button doesnt work yet\n");
 			//Exit Game

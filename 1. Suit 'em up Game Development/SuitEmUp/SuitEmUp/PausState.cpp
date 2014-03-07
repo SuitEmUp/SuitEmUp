@@ -74,6 +74,16 @@ void PausState::Exit(){
 	}
 	m_buttons.clear();
 
+		if(m_engine->m_paused == 1)
+	{
+		Config::set("current_suit", "0");
+		Config::set("current_weapon", "0");
+		Config::set("current_truck", "0");
+		Config::set("weapons_available", "1");
+		Config::renew();
+		m_engine->m_paused = 0;
+	}
+
 };
 
 
@@ -99,6 +109,7 @@ bool PausState::Update(float deltatime)
 			{
 				printf("Next State set to MainMenu\n");
 				setNextState("MainMenu");
+				m_engine->m_paused = 1;
 				return false;
 			}
 

@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-﻿Build started 2014-03-06 15:23:23.
+﻿Build started 2014-03-07 11:08:41.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\main.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp"
          MainMenu.cpp
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(37): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(40): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
@@ -10,28 +9,7 @@
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(46): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(49): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(65): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(101): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-         Compiling...
-         Engine.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         main.cpp
-=======
-<<<<<<< HEAD
-﻿Build started 2014-03-05 19:49:33.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp"
-         Engine.cpp
-=======
-﻿Build started 2014-03-06 14:22:31.
-     1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp"
-         Score.cpp
->>>>>>> 72e33068eeb26311a2a0788cec615ca411ffbd6e
->>>>>>> 47b3f8045b4cde49c4249d1346dcd9c2b2564dfb
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(103): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Button.obj
@@ -73,12 +51,4 @@
 
 Build succeeded.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:02.47
-=======
-<<<<<<< HEAD
-Time Elapsed 00:00:01.79
-=======
-Time Elapsed 00:00:01.01
->>>>>>> 72e33068eeb26311a2a0788cec615ca411ffbd6e
->>>>>>> 47b3f8045b4cde49c4249d1346dcd9c2b2564dfb
+Time Elapsed 00:00:01.55
