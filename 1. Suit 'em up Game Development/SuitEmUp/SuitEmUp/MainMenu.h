@@ -6,6 +6,8 @@
 #include "SpriteManager.h"
 #include "GameObjectManager.h"
 
+#include "SFML\Audio.hpp"
+
 namespace sf{
 	class RenderWindow;
 }
@@ -32,11 +34,16 @@ private:
 	Engine *m_engine;
 	std::vector<Button*> m_Buttons;
 
+	sf::Sound* m_clicksound;
+	sf::SoundBuffer* m_buffer;
 	sf::Sprite* m_logo;
 	sf::Sprite* m_glow1;
 	sf::Sprite* m_glow2;
 	sf::Sprite* m_glow3;
 	sf::Sprite* m_glow4;
 
+	bool m_canclick;
+	bool m_oneclicklock;
 
+	sf::Sprite *m_xbackground;
 };

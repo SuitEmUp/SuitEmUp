@@ -5,6 +5,7 @@
 #include <iostream>
 #include "InputKeys.h"
 #include "SFML\Window.hpp"
+#include "Config.h"
 
 //hej
 
@@ -59,6 +60,11 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 	{
 		if(event.type == sf::Event::Closed)
 		{
+			Config::set("current_suit", "0");
+			Config::set("current_weapon", "0");
+			Config::set("current_truck", "0");
+			Config::set("weapons_available", "1");
+			Config::renew();
 			running = false;
 		}
 		else if(event.type == sf::Event::KeyPressed) 

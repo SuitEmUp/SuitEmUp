@@ -45,7 +45,14 @@ private:
 	sf::Sprite* m_statbox;
 	sf::Sprite* m_trinketbox;
 
-	int m_currentSuit;
+	sf::Sprite* m_smallupgrade1;
+	sf::Sprite* m_smallupgrade2;
+	sf::Sprite* m_bigupgrade;
+	sf::Sprite* m_leftbutton;
+	sf::Sprite* m_rightbutton;
+	sf::Sprite* m_back;
+
+		int m_currentSuit;
 	int m_currentWeapon;
 	int m_currentTruck;
 
