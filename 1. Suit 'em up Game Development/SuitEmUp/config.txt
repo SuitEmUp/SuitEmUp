@@ -1,14 +1,12 @@
 window_w = 1280
 button_padding = 75
 customize_padding_big = 45
-<<<<<<< HEAD = <<<<<<< HEAD
+current_truck = 0
 window_h = 720
 
 -GUI related stuff- = -GUI related stuff-
->>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea = >>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea
-menu_top_padding = 225
-current_truck = 0
 fullscreen = false
+menu_top_padding = 225
 hud_padding = 75
 logoypos = 75
 current_suit = 0

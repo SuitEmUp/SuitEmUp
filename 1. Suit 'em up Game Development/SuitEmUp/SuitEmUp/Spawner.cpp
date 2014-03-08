@@ -12,8 +12,16 @@ Spawner::Spawner(Truck* truck){
 	m_truck = truck;
 	m_time=0;
 	m_wavenumber = 0;
-	m_alarm=20;
+	m_enemytime = 0;
 	srand(time(NULL));
+	m_currentenemieslvl1 = 0;
+	m_spawningenemieslvl1 = 0;
+	m_currentenemieslvl2 = 0;
+	m_spawningenemieslvl2 = 0;
+	m_currentenemieslvl3 = 0;
+	m_spawningenemieslvl3 = 0;
+
+	m_waveduration = 60;
 };
 
 bool Spawner::Timer(float deltatime){
@@ -37,12 +45,12 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int y;
 		if(q==1){
-			y=720;
+			y=800;
 		}
 		else if(q==0){
-			y=0;
+			y=-60;
 		}
-		int x=rand()%1281;
+		int x=rand()%1310;
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
@@ -50,12 +58,12 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int x;
 		if(q==1){
-			x=0;
+			x=-60;
 		}
 		else if(q==0){
-			x=1280;
+			x=1340;
 		}
-		int y=rand()%720;
+		int y=rand()%780;
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
@@ -118,10 +126,10 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int y;
 		if(q==1){
-			y=720;
+			y=800;
 		}
 		else if(q==0){
-			y=0;
+			y=-80;
 		}
 		int x=rand()%1281;
 		enemy->SetPosition(x, y);
@@ -131,12 +139,12 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int x;
 		if(q==1){
-			x=0;
+			x=-80;
 		}
 		else if(q==0){
-			x=1280;
+			x=1360;
 		}
-		int y=rand()%720;
+		int y=rand()%800;
 		enemy->SetPosition(x, y);
 		return enemy;
 	}
@@ -154,10 +162,10 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int y;
 		if(q==1){
-			y=720;
+			y=800;
 		}
 		else if(q==0){
-			y=0;
+			y=-80;
 		}
 		int x=rand()%1281;
 		enemy->SetPosition(x, y);
@@ -167,10 +175,10 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int x;
 		if(q==1){
-			x=0;
+			x=-80;
 		}
 		else if(q==0){
-			x=1280;
+			x=1360;
 		}
 		int y=rand()%720;
 		enemy->SetPosition(x, y);
@@ -182,39 +190,97 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 };
 
 sf::Vector3i Spawner::Wave(){
-	// vilken våg man är på
-	m_wavenumber +=1;
 
-	if (m_wavenumber == 1){ return sf::Vector3i(100, 1, 1); m_hpmultiplier = 1;}
-	if (m_wavenumber == 2){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.2;}
-	if (m_wavenumber == 3){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.4;}
-	if (m_wavenumber == 4){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.6;}
-	if (m_wavenumber == 5){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 1.8;}
-	if (m_wavenumber == 6){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2;}
-	if (m_wavenumber == 7){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.2;}
-	if (m_wavenumber == 8){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 0){ return sf::Vector3i(40, 0, 0); m_hpmultiplier = 1;}
+	if (m_wavenumber == 1){ return sf::Vector3i(50, 10, 1); m_hpmultiplier = 1;}
+	if (m_wavenumber == 2){ return sf::Vector3i(60, 20, 5); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 3){ return sf::Vector3i(100, 40, 10); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 4){ return sf::Vector3i(100, 80, 20); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 5){ return sf::Vector3i(100, 100, 40); m_hpmultiplier = 1.8;}
+	if (m_wavenumber == 6){ return sf::Vector3i(200, 100, 50); m_hpmultiplier = 2;}
+	if (m_wavenumber == 7){ return sf::Vector3i(200, 150, 80); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 8){ return sf::Vector3i(1, 1, 1000); m_hpmultiplier = 2.4;}
 	if (m_wavenumber == 9){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.6;}
 	if (m_wavenumber == 10){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 2.8;}
-	if (m_wavenumber == 11){ return sf::Vector3i(1, 1, 1); m_hpmultiplier = 3;}
+
+	return sf::Vector3i(0,0,0);
+
 }
+
+void Spawner::UpdateTime(float deltatime){
+	m_time += deltatime;
+};
+
+void Spawner::NextWaveCheck(){
+	if(m_time > 60){
+		m_wavenumber +=1;
+		m_time = 0;
+		m_currentenemieslvl1 = 0;
+		m_spawningenemieslvl1 = 0;
+		m_currentenemieslvl2 = 0;
+		m_spawningenemieslvl2 = 0;
+		m_currentenemieslvl3 = 0;
+		m_spawningenemieslvl3 = 0;
+	};
+};
 
 float Spawner::GetHpMultiplier(){
 	return m_hpmultiplier;
 }
 
-std::vector<EnemyObject*> Spawner::EnemySpawner2(float deltatime, int numberofenemies){
-	m_koeffecient = numberofenemies*2;
-	m_enemytime+=deltatime;
-	m_spawningenemies = m_koeffecient*m_enemytime;
-	std::vector<EnemyObject*> t_enemies;
-	if(m_spawningenemies >=1){
-		int t_spawningenemies = m_spawningenemies;
-		for(int i = 0; i<t_spawningenemies; i++){
-			//t_enemies.push_back(new enemy);
-		}
-		m_spawningenemies -= t_spawningenemies;
+int Spawner::NumberOfEnemieslvl1(float numberofenemies){
+	m_koeffecientlvl1 = (numberofenemies/(m_waveduration*m_waveduration));
+
+	float t_previousenemies = m_currentenemieslvl1;
+
+	m_currentenemieslvl1 = m_koeffecientlvl1*m_time*m_time;
+
+	float m_deltaenemies = m_currentenemieslvl1 - t_previousenemies;
+
+	m_spawningenemieslvl1 += m_deltaenemies;
+
+	if(m_spawningenemieslvl1 > 1){
+	int t_spawningenemies = m_spawningenemieslvl1;
+	m_spawningenemieslvl1 -= t_spawningenemies;
+	return t_spawningenemies;
 	}
+	return 0;
+};
 
+int Spawner::NumberOfEnemieslvl2(float numberofenemies){
+	m_koeffecientlvl2 = (numberofenemies/(m_waveduration*m_waveduration));
 
-	return t_enemies;
+	float t_previousenemies = m_currentenemieslvl2;
+
+	m_currentenemieslvl2 = m_koeffecientlvl2*m_time*m_time;
+
+	float m_deltaenemies = m_currentenemieslvl2 - t_previousenemies;
+
+	m_spawningenemieslvl2 += m_deltaenemies;
+
+	if(m_spawningenemieslvl2 > 1){
+	int t_spawningenemies = m_spawningenemieslvl2;
+	m_spawningenemieslvl2 -= t_spawningenemies;
+	return t_spawningenemies;
+	}
+	return 0;
+};
+
+int Spawner::NumberOfEnemieslvl3(float numberofenemies){
+	m_koeffecientlvl3 = (numberofenemies/(m_waveduration*m_waveduration));
+
+	float t_previousenemies = m_currentenemieslvl3;
+
+	m_currentenemieslvl3 = m_koeffecientlvl3*m_time*m_time;
+
+	float m_deltaenemies = m_currentenemieslvl3 - t_previousenemies;
+
+	m_spawningenemieslvl3 += m_deltaenemies;
+
+	if(m_spawningenemieslvl3 > 1){
+	int t_spawningenemies = m_spawningenemieslvl3;
+	m_spawningenemieslvl3 -= t_spawningenemies;
+	return t_spawningenemies;
+	}
+	return 0;
 };

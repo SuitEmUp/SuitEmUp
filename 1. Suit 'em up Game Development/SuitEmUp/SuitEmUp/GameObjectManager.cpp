@@ -194,13 +194,31 @@ void GameObjectManager::Update(float deltatime)
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
 	}
-	if(m_spawner->Timer(deltatime)){ 
-		//Keeps track of when enemies spawn
-		int c=rand()%10;
-		if(c>3) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
-		else if(c<3) m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
-		else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	//if(m_spawner->Timer(deltatime)){ 
+	//	//Keeps track of when enemies spawn
+	//	int c=rand()%10;
+	//	if(c>3) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+	//	else if(c<3) m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+	//	else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	//}
+
+	m_spawner->UpdateTime(deltatime);
+
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl1(m_spawner->Wave().x); i++)
+	{
+		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
 	}
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl2(m_spawner->Wave().y); i++)
+	{
+		m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+	}
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl3(m_spawner->Wave().z); i++)
+	{
+		m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	}
+
+	m_spawner->NextWaveCheck();
+
 	for(int i = 0; i<m_enemies.size(); i++){ 
 		//Updates all enemies.
 		if(m_enemies.at(i)!=nullptr){
