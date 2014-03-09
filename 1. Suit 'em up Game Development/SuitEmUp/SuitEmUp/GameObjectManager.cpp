@@ -434,11 +434,9 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 {
 	m_window->draw(*m_background);
 
-	m_window->draw(*m_truck->GetSprite()); //Draws truck
+	m_eyecandy->DrawPictures(deltatime, m_window);
 
-	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
-	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
-	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
+	m_window->draw(*m_truck->GetSprite()); //Draws truck
 
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
@@ -475,7 +473,11 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 		}
 	};
 
-	m_eyecandy->DrawEyeCandy(deltatime, m_window);
+	m_eyecandy->DrawParticles(deltatime, m_window);
+
+	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
+	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
+	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
 }
 //////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////

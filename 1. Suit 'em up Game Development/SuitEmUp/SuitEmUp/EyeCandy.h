@@ -25,7 +25,8 @@ public:
 	void TextCreator(sf::Text p_text, sf::Vector2f p_position);
 
 	void Update(float deltatime);
-	void DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow);
+	void DrawParticles(float deltatime, sf::RenderWindow* renderwindow);
+	void DrawPictures(float deltatime, sf::RenderWindow* renderwindow);
 
 	void PictureDestroyer();
 	void ParticleDestroyer();
@@ -39,6 +40,7 @@ private:
 		sf::Vector2f m_velocity;
 		sf::Vector2f m_acceleration;
 		sf::Vector2f m_aacceleration;
+		sf::Vector2f m_aaacceleration;
 		float m_speed;
 	};
 

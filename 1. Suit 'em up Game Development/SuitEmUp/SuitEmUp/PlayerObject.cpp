@@ -36,7 +36,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 
 bool PlayerObject::Update(float deltatime)
 {
-	if(m_input->IsDown(sf::Keyboard::L))
+	if(m_input->IsDown(sf::Keyboard::O))
 	{
 		m_weapontype = "BoomWosh";
 	}

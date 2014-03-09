@@ -115,7 +115,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 
 
 
-	for(int i = 0; i<(rand()%(300-250+1))+250; i++){
+	for(int i = 0; i<(rand()%(200-100+1))+100; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
 
@@ -126,7 +126,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 		partickel->m_destination = p_destination;
 
 		partickel->m_position = p_position;
-		partickel->m_speed = ((rand()%(20-1+1))+1);
+		partickel->m_speed = ((rand()%(40-1+1))+1);
 		partickel->m_velocity = partickel->m_direction * partickel->m_speed;
 		partickel->m_duration = 3;
 
@@ -138,7 +138,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 
 		sf::RectangleShape* rect = new sf::RectangleShape;
 		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(3, 3));
+		rect->setSize(sf::Vector2f(6, 6));
 		rect->setFillColor(sf::Color(r, g, b));
 
 		m_recticles.push_back(rect);
@@ -165,15 +165,16 @@ void EyeCandy::Update(float deltatime){
 		m_boomwoshticles.at(i)->m_duration -= deltatime;
 
 
-
 		float deltaX = m_boomwoshticles.at(i)->m_position.x - m_boomwoshticles.at(i)->m_destination.x;
 		float deltaY = m_boomwoshticles.at(i)->m_position.y - m_boomwoshticles.at(i)->m_destination.y;
 		float distance = sqrt((deltaX*deltaX)+(deltaY*deltaY))*2;
 
-		m_boomwoshticles.at(i)->m_aacceleration += sf::Vector2f(-(deltaX/distance)/100, -(deltaY/distance)/100);
+
+		m_boomwoshticles.at(i)->m_aaacceleration += sf::Vector2f(-(deltaX/distance)/1000, -(deltaY/distance)/1000);
 
 		/*m_boomwoshticles.at(i)->m_aacceleration.x *= 1.01;
 		m_boomwoshticles.at(i)->m_aacceleration.y *= 1.01;*/
+		m_boomwoshticles.at(i)->m_aacceleration += m_boomwoshticles.at(i)->m_aaacceleration;
 
 		m_boomwoshticles.at(i)->m_acceleration += m_boomwoshticles.at(i)->m_aacceleration;
 
@@ -184,7 +185,7 @@ void EyeCandy::Update(float deltatime){
 
 		m_boomwoshticles.at(i)->m_position += m_boomwoshticles.at(i)->m_velocity;
 
-		if(m_boomwoshticles.at(i)->m_duration < 0 || distance < 25){
+		if(m_boomwoshticles.at(i)->m_duration < 0 /*|| distance < 25*/){
 			m_boomwoshticles.erase(m_boomwoshticles.begin()+i);
 			m_recticles.erase(m_recticles.begin()+i);
 		}
@@ -205,7 +206,7 @@ void EyeCandy::Update(float deltatime){
 };
 
 
-void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
+void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	for(int i = 0; i<m_particles.size(); i++){
 		m_rectangles.at(i)->setPosition(m_particles.at(i)->m_position);
 		renderwindow->draw(*m_rectangles.at(i));
@@ -222,15 +223,6 @@ void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
 		renderwindow->draw(*m_squares.at(i));
 		m_squares.at(i)->setScale(m_squares.at(i)->getScale().x * 0.9, m_squares.at(i)->getScale().y * 0.9);
 	};
-	for(int i = 0; i<m_pictures.size(); i++){
-		renderwindow->draw(*m_pictures.at(i)->picture);
-		m_pictures.at(i)->duration -= deltatime;
-		if(m_pictures.at(i)->duration < 0){
-			m_pictures.erase(m_pictures.begin()+i);
-			i--;
-			if(i<0) i=0;
-		}
-	};
 	for(int i = 0; i<m_texts.size(); i++){
 		renderwindow->draw(m_texts.at(i).texts);
 		m_texts.at(i).duration_text -= deltatime;
@@ -240,6 +232,17 @@ void EyeCandy::DrawEyeCandy(float deltatime, sf::RenderWindow* renderwindow){
 			if(i<0) i=0;
 		}
 	}
+};
+void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
+	for(int i = 0; i<m_pictures.size(); i++){
+		renderwindow->draw(*m_pictures.at(i)->picture);
+		m_pictures.at(i)->duration -= deltatime;
+		if(m_pictures.at(i)->duration < 0){
+			m_pictures.erase(m_pictures.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	};
 };
 void EyeCandy::PictureDestroyer(){};
 void EyeCandy::ParticleDestroyer(){};
