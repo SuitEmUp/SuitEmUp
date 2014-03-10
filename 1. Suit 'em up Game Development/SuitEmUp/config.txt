@@ -1,11 +1,23 @@
 customize_padding_big = 45
 button_padding = 75
 window_w = 1280
+<<<<<<< HEAD
 
 window_h = 720
 current_truck = 0
+=======
+<<<<<<< HEAD = <<<<<<< HEAD
+current_truck = 0
+window_h = 720
+
+>>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 -GUI related stuff- = -GUI related stuff-
+>>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea = >>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea
 menu_top_padding = 225
+<<<<<<< HEAD
+=======
+>>>>>>> 6ee235dad8d0434a7ff0b41763571d99d5dd73d6 = >>>>>>> 6ee235dad8d0434a7ff0b41763571d99d5dd73d6
+>>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 fullscreen = false
 hud_padding = 75
 logoypos = 75

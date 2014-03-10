@@ -89,7 +89,6 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
 
-
 	m_eyecandy = new EyeCandy();
 }
 
@@ -189,18 +188,42 @@ void GameObjectManager::Update(float deltatime)
 	};
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
+		if(m_player->GetWeaponType() == "BoomWosh")
+		{
+			m_eyecandy->BoomWoshCreator(m_player->GetPosition(), m_input->GetMousePos());
+
+		}
+
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
 	}
-	if(m_spawner->Timer(deltatime)){ 
-		//Keeps track of when enemies spawn
-		int c=rand()%10;
-		if(c>3) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
-		else if(c<3) m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
-		else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	//if(m_spawner->Timer(deltatime)){ 
+	//	//Keeps track of when enemies spawn
+	//	int c=rand()%10;
+	//	if(c>3) m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
+	//	else if(c<3) m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+	//	else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	//}
+
+	m_spawner->UpdateTime(deltatime);
+
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl1(m_spawner->Wave().x); i++)
+	{
+		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
 	}
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl2(m_spawner->Wave().y); i++)
+	{
+		m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
+	}
+	for(int i = 0; i<m_spawner->NumberOfEnemieslvl3(m_spawner->Wave().z); i++)
+	{
+		m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
+	}
+
+	m_spawner->NextWaveCheck();
+
 	for(int i = 0; i<m_enemies.size(); i++){ 
 		//Updates all enemies.
 		if(m_enemies.at(i)!=nullptr){
@@ -319,15 +342,10 @@ void GameObjectManager::Update(float deltatime)
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
-
-					//	delete m_supers.at(j)->GetSprite();
-
-					//	delete m_supers.at(j)->GetSprite();
-
-				//	delete m_supers.at(j)->GetSprite();
 					//score and feedback
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_supers.at(j)->GetPosition());
+
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 
@@ -416,11 +434,9 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 {
 	m_window->draw(*m_background);
 
-	m_window->draw(*m_truck->GetSprite()); //Draws truck
+	m_eyecandy->DrawPictures(deltatime, m_window);
 
-	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
-	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
-	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
+	m_window->draw(*m_truck->GetSprite()); //Draws truck
 
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
@@ -457,7 +473,11 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 		}
 	};
 
-	m_eyecandy->DrawEyeCandy(deltatime, m_window);
+	m_eyecandy->DrawParticles(deltatime, m_window);
+
+	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
+	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
+	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
 }
 //////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////
@@ -525,12 +545,12 @@ void GameObjectManager::CreateCusomizationButtons()
 		Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64))));
 
 	//Trinkets
-	m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
+	/*m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
 		1020, 463));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot2"),
 		1150, 500));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
-		1046, 591));
+		1046, 591));*/
 
 };
 void GameObjectManager::DrawCustomizationButtons()
