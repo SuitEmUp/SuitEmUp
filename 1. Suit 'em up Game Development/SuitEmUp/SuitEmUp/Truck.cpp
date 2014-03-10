@@ -12,8 +12,22 @@ Truck::Truck(int upgrade, sf::Sprite* sprite, sf::Sprite* sprite2,sf::Sprite* sp
 
 	m_sprite = sprite_truck.at(0);
 
+	if(upgrade == 1)
+	{
 	m_maxhp = 100;
-	
+	m_hp = m_maxhp;
+	}
+	if(upgrade == 3)
+	{
+	m_maxhp = 200;
+	m_hp = m_maxhp;
+	}
+	if(upgrade == 2)
+	{
+	m_maxhp = 150;
+	m_hp = m_maxhp;
+	}
+
 	m_truck_hp  = nullptr;
 
 
@@ -55,11 +69,7 @@ Truck::Truck(int upgrade, sf::Sprite* sprite, sf::Sprite* sprite2,sf::Sprite* sp
 	for(int count=0;count<10;count++)
 	{
 		m_truck_hp->update(0.1f, 1);
-		m_truck_hp->update(0.1f, 1);
 	}
-
-	m_hp = m_maxhp;
-
 }
 bool Truck::Update(float deltatime)
 {
@@ -67,7 +77,6 @@ bool Truck::Update(float deltatime)
 
 
 	m_truck_hp->update(deltatime, 1);
-
 
 	if(m_hp>m_maxhp){m_hp=m_maxhp;}
 

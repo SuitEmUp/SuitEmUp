@@ -42,5 +42,6 @@ public:
 	bool m_running;
 	int m_paused;
 
+	sf::Sprite *m_crosshair;
 
 };

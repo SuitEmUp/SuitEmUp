@@ -280,7 +280,7 @@ bool Customize::Update(float deltatime)
 				//Upgrade Truck
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
 				{
-					if(m_currentTruck != 2)
+					if(Config::getInt("current_truck", 0) < 2)
 					{
 						//upgrade truck
 						Config::set("current_truck", count[++counts]);

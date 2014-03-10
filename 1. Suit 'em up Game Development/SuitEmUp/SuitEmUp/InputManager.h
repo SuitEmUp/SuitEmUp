@@ -34,4 +34,6 @@ private:
 	int myMouseX;                                        
 	int myMouseY;    
 	sf::Vector2i m_mousepos;
+	sf::Text text;
+	std::string str;
 };

@@ -40,17 +40,17 @@ bool PlayerObject::Update(float deltatime)
 	if(m_suittype == "Level1")
 	{
 		speed = 400;
-		printf("Suit Level 1 woopwoop");
+
 	}
 	if(m_suittype == "Level2")
 	{
 		speed = 500;
-		printf("Suit Level 2 woopwoop");
+
 	}
 	if(m_suittype == "Level3")
 	{
 		speed = 600;
-		printf("Suit Level 3 woopwoop");
+
 	}
 	//sets weapon stats
 	if(m_weapontype == "Revolver")
