@@ -1,4 +1,4 @@
-﻿Build started 2014-03-09 21:10:27.
+﻿Build started 2014-03-09 21:18:22.
      1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\EyeCandy.cpp"
@@ -75,4 +75,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.31
+Time Elapsed 00:00:01.17
