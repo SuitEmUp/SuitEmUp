@@ -35,7 +35,7 @@ bool PausState::Init()
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_buttons.push_back(new Button(m_input, "MainMenu", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_buttons.push_back(new Button(m_input, "MainMenu", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "QuitGame"), 
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
@@ -74,6 +74,16 @@ void PausState::Exit(){
 	}
 	m_buttons.clear();
 
+		if(m_engine->m_paused == 1)
+	{
+		Config::set("current_suit", "0");
+		Config::set("current_weapon", "0");
+		Config::set("current_truck", "0");
+		Config::set("weapons_available", "1");
+		Config::renew();
+		m_engine->m_paused = 0;
+	}
+
 };
 
 
@@ -99,6 +109,7 @@ bool PausState::Update(float deltatime)
 			{
 				printf("Next State set to MainMenu\n");
 				setNextState("MainMenu");
+				m_engine->m_paused = 1;
 				return false;
 			}
 

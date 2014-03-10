@@ -57,7 +57,7 @@ void GameObjectManager::CreateGameObjects()
 
 	//ANIMATIONS TRUCK
 
-	m_truck = new Truck(m_spritemanager->Load("../data/sprites/TruckLVLOneSpriteSheet.png", "Truck_Animation_lv1",1, 1), 
+	m_truck = new Truck(1,m_spritemanager->Load("../data/sprites/TruckLVLOneSpriteSheet.png", "Truck_Animation_lv1",1, 1), 
 		m_spritemanager->Load("../data/sprites/weardown2.PNG", "TruckWearDown_1", 1, 1),
 		m_spritemanager->Load("../data/sprites/weardown3.PNG", "TruckWearDown_2", 1, 1),
 		m_spritemanager->Load("../data/sprites/weardown4.PNG", "TruckWearDown_3", 1, 1));
@@ -418,7 +418,7 @@ void GameObjectManager::Update(float deltatime)
 		};
 	};
 
-	float lol = m_truck->UpdateHP()/100;
+	float lol = m_truck->UpdateHP()/m_truck->m_maxhp;
 	if(lol>1){
 		lol=1;
 	}
@@ -489,10 +489,10 @@ void GameObjectManager::CreateButtons()
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/HighScore.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Options.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
 	m_vButtons.push_back(new Button(m_input, "QuitGame", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
@@ -642,6 +642,9 @@ void GameObjectManager::EraseTrinketButtons(){
 	m_vTrinketButtons.clear();
 };
 
+
+//SCORE RELATED STUFF
+
 void GameObjectManager::Buy(int value)
 {
 	m_xscore->BuyEquipment(value);
@@ -657,4 +660,34 @@ int GameObjectManager::GetScore(int m_value)
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
+}
+
+//truck related stuff
+
+void GameObjectManager::UpgradeMaxHpAndSprites()
+{
+	if(m_truck != nullptr){
+		//delete m_truck->GetSprite();
+		delete m_truck;
+		m_truck = nullptr;
+	}
+
+	if(Config::getInt("current_truck", 0) == 2)
+	{
+		m_truck = new Truck(3, m_spritemanager->Load("../data/sprites/truck_lvl3.PNG", "Truck_Animation_lv2",1, 1), 
+		m_spritemanager->Load("../data/sprites/weardown_lvl3_2.png", "TruckWearDown_1", 1, 1),
+		m_spritemanager->Load("../data/sprites/weardown_lvl3_3.png", "TruckWearDown_2", 1, 1),
+		m_spritemanager->Load("../data/sprites/weardown_lvl3_4.png", "TruckWearDown_3", 1, 1));
+		m_truck->m_maxhp = 200;
+	}
+	if(Config::getInt("current_truck", 0) == 1)
+	{
+	m_truck = new Truck(2, m_spritemanager->Load("../data/sprites/TruckLvl2SpriteSheet.png", "Truck_Animation_lv2",1, 1), 
+		m_spritemanager->Load("../data/sprites/weardown_lvl2_2.png", "TruckWearDown_1", 1, 1),
+		m_spritemanager->Load("../data/sprites/weardown_lvl2_3.png", "TruckWearDown_2", 1, 1),
+		m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
+	m_truck->m_maxhp = 150;
+	}
+
+
 }

@@ -56,6 +56,8 @@ private:
 	int m_currentWeapon;
 	int m_currentTruck;
 
+	int counts;
+
 	bool m_trinketboxactivator;
 	bool m_trinketboxlock;
 	sf::Sprite* m_trinketboxsprite;

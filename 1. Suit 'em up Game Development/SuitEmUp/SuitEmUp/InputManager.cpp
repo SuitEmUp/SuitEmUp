@@ -84,7 +84,16 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				m_input->myMouseX = event.mouseButton.x;
 				m_input->myMouseY = event.mouseButton.y;
 				m_input->m_currentMouse[0] = true;
-			//	std::cout << myMouseX << " : " << myMouseY << "\n";		
+				//	std::cout << myMouseX << " : " << myMouseY << "\n";		
+			}
+		}
+		else if (event.type == sf::Event::TextEntered)
+		{
+			// Handle ASCII characters only
+			if (event.text.unicode < 128)
+			{
+				str += static_cast<char>(event.text.unicode);
+				text.setString(str);
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)
@@ -96,11 +105,12 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 		}
 		if(m_input->IsDown(sf::Keyboard::Escape))
 		{
-		//	std::cout << "nu kom jag in haer";
+			//	std::cout << "nu kom jag in haer";
 			running = false;
 
 		}
 	}
+	//sf::Event::TextEvent(); måste förstå vad detta gör	
 }
 void InputManager::PostMouseUpdate()
 {

@@ -49,23 +49,26 @@ public:
 	sf::RenderWindow* m_window;
 
 
-
-	//Button related stuff?
-
-
+	//Score based methods
 	void Buy(int value);
 	int GetScore(int m_value);
 	void Dead();
 
+	//TruckUpgrades
+	void UpgradeMaxHpAndSprites();
+
+	//Update, Create, Draw, Erase
 	void CreateButtons();
 	void UpdateButtons();
 	void DrawButtons();
 	void EraseButtons();
 
+	//Create, Draw, Erase
 	void CreateCusomizationButtons();
 	void DrawCustomizationButtons();
 	void EraseCustomizationButtons();
 
+	//Create, Draw, Erase
 	void CreateTrinketButtons();
 	void DrawTrinketButtons();
 	void EraseTrinketButtons();

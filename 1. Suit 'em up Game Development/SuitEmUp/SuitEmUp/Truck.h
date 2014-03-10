@@ -13,7 +13,7 @@ class Truck : public GameObject
 	friend class Animation;
 public:
 
-	Truck(sf::Sprite* sprite = nullptr, sf::Sprite* sprite2 = nullptr,sf::Sprite* sprite3 = nullptr,sf::Sprite* sprite4= nullptr);
+	Truck(int upgrade, sf::Sprite* sprite = nullptr, sf::Sprite* sprite2 = nullptr,sf::Sprite* sprite3 = nullptr,sf::Sprite* sprite4 = nullptr);
 	bool Update(float deltatime);
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);
@@ -23,11 +23,11 @@ public:
 	float UpdateHP();
 
 	void Set_Animation(sf::Sprite *m_xsprite,int sprite_number);
+	float m_maxhp;
 
 protected:
 
 	float m_hp;
-	float m_maxhp;
 
 	std::vector<sf::Sprite*>sprite_truck;
 
@@ -35,5 +35,5 @@ protected:
 	sf::Vector2f m_velocity;
 
 	Animation *m_truck_hp;
-	Animation *m_truck_lowhp;
+
 };

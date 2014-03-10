@@ -72,6 +72,33 @@ bool MainMenu::Update(float deltatime)
 
 	for(int i = 0; i < m_engine->m_gom->m_vButtons.size(); i++)
 	{
+
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
+			printf("Click SUCCESSSSS\n");
+			printf("Next State set to Game\n");
+			setNextState("Game");
+			m_engine->m_paused = 3; //through mainmenu
+			return false;
+		}
+
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
+			printf("Click SUCCESSSSS\n");
+			printf("HighScore-state does not exist\n");
+		}
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+
+			printf("Click SUCCESSSSS\n");
+			printf("Next State set to Options\n");
+			setNextState("Options");
+			return false;
+		}
+		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+
+			m_engine->m_running = false;
+			printf("Click SUCCESSSSS\n");
+			printf("This button doesnt work yet\n");
+			//Exit Game
+
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
 
 			if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
@@ -103,11 +130,13 @@ bool MainMenu::Update(float deltatime)
 				printf("This button doesnt work yet\n");
 				//Exit Game
 			}
+
 		}
 	}
-
+	}
 	return true;
 }
+
 
 void MainMenu::Draw()
 {
