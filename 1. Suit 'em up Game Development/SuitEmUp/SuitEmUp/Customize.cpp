@@ -32,15 +32,15 @@ Customize::Customize(Engine *engine)
 	howmuchitcosts_weapon = 1500;
 	howmuchitcosts_truck = 1200;
 	howmuchitcosts_trinket = 500;
- 
+
 
 };
 
 bool Customize::Init()
 {
-	
+
 	counts = 0;
-	
+
 	m_weapons_available = Config::getInt("weapons_available", 0);
 	m_currentSuit = Config::getInt("current_suit", 0);
 	m_currentWeapon = Config::getInt("current_weapon", 0);
@@ -82,8 +82,7 @@ bool Customize::Init()
 	{
 		m_pauselock = false;
 	}
-<<<<<<< HEAD
-=======
+
 
 	//glow feedback
 
@@ -100,7 +99,7 @@ bool Customize::Init()
 	m_back = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "Back", 1.0, 1.0);
 	m_back->setPosition(Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64)));
 
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
+
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
 
@@ -121,10 +120,7 @@ void Customize::Exit(){
 
 bool Customize::Update(float deltatime)
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to MainMenu\n");
@@ -148,7 +144,7 @@ bool Customize::Update(float deltatime)
 	howmuchmoneyihave = m_engine->m_gom->GetScore(howmuchmoneyihave);
 
 
-<<<<<<< HEAD
+
 	if(m_trinketboxactivator){
 		if(m_input->GetMousePos().x <= m_trinketboxsprite->getPosition().x || m_input->GetMousePos().y <= m_trinketboxsprite->getPosition().y
 			|| m_input->GetMousePos().x >= (m_trinketboxsprite->getPosition().x + m_trinketboxsprite->getLocalBounds().width)
@@ -161,25 +157,19 @@ bool Customize::Update(float deltatime)
 		}
 	}
 	if(!m_trinketboxactivator)
-=======
-	for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
-	{
-		if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked")
-		{
-			//----------------------
-			//Suit Stuff
-			//----------------------
 
-			//Upgrade Suit
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
+		for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
+
+		{
+			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked")
 			{
-				//score
-				m_engine->m_gom->Buy(howmuchitcosts_suit);
-				howmuchitcosts_suit + 1500;
-				if(m_currentSuit == 0)
+				//----------------------
+				//Suit Stuff
+				//----------------------
+
+				//Upgrade Suit
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
 				{
-<<<<<<< HEAD
 					if(m_currentSuit != 2)
 					{
 						//score
@@ -204,35 +194,16 @@ bool Customize::Update(float deltatime)
 						}
 						m_suit->setPosition(45, 114);
 					}
-=======
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
-					m_engine->m_gom->m_player->SetSuitType("Level2");
-					m_currentSuit = 1;
-					Config::set("current_suit","1");
-					printf("Suit Upgraded\n");
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 				}
-				else if(m_currentSuit == 1)
-				{
-					m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
-					m_engine->m_gom->m_player->SetSuitType("Level3");
-					m_currentSuit = 2;
-					Config::set("current_suit","2");
-					printf("Suit Upgraded\n");
-				}
-				else if(m_currentSuit == 2)
-					printf("Suit already completed\n");
-				m_suit->setPosition(45, 114);
-			}
-			//----------------------
-			//Weapon Stuff
-			//----------------------
 
-			//Upgrade Weapon
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave)
-			{
-				if(	m_weapons_available != 3)
+				//----------------------
+				//Weapon Stuff
+				//----------------------
+
+				//Upgrade Weapon
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave && m_weapons_available != 3)
 				{
+
 					std::cout << m_weapons_available << std::endl;
 					//score
 					m_engine->m_gom->Buy(howmuchitcosts_weapon);
@@ -244,81 +215,89 @@ bool Customize::Update(float deltatime)
 						Config::set("current_weapon", "1");
 						Config::set("weapons_available","2");
 						printf("Needlegun is now available!\n");
-<<<<<<< HEAD
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
-=======
-						m_currentWeapon = 1;
-
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 					}
 					else if(m_weapons_available == 2)
 					{
 						m_weapons_available = 3;
 						Config::set("weapons_available","3");
 						printf("ArmCannon is now available!\n");
-<<<<<<< HEAD
 						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
 						Config::set("current_weapon", "2");
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
 					}
 					else if(m_weapons_available == 3){printf("Upgrade already complete\n");}
-=======
-						m_currentWeapon = 2;
-					}			
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
 					else {printf("Upgrade failed");}
 
 					std::cout << m_weapons_available << std::endl;
 					Config::renew();
+					m_weapon->setPosition(354, 114);
 				}
-				else
+
+				//NextWeapon
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight" || m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
 				{
-					printf("Upgrade already complete\n");
+					if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
+					{
+						if(m_currentWeapon == 0 && m_weapons_available > 1)
+							m_currentWeapon = 1;
+						else if(m_currentWeapon == 1 && m_weapons_available > 2)
+							m_currentWeapon = 2;
+						else if(m_currentWeapon == 2 && m_weapons_available == 3)
+							m_currentWeapon = 0;
+						else if(m_currentWeapon == 1 && m_weapons_available == 2)
+							m_currentWeapon = 0;
+
+
+					}
+					//PrevWeapon
+					if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
+					{
+						m_currentWeapon -= 1;
+
+						if(m_currentWeapon == 0 && m_weapons_available == 3)
+							m_currentWeapon = 3;
+						else if(m_currentWeapon == 0 && m_weapons_available == 2)
+							m_currentWeapon = 1;
+						else if(m_currentWeapon == 1 && m_weapons_available > 1)
+							m_currentWeapon = 0;
+						else if(m_currentWeapon == 2 && m_weapons_available > 2)
+							m_currentWeapon = 1;
+						else if(m_currentWeapon = 0)
+							printf("You need to upgrade before you can change weapon\n");
+					}
+					//if(m_currentWeapon == 0 && m_weapons_available == 3)
+
+					if(m_currentWeapon == 0)
+					{		
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "0");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Revolver");
+					}
+					if(m_currentWeapon == 1)
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "1");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
+					}
+					if(m_currentWeapon == 2)
+					{
+						m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
+						Config::set("current_weapon", "2");
+						m_currentWeapon = Config::getInt("current_weapon", 0);
+						m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
+					}
+					m_weapon->setPosition(354, 114);
 				}
-			}
 
-			//NextWeapon
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight" || m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
-			{
-				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
-				{
-					if(m_currentWeapon == 0 && m_weapons_available > 1)
-						m_currentWeapon = 1;
-					else if(m_currentWeapon == 1 && m_weapons_available > 2)
-						m_currentWeapon = 2;
-					else if(m_currentWeapon == 2 && m_weapons_available == 3)
-						m_currentWeapon = 0;
-					else if(m_currentWeapon == 1 && m_weapons_available == 2)
-						m_currentWeapon = 0;
+				//----------------------
+				//Truck Stuff
+				//----------------------
 
-					/*if(m_weapons_available == 1)
-					printf("You need to upgrade before you can change weapon\n");
-					else if(m_weapons_available > 2)
-					m_currentWeapon += 1;
-					if(m_currentWeapon == 1 && m_weapons_available == 2)
-					m_currentWeapon = 0;
-					if(m_currentWeapon == 2 && m_weapons_available == 3)
-					m_currentWeapon = 0;*/
-
-				}
-				//PrevWeapon
-				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponLeft")
-				{
-					m_currentWeapon -= 1;
-
-					if(m_currentWeapon == 0 && m_weapons_available == 3)
-						m_currentWeapon = 3;
-					else if(m_currentWeapon == 0 && m_weapons_available == 2)
-						m_currentWeapon = 1;
-
-					else if(m_currentWeapon == 1 && m_weapons_available > 1)
-						m_currentWeapon = 0;
-					else if(m_currentWeapon == 2 && m_weapons_available > 2)
-						m_currentWeapon = 1;
-
-<<<<<<< HEAD
 				std::string count[3] = {"0", "1", "2"};
 
 				//Upgrade Truck
@@ -342,73 +321,14 @@ bool Customize::Update(float deltatime)
 						printf("Click SUCCESSSSS\n");
 						printf("Suit Upgraded\n");
 					}
-=======
-					else if(m_currentWeapon = 0)
-						printf("You need to upgrade before you can change weapon\n");
-				}
-				//if(m_currentWeapon == 0 && m_weapons_available == 3)
 
-				if(m_currentWeapon == 0)
-				{		
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "0");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					m_engine->m_gom->m_player->SetWeaponType("Revolver");
 				}
-				if(m_currentWeapon == 1)
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
 				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "1");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					m_engine->m_gom->m_player->SetWeaponType("Needlegun");
+					printf("Next State set to Game\n");
+					setNextState("Game");
+					return false;
 				}
-				if(m_currentWeapon == 2)
-				{
-					m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "weapon", 1.0, 1.0);
-					Config::set("current_weapon", "2");
-					m_currentWeapon = Config::getInt("current_weapon", 0);
-					m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
-				}
-				m_weapon->setPosition(354, 114);
-			}
-
-			//----------------------
-			//Truck Stuff
-			//----------------------
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
-
-			//Upgrade Truck
-			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
-			{
-				//score
-				m_engine->m_gom->Buy(howmuchitcosts_truck);
-				howmuchitcosts_truck + 1500;
-				printf("KOEPT TRUK\n");
-				printf("Click SUCCESSSSS\n");
-
-				if(m_currentTruck == 0)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
-					m_engine->m_gom->m_player->SetTruckType("Level2");
-					m_currentTruck = 1;
-					Config::set("current_truck","1");
-					printf("Truck Upgraded\n");
-				}
-				else if(m_currentTruck == 1)
-				{
-					m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
-					m_engine->m_gom->m_player->SetTruckType			("Level3");
-					m_currentTruck = 2;
-					Config::set("current_truck","2");
-					printf("Truck Upgraded\n");
-				}
-				else if(m_currentSuit == 2)
-					printf("Suit already completed\n");
-				m_truck->setPosition(932, 114);
-
-
-
-
 			}
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "QuitGame")
 			{
@@ -418,17 +338,17 @@ bool Customize::Update(float deltatime)
 			}
 		}
 
-	}
-	if(m_input->IsUp(sf::Keyboard::Tab) && Config::getInt("quickcustomize",0) == 1 && m_pauselock == true)
-	{
-		printf("Next State set to Game\n");
-		setNextState("Game");
-		return false;
-	}
+
+		if(m_input->IsUp(sf::Keyboard::Tab) && Config::getInt("quickcustomize",0) == 1 && m_pauselock == true)
+		{
+			printf("Next State set to Game\n");
+			setNextState("Game");
+			return false;
+		}
 
 
 
-	return true;
+		return true;
 };
 
 
@@ -438,7 +358,7 @@ void Customize::Draw()
 	m_engine->m_window->draw(*m_suit);
 	m_engine->m_window->draw(*m_weapon);
 	m_engine->m_window->draw(*m_truck);
-		m_engine->m_window->draw(*m_statbox);
+	m_engine->m_window->draw(*m_statbox);
 	//buttons
 	m_engine->m_gom->DrawCustomizationButtons();
 	for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)

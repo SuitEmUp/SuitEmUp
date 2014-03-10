@@ -38,11 +38,11 @@ bool DieState::Init()
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "HighScore"),
+	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/HighScore.png", "HighScore"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "QuitGame"), 
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 

@@ -489,10 +489,10 @@ void GameObjectManager::CreateButtons()
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/HighScore.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Options.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
 	m_vButtons.push_back(new Button(m_input, "QuitGame", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 

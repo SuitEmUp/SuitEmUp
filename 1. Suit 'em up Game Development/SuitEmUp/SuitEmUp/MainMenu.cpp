@@ -72,7 +72,7 @@ bool MainMenu::Update(float deltatime)
 
 	for(int i = 0; i < m_engine->m_gom->m_vButtons.size(); i++)
 	{
-<<<<<<< HEAD
+
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
@@ -98,7 +98,7 @@ bool MainMenu::Update(float deltatime)
 			printf("Click SUCCESSSSS\n");
 			printf("This button doesnt work yet\n");
 			//Exit Game
-=======
+
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
 
 			if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
@@ -130,12 +130,13 @@ bool MainMenu::Update(float deltatime)
 				printf("This button doesnt work yet\n");
 				//Exit Game
 			}
->>>>>>> de11241213f713a8d8fb3f38e61fb62b9ebc7af4
+
 		}
 	}
-
+	}
 	return true;
 }
+
 
 void MainMenu::Draw()
 {
