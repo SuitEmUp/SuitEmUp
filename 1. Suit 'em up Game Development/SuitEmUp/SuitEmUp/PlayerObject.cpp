@@ -73,7 +73,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 1;
-		m_attackspeed = 0.000000001f;
+		m_attackspeed = 0.000000000001f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{

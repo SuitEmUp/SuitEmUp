@@ -82,6 +82,7 @@ void GameObjectManager::CreateGameObjects()
 	m_player_projectiles.clear();
 	m_enemy_projectiles.clear();
 
+	m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
 	//The game is not over
 	m_game_over = false;
 	m_hpbar = new HpBar(m_spritemanager->Load("../data/sprites/HP_Bar_2.png", "hpbar", 1,1),
@@ -188,12 +189,6 @@ void GameObjectManager::Update(float deltatime)
 	};
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
-		if(m_player->GetWeaponType() == "BoomWosh")
-		{
-			m_eyecandy->BoomWoshCreator(m_player->GetPosition(), m_input->GetMousePos());
-
-		}
-
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
@@ -207,6 +202,7 @@ void GameObjectManager::Update(float deltatime)
 	//	else if(c==3) m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));
 	//}
 
+	//ENEMY WAVES
 	m_spawner->UpdateTime(deltatime);
 
 	for(int i = 0; i<m_spawner->NumberOfEnemieslvl1(m_spawner->Wave().x); i++)
@@ -223,6 +219,7 @@ void GameObjectManager::Update(float deltatime)
 	}
 
 	m_spawner->NextWaveCheck();
+	//END OF ENEMY WAVES
 
 	for(int i = 0; i<m_enemies.size(); i++){ 
 		//Updates all enemies.
@@ -291,20 +288,25 @@ void GameObjectManager::Update(float deltatime)
 				if(m_player->GetWeaponType() == "ArmCannon"){
 					m_eyecandy->ShockCreator(m_enemies.at(j)->GetPosition());
 				}
+				else if(m_player->GetWeaponType() == "BoomWosh")
+				{
+					m_eyecandy->BoomWoshCreator(m_enemies.at(j)->GetPosition(), m_truck->GetPosition());
+				}
+
 				else m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
-				
+
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 					//EYECANDY SCORE AND DEADPICTURE CREATION
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/DeadBandit.png", "BanditCorpse", 1.2, 1.2), m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+160);
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(10), m_enemies.at(j)->GetPosition());
 					//	delete m_enemies.at(j)->GetSprite();
 
-					int chance = rand()%20;
+					/*	int chance = rand()%20;
 					if(chance == 15)
-					{
-						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
-							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
-					}
+					{*/
+					m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
+						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+					//}
 
 					delete m_enemies[j];
 					m_enemies.erase(m_enemies.begin()+j);
@@ -317,7 +319,7 @@ void GameObjectManager::Update(float deltatime)
 					m_player_projectiles.erase(m_player_projectiles.begin()+i);
 					--i;
 				}
-				
+
 				break;
 			};
 		};
@@ -332,6 +334,10 @@ void GameObjectManager::Update(float deltatime)
 				//delete m_player_projectiles.at(i)->GetSprite();
 				if(m_player->GetWeaponType() == "ArmCannon"){
 					m_eyecandy->ShockCreator(m_supers.at(j)->GetPosition());
+				}
+				else if(m_player->GetWeaponType() == "BoomWosh")
+				{
+					m_eyecandy->BoomWoshCreator(m_supers.at(j)->GetPosition(), m_truck->GetPosition());
 				}
 				else m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
@@ -374,6 +380,10 @@ void GameObjectManager::Update(float deltatime)
 				if(m_player->GetWeaponType() == "ArmCannon"){
 					m_eyecandy->ShockCreator(m_girls.at(j)->GetPosition());
 				}
+				else if(m_player->GetWeaponType() == "BoomWosh")
+				{
+					m_eyecandy->BoomWoshCreator(m_girls.at(j)->GetPosition(), m_truck->GetPosition());
+				}
 				else m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
@@ -381,11 +391,11 @@ void GameObjectManager::Update(float deltatime)
 					//	delete m_girls.at(j)->GetSprite();
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(50), m_girls.at(j)->GetPosition());
 
+					//score feedback
+					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Bandit_2_Corpse.png", "Snipercorpse", 1, 1), m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+90);
+
 					delete m_girls[j];
 					m_girls.erase(m_girls.begin()+j);
-
-					//score feedback
-					
 
 					//SCORE COUNT
 					m_xscore->PutInScore(enemyscore = 50);
@@ -409,6 +419,8 @@ void GameObjectManager::Update(float deltatime)
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
 			m_xscore->PutInScore(enemyscore = 35);
+
+			m_eyecandy->BoomWoshCreator(m_vRepairKits[i]->GetPosition(), m_truck->GetPosition());
 
 			m_truck->Healed();
 			//	delete m_vRepairKits.at(i)->GetSprite();
@@ -457,11 +469,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 			m_window->draw(*m_supers.at(i)->GetSprite()); // draws all enemies
 		}
 	};
-	for(int i=0; i<m_girls.size(); i++){
-		if(m_girls.at(i)!=nullptr){
-			m_window->draw(*m_girls.at(i)->GetSprite()); // draws all enemies
-		}
-	};
+	
 	for(int i=0; i<m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)!=nullptr){
 			m_window->draw(*m_player_projectiles.at(i)->GetSprite());	// draws all player projectiles
@@ -470,6 +478,11 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 	for(int i=0; i<m_enemy_projectiles.size(); i++){
 		if(m_enemy_projectiles.at(i)!=nullptr){
 			m_window->draw(*m_enemy_projectiles.at(i)->GetSprite());	// draws all enemy projetiles
+		}
+	};
+	for(int i=0; i<m_girls.size(); i++){
+		if(m_girls.at(i)!=nullptr){
+			m_window->draw(*m_girls.at(i)->GetSprite()); // draws all enemies
 		}
 	};
 
@@ -546,11 +559,11 @@ void GameObjectManager::CreateCusomizationButtons()
 
 	//Trinkets
 	/*m_vCustomizeButtons.push_back(new Button(m_input, "Slot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot1"),
-		1020, 463));
+	1020, 463));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot2"),
-		1150, 500));
+	1150, 500));
 	m_vCustomizeButtons.push_back(new Button(m_input, "Slot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "Slot3"),
-		1046, 591));*/
+	1046, 591));*/
 
 };
 void GameObjectManager::DrawCustomizationButtons()
@@ -675,18 +688,18 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 	if(Config::getInt("current_truck", 0) == 2)
 	{
 		m_truck = new Truck(3, m_spritemanager->Load("../data/sprites/truck_lvl3.PNG", "Truck_Animation_lv2",1, 1), 
-		m_spritemanager->Load("../data/sprites/weardown_lvl3_2.png", "TruckWearDown_1", 1, 1),
-		m_spritemanager->Load("../data/sprites/weardown_lvl3_3.png", "TruckWearDown_2", 1, 1),
-		m_spritemanager->Load("../data/sprites/weardown_lvl3_4.png", "TruckWearDown_3", 1, 1));
+			m_spritemanager->Load("../data/sprites/weardown_lvl3_2.png", "TruckWearDown_1", 1, 1),
+			m_spritemanager->Load("../data/sprites/weardown_lvl3_3.png", "TruckWearDown_2", 1, 1),
+			m_spritemanager->Load("../data/sprites/weardown_lvl3_4.png", "TruckWearDown_3", 1, 1));
 		m_truck->m_maxhp = 200;
 	}
 	if(Config::getInt("current_truck", 0) == 1)
 	{
-	m_truck = new Truck(2, m_spritemanager->Load("../data/sprites/TruckLvl2SpriteSheet.png", "Truck_Animation_lv2",1, 1), 
-		m_spritemanager->Load("../data/sprites/weardown_lvl2_2.png", "TruckWearDown_1", 1, 1),
-		m_spritemanager->Load("../data/sprites/weardown_lvl2_3.png", "TruckWearDown_2", 1, 1),
-		m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
-	m_truck->m_maxhp = 150;
+		m_truck = new Truck(2, m_spritemanager->Load("../data/sprites/TruckLvl2SpriteSheet.png", "Truck_Animation_lv2",1, 1), 
+			m_spritemanager->Load("../data/sprites/weardown_lvl2_2.png", "TruckWearDown_1", 1, 1),
+			m_spritemanager->Load("../data/sprites/weardown_lvl2_3.png", "TruckWearDown_2", 1, 1),
+			m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
+		m_truck->m_maxhp = 150;
 	}
 
 
