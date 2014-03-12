@@ -21,7 +21,7 @@ Spawner::Spawner(Truck* truck){
 	m_currentenemieslvl3 = 0;
 	m_spawningenemieslvl3 = 0;
 
-	m_waveduration = 10;
+	m_waveduration = 60;
 };
 
 bool Spawner::Timer(float deltatime){
