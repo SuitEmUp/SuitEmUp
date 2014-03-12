@@ -21,7 +21,7 @@ Spawner::Spawner(Truck* truck){
 	m_currentenemieslvl3 = 0;
 	m_spawningenemieslvl3 = 0;
 
-	m_waveduration = 60;
+	m_waveduration = 10;
 };
 
 bool Spawner::Timer(float deltatime){
@@ -212,7 +212,7 @@ void Spawner::UpdateTime(float deltatime){
 };
 
 void Spawner::NextWaveCheck(){
-	if(m_time > 60){
+	if(m_time > m_waveduration){
 		m_wavenumber +=1;
 		m_time = 0;
 		m_currentenemieslvl1 = 0;

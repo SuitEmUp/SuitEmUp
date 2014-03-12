@@ -8,7 +8,7 @@
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update, sf::Sprite* updatedupdate){
 	
 	if(player->GetWeaponType() == "ArmCannon"){
-	speed = 20;
+	speed = 1000;
 	}
 
 	else{speed = 2000;}

@@ -28,7 +28,10 @@ void Options::Exit(){};
 
 bool Options::Update(float deltatime)
 {
-	if(m_input->IsDown(sf::Keyboard::F1))
+
+
+
+	/*if(m_input->IsDown(sf::Keyboard::F1))
 	{
 		printf("Next State set to MainMenu\n");
 		setNextState("MainMenu");
@@ -45,7 +48,7 @@ bool Options::Update(float deltatime)
 		printf("Next State set to Customize\n");
 		setNextState("Customize");
 		return false;
-	};
+	};*/
 	return true;
 };
 
