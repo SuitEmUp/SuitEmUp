@@ -15,23 +15,20 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 
 	m_position = player->GetPosition();
 
-	m_updatedupdate = updatedupdate;
-	m_unupdate = sprite;
-	m_update = update;
 	if(player->GetWeaponType() == "ArmCannon"){
-		m_sprite = m_updatedupdate;
+		m_sprite = updatedupdate;
 		m_sprite->setOrigin(64/2, 64/2);
 		m_sprite->setColor(sf::Color(0, 0, 0, 0xff));
 		
 	}
 
 	else if(player->GetWeaponType() == "Needlegun"){
-		m_sprite = m_update;
+		m_sprite = update;
 		type = "Needle";
 		//m_sprite->setScale((player->GetDamage()-80)/20, (player->GetDamage()-80)/100);
 	}
 	else{
-		m_sprite = m_unupdate;
+		m_sprite = sprite;
 		//	m_sprite->setScale(player->GetDamage()/20, player->GetDamage()/20);
 		//	m_sprite->setScale((player->GetDamage()-80)/20, (player->GetDamage()-80)/100);
 	}

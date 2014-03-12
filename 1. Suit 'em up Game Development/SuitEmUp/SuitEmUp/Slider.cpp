@@ -2,9 +2,11 @@
 #include "InputManager.h"
 #include "SpriteManager.h"
 
-Slider::Slider(SpriteManager* p_sm)
+Slider::Slider(SpriteManager* p_sm, std::string type, sf::Vector2f p_position)
 {
-	m_position = sf::Vector2f(1080/2, 720/2);
+	m_type = type;
+
+	m_position = p_position;
 
 	m_level = m_position.x;
 
@@ -53,3 +55,11 @@ void Slider::Update(InputManager* p_input)
 float Slider::GetLevel(){
 	return m_level;
 };
+
+bool Slider::GetType(){
+	return true;
+};
+
+std::string Slider::GetSliderType(){
+	return m_type;
+}

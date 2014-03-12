@@ -77,6 +77,8 @@ SniperGirl::~SniperGirl(){
 	delete m_sound;
 	m_sound = nullptr;
 	}
+	m_truck = nullptr;
+	m_sprite = nullptr;
 };
 
 bool SniperGirl::GetType(){

@@ -22,12 +22,8 @@ HpBar::HpBar(sf::Sprite *hpbar, sf::Sprite *hpsprite, sf::Sprite *hpshadow)
 }
 HpBar::~HpBar()
 {
-	/*delete m_sprite;
 	m_sprite = nullptr;
-	delete hp;
-	hp = nullptr;
-	delete shadow;
-	shadow = nullptr;*/
+	shadow = nullptr;
 }
 sf::Sprite *HpBar::Sprite2()
 {

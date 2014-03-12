@@ -168,3 +168,9 @@ void Truck::Set_Animation(sf::Sprite *m_xsprite, int sprite_number)
 	}
 }
 
+Truck::~Truck(){
+	for(int i = 0; i<sprite_truck.size(); i++){
+		sprite_truck.at(i) = nullptr;
+	}
+	sprite_truck.clear();
+};

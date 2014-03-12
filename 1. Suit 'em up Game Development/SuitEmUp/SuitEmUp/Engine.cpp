@@ -38,6 +38,9 @@ Engine::Engine()
 
 	m_fDeltaTime = 0.01f;
 
+	m_soundlevel = 0;
+	m_visuallevel = 0;
+	m_musiclevel = 0;
 
 	m_paused = 1; // false 
 };
@@ -126,6 +129,7 @@ void Engine::Cleanup()
 	m_statemanager = nullptr;
 
 	if(m_gom != nullptr){
+		delete m_gom;
 		m_gom=nullptr;
 	}
 

@@ -41,3 +41,7 @@ bool RepairKit::GetType()
 {
 	return true;
 };
+
+RepairKit::~RepairKit(){
+	m_sprite = nullptr;
+}

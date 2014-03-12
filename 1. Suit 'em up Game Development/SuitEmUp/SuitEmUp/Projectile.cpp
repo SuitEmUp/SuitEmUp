@@ -24,3 +24,7 @@ std::string Projectile::GetType2(){
 float Projectile::GetRotation(){
 	return m_rotation;
 }
+
+Projectile::~Projectile(){
+	m_sprite = nullptr;
+};

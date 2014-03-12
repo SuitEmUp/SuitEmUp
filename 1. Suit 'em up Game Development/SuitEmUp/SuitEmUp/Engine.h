@@ -42,6 +42,10 @@ public:
 	bool m_running;
 	int m_paused;
 
+	int m_soundlevel;
+	int m_visuallevel;
+	int m_musiclevel;
+
 	sf::Sprite *m_crosshair;
 
 };

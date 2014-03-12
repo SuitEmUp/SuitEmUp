@@ -48,7 +48,7 @@ bool PausState::Init()
 	m_glow3 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow3",  1.0f, 1.0f);
 	m_glow3->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)*2));
 
-	
+
 
 	/*m_buttons.push_back(new Button(m_input, "QuitGame", "Square",m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 
@@ -74,7 +74,7 @@ void PausState::Exit(){
 	}
 	m_buttons.clear();
 
-		if(m_engine->m_paused == 1)
+	if(m_engine->m_paused == 1)
 	{
 		Config::set("current_suit", "0");
 		Config::set("current_weapon", "0");
@@ -93,27 +93,27 @@ bool PausState::Update(float deltatime)
 
 	for(int i=0; i<m_buttons.size();i++)
 	{
-			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")
-			{
-				printf("Next State set to GameState\n");
-				setNextState("Game");
-				return false;
-			}
-			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Customization")
-			{
-				printf("Next State set to Customize\n");
-				setNextState("Customize");
-				return false;
-			}
-			if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
-			{
-				printf("Next State set to MainMenu\n");
-				setNextState("MainMenu");
-				m_engine->m_paused = 1;
-				return false;
-			}
+		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")
+		{
+			printf("Next State set to GameState\n");
+			setNextState("Game");
+			return false;
+		}
+		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Customization")
+		{
+			printf("Next State set to Customize\n");
+			setNextState("Customize");
+			return false;
+		}
+		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
+		{
+			printf("Next State set to MainMenu\n");
+			setNextState("MainMenu");
+			m_engine->m_paused = 1;
+			return false;
+		}
 
-	
+
 	}
 
 	return  true;
