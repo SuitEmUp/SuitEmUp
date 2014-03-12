@@ -105,6 +105,8 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Projectile.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" />
@@ -146,6 +148,8 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Picture.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerObject.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PlayerProjectile.h" />
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Popup.h" />
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PopupManager.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Projectile.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\RepairKit.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Score.h" />

@@ -22,6 +22,11 @@
 int main()
 {
 	Config::parseFile("../config.txt");
+	Config::set("current_suit", "0");
+	Config::set("current_weapon", "0");
+	Config::set("current_truck", "0");
+	Config::set("weapons_available", "1");
+	Config::renew();
 	Engine suitengine;
 
 	if(suitengine.Initialize())
