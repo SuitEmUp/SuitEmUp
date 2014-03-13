@@ -37,7 +37,12 @@
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Utils.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" />
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" />
+    <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" />
+=======
     <ClCompile Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" />
+>>>>>>> 7d916a062b0813ba07423c66468d7dd63ae1dd33
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Animation.h" />
@@ -81,6 +86,11 @@
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Utils.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.h" />
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\SoundManager.h" />
+<<<<<<< HEAD
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\PopupManager.h" />
+    <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Popup.h" />
+=======
     <ClInclude Include="..\..\..\1. Suit %27em up Game Development\SuitEmUp\SuitEmUp\Slider.h" />
+>>>>>>> 7d916a062b0813ba07423c66468d7dd63ae1dd33
   </ItemGroup>
 </Project>

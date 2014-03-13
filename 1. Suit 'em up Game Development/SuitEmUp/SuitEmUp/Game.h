@@ -2,11 +2,13 @@
 
 #include <vector>
 #include "State.h"
+#include "Popup.h"
 
 namespace sf{
 	class RenderWindow;
 }
 class InputManager;
+
 class Game : public State {
 public:
 	Game(Engine *engine);
@@ -27,4 +29,9 @@ private:
 	std::string tempName_change;
 	int paused;
 	float m_deltatime;
+	int m_score;
+	bool popuplock;
+	bool onepopuplock;
+
+	Popup* m_popup;
 };
