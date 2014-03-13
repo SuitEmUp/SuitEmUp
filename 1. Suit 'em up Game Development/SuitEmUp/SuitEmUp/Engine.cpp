@@ -124,6 +124,11 @@ void Engine::Cleanup()
 	Config::set("weapons_available", "1");
 	Config::renew();
 
+	if(m_soundmanager != nullptr){
+		delete m_soundmanager;
+		m_soundmanager=nullptr;
+	}
+
 	if(m_spritemanager != nullptr){
 		delete m_spritemanager;
 		m_spritemanager=nullptr;

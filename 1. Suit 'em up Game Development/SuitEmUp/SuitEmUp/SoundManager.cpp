@@ -8,6 +8,19 @@ SoundManager::SoundManager(void)
 
 SoundManager::~SoundManager(void)
 {
+	for(int i = 0; i<m_sounds.size(); i++){
+		delete m_sounds.at(i).buffer;
+		m_sounds.at(i).buffer = nullptr;
+		delete m_sounds.at(i).sounddata;
+		m_sounds.at(i).sounddata = nullptr;
+	}
+	m_sounds.clear();
+
+	for(int i = 0; i<m_musics.size(); i++){
+		delete m_musics.at(i).musicdata;
+		m_musics.at(i).musicdata = nullptr;
+	}
+	m_musics.clear();
 }
 
 bool SoundManager::Initialize(std::string path)
