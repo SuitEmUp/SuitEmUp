@@ -26,7 +26,7 @@ void SoundManager::PlaySound(std::string path)
 		for(SoundStruct sound : m_sounds)
 		{
 			if(sound.path == path){
-				sound.sounddata->setVolume(m_musicvolume*m_mastervolume);
+				sound.sounddata->setVolume(m_soundvolume*m_mastervolume);
 				sound.sounddata->play();
 				return;
 			}
@@ -55,10 +55,10 @@ void SoundManager::PlayMusic(std::string path)
 void SoundManager::StopMusic(){};
 
 void SoundManager::SetMusicVolume(float volume){
-	m_musicvolume = volume/100;
+	m_musicvolume = volume;
 };
 void SoundManager::SetSoundVolume(float volume){
-	m_soundvolume = volume/100;
+	m_soundvolume = volume;
 };
 void SoundManager::SetMasterVolume(float volume){
 	m_mastervolume = volume/100;

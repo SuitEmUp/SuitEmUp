@@ -7,6 +7,7 @@ class StateManager;
 class DrawManager;
 class GameObjectManager;
 class ButtonManager;
+class SoundManager;
 
 namespace sf{
 	class RenderWindow;
@@ -34,7 +35,7 @@ public:
 	InputManager *m_input;
 	
 	//DrawManager *m_drawmanager;
-
+	SoundManager* m_soundmanager;
 
 	sf::Clock clock;
 	sf::Time time;
@@ -45,6 +46,7 @@ public:
 	int m_soundlevel;
 	int m_visuallevel;
 	int m_musiclevel;
+	int m_mastervolumelevel;
 
 	sf::Sprite *m_crosshair;
 

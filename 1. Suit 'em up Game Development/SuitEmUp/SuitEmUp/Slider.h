@@ -9,10 +9,12 @@ class Slider :
 	public GameObject
 {
 public:
-	Slider(SpriteManager* p_sm, std::string type, sf::Vector2f position);
+	Slider(SpriteManager* p_sm, std::string type, sf::Vector2f position, int level);
 	~Slider();
 	void Update(InputManager* p_input);
 	float GetLevel();
+
+	sf::Sprite* GetSliderSprite();
 
 	bool GetType();
 	std::string GetSliderType();

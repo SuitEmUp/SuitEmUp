@@ -15,13 +15,15 @@
 #include "SniperGirl.h"
 #include "Score.h"
 #include "EyeCandy.h"
+#include "SoundManager.h"
 
 #include <iostream>
 #include "HpBar.h"
 
 
-GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input)
+GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr)
 {
+	m_soundmanager = soundmngr;
 	m_input = input;
 	m_spritemanager=sm;
 	m_window=rw;
@@ -177,6 +179,7 @@ void GameObjectManager::ClearGameObjects()
 //Update
 void GameObjectManager::Update(float deltatime)
 {
+	m_soundmanager->PlaySound("M4A1.wav");
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
