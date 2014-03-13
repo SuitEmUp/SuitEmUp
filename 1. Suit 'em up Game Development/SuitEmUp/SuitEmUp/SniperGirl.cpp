@@ -21,7 +21,7 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	m_animation = nullptr;
 	AddAnimation(sprite);
 	
-	m_sprite->setOrigin(82/2, 34/2);
+	m_sprite->setOrigin(((m_sprite->getLocalBounds().width)/2.3), 16);
 	m_animation->update(0.1f, 0);
 };
 
@@ -77,6 +77,8 @@ SniperGirl::~SniperGirl(){
 	delete m_sound;
 	m_sound = nullptr;
 	}
+	m_truck = nullptr;
+	m_sprite = nullptr;
 };
 
 bool SniperGirl::GetType(){

@@ -31,7 +31,6 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_firetype = "Mouse";
 	m_weapontype = "Revolver";
 	//vapen 1
-	//if(Config::getInt("current_weapon", 0) == 0)
 };
 
 bool PlayerObject::Update(float deltatime)
@@ -73,7 +72,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 1;
-		m_attackspeed = 0.000000001f;
+		m_attackspeed = 0.000000000001f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{
@@ -297,7 +296,8 @@ bool PlayerObject::Update(float deltatime)
 					if(m_damage>100){
 						m_sound2->setVolume(200);
 						m_sound2->setPitch(2);
-						m_sound2->play();}
+						m_sound2->play();
+					}
 					else{
 						m_sound->play();
 					}
@@ -314,6 +314,12 @@ PlayerObject::~PlayerObject(){
 	m_buffer = nullptr;
 	delete m_sound;
 	m_sound = nullptr;
+
+	m_truck = nullptr;
+	m_input = nullptr;
+	m_sprite = nullptr;
+	m_unupdate = nullptr;
+	m_update = nullptr;
 };
 
 bool PlayerObject::GetType()

@@ -73,6 +73,11 @@ public:
 	void DrawTrinketButtons();
 	void EraseTrinketButtons();
 
+	//Create, Draw, Erase (Option-stuff)
+	void CreateOptionButtons();
+	void DrawOptionButtons();
+	void EraseOptionButtons();
+
 	std::vector<Button*> m_vButtons;
 	std::vector<Button*> m_vCustomizeButtons;
 	std::vector<Button*> m_vTrinketButtons;

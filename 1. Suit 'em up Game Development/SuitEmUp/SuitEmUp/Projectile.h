@@ -9,6 +9,7 @@ class Truck;
 class Projectile : public MovingGameObject{
 public:
 	bool Update(Truck* truck, float deltatime);
+	~Projectile();
 	bool GetType();
 	std::string GetType2();
 	float GetRotation();

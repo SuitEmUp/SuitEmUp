@@ -78,6 +78,8 @@ SuperEnemy::~SuperEnemy(){
 	delete m_sound;
 	m_sound = nullptr;
 	}
+	m_sprite = nullptr;
+	m_truck = nullptr;
 };
 
 bool SuperEnemy::GetType(){

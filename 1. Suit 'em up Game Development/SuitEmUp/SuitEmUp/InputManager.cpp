@@ -134,6 +134,8 @@ bool InputManager::IsUp(int key)
 	return !m_current[key];
 }
 
-sf::Vector2i InputManager::GetMousePos(){
-	return m_mousepos;
+sf::Vector2f InputManager::GetMousePos(){
+	float x = m_mousepos.x;
+	float y = m_mousepos.y;
+	return sf::Vector2f(x, y);
 }

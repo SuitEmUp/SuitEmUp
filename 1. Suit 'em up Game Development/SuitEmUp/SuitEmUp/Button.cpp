@@ -39,6 +39,9 @@ Button::Button(InputManager* p_input, std::string p_ButtonName, std::string p_sh
 
 Button::~Button()
 {
+	m_sprite = nullptr;
+	m_input = nullptr;
+
 	delete m_buffer1;
 	m_buffer1 = nullptr;
 	if(m_buffer1 != nullptr)

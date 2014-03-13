@@ -21,7 +21,7 @@ public:
 	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
 	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
 
-	void BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destination);
+	void BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination);
 	void TextCreator(sf::Text p_text, sf::Vector2f p_position);
 
 	void Update(float deltatime);
@@ -36,7 +36,7 @@ private:
 		float m_duration;
 		sf::Vector2f m_direction;
 		sf::Vector2f m_position;
-		sf::Vector2i m_destination;
+		sf::Vector2f m_destination;
 		sf::Vector2f m_velocity;
 		sf::Vector2f m_acceleration;
 		sf::Vector2f m_aacceleration;

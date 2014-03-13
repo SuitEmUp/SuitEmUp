@@ -1,15 +1,15 @@
-window_w = 1280
-button_padding = 75
 customize_padding_big = 45
+button_padding = 75
+window_w = 1280
 current_truck = 0
 window_h = 720
+
 -GUI related stuff- = -GUI related stuff-
-hud_padding = 75
-fullscreen = false
 menu_top_padding = 225
+fullscreen = false
+hud_padding = 75
 logoypos = 75
 current_suit = 0
-current_weapon = 0
 quickcustomize = 1
+current_weapon = 0
 weapons_available = 1
-

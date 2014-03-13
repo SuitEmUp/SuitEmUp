@@ -66,8 +66,6 @@ bool EnemyObject::Update(float deltatime){
 
 EnemyObject::~EnemyObject()
 {
-	
-	
 	if(m_buffer != nullptr)
 	{
 	delete m_buffer;
@@ -77,7 +75,8 @@ EnemyObject::~EnemyObject()
 	delete m_sound;
 	m_sound = nullptr;
 	}
-
+	m_truck = nullptr;
+	m_sprite = nullptr;
 
 };
 

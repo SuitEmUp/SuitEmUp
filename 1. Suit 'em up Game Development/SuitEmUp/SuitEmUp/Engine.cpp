@@ -38,6 +38,9 @@ Engine::Engine()
 
 	m_fDeltaTime = 0.01f;
 
+	m_soundlevel = 0;
+	m_visuallevel = 0;
+	m_musiclevel = 0;
 
 	m_paused = 1; // false 
 };
@@ -45,7 +48,7 @@ Engine::Engine()
 bool Engine::Initialize()
 {
 	m_statemanager = new StateManager();
-	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Default);
+	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window"/*, sf::Style::Fullscreen*/);
 	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
@@ -126,6 +129,7 @@ void Engine::Cleanup()
 	m_statemanager = nullptr;
 
 	if(m_gom != nullptr){
+		delete m_gom;
 		m_gom=nullptr;
 	}
 

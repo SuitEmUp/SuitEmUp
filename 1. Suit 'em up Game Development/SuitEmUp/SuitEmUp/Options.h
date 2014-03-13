@@ -7,7 +7,8 @@ namespace sf{
 	class RenderWindow;
 }
 class InputManager;
-
+class Button;
+class Slider;
 
 class Options : public State {
 public:
@@ -28,4 +29,6 @@ private:
 	InputManager *m_input;
 	std::string next_state;
 	std::string tempName_change;
+	std::vector<Button*> m_buttons;
+	std::vector<Slider*> m_sliders;
 };

@@ -14,6 +14,7 @@ class Truck : public GameObject
 public:
 
 	Truck(int upgrade, sf::Sprite* sprite = nullptr, sf::Sprite* sprite2 = nullptr,sf::Sprite* sprite3 = nullptr,sf::Sprite* sprite4 = nullptr);
+	~Truck();
 	bool Update(float deltatime);
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);

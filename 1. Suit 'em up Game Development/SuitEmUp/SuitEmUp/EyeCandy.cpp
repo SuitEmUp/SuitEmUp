@@ -20,50 +20,50 @@ EyeCandy::~EyeCandy()
 };
 
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
-	int r = ((rand()%(255-1+1))+1);
-	int g = ((rand()%(255-1+1))+1);
-	int b = ((rand()%(255-1+1))+1);
+	//int r = ((rand()%(255-1+1))+1);
+	//int g = ((rand()%(255-1+1))+1);
+	//int b = ((rand()%(255-1+1))+1);
 
 
-	for(int i = 0; i<(rand()%(300-250+1))+250; i++){
-		Particle* partickel = new Particle;
+	//for(int i = 0; i<(rand()%(150-100+1))+100; i++){
+	//	Particle* partickel = new Particle;
 
-		int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
+	//	int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
 
-		partickel->m_direction = sf::Vector2f(sin(randomm)/10+(p_direction.x)/-500, cos(randomm)/10+(p_direction.y)/-500);
+	//	partickel->m_direction = sf::Vector2f(sin(randomm)/10+(p_direction.x)/-500, cos(randomm)/10+(p_direction.y)/-500);
 
 
-		partickel->m_position = p_position;
-		partickel->m_speed = (rand()%(200-100+1))+100;
-		partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
+	//	partickel->m_position = p_position;
+	//	partickel->m_speed = (rand()%(200-100+1))+100;
+	//	partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
 
-		m_particles.push_back(partickel);	
+	//	m_particles.push_back(partickel);	
 
-		sf::RectangleShape* rect = new sf::RectangleShape;
-		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(5, 5));
-		/*int r = ((rand()%(255-1+1))+1);
-		int g = ((rand()%(255-1+1))+1);
-		int b = ((rand()%(255-1+1))+1);*/
-		rect->setFillColor(sf::Color::Red/*(r, g, b,200)*/);
+	//	sf::RectangleShape* rect = new sf::RectangleShape;
+	//	rect->setPosition(p_position);
+	//	rect->setSize(sf::Vector2f(5, 5));
+	//	/*int r = ((rand()%(255-1+1))+1);
+	//	int g = ((rand()%(255-1+1))+1);
+	//	int b = ((rand()%(255-1+1))+1);*/
+	//	rect->setFillColor(sf::Color::Red/*(r, g, b,200)*/);
 
-		m_rectangles.push_back(rect);
-	};
-	for(int i = 0; i<(rand()%(50-30+1))+30; i++){
+	//	m_rectangles.push_back(rect);
+	//};
+	for(int i = 0; i<(rand()%(200-150+1))+150; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
-		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/500, cos(randomm)+(p_direction.y)/500);
+		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/-500, cos(randomm)+(p_direction.y)/-500);
 
 		partickel->m_position = p_position;
-		partickel->m_speed = -((rand()%(200-50+1))+50);
+		partickel->m_speed = -((rand()%(400-50+1))+50);
 		partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
 
 		m_particles.push_back(partickel);	
 
 		sf::RectangleShape* rect = new sf::RectangleShape;
 		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(5, 5));
+		rect->setSize(sf::Vector2f(2, 2));
 		rect->setFillColor(sf::Color::Red);
 
 		m_rectangles.push_back(rect);
@@ -71,7 +71,7 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 };
 
 void EyeCandy::ShockCreator(sf::Vector2f p_position){
-	for(int i = 0; i<(rand()%(150-100+1))+100; i++){
+	for(int i = 0; i<(rand()%(100-50+1))+50; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
@@ -110,7 +110,7 @@ void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, flo
 	m_pictures.push_back(t_picture);
 };
 
-void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destination)
+void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination)
 {
 
 
@@ -126,7 +126,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 		partickel->m_destination = p_destination;
 
 		partickel->m_position = p_position;
-		partickel->m_speed = ((rand()%(40-1+1))+1);
+		partickel->m_speed = ((rand()%(15-10+1))+10);
 		partickel->m_velocity = partickel->m_direction * partickel->m_speed;
 		partickel->m_duration = 3;
 
@@ -138,7 +138,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 
 		sf::RectangleShape* rect = new sf::RectangleShape;
 		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(6, 6));
+		rect->setSize(sf::Vector2f(4, 4));
 		rect->setFillColor(sf::Color(r, g, b));
 
 		m_recticles.push_back(rect);
@@ -164,11 +164,9 @@ void EyeCandy::Update(float deltatime){
 	for(int i = 0; i<m_boomwoshticles.size(); i++){
 		m_boomwoshticles.at(i)->m_duration -= deltatime;
 
-
 		float deltaX = m_boomwoshticles.at(i)->m_position.x - m_boomwoshticles.at(i)->m_destination.x;
 		float deltaY = m_boomwoshticles.at(i)->m_position.y - m_boomwoshticles.at(i)->m_destination.y;
 		float distance = sqrt((deltaX*deltaX)+(deltaY*deltaY))*2;
-
 
 		m_boomwoshticles.at(i)->m_aaacceleration += sf::Vector2f(-(deltaX/distance)/1000, -(deltaY/distance)/1000);
 
@@ -185,7 +183,7 @@ void EyeCandy::Update(float deltatime){
 
 		m_boomwoshticles.at(i)->m_position += m_boomwoshticles.at(i)->m_velocity;
 
-		if(m_boomwoshticles.at(i)->m_duration < 0 /*|| distance < 25*/){
+		if(m_boomwoshticles.at(i)->m_duration < 0 || distance < 100){
 			m_boomwoshticles.erase(m_boomwoshticles.begin()+i);
 			m_recticles.erase(m_recticles.begin()+i);
 		}
@@ -249,7 +247,7 @@ void EyeCandy::ParticleDestroyer(){};
 void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
 {
 	Text t_text;
-	t_text.duration_text = 3;
+	t_text.duration_text = 1;
 	t_text.texts = p_text;
 	t_text.texts.setPosition(p_position);
 	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);
