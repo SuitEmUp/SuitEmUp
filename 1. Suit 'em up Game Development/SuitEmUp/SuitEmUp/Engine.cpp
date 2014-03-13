@@ -19,6 +19,8 @@
 #include "GameObjectManager.h"
 #include "ButtonManager.h"
 
+#include "SoundManager.h"
+
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
 
@@ -36,20 +38,27 @@ Engine::Engine()
 	m_statemanager = nullptr;
 	m_spritemanager = nullptr;
 	m_crosshair = nullptr;
+	m_soundmanager = nullptr;
 
 	m_fDeltaTime = 0.01f;
 
+	m_soundlevel = 50;
+	m_visuallevel = 50;
+	m_musiclevel = 50;
+	m_mastervolumelevel = 50;
 
 	m_paused = 1; // false 
 };
 
 bool Engine::Initialize()
 {
+	m_soundmanager = new SoundManager();
+	m_soundmanager->Initialize("../data/sounds/");
 	m_statemanager = new StateManager();
-	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Default);
+	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window"/*, sf::Style::Fullscreen*/);
 	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
-	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
+	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input, m_soundmanager);
 	m_buttonmanager = new ButtonManager(m_spritemanager, m_input);
 	m_ehighscore = new Highscore();
 
@@ -101,6 +110,10 @@ void Engine::Run()
 		m_input->PostKeyboardUpdate();
 		m_input->HandleInput(m_running, m_input, m_statemanager);
 
+		m_soundmanager->SetSoundVolume(m_soundlevel);
+		m_soundmanager->SetMusicVolume(m_musiclevel);
+		m_soundmanager->SetMasterVolume(m_mastervolumelevel);
+
 		//std::cout << m_running << std::endl;
 	}
 	m_window->close();
@@ -129,6 +142,7 @@ void Engine::Cleanup()
 	m_statemanager = nullptr;
 
 	if(m_gom != nullptr){
+		delete m_gom;
 		m_gom=nullptr;
 	}
 

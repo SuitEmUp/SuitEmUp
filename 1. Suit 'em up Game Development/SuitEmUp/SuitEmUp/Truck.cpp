@@ -146,7 +146,13 @@ void Truck::Set_Animation(sf::Sprite *m_xsprite, int sprite_number)
 	}
 	if(sprite_number == 2)
 	{
+<<<<<<< HEAD
 		m_truck_hp = new Animation(m_xsprite, 0.3, false, true);
+=======
+		delete m_truck_hp;
+		m_truck_hp = nullptr;
+		m_truck_hp = new Animation(m_xsprite, 0.2, false, true);
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 		m_truck_hp->addFrame(sf::IntRect (0, 0, 142, 54));
 		m_truck_hp->addFrame(sf::IntRect (151, 0, 142, 54));
 		m_truck_hp->addFrame(sf::IntRect (299, 0, 142, 54));
@@ -154,7 +160,13 @@ void Truck::Set_Animation(sf::Sprite *m_xsprite, int sprite_number)
 	}
 	if(sprite_number == 3)
 	{
+<<<<<<< HEAD
 		m_truck_hp = new Animation(m_xsprite, 0.3, false, true);
+=======
+		delete m_truck_hp;
+		m_truck_hp = nullptr;
+		m_truck_hp = new Animation(m_xsprite, 0.2, false, true);
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 		m_truck_hp->addFrame(sf::IntRect (0, 0, 142, 55));
 		m_truck_hp->addFrame(sf::IntRect (148, 0, 142, 55));
 		m_truck_hp->addFrame(sf::IntRect (296, 0, 142, 55));
@@ -168,3 +180,11 @@ void Truck::Set_Animation(sf::Sprite *m_xsprite, int sprite_number)
 	}
 }
 
+Truck::~Truck(){
+	for(int i = 0; i<sprite_truck.size(); i++){
+		sprite_truck.at(i) = nullptr;
+	}
+	sprite_truck.clear();
+	delete m_truck_hp;
+	m_truck_hp = nullptr;
+};

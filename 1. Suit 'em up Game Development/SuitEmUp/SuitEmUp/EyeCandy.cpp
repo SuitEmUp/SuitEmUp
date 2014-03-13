@@ -14,64 +14,117 @@ EyeCandy::EyeCandy()
 };
 EyeCandy::~EyeCandy()
 {
-
-
+	for (auto it = m_particles.begin();it != m_particles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_particles.clear();
+	for (auto it = m_rectangles.begin();it != m_rectangles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_rectangles.clear();
+	for (auto it = m_shocks.begin();it != m_shocks.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_shocks.clear();
+	for (auto it = m_squares.begin();it != m_squares.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_squares.clear();
+	for (auto it = m_boomwoshticles.begin();it != m_boomwoshticles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_boomwoshticles.clear();
+	for (auto it = m_recticles.begin();it != m_recticles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_recticles.clear();
+	for (auto it = m_pictures.begin();it != m_pictures.end(); it++)
+	{
+		if(*it != nullptr) {
+			(*it)->picture = nullptr;
+			delete *it;
+		}
+	}
+	m_pictures.clear();
+	for(int i = 0; i<m_texts.size(); i++){
+		
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+	}
+	m_texts.clear();
 
 };
-
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
-	int r = ((rand()%(255-1+1))+1);
-	int g = ((rand()%(255-1+1))+1);
-	int b = ((rand()%(255-1+1))+1);
+	//int r = ((rand()%(255-1+1))+1);
+	//int g = ((rand()%(255-1+1))+1);
+	//int b = ((rand()%(255-1+1))+1);
 
 
-	for(int i = 0; i<(rand()%(300-250+1))+250; i++){
-		Particle* partickel = new Particle;
+	//for(int i = 0; i<(rand()%(150-100+1))+100; i++){
+	//	Particle* partickel = new Particle;
 
-		int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
+	//	int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
 
-		partickel->m_direction = sf::Vector2f(sin(randomm)/10+(p_direction.x)/-500, cos(randomm)/10+(p_direction.y)/-500);
+	//	partickel->m_direction = sf::Vector2f(sin(randomm)/10+(p_direction.x)/-500, cos(randomm)/10+(p_direction.y)/-500);
 
 
-		partickel->m_position = p_position;
-		partickel->m_speed = (rand()%(200-100+1))+100;
-		partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
+	//	partickel->m_position = p_position;
+	//	partickel->m_speed = (rand()%(200-100+1))+100;
+	//	partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
 
-		m_particles.push_back(partickel);	
+	//	m_particles.push_back(partickel);	
 
-		sf::RectangleShape* rect = new sf::RectangleShape;
-		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(5, 5));
-		/*int r = ((rand()%(255-1+1))+1);
-		int g = ((rand()%(255-1+1))+1);
-		int b = ((rand()%(255-1+1))+1);*/
-		rect->setFillColor(sf::Color::Red/*(r, g, b,200)*/);
+	//	sf::RectangleShape* rect = new sf::RectangleShape;
+	//	rect->setPosition(p_position);
+	//	rect->setSize(sf::Vector2f(5, 5));
+	//	/*int r = ((rand()%(255-1+1))+1);
+	//	int g = ((rand()%(255-1+1))+1);
+	//	int b = ((rand()%(255-1+1))+1);*/
+	//	rect->setFillColor(sf::Color::Red/*(r, g, b,200)*/);
 
-		m_rectangles.push_back(rect);
-	};
-	for(int i = 0; i<(rand()%(50-30+1))+30; i++){
+	//	m_rectangles.push_back(rect);
+	//};
+	for(int i = 0; i<(rand()%(200-150+1))+150; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
-		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/500, cos(randomm)+(p_direction.y)/500);
+		partickel->m_direction = sf::Vector2f(sin(randomm)+(p_direction.x)/-500, cos(randomm)+(p_direction.y)/-500);
 
 		partickel->m_position = p_position;
-		partickel->m_speed = -((rand()%(200-50+1))+50);
+		partickel->m_speed = -((rand()%(400-50+1))+50);
 		partickel->m_duration = 0.005*((rand()%(200-100+1))+1);
 
 		m_particles.push_back(partickel);	
 
 		sf::RectangleShape* rect = new sf::RectangleShape;
 		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(5, 5));
+		rect->setSize(sf::Vector2f(2, 2));
 		rect->setFillColor(sf::Color::Red);
 
 		m_rectangles.push_back(rect);
 	};
 };
-
 void EyeCandy::ShockCreator(sf::Vector2f p_position){
-	for(int i = 0; i<(rand()%(150-100+1))+100; i++){
+	for(int i = 0; i<(rand()%(100-50+1))+50; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
@@ -98,7 +151,6 @@ void EyeCandy::ShockCreator(sf::Vector2f p_position){
 	};
 
 };
-
 void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation)
 {
 	Picture* t_picture= new Picture();
@@ -109,8 +161,7 @@ void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, flo
 	t_picture->picture->setRotation(p_rotation+50);
 	m_pictures.push_back(t_picture);
 };
-
-void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destination)
+void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination)
 {
 
 
@@ -126,7 +177,7 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 		partickel->m_destination = p_destination;
 
 		partickel->m_position = p_position;
-		partickel->m_speed = ((rand()%(40-1+1))+1);
+		partickel->m_speed = ((rand()%(15-10+1))+10);
 		partickel->m_velocity = partickel->m_direction * partickel->m_speed;
 		partickel->m_duration = 3;
 
@@ -138,15 +189,23 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2i p_destinati
 
 		sf::RectangleShape* rect = new sf::RectangleShape;
 		rect->setPosition(p_position);
-		rect->setSize(sf::Vector2f(6, 6));
+		rect->setSize(sf::Vector2f(4, 4));
 		rect->setFillColor(sf::Color(r, g, b));
 
 		m_recticles.push_back(rect);
 	};
 
 };
-
 void EyeCandy::Update(float deltatime){
+
+	for(int i = 0; i<m_texts.size(); i++){
+		m_texts.at(i).duration_text -= deltatime;
+		if(m_texts.at(i).duration_text < 0){
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	}
 	for(int i = 0; i<m_particles.size(); i++){
 		m_particles.at(i)->m_duration -= deltatime;
 		m_particles.at(i)->m_position += m_particles.at(i)->m_speed * m_particles.at(i)->m_direction * deltatime;
@@ -164,11 +223,9 @@ void EyeCandy::Update(float deltatime){
 	for(int i = 0; i<m_boomwoshticles.size(); i++){
 		m_boomwoshticles.at(i)->m_duration -= deltatime;
 
-
 		float deltaX = m_boomwoshticles.at(i)->m_position.x - m_boomwoshticles.at(i)->m_destination.x;
 		float deltaY = m_boomwoshticles.at(i)->m_position.y - m_boomwoshticles.at(i)->m_destination.y;
 		float distance = sqrt((deltaX*deltaX)+(deltaY*deltaY))*2;
-
 
 		m_boomwoshticles.at(i)->m_aaacceleration += sf::Vector2f(-(deltaX/distance)/1000, -(deltaY/distance)/1000);
 
@@ -185,7 +242,7 @@ void EyeCandy::Update(float deltatime){
 
 		m_boomwoshticles.at(i)->m_position += m_boomwoshticles.at(i)->m_velocity;
 
-		if(m_boomwoshticles.at(i)->m_duration < 0 /*|| distance < 25*/){
+		if(m_boomwoshticles.at(i)->m_duration < 0 || distance < 100){
 			m_boomwoshticles.erase(m_boomwoshticles.begin()+i);
 			m_recticles.erase(m_recticles.begin()+i);
 		}
@@ -202,10 +259,16 @@ void EyeCandy::Update(float deltatime){
 			if(i<0) i=0;
 		}
 	};
+	for(int i = 0; i<m_pictures.size(); i++){
+		m_pictures.at(i)->duration -= deltatime;
+		if(m_pictures.at(i)->duration < 0){
+			m_pictures.erase(m_pictures.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	};
 
 };
-
-
 void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	for(int i = 0; i<m_particles.size(); i++){
 		m_rectangles.at(i)->setPosition(m_particles.at(i)->m_position);
@@ -225,31 +288,25 @@ void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	};
 	for(int i = 0; i<m_texts.size(); i++){
 		renderwindow->draw(m_texts.at(i).texts);
-		m_texts.at(i).duration_text -= deltatime;
-		if(m_texts.at(i).duration_text < 0){
-			m_texts.erase(m_texts.begin()+i);
-			i--;
-			if(i<0) i=0;
-		}
 	}
 };
 void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
 	for(int i = 0; i<m_pictures.size(); i++){
 		renderwindow->draw(*m_pictures.at(i)->picture);
-		m_pictures.at(i)->duration -= deltatime;
-		if(m_pictures.at(i)->duration < 0){
-			m_pictures.erase(m_pictures.begin()+i);
-			i--;
-			if(i<0) i=0;
-		}
+		
 	};
 };
 void EyeCandy::PictureDestroyer(){};
 void EyeCandy::ParticleDestroyer(){};
+
 void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
 {
 	Text t_text;
+<<<<<<< HEAD
 	t_text.duration_text = 2;
+=======
+	t_text.duration_text = 1;
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 	t_text.texts = p_text;
 	t_text.texts.setPosition(p_position);
 	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);

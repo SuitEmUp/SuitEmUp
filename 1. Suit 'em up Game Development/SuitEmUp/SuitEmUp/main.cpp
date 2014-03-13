@@ -22,7 +22,16 @@
 int main()
 {
 	Config::parseFile("../config.txt");
+<<<<<<< HEAD
 	Engine *suitengine = new Engine();
+=======
+	Config::set("current_suit", "0");
+	Config::set("current_weapon", "0");
+	Config::set("current_truck", "0");
+	Config::set("weapons_available", "1");
+	Config::renew();
+	Engine suitengine;
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 
 	if(suitengine->Initialize())
 	{

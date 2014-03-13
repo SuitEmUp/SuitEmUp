@@ -34,8 +34,6 @@ private:
 	sf::Vector2f m_direction;
 	sf::Sprite* m_update;
 	sf::Sprite* m_unupdate;
-	sf::SoundBuffer* m_buffer2;
-	sf::Sound* m_sound2;
 
 	std::string m_firetype;
 	std::string m_controltype;

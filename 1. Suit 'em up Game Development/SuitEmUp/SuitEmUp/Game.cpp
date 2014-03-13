@@ -7,6 +7,7 @@
 #include "GameObjectManager.h"
 #include "PlayerObject.h"
 #include "Config.h"
+#include "Score.h"
 
 
 Game::Game(Engine *engine) 
@@ -15,6 +16,10 @@ Game::Game(Engine *engine)
 	next_state = "";
 	m_input = m_engine->m_input;
 	m_engine->m_paused = 1;
+	m_popup = nullptr;
+	m_score = 0;
+	popuplock = true;
+	onepopuplock = false;
 
 
 };
@@ -26,7 +31,9 @@ bool Game::Init()
 		printf("\n nu aer vi haer inne \n");
 		m_engine->m_gom->CreateGameObjects();
 	}
-	
+
+
+
 	printf("State: Game,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	return true;
@@ -44,7 +51,28 @@ void Game::Exit(){
 };
 bool Game::Update(float deltatime)
 {
+	if(popuplock == false)
+	{
+		m_popup = new Popup(m_input, "Tessst", "TESTINGWOOOO", m_engine->m_gom->m_spritemanager->Load("../data/Sprites/popup.png", "popup"), 1280 - 310, 720 - 100);
+		popuplock = true;
+	}
+
+	m_score = m_engine->m_gom->GetScore(m_score);
+
 	m_engine->m_gom->Update(deltatime);
+	if(m_popup != nullptr)
+	{
+		m_popup->Update();
+		if(!m_popup->exists())
+		{
+			delete m_popup;
+			m_popup = nullptr;
+			if(m_popup == nullptr)
+				printf("Popup deleted woooo\n");
+		}
+	}
+
+
 	m_deltatime = deltatime;
 
 	if(m_input->IsDown(sf::Keyboard::F1))
@@ -79,14 +107,23 @@ bool Game::Update(float deltatime)
 		printf("Next State set to DieState\n");
 		setNextState("DieState");
 		m_engine->m_paused = 2;
-		
+
 		return false;
 	}
+	if(m_score >= 500 && onepopuplock == false)
+	{
+		popuplock = false;
+		onepopuplock = true;
+	}
+
 
 	return true;
 }
 void Game::Draw(){
 	m_engine->m_gom->DrawGameObjects(m_deltatime);
+
+	if(m_popup != nullptr)
+		m_engine->m_gom->m_window->draw(*m_popup->GetSprite());
 };
 
 std::string Game::Next()

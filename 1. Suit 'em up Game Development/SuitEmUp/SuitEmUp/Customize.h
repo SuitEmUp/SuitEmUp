@@ -51,8 +51,20 @@ private:
 	sf::Sprite* m_leftbutton;
 	sf::Sprite* m_rightbutton;
 	sf::Sprite* m_back;
+	/*sf::RectangleShape* m_suitrect;
+	sf::RectangleShape* m_weaponrect;
+	sf::RectangleShape* m_truckrect;*/
 
-		int m_currentSuit;
+	sf::Font* m_foont;
+	sf::Text* m_suitcostText;
+	sf::Text* m_weaponcostText;
+	sf::Text* m_truckcostText;
+
+	std::string m_currentsuitcost;
+	std::string m_currentweaponcost;
+	std::string m_currenttruckcost;
+
+	int m_currentSuit;
 	int m_currentWeapon;
 	int m_currentTruck;
 

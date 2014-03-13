@@ -25,7 +25,7 @@ Spawner::Spawner(Truck* truck){
 };
 
 bool Spawner::Timer(float deltatime){
-	
+
 	m_time+=deltatime*4;
 	if(m_time>m_alarm){
 		m_time=0;
@@ -39,7 +39,7 @@ bool Spawner::Timer(float deltatime){
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
 	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "Bandit1", 1, 1));
-	
+
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
@@ -82,38 +82,38 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 //};
 
 bool Spawner::EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet){
-	
+
 	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
 	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
 	if(dist<25) return true;
-	
+
 	return false;
 }
 
 bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
-	
+
 	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
 	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
 	if(dist<25) return true;
-	
+
 	return false;
 }
 
 bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
-	
+
 	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
 	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
 	if(dist<25) return true;
-	
+
 	return false;
 }
 
@@ -212,7 +212,7 @@ void Spawner::UpdateTime(float deltatime){
 };
 
 void Spawner::NextWaveCheck(){
-	if(m_time > 60){
+	if(m_time > m_waveduration){
 		m_wavenumber +=1;
 		m_time = 0;
 		m_currentenemieslvl1 = 0;
@@ -240,9 +240,9 @@ int Spawner::NumberOfEnemieslvl1(float numberofenemies){
 	m_spawningenemieslvl1 += m_deltaenemies;
 
 	if(m_spawningenemieslvl1 > 1){
-	int t_spawningenemies = m_spawningenemieslvl1;
-	m_spawningenemieslvl1 -= t_spawningenemies;
-	return t_spawningenemies;
+		int t_spawningenemies = m_spawningenemieslvl1;
+		m_spawningenemieslvl1 -= t_spawningenemies;
+		return t_spawningenemies;
 	}
 	return 0;
 };
@@ -259,9 +259,9 @@ int Spawner::NumberOfEnemieslvl2(float numberofenemies){
 	m_spawningenemieslvl2 += m_deltaenemies;
 
 	if(m_spawningenemieslvl2 > 1){
-	int t_spawningenemies = m_spawningenemieslvl2;
-	m_spawningenemieslvl2 -= t_spawningenemies;
-	return t_spawningenemies;
+		int t_spawningenemies = m_spawningenemieslvl2;
+		m_spawningenemieslvl2 -= t_spawningenemies;
+		return t_spawningenemies;
 	}
 	return 0;
 };
@@ -277,10 +277,10 @@ int Spawner::NumberOfEnemieslvl3(float numberofenemies){
 
 	m_spawningenemieslvl3 += m_deltaenemies;
 
-	if(m_spawningenemieslvl3 > 1){
-	int t_spawningenemies = m_spawningenemieslvl3;
-	m_spawningenemieslvl3 -= t_spawningenemies;
-	return t_spawningenemies;
+	if(m_spawningenemieslvl3 > 1) {
+		int t_spawningenemies = m_spawningenemieslvl3;
+		m_spawningenemieslvl3 -= t_spawningenemies;
+		return t_spawningenemies;
 	}
 	return 0;
 };

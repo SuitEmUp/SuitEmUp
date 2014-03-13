@@ -6,10 +6,6 @@
 SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 
 	m_damage = 9;
-	m_buffer = new sf::SoundBuffer();
-	m_buffer->loadFromFile("../data/sounds/Sniper.wav");
-	m_sound = new sf::Sound();
-	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
 	m_cooldown = 1;
@@ -20,6 +16,7 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 
 	m_animation = nullptr;
 	AddAnimation(sprite);
+<<<<<<< HEAD
 
 	m_sprite->setOrigin(82/2, 34/2);
 	
@@ -27,6 +24,11 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	{
 		m_animation->update(0.1f, 0);
 	}
+=======
+	
+	m_sprite->setOrigin(((m_sprite->getLocalBounds().width)/2.3), 16);
+	m_animation->update(0.1f, 0);
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 };
 
 bool SniperGirl::Update(float deltatime){
@@ -64,7 +66,6 @@ bool SniperGirl::Update(float deltatime){
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 
 	if(dist<400 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
-		m_sound->play();
 		m_cooldown = 3;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
@@ -72,6 +73,7 @@ bool SniperGirl::Update(float deltatime){
 };
 
 SniperGirl::~SniperGirl(){
+<<<<<<< HEAD
 	if(m_buffer != nullptr)
 	{
 		delete m_buffer;
@@ -81,6 +83,12 @@ SniperGirl::~SniperGirl(){
 		delete m_sound;
 		m_sound = nullptr;
 	}
+=======
+	m_truck = nullptr;
+	m_sprite = nullptr;
+	delete m_animation;
+	m_animation = nullptr;
+>>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 };
 
 bool SniperGirl::GetType(){

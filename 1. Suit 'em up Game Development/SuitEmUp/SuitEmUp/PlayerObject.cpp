@@ -8,14 +8,6 @@
 #include "Config.h"
 PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
 {
-	m_buffer2 = new sf::SoundBuffer();
-	m_buffer2->loadFromFile("../data/sounds/Bow.wav");
-	m_buffer = new sf::SoundBuffer();
-	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
-	m_sound = new sf::Sound();
-	m_sound->setBuffer(*m_buffer);
-	m_sound2 = new sf::Sound();
-	m_sound2->setBuffer(*m_buffer2);
 	m_position = sf::Vector2f(600, 400);
 	m_update = update;
 	m_input = input;
@@ -31,7 +23,6 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_firetype = "Mouse";
 	m_weapontype = "Revolver";
 	//vapen 1
-	//if(Config::getInt("current_weapon", 0) == 0)
 };
 
 bool PlayerObject::Update(float deltatime)
@@ -73,7 +64,7 @@ bool PlayerObject::Update(float deltatime)
 	{
 		m_sprite = m_unupdate;
 		m_damage = 1;
-		m_attackspeed = 0.000000001f;
+		m_attackspeed = 0.000000000001f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{
@@ -253,13 +244,6 @@ bool PlayerObject::Update(float deltatime)
 		if(!m_input->IsDown(sf::Keyboard::Space)) m_cooldown = 0;
 		if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 		if(m_input->IsDown(sf::Keyboard::Space) && m_cooldown==0){
-			if(m_damage>100){
-				m_sound2->setVolume(200);
-				m_sound2->setPitch(2);
-				m_sound2->play();}
-			else{
-				m_sound->play();
-			}
 			m_cooldown=m_attackspeed;
 			//How long the cooldown is
 			return true;	//if this is returned a bullet will be spawned
@@ -279,41 +263,31 @@ bool PlayerObject::Update(float deltatime)
 		m_cooldown-=1;
 		if(m_cooldown<0) m_cooldown=0;	//cooldown can't be less than 0
 
-		if(m_weapontype != "ArmCannon")
+		if(m_weapontype != "ArmCannon"){
 			if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left)/* && m_cooldown==0*/)
 			{
-				if(m_damage>100){
-					m_sound2->setVolume(200);
-					m_sound2->setPitch(2);
-					m_sound2->play();}
-				else{
-					m_sound->play();
-				}
 				m_cooldown=1;	//How long the cooldown is
 				return true;	//if this is returned a bullet will be spawned
 			}
-			if(m_weapontype == "ArmCannon")
-				if(m_input->Mouse_isDown(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
-					if(m_damage>100){
-						m_sound2->setVolume(200);
-						m_sound2->setPitch(2);
-						m_sound2->play();}
-					else{
-						m_sound->play();
-					}
-					m_cooldown=1;	//How long the cooldown is
-					return true;	//if this is returned a bullet will be spawned
-				}
+		}
+		if(m_weapontype == "ArmCannon"){
+			if(m_input->Mouse_isDown(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
+				m_cooldown=1;	//How long the cooldown is
+				return true;	//if this is returned a bullet will be spawned
+			}
+		}
 	}
 
 	return false; //if this is returned nothing will happen
 };
 
 PlayerObject::~PlayerObject(){
-	delete m_buffer;
-	m_buffer = nullptr;
-	delete m_sound;
-	m_sound = nullptr;
+	m_truck = nullptr;
+	m_input = nullptr;
+	m_sprite = nullptr;
+	m_unupdate = nullptr;
+	m_update = nullptr;
+
 };
 
 bool PlayerObject::GetType()

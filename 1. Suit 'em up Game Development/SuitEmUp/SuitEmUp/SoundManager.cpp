@@ -12,6 +12,9 @@ SoundManager::~SoundManager(void)
 
 bool SoundManager::Initialize(std::string path)
 {
+	m_mastervolume = 1;
+	m_musicvolume = 1;
+	m_soundvolume = 1;
 	m_directory = path;
 	return true;
 };
@@ -23,8 +26,8 @@ void SoundManager::PlaySound(std::string path)
 		for(SoundStruct sound : m_sounds)
 		{
 			if(sound.path == path){
+				sound.sounddata->setVolume(m_soundvolume*m_mastervolume);
 				sound.sounddata->play();
-				//set volume
 				return;
 			}
 		}
@@ -39,8 +42,8 @@ void SoundManager::PlayMusic(std::string path)
 	{
 		for(MusicStruct music : m_musics){
 			if(music.path == path){
+				music.musicdata->setVolume(m_musicvolume*m_mastervolume);
 				music.musicdata->play();
-				//setvolume
 				return;
 			}
 		}
@@ -51,9 +54,15 @@ void SoundManager::PlayMusic(std::string path)
 
 void SoundManager::StopMusic(){};
 
-void SoundManager::SetMusicVolume(float volume){};
-void SoundManager::SetSoundVolume(float volume){};
-void SoundManager::SetMasterVolume(float volume){};
+void SoundManager::SetMusicVolume(float volume){
+	m_musicvolume = volume;
+};
+void SoundManager::SetSoundVolume(float volume){
+	m_soundvolume = volume;
+};
+void SoundManager::SetMasterVolume(float volume){
+	m_mastervolume = volume/100;
+};
 
 float SoundManager::GetSoundVolume(){
 return 0;};
