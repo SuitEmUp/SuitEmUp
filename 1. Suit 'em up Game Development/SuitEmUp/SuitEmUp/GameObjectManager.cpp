@@ -51,7 +51,7 @@ void GameObjectManager::CreateGameObjects()
 {
 	//background
 
-	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
+	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Wackground", 1, 1);
 	m_background->setPosition(0,0);
 
 	//Creates all objects that exists from the beginning

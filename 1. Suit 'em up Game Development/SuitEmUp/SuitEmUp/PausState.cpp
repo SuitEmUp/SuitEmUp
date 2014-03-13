@@ -108,6 +108,7 @@ bool PausState::Update(float deltatime)
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
 		{
 			printf("Next State set to MainMenu\n");
+			m_engine->m_gom->ClearGameObjects();
 			setNextState("MainMenu");
 			m_engine->m_paused = 1;
 			return false;

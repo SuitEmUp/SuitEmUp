@@ -66,7 +66,7 @@ private:
 	float m_distance;
 
 	//text
-		struct Text{
+	struct Text{
 		float duration_text;
 		sf::Text texts;
 	};

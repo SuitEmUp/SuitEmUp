@@ -51,9 +51,9 @@ private:
 	sf::Sprite* m_leftbutton;
 	sf::Sprite* m_rightbutton;
 	sf::Sprite* m_back;
-	sf::RectangleShape* m_suitrect;
+	/*sf::RectangleShape* m_suitrect;
 	sf::RectangleShape* m_weaponrect;
-	sf::RectangleShape* m_truckrect;
+	sf::RectangleShape* m_truckrect;*/
 
 	sf::Font* m_foont;
 	sf::Text* m_suitcostText;

@@ -66,6 +66,8 @@ bool SuperEnemy::Update(float deltatime){
 SuperEnemy::~SuperEnemy(){
 	m_sprite = nullptr;
 	m_truck = nullptr;
+	delete m_animation;
+	m_animation = nullptr;
 };
 
 bool SuperEnemy::GetType(){

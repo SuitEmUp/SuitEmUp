@@ -65,6 +65,8 @@ bool SniperGirl::Update(float deltatime){
 SniperGirl::~SniperGirl(){
 	m_truck = nullptr;
 	m_sprite = nullptr;
+	delete m_animation;
+	m_animation = nullptr;
 };
 
 bool SniperGirl::GetType(){

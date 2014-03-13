@@ -32,8 +32,6 @@ bool DieState::Init()
 	m_xbackground = m_engine->m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
 	m_xbackground->setPosition(0,0);
 
-	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
-
 	m_xbuttons.push_back(new Button(m_input, "Retry", "Square", m_engine->m_spritemanager->Load("../data/buttons/Retry.png", "StartGame"),
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
@@ -79,6 +77,18 @@ void DieState::Exit(){
 	}
 	m_xbuttons.clear();
 
+	if(m_engine->m_paused == 1)
+	{
+		m_engine->m_gom->ClearGameObjects();
+	};
+	if(m_xbackground!=nullptr){
+		delete m_xbackground;
+		m_xbackground=nullptr;
+	}
+	m_glow1=nullptr;
+	m_glow2=nullptr;
+	m_glow3=nullptr;
+	m_xbackground=nullptr;
 };
 
 
@@ -106,7 +116,7 @@ bool DieState::Update(float deltatime)
 		{
 			printf("Next State set to MainMenu\n");
 			setNextState("MainMenu");
-
+			m_engine->m_paused = 1;
 			return false;
 		}
 
@@ -140,7 +150,6 @@ void DieState::Draw()
 			m_engine->m_window->draw(*m_glow3);
 		};
 	};
-
 
 };
 
