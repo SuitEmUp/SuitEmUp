@@ -60,12 +60,12 @@ bool PausState::Init()
 };
 void PausState::Exit(){
 
-	for(unsigned int i = 0; i < m_rects.size(); i++)
+	/*for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
 		delete m_rects[i];
 		m_rects[i] = nullptr;
 	}
-	m_rects.clear();
+	m_rects.clear();*/
 
 	for(unsigned int i = 0; i < m_buttons.size(); i++)
 	{

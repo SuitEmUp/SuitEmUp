@@ -676,6 +676,4 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 			m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
 		m_truck->m_maxhp = 150;
 	}
-
-
 }

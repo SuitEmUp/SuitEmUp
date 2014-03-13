@@ -83,7 +83,6 @@ bool Customize::Init()
 		m_pauselock = false;
 	}
 
-
 	//glow feedback
 
 	m_smallupgrade1 = m_engine->m_spritemanager->Load("../data/buttons/small_upgrade_glow.png", "SmallGlow1", 1.0, 1.0);

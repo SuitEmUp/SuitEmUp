@@ -63,12 +63,12 @@ bool DieState::Init()
 };
 void DieState::Exit(){
 
-	for(unsigned int i = 0; i < m_rects.size(); i++)
+	/*for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
 		delete m_rects[i];
 		m_rects[i] = nullptr;
 	}
-	m_rects.clear();
+	m_rects.clear();*/
 
 	for(unsigned int i = 0; i < m_xbuttons.size(); i++)
 	{
@@ -103,6 +103,7 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to GameState\n");
 			setNextState("Game");
 			m_engine->m_paused = 1;
+		//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 		/*	if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Customization")
@@ -117,6 +118,7 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to MainMenu\n");
 			setNextState("MainMenu");
 			m_engine->m_paused = 1;
+		//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 
