@@ -99,6 +99,38 @@ bool Customize::Init()
 	m_back = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "Back", 1.0, 1.0);
 	m_back->setPosition(Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64)));
 
+	m_suitrect = new sf::RectangleShape;					m_suitrect->setSize(sf::Vector2f(299, 50));
+	m_suitrect->setFillColor(sf::Color(255,255,255,50));		m_suitrect->setOutlineColor(sf::Color::Black);
+	m_suitrect->setOutlineThickness(2);						m_suitrect->setPosition(sf::Vector2f(47, 556));
+
+	m_weaponrect = new sf::RectangleShape;					m_weaponrect->setSize(sf::Vector2f(568, 50));
+	m_weaponrect->setFillColor(sf::Color(255,255,255,50));	m_weaponrect->setOutlineColor(sf::Color::Black);
+	m_weaponrect->setOutlineThickness(2);					m_weaponrect->setPosition(sf::Vector2f(356, 315));
+	//babsdfjkghsdf
+	m_truckrect = new sf::RectangleShape;					m_truckrect->setSize(sf::Vector2f(299, 50));
+	m_truckrect->setFillColor(sf::Color(255,255,255,50));		m_truckrect->setOutlineColor(sf::Color::Black);
+	m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
+
+	//getcosts
+	m_currentsuitcost = Config::get("currentsuitcost");
+	m_currentweaponcost = Config::get("currentweaponcost");
+	m_currenttruckcost = Config::get("currenttruckcost");
+
+	//text
+	m_foont = new sf::Font;
+	m_foont->loadFromFile("../assets/fonts/AdobeFangsongStd-Regular.otf");
+
+	m_suitcostText = new sf::Text;
+	m_suitcostText->setOrigin(m_suitcostText->getLocalBounds().height/2,0);
+	m_suitcostText->setFont(*m_foont);
+	m_suitcostText->setString(m_currentsuitcost);
+	m_suitcostText->setPosition(sf::Vector2f(200,570));
+	m_suitcostText->setColor(sf::Color(255,255,255,255));
+	m_suitcostText->setCharacterSize(40);
+
+	m_weaponcostText = new sf::Text;
+	m_truckcostText = new sf::Text;
+
 
 	printf("State: Customize, Initialized\n");
 	printf("F1 - F4 to Change States\n");
@@ -359,6 +391,9 @@ void Customize::Draw()
 	m_engine->m_window->draw(*m_weapon);
 	m_engine->m_window->draw(*m_truck);
 	m_engine->m_window->draw(*m_statbox);
+
+
+
 	//buttons
 	m_engine->m_gom->DrawCustomizationButtons();
 	for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
@@ -385,6 +420,11 @@ void Customize::Draw()
 			}
 		}
 	}
+
+	m_engine->m_window->draw(*m_suitrect);
+	m_engine->m_window->draw(*m_weaponrect);
+	m_engine->m_window->draw(*m_truckrect);
+	m_engine->m_window->draw(*m_suitcostText);
 };
 
 
