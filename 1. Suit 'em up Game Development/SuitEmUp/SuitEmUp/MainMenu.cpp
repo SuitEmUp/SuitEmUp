@@ -83,7 +83,9 @@ bool MainMenu::Update(float deltatime)
 
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
 			printf("Click SUCCESSSSS\n");
-			printf("HighScore-state does not exist\n");
+			printf("Next State set to Highscore\n");
+			setNextState("HighScoreState");
+			return false;
 		}
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
 
@@ -99,40 +101,40 @@ bool MainMenu::Update(float deltatime)
 			printf("This button doesnt work yet\n");
 			//Exit Game
 
-		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
+			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
 
-			if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
-				m_clicksound->play();
-				printf("Click SUCCESSSSS\n");
-				printf("Next State set to Game\n");
-				setNextState("Game");
-				m_engine->m_paused = 3; //through mainmenu
+				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
+					m_clicksound->play();
+					printf("Click SUCCESSSSS\n");
+					printf("Next State set to Game\n");
+					setNextState("Game");
+					m_engine->m_paused = 3; //through mainmenu
 
-				return false;
+					return false;
+				}
+
+				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
+					m_clicksound->play();
+					printf("Click SUCCESSSSS\n");
+					printf("HighScore-state does not exist\n");
+				}
+				if( m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
+					m_clicksound->play();
+
+					printf("Click SUCCESSSSS\n");
+					printf("Next State set to Options\n");
+					setNextState("Options");
+					return false;
+				}
+				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+					m_clicksound->play();
+					printf("Click SUCCESSSSS\n");
+					printf("This button doesnt work yet\n");
+					//Exit Game
+				}
+
 			}
-
-			if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
-				m_clicksound->play();
-				printf("Click SUCCESSSSS\n");
-				printf("HighScore-state does not exist\n");
-			}
-			if( m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
-				m_clicksound->play();
-
-				printf("Click SUCCESSSSS\n");
-				printf("Next State set to Options\n");
-				setNextState("Options");
-				return false;
-			}
-			if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
-				m_clicksound->play();
-				printf("Click SUCCESSSSS\n");
-				printf("This button doesnt work yet\n");
-				//Exit Game
-			}
-
 		}
-	}
 	}
 	return true;
 }
