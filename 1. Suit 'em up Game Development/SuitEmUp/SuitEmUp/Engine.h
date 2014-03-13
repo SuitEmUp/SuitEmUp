@@ -7,6 +7,7 @@ class StateManager;
 class DrawManager;
 class GameObjectManager;
 class ButtonManager;
+class Highscore;
 
 namespace sf{
 	class RenderWindow;
@@ -42,6 +43,7 @@ public:
 	bool m_running;
 	int m_paused;
 
+	Highscore *m_ehighscore;
 	sf::Sprite *m_crosshair;
 
 };

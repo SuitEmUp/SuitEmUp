@@ -20,20 +20,24 @@ SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
 	m_animation = nullptr;
 
 	AddAnimation(sprite);
-	
+
 	m_sprite->setOrigin(50/2, 40/2);
-	m_animation->update(0.1f, 0);
+
+	for(int i=0;i<3;i++)
+	{
+		m_animation->update(0.1f, 0);
+	}
 };
 
 bool SuperEnemy::Update(float deltatime){
-	
+
 	//animation
 	m_animation->update(deltatime, 0);
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
 	float delta_y=m_truck->GetPosition().y-m_position.y;
-	
+
 	float dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 	/*End of them*/
 
@@ -71,12 +75,12 @@ bool SuperEnemy::Update(float deltatime){
 SuperEnemy::~SuperEnemy(){
 	if(m_buffer != nullptr)
 	{
-	delete m_buffer;
-	m_buffer =nullptr;
+		delete m_buffer;
+		m_buffer =nullptr;
 	}
 	if(m_sound !=nullptr){
-	delete m_sound;
-	m_sound = nullptr;
+		delete m_sound;
+		m_sound = nullptr;
 	}
 };
 

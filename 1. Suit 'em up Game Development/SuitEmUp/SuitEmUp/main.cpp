@@ -22,12 +22,13 @@
 int main()
 {
 	Config::parseFile("../config.txt");
-	Engine suitengine;
+	Engine *suitengine = new Engine();
 
-	if(suitengine.Initialize())
+	if(suitengine->Initialize())
 	{
-		suitengine.Run();
+		suitengine->Run();
 	}
-	suitengine.Cleanup();
+
+	suitengine->Cleanup();
 	return EXIT_SUCCESS;
 }

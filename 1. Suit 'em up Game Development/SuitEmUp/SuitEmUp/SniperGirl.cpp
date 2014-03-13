@@ -4,7 +4,7 @@
 #include "Truck.h"
 
 SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
-	
+
 	m_damage = 9;
 	m_buffer = new sf::SoundBuffer();
 	m_buffer->loadFromFile("../data/sounds/Sniper.wav");
@@ -16,25 +16,29 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	speed = 50;
 	m_hp = 7;
 
-		//Animation
+	//Animation
 
 	m_animation = nullptr;
 	AddAnimation(sprite);
-	
+
 	m_sprite->setOrigin(82/2, 34/2);
-	m_animation->update(0.1f, 0);
+	
+	for(int i=0;i<3;i++)
+	{
+		m_animation->update(0.1f, 0);
+	}
 };
 
 bool SniperGirl::Update(float deltatime){
 
-		//animation
+	//animation
 	m_animation->update(deltatime, 0);
 
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
 	float delta_y=m_truck->GetPosition().y-m_position.y;
-	
+
 	float dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 	/*End of them*/
 
@@ -70,12 +74,12 @@ bool SniperGirl::Update(float deltatime){
 SniperGirl::~SniperGirl(){
 	if(m_buffer != nullptr)
 	{
-	delete m_buffer;
-	m_buffer =nullptr;
+		delete m_buffer;
+		m_buffer =nullptr;
 	}
 	if(m_sound !=nullptr){
-	delete m_sound;
-	m_sound = nullptr;
+		delete m_sound;
+		m_sound = nullptr;
 	}
 };
 

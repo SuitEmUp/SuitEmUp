@@ -22,6 +22,7 @@
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input)
 {
+	Kill_Count = 0;
 	m_input = input;
 	m_spritemanager=sm;
 	m_window=rw;
@@ -309,6 +310,7 @@ void GameObjectManager::Update(float deltatime)
 					delete m_enemies[j];
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
+					Kill_Count++;
 					m_xscore->PutInScore(enemyscore = 10);
 					--j;
 				}
@@ -348,7 +350,7 @@ void GameObjectManager::Update(float deltatime)
 
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
-
+					Kill_Count++;
 					m_xscore->PutInScore(enemyscore = 25);
 
 					--j;
@@ -388,6 +390,7 @@ void GameObjectManager::Update(float deltatime)
 					
 
 					//SCORE COUNT
+					Kill_Count++;
 					m_xscore->PutInScore(enemyscore = 50);
 					--j;
 				}
@@ -409,7 +412,7 @@ void GameObjectManager::Update(float deltatime)
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
 			m_xscore->PutInScore(enemyscore = 35);
-
+			Kill_Count++;
 			m_truck->Healed();
 			//	delete m_vRepairKits.at(i)->GetSprite();
 			delete m_vRepairKits[i];
@@ -690,4 +693,8 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 	}
 
 
+}
+int GameObjectManager::Kill_count()
+{
+	return Kill_Count;
 }

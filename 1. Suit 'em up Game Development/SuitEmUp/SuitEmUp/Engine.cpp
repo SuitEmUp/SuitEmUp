@@ -12,6 +12,7 @@
 #include "PausState.h"
 #include "DieState.h"
 #include "HighScoreState.h"
+#include "Highscore.h"
 
 #include "InputManager.h"//Ladbon
 #include "DrawManager.h"
@@ -28,7 +29,7 @@
 Engine::Engine()
 {
 
-
+	m_ehighscore = nullptr;
 	m_running = false;//Ladbon
 	m_window = nullptr;
 	m_input = nullptr;
@@ -50,7 +51,9 @@ bool Engine::Initialize()
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input);
 	m_buttonmanager = new ButtonManager(m_spritemanager, m_input);
+	m_ehighscore = new Highscore();
 
+	m_ehighscore->Load();
 
 	if(m_window == nullptr)
 	{
@@ -73,7 +76,7 @@ bool Engine::Initialize()
 		m_statemanager->Attach(new Game(	this));
 		m_statemanager->Attach(new PausState(this));
 		m_statemanager->Attach(new DieState(this));
-		m_statemanager->Attach(new HighScore(this));
+		m_statemanager->Attach(new HighScoreState(this));
 		m_statemanager->SetState("TitleScreen");
 	}
 	m_running = true;
@@ -133,6 +136,11 @@ void Engine::Cleanup()
 	{
 		delete m_buttonmanager;
 		m_buttonmanager = nullptr;
+	}
+	if(m_ehighscore != nullptr)
+	{
+		delete m_ehighscore;
+		m_ehighscore = nullptr;
 	}
 };
 void Engine::UpdateDeltatime()

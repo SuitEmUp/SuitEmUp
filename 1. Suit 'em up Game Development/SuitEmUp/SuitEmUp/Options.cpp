@@ -7,7 +7,7 @@
 
 Options::Options(Engine* engine) 
 {
-	
+
 	next_state = "";
 	m_engine = engine;
 	m_input = m_engine->m_input;
@@ -16,10 +16,12 @@ Options::Options(Engine* engine)
 
 bool Options::Init()
 {
-	
+
 	printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";
+	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
+
 
 	return true;
 };
@@ -34,24 +36,13 @@ bool Options::Update(float deltatime)
 		setNextState("MainMenu");
 		return false;
 	};
-	if(m_input->IsDown(sf::Keyboard::F2))
-	{
-		printf("Next State set to Game\n");
-		setNextState("Game");
-		return false;
-	};
-	if(m_input->IsDown(sf::Keyboard::F3))
-	{
-		printf("Next State set to Customize\n");
-		setNextState("Customize");
-		return false;
-	};
+	
 	return true;
 };
 
 void Options::Draw()
 {
-
+	m_engine->m_window->draw(*m_background);
 };
 std::string Options::Next()
 {

@@ -27,6 +27,17 @@ InputManager::InputManager(sf::RenderWindow* window) :
 		m_currentMouse[i] = false;
 		m_previousMouse[i] = false;
 	};
+	//text
+	text = new sf::Text;
+
+	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+
+	text->setFont(font);
+	text->setCharacterSize(25);
+	text->setColor(sf::Color::Black);
+	text->move(0.f, 0.f);	
+	text->setStyle(sf::Text::Bold);
 }
 InputManager::~InputManager()
 {
@@ -84,16 +95,22 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				m_input->myMouseX = event.mouseButton.x;
 				m_input->myMouseY = event.mouseButton.y;
 				m_input->m_currentMouse[0] = true;
-				//	std::cout << myMouseX << " : " << myMouseY << "\n";		
 			}
 		}
 		else if (event.type == sf::Event::TextEntered)
 		{
-			// Handle ASCII characters only
+			str += static_cast<char>(event.text.unicode);
+			if(m_input->IsDown(sf::Keyboard::BackSpace))
+			{
+					str = "";
+			}
+			if(event.text.unicode == 10)
+			{
+				return;
+			}
 			if (event.text.unicode < 128)
 			{
-				str += static_cast<char>(event.text.unicode);
-				text.setString(str);
+				text->setString(str);
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)
@@ -103,14 +120,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				m_input->m_currentMouse[0] = false;
 			}
 		}
-		if(m_input->IsDown(sf::Keyboard::Escape))
-		{
-			//	std::cout << "nu kom jag in haer";
-			running = false;
-
-		}
-	}
-	//sf::Event::TextEvent(); måste förstå vad detta gör	
+	}	
 }
 void InputManager::PostMouseUpdate()
 {
@@ -140,4 +150,13 @@ bool InputManager::IsUp(int key)
 
 sf::Vector2i InputManager::GetMousePos(){
 	return m_mousepos;
+}
+sf::Text *InputManager::Get_Text()
+{
+	text->setString(str);
+	return text;
+}
+void InputManager::Reset_text()
+{
+	str = "";
 }

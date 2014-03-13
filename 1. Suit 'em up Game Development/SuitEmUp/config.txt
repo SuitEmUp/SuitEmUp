@@ -1,27 +1,15 @@
 window_w = 1280
 button_padding = 75
 customize_padding_big = 45
-<<<<<<< HEAD
-<<<<<<< HEAD = <<<<<<< HEAD
 window_h = 720
 current_truck = 0
 
->>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea = >>>>>>> ee5714bb738b840642b6627a3c05a592a16e31ea
 -GUI related stuff- = -GUI related stuff-
-menu_top_padding = 225
->>>>>>> 6ee235dad8d0434a7ff0b41763571d99d5dd73d6 = >>>>>>> 6ee235dad8d0434a7ff0b41763571d99d5dd73d6
 fullscreen = false
-=======
-current_truck = 0
-window_h = 720
--GUI related stuff- = -GUI related stuff-
->>>>>>> 421e79681e423e6903b77d11b2f50e270f6c06d9
+menu_top_padding = 225
 hud_padding = 75
-fullscreen = false
-menu_top_padding = 225
 logoypos = 75
 current_suit = 0
 current_weapon = 0
 quickcustomize = 1
 weapons_available = 1
-

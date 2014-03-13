@@ -22,7 +22,7 @@ TitleScreen::TitleScreen(Engine* engine)
 
 	start_game.setFont(font);
 	start_game.setCharacterSize(25);
-	start_game.setColor(sf::Color::Yellow);
+	start_game.setColor(sf::Color::Green);
 	start_game.move(325.f, 650.f);	
 	start_game.setStyle(sf::Text::Bold);
 
