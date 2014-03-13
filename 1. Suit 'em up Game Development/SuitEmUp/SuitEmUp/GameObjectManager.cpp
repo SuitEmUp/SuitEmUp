@@ -179,13 +179,15 @@ void GameObjectManager::ClearGameObjects()
 //Update
 void GameObjectManager::Update(float deltatime)
 {
-	m_soundmanager->PlaySound("M4A1.wav");
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
+		if(m_player->GetWeaponType() == "Revolver") m_soundmanager->PlaySound("M4A1.wav");
+		if(m_player->GetWeaponType() == "Needlegun") m_soundmanager->PlaySound("Bow.wav");
+		if(m_player->GetWeaponType() == "ArmCannon") m_soundmanager->PlaySound("Bow.wav");
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
@@ -217,6 +219,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_enemies.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("M4A1.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_enemies.at(i)->GetDamage(), m_truck, m_enemies.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
@@ -229,6 +232,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_supers.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("M4A1.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_supers.at(i)->GetDamage(), m_truck, m_supers.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
@@ -240,6 +244,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_girls.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("Sniper.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_girls.at(i)->GetDamage(), m_truck, m_girls.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
