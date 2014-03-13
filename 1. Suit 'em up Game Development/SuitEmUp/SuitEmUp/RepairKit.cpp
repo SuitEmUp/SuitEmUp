@@ -12,25 +12,20 @@ RepairKit::RepairKit(sf::Vector2f p_position, sf::Vector2f p_velocity, sf::Sprit
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 };
 
-bool RepairKit::Update(Truck* p_truck, PlayerObject* p_player, float deltatime){
+bool RepairKit::Update(PlayerObject* p_player, float deltatime){
 	
-	float delta_x = p_truck->GetPosition().x - m_position.x;
-	float delta_y = p_truck->GetPosition().y - m_position.y;
+	float delta_x = p_player->GetPosition().x - m_position.x;
+	float delta_y = p_player->GetPosition().y - m_position.y;
 
-	float dist1 = sqrt(delta_x*delta_x + delta_y*delta_y);
+	float dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 
-	m_velocity.x = speed*delta_x/dist1;
-	m_velocity.y = speed*delta_y/dist1;
+	if(dist < m_radius*4){
 
-	/*m_position += m_velocity*deltatime;*/
-
+	m_velocity.x += speed*delta_x/(2*dist);
+	m_velocity.y += speed*delta_y/(2*dist);
+	m_position += m_velocity*deltatime;
+	}
 	m_sprite->setPosition(m_position);
-
-	float delta_X = p_player->GetPosition().x - m_position.x;
-	float delta_Y = p_player->GetPosition().y - m_position.y;
-
-	float dist = sqrt(delta_X*delta_X + delta_Y*delta_Y);
-
 	if(dist < m_radius){
 		return true;
 	}

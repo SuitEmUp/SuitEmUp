@@ -132,7 +132,6 @@ void GameObjectManager::ClearGameObjects()
 		if(*it != nullptr) {
 			delete *it;
 		}
-
 	}
 	m_enemies.clear();
 	for (auto it = m_supers.begin();it != m_supers.end(); it++)
@@ -140,7 +139,6 @@ void GameObjectManager::ClearGameObjects()
 		if(*it != nullptr) {
 			delete *it;
 		}
-
 	}
 	m_supers.clear();
 	for (auto it = m_girls.begin();it != m_girls.end(); it++)
@@ -192,7 +190,7 @@ void GameObjectManager::Update(float deltatime)
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
 	}
-	
+
 
 	//ENEMY WAVES
 	m_spawner->UpdateTime(deltatime);
@@ -396,7 +394,7 @@ void GameObjectManager::Update(float deltatime)
 	};
 
 	for(int i = 0; i< m_vRepairKits.size(); i++){
-		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
+		if(m_vRepairKits.at(i)->Update(m_player, deltatime)){
 
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
@@ -450,7 +448,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 			m_window->draw(*m_supers.at(i)->GetSprite()); // draws all enemies
 		}
 	};
-	
+
 	for(int i=0; i<m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)!=nullptr){
 			m_window->draw(*m_player_projectiles.at(i)->GetSprite());	// draws all player projectiles
