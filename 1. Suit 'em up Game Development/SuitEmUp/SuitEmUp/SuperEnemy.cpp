@@ -5,10 +5,6 @@
 
 SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
 	m_damage = 2;
-	m_buffer = new sf::SoundBuffer();
-	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
-	m_sound = new sf::Sound();
-	m_sound->setBuffer(*m_buffer);
 	m_truck=truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
@@ -61,7 +57,6 @@ bool SuperEnemy::Update(float deltatime){
 
 	if(dist<120 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
 		m_animation->PausAnimation();
-		m_sound->play();
 		m_cooldown = 1;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
@@ -69,15 +64,6 @@ bool SuperEnemy::Update(float deltatime){
 };
 
 SuperEnemy::~SuperEnemy(){
-	if(m_buffer != nullptr)
-	{
-	delete m_buffer;
-	m_buffer =nullptr;
-	}
-	if(m_sound !=nullptr){
-	delete m_sound;
-	m_sound = nullptr;
-	}
 	m_sprite = nullptr;
 	m_truck = nullptr;
 };

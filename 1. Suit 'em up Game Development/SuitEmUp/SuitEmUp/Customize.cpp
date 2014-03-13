@@ -106,7 +106,7 @@ bool Customize::Init()
 	m_weaponrect = new sf::RectangleShape;					m_weaponrect->setSize(sf::Vector2f(568, 50));
 	m_weaponrect->setFillColor(sf::Color(255,255,255,50));	m_weaponrect->setOutlineColor(sf::Color::Black);
 	m_weaponrect->setOutlineThickness(2);					m_weaponrect->setPosition(sf::Vector2f(356, 315));
-
+	//babsdfjkghsdf
 	m_truckrect = new sf::RectangleShape;					m_truckrect->setSize(sf::Vector2f(299, 50));
 	m_truckrect->setFillColor(sf::Color(255,255,255,50));		m_truckrect->setOutlineColor(sf::Color::Black);
 	m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));

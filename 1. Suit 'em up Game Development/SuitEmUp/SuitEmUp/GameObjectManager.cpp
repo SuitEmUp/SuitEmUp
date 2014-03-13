@@ -132,7 +132,6 @@ void GameObjectManager::ClearGameObjects()
 		if(*it != nullptr) {
 			delete *it;
 		}
-
 	}
 	m_enemies.clear();
 	for (auto it = m_supers.begin();it != m_supers.end(); it++)
@@ -140,7 +139,6 @@ void GameObjectManager::ClearGameObjects()
 		if(*it != nullptr) {
 			delete *it;
 		}
-
 	}
 	m_supers.clear();
 	for (auto it = m_girls.begin();it != m_girls.end(); it++)
@@ -179,18 +177,20 @@ void GameObjectManager::ClearGameObjects()
 //Update
 void GameObjectManager::Update(float deltatime)
 {
-	m_soundmanager->PlaySound("M4A1.wav");
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true.
 		m_game_over = true;
 	};
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
 		//When the player presses the fire-button Update returns true and a player projectile is push_back'd into the playerbullet vector
+		if(m_player->GetWeaponType() == "Revolver") m_soundmanager->PlaySound("M4A1.wav");
+		if(m_player->GetWeaponType() == "Needlegun") m_soundmanager->PlaySound("Bow.wav");
+		if(m_player->GetWeaponType() == "ArmCannon") m_soundmanager->PlaySound("Bow.wav");
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
 			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
 	}
-	
+
 
 	//ENEMY WAVES
 	m_spawner->UpdateTime(deltatime);
@@ -217,6 +217,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_enemies.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("M4A1.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_enemies.at(i)->GetDamage(), m_truck, m_enemies.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
@@ -229,6 +230,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_supers.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("M4A1.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_supers.at(i)->GetDamage(), m_truck, m_supers.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
@@ -240,6 +242,7 @@ void GameObjectManager::Update(float deltatime)
 			if(m_girls.at(i)->Update(deltatime)){ 
 				//Update returns true when enemy are close to the truck and their fire-cooldown is 0, 
 				//a bullet is pushbacked into the enemybullet vector
+				m_soundmanager->PlaySound("Sniper.wav");
 				m_enemy_projectiles.push_back(new EnemyProjectile(m_girls.at(i)->GetDamage(), m_truck, m_girls.at(i)->GetPosition(),
 					m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3f, 0.3f)));
 			}
@@ -391,7 +394,7 @@ void GameObjectManager::Update(float deltatime)
 	};
 
 	for(int i = 0; i< m_vRepairKits.size(); i++){
-		if(m_vRepairKits.at(i)->Update(m_truck, m_player, deltatime)){
+		if(m_vRepairKits.at(i)->Update(m_player, deltatime)){
 
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
@@ -445,7 +448,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 			m_window->draw(*m_supers.at(i)->GetSprite()); // draws all enemies
 		}
 	};
-	
+
 	for(int i=0; i<m_player_projectiles.size(); i++){
 		if(m_player_projectiles.at(i)!=nullptr){
 			m_window->draw(*m_player_projectiles.at(i)->GetSprite());	// draws all player projectiles
