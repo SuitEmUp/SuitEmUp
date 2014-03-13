@@ -2,20 +2,30 @@
 #include "InputManager.h"
 #include "SpriteManager.h"
 
-Slider::Slider(SpriteManager* p_sm, std::string type, sf::Vector2f p_position)
+Slider::Slider(SpriteManager* p_sm, std::string type, sf::Vector2f p_position, int level)
 {
+
+	m_slider = p_sm->Load("../data/sprites/sliderbase.png", "Slider");
+	m_slider->setOrigin(m_slider->getLocalBounds().width/2, m_slider->getLocalBounds().height/2);
+	m_slider->setPosition(p_position);
+
+	m_sprite = p_sm->Load("../data/sprites/sliderslider.png", "SliderSlider");
+	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	m_sprite->setPosition(p_position);
+
 	m_type = type;
 
-	m_position = p_position;
+	m_sliderposition = p_position;
 
-	m_level = m_position.x;
+	m_position.y = p_position.y;
 
-	m_sliderposition = sf::Vector2f(100, 50);
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
-	m_sprite->setPosition(m_position);
-	m_slider->setOrigin(m_slider->getLocalBounds().width/2, m_slider->getLocalBounds().height/2);
-	m_slider->setPosition(m_sliderposition);
+	float something = m_slider->getLocalBounds().width - 20;
 
+	m_position.x = (m_sliderposition.x-(m_slider->getLocalBounds().width/2))+10+ (level*something)/100;
+
+	m_level = level;
+
+	m_grabbed = false;
 }
 
 
@@ -27,28 +37,32 @@ Slider::~Slider()
 
 void Slider::Update(InputManager* p_input)
 {
-	if(p_input->Mouse_isDown(sf::Mouse::Left)){
-		if(p_input->GetMousePos().x > m_sliderposition.x - (m_slider->getLocalBounds().width/2) && p_input->GetMousePos().x < m_sliderposition.x + (m_slider->getLocalBounds().width/2)
-		&& p_input->GetMousePos().y > m_sliderposition.y + (m_slider->getLocalBounds().width/2) && p_input->GetMousePos().y < m_sliderposition.y - (m_slider->getLocalBounds().width/2)
-		){
-			m_grabbed = true;
-		};
+
+	if(p_input->GetMousePos().x > m_sliderposition.x - ((m_slider->getLocalBounds().width)/2) && p_input->GetMousePos().x < m_sliderposition.x + ((m_slider->getLocalBounds()).width/2)
+		){ 
+			if(p_input->GetMousePos().y > m_sliderposition.y - ((m_slider->getLocalBounds().height/2)) && p_input->GetMousePos().y < m_sliderposition.y + ((m_slider->getLocalBounds().height/2))
+				){
+					if(p_input->Mouse_isDownOnce(sf::Mouse::Left))
+						m_grabbed = true;
+			};
 	}
 	if(!p_input->Mouse_isDown(sf::Mouse::Left)){
 		m_grabbed = false;
 	}
 	if(m_grabbed){
 		m_position.x = p_input->GetMousePos().x;
-	}
-	if(m_position.x < m_sliderposition.x - (m_slider->getLocalBounds().width/2)){
-		m_position.x = m_sliderposition.x - (m_slider->getLocalBounds().width/2);
-	}
-	if(m_position.x > m_sliderposition.x + (m_slider->getLocalBounds().width/2)){
-		m_position.x = m_sliderposition.x + (m_slider->getLocalBounds().width/2);
+		if(m_position.x < m_sliderposition.x - ((m_slider->getLocalBounds().width/2) - 10)){
+			m_position.x = m_sliderposition.x - ((m_slider->getLocalBounds().width/2) - 10);
+		}
+		if(m_position.x > m_sliderposition.x + ((m_slider->getLocalBounds().width/2)-10)){
+			m_position.x = m_sliderposition.x + ((m_slider->getLocalBounds().width/2)-10);
+		}
 	}
 
-	m_level = m_position.x - (m_sliderposition.x - m_slider->getLocalBounds().width/2);
-
+	float something = m_slider->getLocalBounds().width - 20;
+	something/=100;
+	m_level = m_position.x - (m_sliderposition.x - (m_slider->getLocalBounds().width/2) + 10);
+	m_level/=something;
 	m_sprite->setPosition(m_position);
 };
 
@@ -63,3 +77,7 @@ bool Slider::GetType(){
 std::string Slider::GetSliderType(){
 	return m_type;
 }
+
+sf::Sprite* Slider::GetSliderSprite(){
+	return m_slider;
+};

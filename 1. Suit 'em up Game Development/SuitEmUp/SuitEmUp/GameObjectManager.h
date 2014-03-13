@@ -22,12 +22,13 @@ class Score;
 class HpBar;
 class Button;
 class EyeCandy;
+class SoundManager;
 
 class GameObjectManager
 {
 	friend class Customize;
 public:
-	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input);
+	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr);
 	~GameObjectManager();
 
 	void CreateGameObjects();
@@ -99,6 +100,7 @@ private:
 
 	Spawner* m_spawner;
 	InputManager* m_input;
+	SoundManager* m_soundmanager;
 
 	sf::Sprite* m_background;
 

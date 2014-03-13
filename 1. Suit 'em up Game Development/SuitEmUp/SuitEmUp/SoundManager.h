@@ -37,6 +37,7 @@ private:
 
 	float m_musicvolume;
 	float m_soundvolume;
+	float m_mastervolume;
 	std::string m_directory;
 
 	void AddSound(std::string path);

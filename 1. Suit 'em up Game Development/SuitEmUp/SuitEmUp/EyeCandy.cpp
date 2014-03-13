@@ -18,7 +18,6 @@ EyeCandy::~EyeCandy()
 
 
 };
-
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
 	//int r = ((rand()%(255-1+1))+1);
 	//int g = ((rand()%(255-1+1))+1);
@@ -69,7 +68,6 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 		m_rectangles.push_back(rect);
 	};
 };
-
 void EyeCandy::ShockCreator(sf::Vector2f p_position){
 	for(int i = 0; i<(rand()%(100-50+1))+50; i++){
 		Particle* partickel = new Particle;
@@ -98,7 +96,6 @@ void EyeCandy::ShockCreator(sf::Vector2f p_position){
 	};
 
 };
-
 void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation)
 {
 	Picture* t_picture= new Picture();
@@ -109,7 +106,6 @@ void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, flo
 	t_picture->picture->setRotation(p_rotation+50);
 	m_pictures.push_back(t_picture);
 };
-
 void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination)
 {
 
@@ -145,7 +141,6 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destinati
 	};
 
 };
-
 void EyeCandy::Update(float deltatime){
 	for(int i = 0; i<m_particles.size(); i++){
 		m_particles.at(i)->m_duration -= deltatime;
@@ -200,10 +195,16 @@ void EyeCandy::Update(float deltatime){
 			if(i<0) i=0;
 		}
 	};
+	for(int i = 0; i<m_pictures.size(); i++){
+		m_pictures.at(i)->duration -= deltatime;
+		if(m_pictures.at(i)->duration < 0){
+			m_pictures.erase(m_pictures.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	};
 
 };
-
-
 void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	for(int i = 0; i<m_particles.size(); i++){
 		m_rectangles.at(i)->setPosition(m_particles.at(i)->m_position);
@@ -234,12 +235,7 @@ void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
 	for(int i = 0; i<m_pictures.size(); i++){
 		renderwindow->draw(*m_pictures.at(i)->picture);
-		m_pictures.at(i)->duration -= deltatime;
-		if(m_pictures.at(i)->duration < 0){
-			m_pictures.erase(m_pictures.begin()+i);
-			i--;
-			if(i<0) i=0;
-		}
+		
 	};
 };
 void EyeCandy::PictureDestroyer(){};
