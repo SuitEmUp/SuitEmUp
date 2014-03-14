@@ -47,8 +47,8 @@ bool Customize::Init()
 	m_currentTruck = Config::getInt("current_truck", 0);
 
 	tempName_change = "02";
-	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
-	m_rects.push_back(rectangle);
+	//sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
+	//m_rects.push_back(rectangle);
 
 	//Background, borders
 
@@ -83,7 +83,6 @@ bool Customize::Init()
 		m_pauselock = false;
 	}
 
-
 	//glow feedback
 
 	m_smallupgrade1 = m_engine->m_spritemanager->Load("../data/buttons/small_upgrade_glow.png", "SmallGlow1", 1.0, 1.0);
@@ -99,17 +98,37 @@ bool Customize::Init()
 	m_back = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "Back", 1.0, 1.0);
 	m_back->setPosition(Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64)));
 
-	m_suitrect = new sf::RectangleShape;					m_suitrect->setSize(sf::Vector2f(299, 50));
-	m_suitrect->setFillColor(sf::Color(255,255,255,100));		m_suitrect->setOutlineColor(sf::Color::Black);
-	m_suitrect->setOutlineThickness(2);						m_suitrect->setPosition(sf::Vector2f(47, 556));
 
-	m_weaponrect = new sf::RectangleShape;					m_weaponrect->setSize(sf::Vector2f(568, 50));
-	m_weaponrect->setFillColor(sf::Color(255,255,255,100));	m_weaponrect->setOutlineColor(sf::Color::Black);
-	m_weaponrect->setOutlineThickness(2);					m_weaponrect->setPosition(sf::Vector2f(356, 315));
+	//m_suitrect = new sf::RectangleShape;					m_suitrect->setSize(sf::Vector2f(299, 50));
+	//m_suitrect->setFillColor(sf::Color(255,255,255,100));		m_suitrect->setOutlineColor(sf::Color::Black);
+	//m_suitrect->setOutlineThickness(2);						m_suitrect->setPosition(sf::Vector2f(47, 556));
 
-	m_truckrect = new sf::RectangleShape;					m_truckrect->setSize(sf::Vector2f(299, 50));
-	m_truckrect->setFillColor(sf::Color(255,255,255,100));		m_truckrect->setOutlineColor(sf::Color::Black);
-	m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
+	//m_weaponrect = new sf::RectangleShape;					m_weaponrect->setSize(sf::Vector2f(568, 50));
+	//m_weaponrect->setFillColor(sf::Color(255,255,255,100));	m_weaponrect->setOutlineColor(sf::Color::Black);
+	//m_weaponrect->setOutlineThickness(2);					m_weaponrect->setPosition(sf::Vector2f(356, 315));
+
+	//m_truckrect = new sf::RectangleShape;					m_truckrect->setSize(sf::Vector2f(299, 50));
+	//m_truckrect->setFillColor(sf::Color(255,255,255,100));		m_truckrect->setOutlineColor(sf::Color::Black);
+	//m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
+
+	sf::RectangleShape* t_suitrect = new sf::RectangleShape;					t_suitrect->setSize(sf::Vector2f(299, 50));
+	t_suitrect->setFillColor(sf::Color(255,255,255,50));		t_suitrect->setOutlineColor(sf::Color::Black);
+	t_suitrect->setOutlineThickness(2);						t_suitrect->setPosition(sf::Vector2f(47, 556));
+
+	m_rects.push_back(t_suitrect);
+
+	sf::RectangleShape* t_weaponrect = new sf::RectangleShape;					t_weaponrect->setSize(sf::Vector2f(568, 50));
+	t_weaponrect->setFillColor(sf::Color(255,255,255,50));	t_weaponrect->setOutlineColor(sf::Color::Black);
+	t_weaponrect->setOutlineThickness(2);					t_weaponrect->setPosition(sf::Vector2f(356, 315));
+
+	m_rects.push_back(t_weaponrect);
+
+	sf::RectangleShape* t_truckrect = new sf::RectangleShape;					t_truckrect->setSize(sf::Vector2f(299, 50));
+	t_truckrect->setFillColor(sf::Color(255,255,255,50));	t_truckrect->setOutlineColor(sf::Color::Black);
+	t_truckrect->setOutlineThickness(2);						t_truckrect->setPosition(sf::Vector2f(934, 315 ));
+
+	m_rects.push_back(t_truckrect);
+
 
 	//getcosts
 	m_currentsuitcost = Config::get("currentsuitcost");
@@ -460,9 +479,13 @@ void Customize::Draw()
 		}
 	}
 
-	m_engine->m_window->draw(*m_suitrect);
+	for(int i = 0; i<m_rects.size(); i++){
+		m_engine->m_window->draw(*m_rects.at(i));
+	}
+
+	/*m_engine->m_window->draw(*m_suitrect);
 	m_engine->m_window->draw(*m_weaponrect);
-	m_engine->m_window->draw(*m_truckrect);
+	m_engine->m_window->draw(*m_truckrect);*/
 	m_engine->m_window->draw(*m_suitcostText);
 	m_engine->m_window->draw(*m_weaponcostText);
 	m_engine->m_window->draw(*m_truckcostText);

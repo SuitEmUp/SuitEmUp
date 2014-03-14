@@ -13,7 +13,7 @@ RepairKit::RepairKit(sf::Vector2f p_position, sf::Vector2f p_velocity, sf::Sprit
 };
 
 bool RepairKit::Update(PlayerObject* p_player, float deltatime){
-	
+
 	float delta_x = p_player->GetPosition().x - m_position.x;
 	float delta_y = p_player->GetPosition().y - m_position.y;
 
@@ -21,10 +21,25 @@ bool RepairKit::Update(PlayerObject* p_player, float deltatime){
 
 	if(dist < m_radius*4){
 
-	m_velocity.x += speed*delta_x/(2*dist);
-	m_velocity.y += speed*delta_y/(2*dist);
-	m_position += m_velocity*deltatime;
+		m_velocity.x += speed*delta_x/(2*dist);
+		m_velocity.y += speed*delta_y/(2*dist);
+
+		if(m_velocity.x>0 && delta_x<0){
+			m_velocity.x *= 0.9;
+		}
+		if(m_velocity.x<0 && delta_x>0){
+			m_velocity.x *= 0.9;
+		}
+		if(m_velocity.y>0 && delta_y<0){
+			m_velocity.y *= 0.9;
+		}
+		if(m_velocity.y<0 && delta_y>0){
+			m_velocity.y*= 0.9;
+		}
+
+		m_position += m_velocity*deltatime;
 	}
+	else m_velocity = sf::Vector2f(0,0);
 	m_sprite->setPosition(m_position);
 	if(dist < m_radius){
 		return true;

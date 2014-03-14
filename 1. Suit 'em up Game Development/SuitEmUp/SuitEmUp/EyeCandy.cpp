@@ -14,8 +14,63 @@ EyeCandy::EyeCandy()
 };
 EyeCandy::~EyeCandy()
 {
-
-
+	for (auto it = m_particles.begin();it != m_particles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_particles.clear();
+	for (auto it = m_rectangles.begin();it != m_rectangles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_rectangles.clear();
+	for (auto it = m_shocks.begin();it != m_shocks.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_shocks.clear();
+	for (auto it = m_squares.begin();it != m_squares.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_squares.clear();
+	for (auto it = m_boomwoshticles.begin();it != m_boomwoshticles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_boomwoshticles.clear();
+	for (auto it = m_recticles.begin();it != m_recticles.end(); it++)
+	{
+		if(*it != nullptr) {
+			delete *it;
+		}
+	}
+	m_recticles.clear();
+	for (auto it = m_pictures.begin();it != m_pictures.end(); it++)
+	{
+		if(*it != nullptr) {
+			(*it)->picture = nullptr;
+			delete *it;
+		}
+	}
+	m_pictures.clear();
+	for(int i = 0; i<m_texts.size(); i++){
+		
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+	}
+	m_texts.clear();
 
 };
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
@@ -142,6 +197,15 @@ void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destinati
 
 };
 void EyeCandy::Update(float deltatime){
+
+	for(int i = 0; i<m_texts.size(); i++){
+		m_texts.at(i).duration_text -= deltatime;
+		if(m_texts.at(i).duration_text < 0){
+			m_texts.erase(m_texts.begin()+i);
+			i--;
+			if(i<0) i=0;
+		}
+	}
 	for(int i = 0; i<m_particles.size(); i++){
 		m_particles.at(i)->m_duration -= deltatime;
 		m_particles.at(i)->m_position += m_particles.at(i)->m_speed * m_particles.at(i)->m_direction * deltatime;
@@ -224,12 +288,6 @@ void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	};
 	for(int i = 0; i<m_texts.size(); i++){
 		renderwindow->draw(m_texts.at(i).texts);
-		m_texts.at(i).duration_text -= deltatime;
-		if(m_texts.at(i).duration_text < 0){
-			m_texts.erase(m_texts.begin()+i);
-			i--;
-			if(i<0) i=0;
-		}
 	}
 };
 void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
@@ -240,6 +298,7 @@ void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
 };
 void EyeCandy::PictureDestroyer(){};
 void EyeCandy::ParticleDestroyer(){};
+
 void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
 {
 	Text t_text;

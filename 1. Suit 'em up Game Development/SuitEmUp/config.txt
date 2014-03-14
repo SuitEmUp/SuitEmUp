@@ -1,17 +1,19 @@
-window_w = 1280
-button_padding = 75
 customize_padding_big = 45
-window_h = 720
+button_padding = 75
+window_w = 1280
 current_truck = 0
-hud_padding = 75
-fullscreen = false
+window_h = 720
 menu_top_padding = 225
+fullscreen = false
+hud_padding = 75
 logoypos = 75
-currentsuitcost = 1000
+<<<<<<< HEAD = <<<<<<< HEAD
+currentsuitcost = 2500
 current_suit = 0
-current_weapon = 0
+
+>>>>>>> f14928e9c06147c8744cf7eb3642afa953d681fe = >>>>>>> f14928e9c06147c8744cf7eb3642afa953d681fe
 quickcustomize = 1
+current_weapon = 0
 weapons_available = 1
 currentweaponcost = 1500
 currenttruckcost = 1200
-

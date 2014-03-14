@@ -287,6 +287,7 @@ PlayerObject::~PlayerObject(){
 	m_sprite = nullptr;
 	m_unupdate = nullptr;
 	m_update = nullptr;
+
 };
 
 bool PlayerObject::GetType()

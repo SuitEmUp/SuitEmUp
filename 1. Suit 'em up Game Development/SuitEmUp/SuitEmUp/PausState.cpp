@@ -60,12 +60,12 @@ bool PausState::Init()
 };
 void PausState::Exit(){
 
-	for(unsigned int i = 0; i < m_rects.size(); i++)
+	/*for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
 		delete m_rects[i];
 		m_rects[i] = nullptr;
 	}
-	m_rects.clear();
+	m_rects.clear();*/
 
 	for(unsigned int i = 0; i < m_buttons.size(); i++)
 	{
@@ -108,6 +108,7 @@ bool PausState::Update(float deltatime)
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
 		{
 			printf("Next State set to MainMenu\n");
+			m_engine->m_gom->ClearGameObjects();
 			setNextState("MainMenu");
 			m_engine->m_paused = 1;
 			return false;
