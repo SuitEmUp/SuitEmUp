@@ -685,14 +685,10 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 			m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
 		m_truck->m_maxhp = 150;
 	}
-<<<<<<< HEAD
-
 
 }
 int GameObjectManager::Kill_count()
 {
 	return Kill_Count;
 }
-=======
-}
->>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
+

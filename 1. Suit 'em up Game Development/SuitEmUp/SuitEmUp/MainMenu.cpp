@@ -115,12 +115,9 @@ bool MainMenu::Update(float deltatime)
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Game\n");
 					setNextState("Game");
-<<<<<<< HEAD
-=======
 					Config::set("currentsuitcost", "1000");
 					Config::set("currentweaponcost", "1500");
 					Config::set("currenttruckcost", "1200");
->>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
 					m_engine->m_paused = 3; //through mainmenu
 
 					return false;
@@ -149,9 +146,6 @@ bool MainMenu::Update(float deltatime)
 			}
 		}
 	}
-<<<<<<< HEAD
-=======
-
 	
 	if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;	printf("Up1\n");}
 	else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;printf("Up2\n");}
@@ -182,7 +176,6 @@ bool MainMenu::Update(float deltatime)
 	if (m_input->IsDownOnce(sf::Keyboard::Return) && m_codecount == 10){	m_codecount += 1;printf("Start\n");}
 	else m_codecount = 0;
 
->>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
 	return true;
 }
 

@@ -33,7 +33,7 @@ int main()
 	Config::set("currentweaponcost", "1500");
 	Config::set("currenttruckcost", "1200");
 	Config::renew();
-	//Engine *suitengine;
+	//Engine suitengine;
 
 
 	if(suitengine->Initialize())

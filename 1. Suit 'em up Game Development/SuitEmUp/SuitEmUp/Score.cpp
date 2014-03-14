@@ -7,14 +7,12 @@
 
 Score::	Score()
 {
-<<<<<<< HEAD
+
 
 	m_score = 10; 
 
 	m_score = 490; 
-=======
 	m_score = 0; 
->>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
