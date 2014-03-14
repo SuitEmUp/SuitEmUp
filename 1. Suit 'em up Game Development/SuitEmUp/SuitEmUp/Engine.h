@@ -7,7 +7,9 @@ class StateManager;
 class DrawManager;
 class GameObjectManager;
 class ButtonManager;
+class Highscore;
 class SoundManager;
+
 
 namespace sf{
 	class RenderWindow;
@@ -43,10 +45,13 @@ public:
 	bool m_running;
 	int m_paused;
 
+	Highscore *m_ehighscore;
+
 	int m_soundlevel;
 	int m_visuallevel;
 	int m_musiclevel;
 	int m_mastervolumelevel;
+
 
 	sf::Sprite *m_crosshair;
 

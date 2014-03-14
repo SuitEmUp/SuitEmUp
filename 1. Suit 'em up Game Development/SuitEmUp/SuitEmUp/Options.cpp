@@ -20,6 +20,14 @@ Options::Options(Engine* engine)
 
 bool Options::Init()
 {
+
+
+	printf("State: Options,   Initialized\n");
+	printf("F1 - F4 to Change States\n");
+	tempName_change = "02";
+	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
+
+
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "SoundSlider", sf::Vector2f(1280/2, 100), m_engine->m_soundlevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MusicSlider", sf::Vector2f(1280/2, 200), m_engine->m_musiclevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MasterVolumeSlider", sf::Vector2f(1280/2, 300), m_engine->m_mastervolumelevel));
@@ -31,6 +39,7 @@ bool Options::Init()
 	/*printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";*/
+
 
 	return true;
 };
@@ -85,6 +94,9 @@ bool Options::Update(float deltatime)
 	setNextState("MainMenu");
 	return false;
 	};
+<<<<<<< HEAD
+	
+=======
 	if(m_input->IsDown(sf::Keyboard::F2))
 	{
 	printf("Next State set to Game\n");
@@ -97,11 +109,15 @@ bool Options::Update(float deltatime)
 	setNextState("Customize");
 	return false;
 	};*/
+
 	return true;
 };
 
 void Options::Draw()
 {
+
+	m_engine->m_window->draw(*m_background);
+
 	for(int i=0; i<m_sliders.size(); i++){
 		m_engine->m_window->draw(*m_sliders.at(i)->GetSliderSprite());
 	}
@@ -111,6 +127,7 @@ void Options::Draw()
 	for(int i=0; i<m_buttons.size(); i++){
 		m_engine->m_window->draw(*m_buttons.at(i)->GetSprite());
 	}
+
 };
 std::string Options::Next()
 {

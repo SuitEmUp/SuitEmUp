@@ -18,7 +18,11 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	AddAnimation(sprite);
 	
 	m_sprite->setOrigin(29/2, 35/2);
-	m_animation->update(0.1f, 0);
+
+	for(int i=0;i<3;i++)
+	{
+		m_animation->update(0.1f, 0);
+	}
 };
 
 bool EnemyObject::Update(float deltatime){

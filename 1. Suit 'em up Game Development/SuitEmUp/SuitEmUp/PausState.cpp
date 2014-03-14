@@ -31,7 +31,7 @@ bool PausState::Init()
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_buttons.push_back(new Button(m_input, "Customization", "Square", m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"),
+	m_buttons.push_back(new Button(m_input, "Customization", "Square", m_engine->m_spritemanager->Load("../data/buttons/Customize button.PNG", "Customization"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
