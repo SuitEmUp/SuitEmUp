@@ -32,7 +32,8 @@ bool Game::Init()
 		m_engine->m_gom->CreateGameObjects();
 	}
 
-
+	/*popuplock = true;
+	onepopuplock = false;*/
 
 	printf("State: Game,  Initialized\n");
 	printf("F1 - F4 to Change States\n");
@@ -53,7 +54,7 @@ bool Game::Update(float deltatime)
 {
 	if(popuplock == false)
 	{
-		m_popup = new Popup(m_input, "Tessst", "TESTINGWOOOO", m_engine->m_gom->m_spritemanager->Load("../data/Sprites/popup.png", "popup"), 1280 - 310, 720 - 100);
+		m_popup = new Popup(m_input, "Tessst", "TESTINGWOOOO", m_engine->m_gom->m_spritemanager->Load("../data/Sprites/popuptext.png", "popup"), 1280 - 310, 720 - 100);
 		popuplock = true;
 	}
 
@@ -110,7 +111,7 @@ bool Game::Update(float deltatime)
 
 		return false;
 	}
-	if(m_score >= 500 && onepopuplock == false)
+	if(m_score >= 1000 && onepopuplock == false)
 	{
 		popuplock = false;
 		onepopuplock = true;

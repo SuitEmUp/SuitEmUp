@@ -29,6 +29,9 @@ int main()
 	Config::set("current_weapon", "0");
 	Config::set("current_truck", "0");
 	Config::set("weapons_available", "1");
+	Config::set("currentsuitcost", "1000");
+	Config::set("currentweaponcost", "1500");
+	Config::set("currenttruckcost", "1200");
 	Config::renew();
 	//Engine *suitengine;
 

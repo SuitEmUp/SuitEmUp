@@ -71,7 +71,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 	{
 		if(event.type == sf::Event::Closed)
 		{
-			
+
 			running = false;
 		}
 		else if(event.type == sf::Event::KeyPressed) 
@@ -142,6 +142,19 @@ bool InputManager::IsDown(int key) const
 bool InputManager::IsUp(int key)
 {
 	return !m_current[key];
+}
+
+bool InputManager::IsDownOnce(int key) const
+{
+	return m_current[key] 
+	&& !m_previous[key];
+
+};
+
+bool InputManager::IsAnyDown() const
+{
+	//for (int i = 0; i < )
+	return true;
 }
 
 sf::Vector2f InputManager::GetMousePos(){

@@ -40,6 +40,9 @@ bool DieState::Init()
 	Config::set("current_weapon", "0");
 	Config::set("current_truck", "0");
 	Config::set("weapons_available", "1");
+	Config::set("currentsuitcost", "1000");
+	Config::set("currentweaponcost", "1500");
+	Config::set("currenttruckcost", "1200");
 	Config::renew();
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
@@ -79,17 +82,18 @@ bool DieState::Init()
 
 	m_input->Reset_text();
 
+
 	printf("State: DieState,  Initialized\n");
 	return true;
 };
 void DieState::Exit(){
 
-	for(unsigned int i = 0; i < m_rects.size(); i++)
+	/*for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
 		delete m_rects[i];
 		m_rects[i] = nullptr;
 	}
-	m_rects.clear();
+	m_rects.clear();*/
 
 	for(unsigned int i = 0; i < m_xbuttons.size(); i++)
 	{
@@ -126,6 +130,7 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to GameState\n");
 			setNextState("Game");
 			m_engine->m_paused = 1;
+		//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "HighScore")
@@ -140,6 +145,7 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to MainMenu\n");
 			setNextState("MainMenu");
 			m_engine->m_paused = 1;
+		//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Submit")

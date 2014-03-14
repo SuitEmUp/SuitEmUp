@@ -21,9 +21,14 @@ public:
 	void PostMouseUpdate();
 	void PostKeyboardUpdate();
 	bool IsDown(int key) const;
+	bool IsDownOnce(int key) const;
 	bool IsUp(int key);
+<<<<<<< HEAD
 	sf::Text *Get_Text();
 	void Reset_text();
+=======
+	bool IsAnyDown() const;
+>>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
 
 private:
 
