@@ -23,11 +23,11 @@
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr)
 {
-<<<<<<< HEAD
+
 	Kill_Count = 0;
-=======
+
 	m_soundmanager = soundmngr;
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 	m_input = input;
 	m_spritemanager=sm;
 	m_window=rw;
@@ -405,13 +405,12 @@ void GameObjectManager::Update(float deltatime)
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
 			m_xscore->PutInScore(enemyscore = 35);
-<<<<<<< HEAD
+
 			Kill_Count++;
-=======
+
 
 			m_eyecandy->BoomWoshCreator(m_vRepairKits[i]->GetPosition(), m_truck->GetPosition());
 
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
 			m_truck->Healed();
 			delete m_vRepairKits[i];
 			m_vRepairKits.erase(m_vRepairKits.begin()+i);

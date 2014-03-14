@@ -16,7 +16,7 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 
 	m_animation = nullptr;
 	AddAnimation(sprite);
-<<<<<<< HEAD
+
 
 	m_sprite->setOrigin(82/2, 34/2);
 	
@@ -24,11 +24,11 @@ SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
 	{
 		m_animation->update(0.1f, 0);
 	}
-=======
+
 	
 	m_sprite->setOrigin(((m_sprite->getLocalBounds().width)/2.3), 16);
 	m_animation->update(0.1f, 0);
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 };
 
 bool SniperGirl::Update(float deltatime){
@@ -73,22 +73,21 @@ bool SniperGirl::Update(float deltatime){
 };
 
 SniperGirl::~SniperGirl(){
-<<<<<<< HEAD
-	if(m_buffer != nullptr)
-	{
-		delete m_buffer;
-		m_buffer =nullptr;
-	}
-	if(m_sound !=nullptr){
-		delete m_sound;
-		m_sound = nullptr;
-	}
-=======
+
+	//if(m_buffer != nullptr)
+	//{
+	//	delete m_buffer;
+	//	m_buffer =nullptr;
+	//}
+	//if(m_sound !=nullptr){
+	//	delete m_sound;
+	//	m_sound = nullptr;
+	//}
 	m_truck = nullptr;
 	m_sprite = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 };
 
 bool SniperGirl::GetType(){

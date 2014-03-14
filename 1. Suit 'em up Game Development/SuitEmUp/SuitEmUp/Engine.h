@@ -7,11 +7,9 @@ class StateManager;
 class DrawManager;
 class GameObjectManager;
 class ButtonManager;
-<<<<<<< HEAD
 class Highscore;
-=======
 class SoundManager;
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 
 namespace sf{
 	class RenderWindow;
@@ -47,15 +45,14 @@ public:
 	bool m_running;
 	int m_paused;
 
-<<<<<<< HEAD
 	Highscore *m_ehighscore;
-=======
+
 	int m_soundlevel;
 	int m_visuallevel;
 	int m_musiclevel;
 	int m_mastervolumelevel;
 
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 	sf::Sprite *m_crosshair;
 
 };

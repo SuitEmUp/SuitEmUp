@@ -31,11 +31,11 @@ private:
 	InputManager *m_input;
 	std::string next_state;
 	std::string tempName_change;
-<<<<<<< HEAD
+
 
 	sf::Sprite *m_background;
-=======
+
 	std::vector<Button*> m_buttons;
 	std::vector<Slider*> m_sliders;
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 };

@@ -302,11 +302,10 @@ void EyeCandy::ParticleDestroyer(){};
 void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
 {
 	Text t_text;
-<<<<<<< HEAD
 	t_text.duration_text = 2;
-=======
+
 	t_text.duration_text = 1;
->>>>>>> e464993c68810020295f52dc934f30a498fb8a53
+
 	t_text.texts = p_text;
 	t_text.texts.setPosition(p_position);
 	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);

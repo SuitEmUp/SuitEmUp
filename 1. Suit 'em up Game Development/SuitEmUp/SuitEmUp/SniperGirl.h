@@ -21,6 +21,7 @@ protected:
 	float m_cooldown;
 	float m_hp;
 	float m_damage;
-
+	//sf::SoundBuffer *m_buffer;
+	//sf::Sound *m_sound;
 	Animation *m_animation;
 };
