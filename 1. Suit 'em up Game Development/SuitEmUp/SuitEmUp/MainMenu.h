@@ -42,6 +42,10 @@ private:
 	sf::Sprite* m_glow3;
 	sf::Sprite* m_glow4;
 
+	bool m_reset;
+	int m_codecount;
+	bool m_showREALTITLE;
+
 	bool m_canclick;
 	bool m_oneclicklock;
 

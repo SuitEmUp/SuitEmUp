@@ -31,7 +31,7 @@ Customize::Customize(Engine *engine)
 	howmuchitcosts_suit = 1000;
 	howmuchitcosts_weapon = 1500;
 	howmuchitcosts_truck = 1200;
-	howmuchitcosts_trinket = 500;
+	//howmuchitcosts_trinket = 500;
 
 
 };
@@ -100,15 +100,15 @@ bool Customize::Init()
 	m_back->setPosition(Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64)));
 
 	m_suitrect = new sf::RectangleShape;					m_suitrect->setSize(sf::Vector2f(299, 50));
-	m_suitrect->setFillColor(sf::Color(255,255,255,50));		m_suitrect->setOutlineColor(sf::Color::Black);
+	m_suitrect->setFillColor(sf::Color(255,255,255,100));		m_suitrect->setOutlineColor(sf::Color::Black);
 	m_suitrect->setOutlineThickness(2);						m_suitrect->setPosition(sf::Vector2f(47, 556));
 
 	m_weaponrect = new sf::RectangleShape;					m_weaponrect->setSize(sf::Vector2f(568, 50));
-	m_weaponrect->setFillColor(sf::Color(255,255,255,50));	m_weaponrect->setOutlineColor(sf::Color::Black);
+	m_weaponrect->setFillColor(sf::Color(255,255,255,100));	m_weaponrect->setOutlineColor(sf::Color::Black);
 	m_weaponrect->setOutlineThickness(2);					m_weaponrect->setPosition(sf::Vector2f(356, 315));
-	//babsdfjkghsdf
+
 	m_truckrect = new sf::RectangleShape;					m_truckrect->setSize(sf::Vector2f(299, 50));
-	m_truckrect->setFillColor(sf::Color(255,255,255,50));		m_truckrect->setOutlineColor(sf::Color::Black);
+	m_truckrect->setFillColor(sf::Color(255,255,255,100));		m_truckrect->setOutlineColor(sf::Color::Black);
 	m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
 
 	//getcosts
@@ -120,16 +120,38 @@ bool Customize::Init()
 	m_foont = new sf::Font;
 	m_foont->loadFromFile("../assets/fonts/AdobeFangsongStd-Regular.otf");
 
-	m_suitcostText = new sf::Text;
-	m_suitcostText->setOrigin(m_suitcostText->getLocalBounds().height/2,0);
-	m_suitcostText->setFont(*m_foont);
-	m_suitcostText->setString(m_currentsuitcost);
-	m_suitcostText->setPosition(sf::Vector2f(200,570));
-	m_suitcostText->setColor(sf::Color(255,255,255,255));
-	m_suitcostText->setCharacterSize(40);
+	m_suitcostText = new sf::Text;							
+	m_suitcostText->setOrigin(m_suitcostText->getLocalBounds().height/2,0);		m_suitcostText->setFont(*m_foont);
+	m_suitcostText->setString(Config::get("currentsuitcost"));					m_suitcostText->setPosition(sf::Vector2f(150,555));		
+	m_suitcostText->setColor(sf::Color::Black);						m_suitcostText->setCharacterSize(40);
 
 	m_weaponcostText = new sf::Text;
+	m_weaponcostText->setOrigin(m_weaponcostText->getLocalBounds().height/2,0);	m_weaponcostText->setFont(*m_foont);
+	m_weaponcostText->setString(Config::get("currentweaponcost"));				m_weaponcostText->setPosition(sf::Vector2f(600,313));		
+	m_weaponcostText->setColor(sf::Color::Black);						m_weaponcostText->setCharacterSize(40);
+
 	m_truckcostText = new sf::Text;
+	m_truckcostText->setOrigin(m_truckcostText->getLocalBounds().height/2,0);	m_truckcostText->setFont(*m_foont);
+	m_truckcostText->setString(Config::get("currenttruckcost"));				m_truckcostText->setPosition(sf::Vector2f(1037,313));		
+	m_truckcostText->setColor(sf::Color::Black);						m_truckcostText->setCharacterSize(40);
+
+
+	//blabla fullösning
+	if(Config::getInt("current_suit", 0) == 2)
+	{
+		m_suitcostText->setPosition(sf::Vector2f(77,555));
+		m_suitcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("weapons_available", 0) == 3)
+	{
+		m_weaponcostText->setPosition(sf::Vector2f(530,319));
+		m_weaponcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("current_truck", 0) == 2)
+	{
+		m_truckcostText->setPosition(sf::Vector2f(960,319));
+		m_truckcostText->setCharacterSize(30);
+	}
 
 
 	printf("State: Customize, Initialized\n");
@@ -215,6 +237,7 @@ bool Customize::Update(float deltatime)
 							if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
 							Config::set("current_suit","1");
 							printf("Suit Upgraded\n");
+							Config::set("currentsuitcost", "2500");
 						}
 						else if(m_currentSuit == 1)
 						{
@@ -223,9 +246,13 @@ bool Customize::Update(float deltatime)
 							if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
 							Config::set("current_suit","2");
 							printf("Suit Upgraded\n");
+							Config::set("currentsuitcost", "Upgrade Complete");
+							m_suitcostText->setPosition(sf::Vector2f(77,555));
+							m_suitcostText->setCharacterSize(30);
 						}
 						m_suit->setPosition(45, 114);
 					}
+					Config::renew();
 				}
 
 				//----------------------
@@ -249,6 +276,7 @@ bool Customize::Update(float deltatime)
 						printf("Needlegun is now available!\n");
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
+						Config::set("currentweaponcost", "3000");
 					}
 					else if(m_weapons_available == 2)
 					{
@@ -259,6 +287,9 @@ bool Customize::Update(float deltatime)
 						Config::set("current_weapon", "2");
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("ArmCannon");
+						Config::set("currentweaponcost", "Upgrade Complete");
+						m_weaponcostText->setPosition(sf::Vector2f(530,319));
+						m_weaponcostText->setCharacterSize(30);
 					}
 					else if(m_weapons_available == 3){printf("Upgrade already complete\n");}
 					else {printf("Upgrade failed");}
@@ -344,7 +375,13 @@ bool Customize::Update(float deltatime)
 						//score
 						m_engine->m_gom->Buy(howmuchitcosts_truck);
 						howmuchitcosts_truck + 1500;
-
+						if(m_currentTruck == 1)
+							Config::set("currenttruckcost", "2700");
+						else if(m_currentTruck == 2){
+							Config::set("currenttruckcost", "Upgrade Complete");
+							m_truckcostText->setPosition(sf::Vector2f(960,319));
+							m_truckcostText->setCharacterSize(30);
+						}
 						if(m_currentTruck == 1)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
 						else if(m_currentTruck == 2)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
 						m_truck->setPosition(932, 114);
@@ -378,7 +415,9 @@ bool Customize::Update(float deltatime)
 			return false;
 		}
 
-
+		m_suitcostText->setString(Config::get("currentsuitcost"));
+		m_weaponcostText->setString(Config::get("currentweaponcost"));
+		m_truckcostText->setString(Config::get("currenttruckcost"));
 
 		return true;
 };
@@ -425,6 +464,8 @@ void Customize::Draw()
 	m_engine->m_window->draw(*m_weaponrect);
 	m_engine->m_window->draw(*m_truckrect);
 	m_engine->m_window->draw(*m_suitcostText);
+	m_engine->m_window->draw(*m_weaponcostText);
+	m_engine->m_window->draw(*m_truckcostText);
 };
 
 

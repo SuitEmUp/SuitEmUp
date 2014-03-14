@@ -7,11 +7,11 @@ hud_padding = 75
 fullscreen = false
 menu_top_padding = 225
 logoypos = 75
-currentsuitcost = 1500
+currentsuitcost = 1000
 current_suit = 0
 current_weapon = 0
 quickcustomize = 1
 weapons_available = 1
 currentweaponcost = 1500
-currenttruckcost = 1500
+currenttruckcost = 1200
 

@@ -27,6 +27,9 @@ bool DieState::Init()
 	Config::set("current_weapon", "0");
 	Config::set("current_truck", "0");
 	Config::set("weapons_available", "1");
+	Config::set("currentsuitcost", "1000");
+	Config::set("currentweaponcost", "1500");
+	Config::set("currenttruckcost", "1200");
 	Config::renew();
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
@@ -58,6 +61,7 @@ bool DieState::Init()
 	/*m_xbuttons.push_back(new Button(m_input, "QuitGame", "Square",m_engine->m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 
 	(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));*/
+
 
 
 	printf("State: DieState,  Initialized\n");

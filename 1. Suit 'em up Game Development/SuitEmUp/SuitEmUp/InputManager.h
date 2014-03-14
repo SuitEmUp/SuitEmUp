@@ -21,7 +21,9 @@ public:
 	void PostMouseUpdate();
 	void PostKeyboardUpdate();
 	bool IsDown(int key) const;
+	bool IsDownOnce(int key) const;
 	bool IsUp(int key);
+	bool IsAnyDown() const;
 
 private:
 

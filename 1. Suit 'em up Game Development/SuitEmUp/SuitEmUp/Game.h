@@ -18,6 +18,8 @@ public:
 	bool Update(float deltatime);
 	void Draw(/*sf::RenderWindow *p_window*/);
 
+	void resetpopup();
+
 	std::string Next();
 	void setNextState(std::string state);
 	bool IsType(const std::string &type);
