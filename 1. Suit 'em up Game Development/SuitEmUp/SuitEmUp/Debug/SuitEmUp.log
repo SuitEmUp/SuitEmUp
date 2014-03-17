@@ -1,47 +1,10 @@
-﻿Build started 2014-03-17 16:19:17.
+﻿Build started 2014-03-17 16:46:57.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Animation.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DieState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Highscore.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp"
-         Truck.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(54): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(62): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(141): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(150): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(154): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(163): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(166): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(181): warning C4018: '<' : signed/unsigned mismatch
-         GameObjectManager.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(194): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(202): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(206): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(210): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(218): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(231): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(243): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(257): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(267): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(275): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(277): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(292): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(320): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(321): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(341): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(363): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(364): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(406): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(449): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(454): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(459): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(465): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(470): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(475): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(515): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(563): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(612): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(621): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(630): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(639): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Animation.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DieState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Highscore.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\InputManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp"
+         InputManager.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\inputmanager.cpp(161): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\inputmanager.cpp(162): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
          Generating Code...
          Skipping... (no relevant changes detected)
          SuperEnemy.cpp
@@ -106,4 +69,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.00
+Time Elapsed 00:00:01.02
