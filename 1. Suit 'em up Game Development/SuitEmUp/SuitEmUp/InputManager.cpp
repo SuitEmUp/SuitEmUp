@@ -39,10 +39,12 @@ InputManager::InputManager(sf::RenderWindow* window) :
 	text->move(0.f, 0.f);	
 	text->setStyle(sf::Text::Bold);
 }
+
 InputManager::~InputManager()
 {
 
 }
+
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
 {
 	return m_currentMouse[sf::Mouse::Button::Left] 
@@ -54,15 +56,16 @@ bool InputManager::Mouse_isDown(sf::Mouse::Button button) const
 	return m_currentMouse[sf::Mouse::Button::Left];
 };
 
-
 int InputManager::GetMouseX() const
 {
 	return myMouseX;
 }
+
 int InputManager::GetMouseY() const
 {
 	return myMouseY;
 }
+
 void InputManager::HandleInput(bool &running, InputManager *m_input, StateManager *m_state_manager)
 {
 	m_mousepos = sf::Mouse::getPosition(*m_window);
@@ -118,6 +121,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 		}
 	}	
 }
+
 void InputManager::PostMouseUpdate()
 {
 	for(int i = 0; i < sf::Mouse::ButtonCount; i++) 
@@ -162,11 +166,13 @@ sf::Vector2f InputManager::GetMousePos(){
 	float y = m_mousepos.y;
 	return sf::Vector2f(x, y);
 }
+
 sf::Text *InputManager::Get_Text()
 {
 	text->setString(str);
 	return text;
 }
+
 void InputManager::Reset_text()
 {
 	str = "";
