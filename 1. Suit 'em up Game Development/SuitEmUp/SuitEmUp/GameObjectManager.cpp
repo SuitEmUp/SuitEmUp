@@ -339,12 +339,12 @@ void GameObjectManager::Update(float deltatime)
 
 					//score and feedback
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
-					m_eyecandy->TextCreator(m_xscore->FeedbackScore(40), m_supers.at(j)->GetPosition());
+					m_eyecandy->TextCreator(m_xscore->FeedbackScore(30), m_supers.at(j)->GetPosition());
 
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 					Kill_Count++;
-					m_xscore->PutInScore(enemyscore = 40);
+					m_xscore->PutInScore(enemyscore = 30);
 
 					--j;
 				}
@@ -379,7 +379,7 @@ void GameObjectManager::Update(float deltatime)
 						m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
-					m_eyecandy->TextCreator(m_xscore->FeedbackScore(80), m_girls.at(j)->GetPosition());
+					m_eyecandy->TextCreator(m_xscore->FeedbackScore(50), m_girls.at(j)->GetPosition());
 
 					//score feedback
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Bandit_2_Corpse.png", "Snipercorpse", 1, 1), m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+90);
@@ -389,7 +389,7 @@ void GameObjectManager::Update(float deltatime)
 
 					//SCORE COUNT
 					Kill_Count++;
-					m_xscore->PutInScore(enemyscore = 80);
+					m_xscore->PutInScore(enemyscore = 50);
 					--j;
 				}
 				if(m_player_projectiles[i]->GetType2() != "Needle"){
@@ -407,8 +407,8 @@ void GameObjectManager::Update(float deltatime)
 		if(m_vRepairKits.at(i)->Update(m_player, deltatime)){
 
 			//score feedback and score
-			m_eyecandy->TextCreator(m_xscore->FeedbackScore(40), m_vRepairKits.at(i)->GetPosition());
-			m_xscore->PutInScore(enemyscore = 40);
+			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
+			m_xscore->PutInScore(enemyscore = 25);
 
 			Kill_Count++;
 

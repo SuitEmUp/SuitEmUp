@@ -1,8 +1,16 @@
-<<<<<<< HEAD
-﻿Build started 2014-03-17 16:00:34.
+﻿Build started 2014-03-17 16:19:17.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Animation.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DieState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\GameObjectManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Highscore.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\RepairKit.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Score.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuperEnemy.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Truck.cpp"
+         Truck.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(54): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(62): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(141): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(150): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(154): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(163): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(166): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\truck.cpp(181): warning C4018: '<' : signed/unsigned mismatch
          GameObjectManager.cpp
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(194): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(202): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
@@ -34,18 +42,26 @@
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(621): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(630): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\gameobjectmanager.cpp(639): warning C4018: '<' : signed/unsigned mismatch
-=======
-﻿Build started 2014-03-14 19:00:57.
-     1>Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Engine.cpp"
-         Engine.cpp
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(113): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(114): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\sailcloth\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\engine.cpp(115): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
->>>>>>> f3c9ab3a15f2bf9bcd5e884e1209967074157044
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         SuperEnemy.cpp
+         SoundManager.cpp
+         SniperGirl.cpp
+         Slider.cpp
+         Score.cpp
+         RepairKit.cpp
+         PopupManager.cpp
+         Popup.cpp
+         PausState.cpp
+         HpBar.cpp
+         Highscore.cpp
+         HighScoreState.cpp
+         DieState.cpp
+         ButtonManager.cpp
+         Button.cpp
+         Animation.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Animation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Button.obj
          Debug\ButtonManager.obj
          Debug\Config.obj
@@ -85,18 +101,9 @@
          Debug\TitleScreen.obj
          Debug\StateManager.obj
          Debug\Utils.obj
-<<<<<<< HEAD
          SuitEmUp.vcxproj -> C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
      1>Done Building Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.44
-=======
-         SuitEmUp.vcxproj -> C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
-     1>Done Building Project "C:\Users\Sailcloth\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.36
->>>>>>> f3c9ab3a15f2bf9bcd5e884e1209967074157044
+Time Elapsed 00:00:02.00
