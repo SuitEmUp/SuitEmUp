@@ -1,21 +1,28 @@
-button_padding = 75
-customize_padding_big = 45
 window_w = 1280
+customize_padding_big = 45
+button_padding = 75
 current_truck = 0
 window_h = 720
 
 -GUI related stuff- = -GUI related stuff-
 fullscreen = false
+<<<<<<< HEAD
 >>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764 = >>>>>>> ef800b73b61f23a2c59a13dc24f10ab23640b764
+=======
+>>>>>>> f3c9ab3a15f2bf9bcd5e884e1209967074157044
 menu_top_padding = 225
 hud_padding = 75
 logoypos = 75
-<<<<<<< HEAD = <<<<<<< HEAD
 current_suit = 0
+<<<<<<< HEAD
 currentsuitcost = Upgrade Complete
 >>>>>>> f14928e9c06147c8744cf7eb3642afa953d681fe = >>>>>>> f14928e9c06147c8744cf7eb3642afa953d681fe
 current_weapon = 0
+=======
+currentsuitcost = 1000
+>>>>>>> f3c9ab3a15f2bf9bcd5e884e1209967074157044
 quickcustomize = 1
+current_weapon = 0
 weapons_available = 1
 currentweaponcost = Upgrade Complete
 currenttruckcost = Upgrade Complete

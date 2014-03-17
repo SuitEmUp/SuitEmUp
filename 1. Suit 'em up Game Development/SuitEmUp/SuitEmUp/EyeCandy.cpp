@@ -71,7 +71,6 @@ EyeCandy::~EyeCandy()
 			if(i<0) i=0;
 	}
 	m_texts.clear();
-
 };
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
 	//int r = ((rand()%(255-1+1))+1);

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 ladbon 33535 1938
 Laban 1000 1
+=======
+andree 54204 5000
+esbjoern 4000 500
+ladbon 2755 123
+>>>>>>> f3c9ab3a15f2bf9bcd5e884e1209967074157044
 seamus 1000 400
 viktor 102 111
 ladbon 100 120
