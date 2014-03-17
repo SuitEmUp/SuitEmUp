@@ -21,7 +21,7 @@ DieState::DieState(Engine* engine)
 	m_highscore = nullptr;
 	m_highscore = m_engine->m_ehighscore;
 	player_score = new S_Highscores;
-
+	once = false;
 	if (!m_font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
 
@@ -90,8 +90,8 @@ void DieState::Exit(){
 
 	/*for(unsigned int i = 0; i < m_rects.size(); i++)
 	{
-		delete m_rects[i];
-		m_rects[i] = nullptr;
+	delete m_rects[i];
+	m_rects[i] = nullptr;
 	}
 	m_rects.clear();*/
 
@@ -107,14 +107,12 @@ void DieState::Exit(){
 	{
 		m_engine->m_gom->ClearGameObjects();
 	};
-	if(m_xbackground!=nullptr){
-		delete m_xbackground;
-		m_xbackground=nullptr;
-	}
+
+	m_xbackground=nullptr;
+
 	m_glow1=nullptr;
 	m_glow2=nullptr;
 	m_glow3=nullptr;
-	m_xbackground=nullptr;
 
 };
 
@@ -130,7 +128,7 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to GameState\n");
 			setNextState("Game");
 			m_engine->m_paused = 1;
-		//	m_engine->m_gom->ClearGameObjects();
+			//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "HighScore")
@@ -145,15 +143,19 @@ bool DieState::Update(float deltatime)
 			printf("Next State set to MainMenu\n");
 			setNextState("MainMenu");
 			m_engine->m_paused = 1;
-		//	m_engine->m_gom->ClearGameObjects();
+			//	m_engine->m_gom->ClearGameObjects();
 			return false;
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Submit")
 		{
-			player_score->name = m_text->getString();
-			player_score->score = m_engine->m_gom->GetScore(player_score->score);
-			player_score->kills = m_engine->m_gom->Kill_count();
-			m_highscore->Push_Back(player_score);
+			if(once == false)
+			{
+				player_score->name = m_text->getString();
+				player_score->score = m_engine->m_gom->GetScore(player_score->score);
+				player_score->kills = m_engine->m_gom->Kill_count();
+				m_highscore->Push_Back(player_score);
+				once = true; 
+			}
 		}
 
 	}

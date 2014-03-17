@@ -53,4 +53,6 @@ private:
 	std::vector<sf::RectangleShape*> m_rects;
 	std::vector<Button*> m_xbuttons;
 	sf::Sprite* m_glow1;
+
+	
 };

@@ -36,7 +36,9 @@ bool TitleScreen::Init()
 	printf("Press SPACE or RETURN to enter MainMenu\n");
 	return true;
 };
-void TitleScreen::Exit(){};
+void TitleScreen::Exit()
+{
+};
 
 
 bool TitleScreen::Update(float deltatime)

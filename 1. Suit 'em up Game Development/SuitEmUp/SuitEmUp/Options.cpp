@@ -44,7 +44,8 @@ bool Options::Init()
 	return true;
 };
 
-void Options::Exit(){
+void Options::Exit()
+{
 	for(int i = 0; i< m_buttons.size(); i++){
 		delete m_buttons[i];
 		m_buttons.erase(m_buttons.begin()+i);

@@ -14,17 +14,17 @@ Truck::Truck(int upgrade, sf::Sprite* sprite, sf::Sprite* sprite2,sf::Sprite* sp
 
 	if(upgrade == 1)
 	{
-	m_maxhp = 100;
+	m_maxhp = 200;
 	m_hp = m_maxhp;
 	}
 	if(upgrade == 3)
 	{
-	m_maxhp = 200;
+	m_maxhp = 500;
 	m_hp = m_maxhp;
 	}
 	if(upgrade == 2)
 	{
-	m_maxhp = 150;
+	m_maxhp = 300;
 	m_hp = m_maxhp;
 	}
 
@@ -131,7 +131,7 @@ void Truck::Damaged(float damage)
 
 void Truck::Healed()
 {
-	m_hp+=100;
+	m_hp+=50;
 }
 void Truck::Set_Animation(sf::Sprite *m_xsprite, int sprite_number)
 {

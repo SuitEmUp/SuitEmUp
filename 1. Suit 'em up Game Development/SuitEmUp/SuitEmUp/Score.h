@@ -21,7 +21,7 @@ public:
 	sf::Text FeedbackScore(int enemykillscore);
 	
 private:
-	int m_score;
+	unsigned int m_score;
 	sf::Text score;
 	sf::Font font;
 

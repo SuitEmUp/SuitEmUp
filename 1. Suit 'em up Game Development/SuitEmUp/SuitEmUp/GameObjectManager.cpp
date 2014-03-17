@@ -290,20 +290,20 @@ void GameObjectManager::Update(float deltatime)
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 					//EYECANDY SCORE AND DEADPICTURE CREATION
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/DeadBandit.png", "BanditCorpse", 1.2, 1.2), m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+160);
-					m_eyecandy->TextCreator(m_xscore->FeedbackScore(10), m_enemies.at(j)->GetPosition());
+					m_eyecandy->TextCreator(m_xscore->FeedbackScore(20), m_enemies.at(j)->GetPosition());
 
-					/*	int chance = rand()%20;
-					if(chance == 15)
-					{*/
+					int chance = rand()%10;
+					if(chance == 0)
+					{
 					m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
 						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
-					//}
+					}
 
 					delete m_enemies[j];
 					m_enemies.erase(m_enemies.begin()+j);
 					//SCORE COUNT
 					Kill_Count++;
-					m_xscore->PutInScore(enemyscore = 10);
+					m_xscore->PutInScore(enemyscore = 20);
 					--j;
 				}
 				if(m_player_projectiles[i]->GetType2() != "Needle"){
@@ -330,8 +330,8 @@ void GameObjectManager::Update(float deltatime)
 				}
 				else m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
-					int chance = rand()%10;
-					if(chance == 1)
+					int chance = rand()%5;
+					if(chance == 0)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
 							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
@@ -339,12 +339,12 @@ void GameObjectManager::Update(float deltatime)
 
 					//score and feedback
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
-					m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_supers.at(j)->GetPosition());
+					m_eyecandy->TextCreator(m_xscore->FeedbackScore(30), m_supers.at(j)->GetPosition());
 
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
 					Kill_Count++;
-					m_xscore->PutInScore(enemyscore = 25);
+					m_xscore->PutInScore(enemyscore = 30);
 
 					--j;
 				}
@@ -373,8 +373,12 @@ void GameObjectManager::Update(float deltatime)
 				}
 				else m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
-					m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+					int chance = rand()%2;
+					if(chance == 0)
+					{
+						m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+					}
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(50), m_girls.at(j)->GetPosition());
 
 					//score feedback
@@ -404,7 +408,7 @@ void GameObjectManager::Update(float deltatime)
 
 			//score feedback and score
 			m_eyecandy->TextCreator(m_xscore->FeedbackScore(25), m_vRepairKits.at(i)->GetPosition());
-			m_xscore->PutInScore(enemyscore = 35);
+			m_xscore->PutInScore(enemyscore = 25);
 
 			Kill_Count++;
 
@@ -675,7 +679,6 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_2.png", "TruckWearDown_1", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_3.png", "TruckWearDown_2", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_4.png", "TruckWearDown_3", 1, 1));
-		m_truck->m_maxhp = 200;
 	}
 	if(Config::getInt("current_truck", 0) == 1)
 	{
@@ -683,7 +686,6 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 			m_spritemanager->Load("../data/sprites/weardown_lvl2_2.png", "TruckWearDown_1", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl2_3.png", "TruckWearDown_2", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl2_4.png", "TruckWearDown_3", 1, 1));
-		m_truck->m_maxhp = 150;
 	}
 
 }
