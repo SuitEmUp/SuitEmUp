@@ -1,8 +1,5 @@
-esbjoern 4000 500
-ladbon 2755 123
+ladbon 33535 1938
+Laban 1000 1
 seamus 1000 400
 viktor 102 111
 ladbon 100 120
-laban 50 25
-asdffff 20 1
-asdaa 10 0

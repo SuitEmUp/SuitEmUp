@@ -53,4 +53,6 @@ private:
 	sf::Font m_font;
 	Highscore *m_highscore;
 	S_Highscores *player_score;
+
+	bool once;
 };

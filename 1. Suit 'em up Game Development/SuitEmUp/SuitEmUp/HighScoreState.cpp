@@ -19,6 +19,7 @@ HighScoreState::HighScoreState(Engine* engine)
 	m_input = engine->m_input;
 	m_highscore = m_engine->m_ehighscore;
 
+
 	text = new sf::Text;
 	font = new sf::Font;
 	m_background = new sf::Sprite;
@@ -41,7 +42,7 @@ bool HighScoreState::Init()
 	if (!font->loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
 
-	if(m_highscore->Size() < 10)
+	if(m_highscore->Size() <= 10)
 	{
 		for(int i=0;i<m_highscore->Size();i++)
 		{
@@ -60,19 +61,22 @@ bool HighScoreState::Init()
 	}
 	else
 	{
-		for(int i=0;i<25;i++)
+		for(int y=0;y<25;y++)
 		{
+			if(y == m_highscore->Size())
+			{
+				break;
+			}
 			text->setFont(*font);
 			text->setCharacterSize(20);
 			text->setColor(sf::Color::Red);	
 			text->setStyle(sf::Text::Bold);
 
 			std::ostringstream ss;
-			ss << m_highscore->Getdata(i)->name << " " << m_highscore->Getdata(i)->score << " " << m_highscore->Getdata(i)->kills << "\n";	
+			ss << m_highscore->Getdata(y)->name << " " << m_highscore->Getdata(y)->score << " " << m_highscore->Getdata(y)->kills << "\n";	
 			text->setString( ss.str());
+			text->setPosition(Config::getInt("window_w", 0)/2 - 119, text->getCharacterSize()*y+1);
 			Texts.push_back(text);
-			text->setPosition(Config::getInt("window_w", 0)/2 - 119, text->getCharacterSize()*i+1);
-			//	Draw();
 			text = new sf::Text;
 		}
 	}
@@ -114,16 +118,6 @@ void HighScoreState::Exit()
 		delete m_glow1;
 		m_glow1 = nullptr;
 	}
-
-	for( auto it = Texts.begin();it != Texts.end(); ) 
-	{ 
-
-		delete *it;
-		auto old = it;
-
-		it++;
-	}
-	Texts.clear();
 
 };
 

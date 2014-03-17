@@ -4,13 +4,13 @@
 #include "Truck.h"
 
 SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
-	m_damage = 2;
+	m_damage = 4;
 	m_truck=truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 210;
-	m_hp = 5;
+	m_hp = 4;
 
 	//animation
 	m_animation = nullptr;

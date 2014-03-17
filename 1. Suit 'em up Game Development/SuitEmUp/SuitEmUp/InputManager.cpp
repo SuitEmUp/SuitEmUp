@@ -95,17 +95,15 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 		}
 		else if (event.type == sf::Event::TextEntered)
 		{
-			str += static_cast<char>(event.text.unicode);
+			bool m_return = false;
+			
 			if(m_input->IsDown(sf::Keyboard::BackSpace))
 			{
-					str = "";
+				str = "";
 			}
-			if(event.text.unicode == 10)
+			 if (event.text.unicode < 128 && m_return == false)
 			{
-				return;
-			}
-			if (event.text.unicode < 128)
-			{
+				str += static_cast<char>(event.text.unicode);
 				text->setString(str);
 			}
 		}
