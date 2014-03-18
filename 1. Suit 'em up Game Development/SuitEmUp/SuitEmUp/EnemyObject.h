@@ -5,16 +5,18 @@
 #include "MovingGameObject.h"
 #include "Animation.h"
 
+class SpriteManager;
 class Truck;
 
 class EnemyObject : public MovingGameObject{
 public:
-	EnemyObject(Truck* truck, sf::Sprite* sprite = nullptr);
+	EnemyObject(Truck* truck, SpriteManager* sm);
 	~EnemyObject();
 	bool Update(float deltatime);
 	bool GetType();
 	float Damaged(float playerdmg);
 	float GetDamage();
+
 
 	void AddAnimation(sf::Sprite *sprite);
 
@@ -25,4 +27,7 @@ protected:
 	float m_damage;
 
 	Animation *m_animation;
+
+	sf::Sprite* m_shootingidle;
+	sf::Sprite* m_shooting;
 };
