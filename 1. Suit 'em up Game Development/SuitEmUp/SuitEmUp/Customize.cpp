@@ -38,6 +38,7 @@ Customize::Customize(Engine *engine)
 
 bool Customize::Init()
 {
+	m_engine->m_window->clear(sf::Color(165, 35, 23, 255));
 
 	counts = 0;
 
@@ -55,6 +56,8 @@ bool Customize::Init()
 	m_border = m_engine->m_spritemanager->Load("../data/misc/customization/border.png", "Backgrund", 1.0, 1.0);
 	m_statbox = m_engine->m_spritemanager->Load("../data/misc/customization/stats_box.png", "StatBox", 1.0, 1.0);
 	m_statbox->setPosition(354,373);
+	m_decal = m_engine->m_spritemanager->Load("../data/misc/customization/decal.png", "Decal", 1.0, 1.0);
+	m_decal->setPosition(932, 373);																																									
 
 	if(m_currentSuit == 0) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "Suit1", 1.0, 1.0);
 	else if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
@@ -85,15 +88,15 @@ bool Customize::Init()
 
 	//glow feedback
 
-	m_smallupgrade1 = m_engine->m_spritemanager->Load("../data/buttons/small_upgrade_glow.png", "SmallGlow1", 1.0, 1.0);
+	m_smallupgrade1 = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "SmallGlow1", 1.0, 1.0);
 	m_smallupgrade1->setPosition(Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0));
-	m_smallupgrade2 = m_engine->m_spritemanager->Load("../data/buttons/small_upgrade_glow.png", "SmallGlow2", 1.0, 1.0);
+	m_smallupgrade2 = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "SmallGlow2", 1.0, 1.0);
 	m_smallupgrade2->setPosition(932, Config::getInt("customize_padding_big", 0));
-	m_bigupgrade = m_engine->m_spritemanager->Load("../data/buttons/big_upgrade_glow.png", "BigGlow", 1.0, 1.0);
+	m_bigupgrade = m_engine->m_spritemanager->Load("../data/buttons/upgrade_weapon_glow.png", "BigGlow", 1.0, 1.0);
 	m_bigupgrade->setPosition(413, Config::getInt("customize_padding_big", 0));
 	m_leftbutton = m_engine->m_spritemanager->Load("../data/buttons/change_left_button_glow.png", "LeftGlow", 1.0, 1.0);
 	m_leftbutton->setPosition(354, Config::getInt("customize_padding_big", 0));
-	m_rightbutton = m_engine->m_spritemanager->Load("../data/buttons/change_right_button_glow.png", "RightGlow", 1.0, 1.0);
+	m_rightbutton = m_engine->m_spritemanager->Load("../data/buttons/change_left_button_glow.png", "RightGlow", 1.0, 1.0);
 	m_rightbutton->setPosition(873, Config::getInt("customize_padding_big", 0));
 	m_back = m_engine->m_spritemanager->Load("../data/buttons/back_button_glow.png", "Back", 1.0, 1.0);
 	m_back->setPosition(Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64)));
@@ -193,6 +196,7 @@ void Customize::Exit(){
 
 bool Customize::Update(float deltatime)
 {
+	
 
 	if(m_input->IsDown(sf::Keyboard::F1))
 	{
@@ -232,8 +236,8 @@ bool Customize::Update(float deltatime)
 	if(!m_trinketboxactivator)
 
 		for(int i = 0; i < m_engine->m_gom->m_vCustomizeButtons.size(); i++)
-
 		{
+
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->Update() == "Clicked")
 			{
 				//----------------------
@@ -444,11 +448,15 @@ bool Customize::Update(float deltatime)
 
 void Customize::Draw()
 {
+	m_engine->m_window->clear(sf::Color(34, 4, 1, 255));
+
+
 	m_engine->m_window->draw(*m_border);
 	m_engine->m_window->draw(*m_suit);
 	m_engine->m_window->draw(*m_weapon);
 	m_engine->m_window->draw(*m_truck);
 	m_engine->m_window->draw(*m_statbox);
+	m_engine->m_window->draw(*m_decal);
 
 
 

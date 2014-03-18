@@ -7,7 +7,7 @@
 
 Score::	Score()
 {
-	m_score = 0; 
+	m_score = 800000; 
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }

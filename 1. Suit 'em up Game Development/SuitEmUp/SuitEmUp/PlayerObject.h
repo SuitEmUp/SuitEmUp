@@ -4,6 +4,7 @@
 
 #include "MovingGameObject.h"
 #include <SFML/Audio.hpp>
+#include "SpriteManager.h"
 
 class Truck;
 class InputManager;
@@ -11,7 +12,8 @@ class InputManager;
 class PlayerObject : public MovingGameObject
 {
 public:
-	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite = nullptr, sf::Sprite* update = nullptr);
+	//PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite = nullptr, sf::Sprite* update = nullptr);
+	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, SpriteManager* p_spritemanager);
 	~PlayerObject();
 	bool Update(float deltatime);
 	bool GetType();
@@ -27,13 +29,27 @@ public:
 	std::string GetTruckType();
 
 private:
+	
+	SpriteManager* m_spritemanager;
 	InputManager* m_input;
 	float m_damage;
 	float m_cooldown;
 	float m_attackspeed;
 	sf::Vector2f m_direction;
-	sf::Sprite* m_update;
-	sf::Sprite* m_unupdate;
+
+	sf::Sprite* m_Level1Weapon1;
+	sf::Sprite* m_Level1Weapon2;
+	sf::Sprite* m_Level1Weapon3;
+
+	sf::Sprite* m_Level2Weapon1;
+	sf::Sprite* m_Level2Weapon2;
+	sf::Sprite* m_Level2Weapon3;
+
+	sf::Sprite* m_Level3Weapon1;
+	sf::Sprite* m_Level3Weapon2;
+	sf::Sprite* m_Level3Weapon3;
+
+	
 
 	std::string m_firetype;
 	std::string m_controltype;
