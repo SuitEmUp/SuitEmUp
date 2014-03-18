@@ -6,26 +6,46 @@
 #include <iostream>
 #include <SFML/Audio.hpp>
 #include "Config.h"
-PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
+//PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, sf::Sprite* update)
+PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, SpriteManager* p_spritemanager)
 {
+	m_spritemanager = p_spritemanager;
 	m_position = sf::Vector2f(600, 400);
-	m_update = update;
+	//m_update = update;
 	m_input = input;
 	m_truck = truck;
-	m_unupdate = sprite;
-	m_sprite = m_unupdate;
-	m_update->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
-	m_unupdate->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	//m_unupdate = sprite;
 	m_cooldown = 0;
 	speed = 400;
 	m_damage = 1;
 	m_controltype = "Special";
 	m_firetype = "Mouse";
+	m_suittype = "Level1";
 	m_weapontype = "Revolver";
 
 	//update arian sprite 10ggr
 
 	//vapen 1
+
+
+	m_Level1Weapon1 = m_spritemanager->Load("../data/sprites/ariana/11.png", "11");
+	m_Level1Weapon2 = m_spritemanager->Load("../data/sprites/ariana/12.png", "12");;
+	m_Level1Weapon3 = m_spritemanager->Load("../data/sprites/ariana/13.png", "13");;
+
+	m_Level2Weapon1 = m_spritemanager->Load("../data/sprites/ariana/21.png", "21");;
+	m_Level2Weapon2 = m_spritemanager->Load("../data/sprites/ariana/22.png", "22");;
+	m_Level2Weapon3 = m_spritemanager->Load("../data/sprites/ariana/23.png", "23");;
+
+	m_Level3Weapon1 = m_spritemanager->Load("../data/sprites/ariana/31.png", "31");;
+	m_Level3Weapon2 = m_spritemanager->Load("../data/sprites/ariana/32.png", "32");;
+	m_Level3Weapon3 = m_spritemanager->Load("../data/sprites/ariana/33.png", "33");;
+
+
+	m_sprite = m_Level1Weapon1;
+
+	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+
+	
 };
 
 bool PlayerObject::Update(float deltatime)
@@ -38,7 +58,6 @@ bool PlayerObject::Update(float deltatime)
 	if(m_suittype == "Level1")
 	{
 		speed = 350;
-
 	}
 	if(m_suittype == "Level2")
 	{
@@ -53,28 +72,63 @@ bool PlayerObject::Update(float deltatime)
 	//sets weapon stats
 	if(m_weapontype == "Revolver")
 	{
-		m_sprite = m_unupdate;
 		m_damage = 1;
 		m_attackspeed = 0.3f;
 	}
 	if(m_weapontype == "Needlegun")
 	{
-		m_sprite = m_update;
-		m_damage = 3;
+		m_damage = 4;
 		m_attackspeed = 0.85f;
 	}
 	if(m_weapontype == "ArmCannon")
 	{
-		m_sprite = m_unupdate;
 		m_damage = 1;
 		m_attackspeed = 0.000002f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{
-		m_sprite = m_unupdate;
 		m_damage = 50.0f;
 		m_attackspeed = 1.5f;
 	}
+	//Set Sprites
+
+	if(m_suittype == "Level1" && m_weapontype == "Revolver")
+		m_sprite = m_Level1Weapon1;
+
+	if(m_suittype == "Level1" && m_weapontype == "Needlegun")
+		m_sprite = m_Level1Weapon2;
+
+	if(m_suittype == "Level1" && m_weapontype == "ArmCannon")
+		m_sprite = m_Level1Weapon3;
+
+	if(m_suittype == "Level2" && m_weapontype == "Revolver")
+		m_sprite = m_Level2Weapon1;
+
+	if(m_suittype == "Level2" && m_weapontype == "Needlegun")
+		m_sprite = m_Level2Weapon2;
+
+	if(m_suittype == "Level2" && m_weapontype == "ArmCannon")
+		m_sprite = m_Level2Weapon3;
+
+	if(m_suittype == "Level3" && m_weapontype == "Revolver")
+		m_sprite = m_Level3Weapon1;
+
+	if(m_suittype == "Level3" && m_weapontype == "Needlegun")
+		m_sprite = m_Level3Weapon2;
+
+	if(m_suittype == "Level3" && m_weapontype == "ArmCannon")
+		m_sprite = m_Level3Weapon3;
+
+
+	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	//Correct Origin
+	if(m_weapontype == "Needlegun")
+
+
+
+
+
+
 
 	m_velocity = sf::Vector2f(0, 0);
 
@@ -120,6 +174,8 @@ bool PlayerObject::Update(float deltatime)
 	float dist1 = sqrt((delta_x * delta_x) + (delta_y * delta_y));	//the actual distance between truck and player
 	float dist2=dist1;	//The distance from the truck we want to have
 	//This is soon used to maintain a certain distance from the truck when rotating around it, we don't want any centripetal effects.
+
+	m_velocity = sf::Vector2f(0, 0);
 
 	//MOVEMENT INPUTS
 	if(m_controltype == "Normal"){
@@ -288,8 +344,7 @@ PlayerObject::~PlayerObject(){
 	m_truck = nullptr;
 	m_input = nullptr;
 	m_sprite = nullptr;
-	m_unupdate = nullptr;
-	m_update = nullptr;
+
 
 };
 

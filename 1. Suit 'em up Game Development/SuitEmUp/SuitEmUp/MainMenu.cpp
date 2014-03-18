@@ -41,7 +41,6 @@ bool MainMenu::Init()
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
-	//if(!m_showREALTITLE)
 	m_logo = m_engine->m_spritemanager->Load("../data/misc/PlaceholderLogo.png", "Logo", 1.0f, 1.0f);
 
 	m_logo->setOrigin(m_logo->getLocalBounds().width / 2, 0);
@@ -111,7 +110,7 @@ bool MainMenu::Update(float deltatime)
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
-					m_clicksound->play();
+					//m_clicksound->play();
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Game\n");
 					setNextState("Game");
@@ -124,12 +123,12 @@ bool MainMenu::Update(float deltatime)
 				}
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
-					m_clicksound->play();
+					//m_clicksound->play();
 					printf("Click SUCCESSSSS\n");
 					printf("HighScore-state does not exist\n");
 				}
 				if( m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
-					m_clicksound->play();
+					//m_clicksound->play();
 
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Options\n");
@@ -137,7 +136,7 @@ bool MainMenu::Update(float deltatime)
 					return false;
 				}
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
-					m_clicksound->play();
+					//m_clicksound->play();
 					printf("Click SUCCESSSSS\n");
 					printf("This button doesnt work yet\n");
 					//Exit Game
@@ -146,35 +145,24 @@ bool MainMenu::Update(float deltatime)
 			}
 		}
 	}
-	
-	if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;	printf("Up1\n");}
-	else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;printf("Up2\n");}
-	else if(!m_input->IsDown(sf::Keyboard::Up)) m_codecount = 0;
 
-	if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 2){		m_codecount += 1;printf("Down1\n");}
-	else if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 3){	m_codecount += 1;printf("Down2\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 4){		m_codecount += 1;printf("Left1\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 5){		m_codecount += 1;printf("Right1\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 6){		m_codecount += 1;printf("Left2\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 7)		{m_codecount += 1;printf("Right2\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::B) && m_codecount == 8){			m_codecount += 1;printf("B\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::A) && m_codecount == 9){			m_codecount += 1;printf("A\n");}
-	else m_codecount = 0;
-
-	if (m_input->IsDownOnce(sf::Keyboard::Return) && m_codecount == 10){	m_codecount += 1;printf("Start\n");}
-	else m_codecount = 0;
+	if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
+	else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 2){		m_codecount += 1;}
+	else if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 3){	m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 4){		m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 5){		m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 6){		m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 7){		m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::B) && m_codecount == 8){			m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::A) && m_codecount == 9){			m_codecount += 1;}
+	if (m_input->IsDownOnce(sf::Keyboard::Return) && m_codecount == 10)
+	{
+		m_codecount += 1;
+		m_logo = m_engine->m_spritemanager->Load("../data/misc/reallogo.png", "Logo", 1.0f, 1.0f);
+		m_logo->setOrigin(m_logo->getLocalBounds().width / 2, 0);
+		m_logo->setPosition(Config::getInt("window_w", 0) / 2, Config::getInt("logoypos", 0) - 40);
+	}
 
 	return true;
 }

@@ -50,6 +50,7 @@ void StateManager::Update(float deltatime)
 	//UpdateTime(m_deltatime);
 	if(!current->Update(deltatime)) {
 		ChangeState();
+		//current->Update(deltatime);
 	};
 };
 

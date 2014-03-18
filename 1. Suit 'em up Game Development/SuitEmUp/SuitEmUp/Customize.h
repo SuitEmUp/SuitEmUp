@@ -44,6 +44,7 @@ private:
 	sf::Sprite* m_truck;
 	sf::Sprite* m_statbox;
 	sf::Sprite* m_trinketbox;
+	sf::Sprite* m_decal;
 
 	sf::Sprite* m_smallupgrade1;
 	sf::Sprite* m_smallupgrade2;
@@ -82,4 +83,14 @@ private:
 
 	int m_weapons_available;
 	bool m_pauselock;
+
+	//text i mitten
+
+	sf::Text *m_stats;
+	sf::Font *m_font;
+	std::string items[9];
+	std::string m_currentweapon;
+	std::string m_currentsuit;
+	std::string m_currenttruck;
+	bool once;
 };

@@ -6,9 +6,8 @@ current_truck = 0
 window_h = 720
 
 hud_padding = 75
--GUI related stuff- = -GUI related stuff-
-menu_top_padding = 225
 fullscreen = false
+menu_top_padding = 225
 logoypos = 75
 current_suit = 0
 currentsuitcost = 1000
