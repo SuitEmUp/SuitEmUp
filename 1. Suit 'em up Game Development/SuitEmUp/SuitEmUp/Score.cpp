@@ -7,7 +7,9 @@
 
 Score::	Score()
 {
+
 	m_score = 800000; 
+
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
 	{ printf("Could not load font\n"); }
@@ -44,7 +46,7 @@ sf::Text Score::FeedbackScore(int enemykillscore)
 	std::ostringstream ss;
 	ss << enemykillscore;
 	score.setString( ss.str());
-	score.setColor(sf::Color::Yellow);
+	score.setColor(sf::Color::Red);
 	return score;
 }
 sf::Text Score::DrawWhenDead()
@@ -53,7 +55,13 @@ sf::Text Score::DrawWhenDead()
 	score.setCharacterSize(20);
 	score.setPosition(150.f, 100.f);
 	std::ostringstream ss;
-	ss << "\t\t\t\t\t\t\tYou have lost your truck\n \t\tyou have been left defenseless against the bandits.\n \t\t\t\t\t\t\t\tYour Score: " << GetScore();
+
+	ss << "\t\t\t\t\t\t\tYou have lost your truck\n \t\tyou have been" <<
+		"left defenseless against the bandits.\n \t\t\t\t\t\t\t\tYour Score: " <<
+		GetScore() <<
+		"\n  write your name: " <<
+		"\n \t\t\t Press enter to submit score";
+	
 	score.setString( ss.str());
 	return score;
 }

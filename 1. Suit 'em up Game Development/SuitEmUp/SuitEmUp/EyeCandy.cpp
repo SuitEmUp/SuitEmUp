@@ -71,7 +71,6 @@ EyeCandy::~EyeCandy()
 			if(i<0) i=0;
 	}
 	m_texts.clear();
-
 };
 void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction){
 	//int r = ((rand()%(255-1+1))+1);
@@ -302,7 +301,10 @@ void EyeCandy::ParticleDestroyer(){};
 void EyeCandy::TextCreator(sf::Text p_text, sf::Vector2f p_position)
 {
 	Text t_text;
+	t_text.duration_text = 2;
+
 	t_text.duration_text = 1;
+
 	t_text.texts = p_text;
 	t_text.texts.setPosition(p_position);
 	t_text.texts.setOrigin(t_text.texts.getLocalBounds().width/4, t_text.texts.getLocalBounds().height*0.8);

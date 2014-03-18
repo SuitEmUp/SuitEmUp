@@ -4,32 +4,36 @@
 #include "Truck.h"
 
 SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
-	m_damage = 2;
+	m_damage = 4;
 	m_truck=truck;
 	m_sprite = sprite;
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 210;
-	m_hp = 5;
+	m_hp = 4;
 
 	//animation
 	m_animation = nullptr;
 
 	AddAnimation(sprite);
-	
+
 	m_sprite->setOrigin(50/2, 40/2);
-	m_animation->update(0.1f, 0);
+
+	for(int i=0;i<3;i++)
+	{
+		m_animation->update(0.1f, 0);
+	}
 };
 
 bool SuperEnemy::Update(float deltatime){
-	
+
 	//animation
 	m_animation->update(deltatime, 0);
 
 	/*Calculations for where to move*/
 	float delta_x=m_truck->GetPosition().x-m_position.x;
 	float delta_y=m_truck->GetPosition().y-m_position.y;
-	
+
 	float dist = sqrt(delta_x*delta_x + delta_y*delta_y);
 	/*End of them*/
 
@@ -64,10 +68,22 @@ bool SuperEnemy::Update(float deltatime){
 };
 
 SuperEnemy::~SuperEnemy(){
+
+	//if(m_buffer != nullptr)
+	//{
+	//	delete m_buffer;
+	//	m_buffer =nullptr;
+	//}
+	//if(m_sound !=nullptr){
+	//	delete m_sound;
+	//	m_sound = nullptr;
+	//}
+
 	m_sprite = nullptr;
 	m_truck = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
+
 };
 
 bool SuperEnemy::GetType(){

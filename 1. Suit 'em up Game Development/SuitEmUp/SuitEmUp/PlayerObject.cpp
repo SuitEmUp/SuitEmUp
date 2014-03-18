@@ -22,6 +22,9 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_firetype = "Mouse";
 	m_suittype = "Level1";
 	m_weapontype = "Revolver";
+
+	//update arian sprite 10ggr
+
 	//vapen 1
 
 
@@ -54,7 +57,7 @@ bool PlayerObject::Update(float deltatime)
 	//sets suit stats
 	if(m_suittype == "Level1")
 	{
-		speed = 400;
+		speed = 350;
 	}
 	if(m_suittype == "Level2")
 	{
@@ -80,7 +83,7 @@ bool PlayerObject::Update(float deltatime)
 	if(m_weapontype == "ArmCannon")
 	{
 		m_damage = 1;
-		m_attackspeed = 0.000000000001f;
+		m_attackspeed = 0.000002f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{

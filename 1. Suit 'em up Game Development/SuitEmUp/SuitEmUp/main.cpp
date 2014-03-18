@@ -22,6 +22,9 @@
 int main()
 {
 	Config::parseFile("../config.txt");
+
+	Engine *suitengine = new Engine();
+
 	Config::set("current_suit", "0");
 	Config::set("current_weapon", "0");
 	Config::set("current_truck", "0");
@@ -30,12 +33,14 @@ int main()
 	Config::set("currentweaponcost", "1500");
 	Config::set("currenttruckcost", "1200");
 	Config::renew();
-	Engine suitengine;
+	//Engine suitengine;
 
-	if(suitengine.Initialize())
+
+	if(suitengine->Initialize())
 	{
-		suitengine.Run();
+		suitengine->Run();
 	}
-	suitengine.Cleanup();
+
+	suitengine->Cleanup();
 	return EXIT_SUCCESS;
 }

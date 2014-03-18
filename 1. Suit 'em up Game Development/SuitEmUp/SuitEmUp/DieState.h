@@ -8,6 +8,7 @@
 #include "Button.h"
 #include "SpriteManager.h"
 #include "Config.h"
+#include "Highscore.h"
 
 namespace sf{
 	class RectangleShape;
@@ -45,4 +46,13 @@ private:
 	sf::Sprite* m_glow1;
 	sf::Sprite* m_glow2;
 	sf::Sprite* m_glow3;
+	sf::Sprite* m_glow4;
+
+	//highscore
+	sf::Text *m_text;
+	sf::Font m_font;
+	Highscore *m_highscore;
+	S_Highscores *player_score;
+
+	bool once;
 };

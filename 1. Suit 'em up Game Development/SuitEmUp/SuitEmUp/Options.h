@@ -2,6 +2,8 @@
 
 #include <vector>
 #include "State.h"
+#include "SpriteManager.h"
+#include "GameObjectManager.h"
 
 namespace sf{
 	class RenderWindow;
@@ -29,6 +31,11 @@ private:
 	InputManager *m_input;
 	std::string next_state;
 	std::string tempName_change;
+
+
+	sf::Sprite *m_background;
+
 	std::vector<Button*> m_buttons;
 	std::vector<Slider*> m_sliders;
+
 };

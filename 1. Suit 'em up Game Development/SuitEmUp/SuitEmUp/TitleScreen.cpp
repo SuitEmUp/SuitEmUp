@@ -22,7 +22,7 @@ TitleScreen::TitleScreen(Engine* engine)
 
 	start_game.setFont(font);
 	start_game.setCharacterSize(25);
-	start_game.setColor(sf::Color::Yellow);
+	start_game.setColor(sf::Color::Green);
 	start_game.move(325.f, 650.f);	
 	start_game.setStyle(sf::Text::Bold);
 
@@ -36,7 +36,9 @@ bool TitleScreen::Init()
 	printf("Press SPACE or RETURN to enter MainMenu\n");
 	return true;
 };
-void TitleScreen::Exit(){};
+void TitleScreen::Exit()
+{
+};
 
 
 bool TitleScreen::Update(float deltatime)

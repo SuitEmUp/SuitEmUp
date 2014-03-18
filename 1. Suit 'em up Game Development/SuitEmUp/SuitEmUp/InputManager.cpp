@@ -27,11 +27,24 @@ InputManager::InputManager(sf::RenderWindow* window) :
 		m_currentMouse[i] = false;
 		m_previousMouse[i] = false;
 	};
+	//text
+	text = new sf::Text;
+
+	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+
+	text->setFont(font);
+	text->setCharacterSize(25);
+	text->setColor(sf::Color::Black);
+	text->move(0.f, 0.f);	
+	text->setStyle(sf::Text::Bold);
 }
+
 InputManager::~InputManager()
 {
 
 }
+
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
 {
 	return m_currentMouse[sf::Mouse::Button::Left] 
@@ -43,15 +56,16 @@ bool InputManager::Mouse_isDown(sf::Mouse::Button button) const
 	return m_currentMouse[sf::Mouse::Button::Left];
 };
 
-
 int InputManager::GetMouseX() const
 {
 	return myMouseX;
 }
+
 int InputManager::GetMouseY() const
 {
 	return myMouseY;
 }
+
 void InputManager::HandleInput(bool &running, InputManager *m_input, StateManager *m_state_manager)
 {
 	m_mousepos = sf::Mouse::getPosition(*m_window);
@@ -80,16 +94,22 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				m_input->myMouseX = event.mouseButton.x;
 				m_input->myMouseY = event.mouseButton.y;
 				m_input->m_currentMouse[0] = true;
-				//	std::cout << myMouseX << " : " << myMouseY << "\n";		
 			}
 		}
 		else if (event.type == sf::Event::TextEntered)
-		{
-			// Handle ASCII characters only
+		{	
+			str += static_cast<char>(event.text.unicode);
+			if(m_input->IsDown(sf::Keyboard::BackSpace))
+			{
+				str = "";
+			}
+			if(m_input->IsDown(sf::Keyboard::Return))
+			{
+				str = "";
+			}
 			if (event.text.unicode < 128)
 			{
-				str += static_cast<char>(event.text.unicode);
-				text.setString(str);
+				text->setString(str);
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)
@@ -99,15 +119,9 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				m_input->m_currentMouse[0] = false;
 			}
 		}
-		if(m_input->IsDown(sf::Keyboard::Escape))
-		{
-			//	std::cout << "nu kom jag in haer";
-			running = false;
-
-		}
-	}
-	//sf::Event::TextEvent(); måste förstå vad detta gör	
+	}	
 }
+
 void InputManager::PostMouseUpdate()
 {
 	for(int i = 0; i < sf::Mouse::ButtonCount; i++) 
@@ -151,4 +165,15 @@ sf::Vector2f InputManager::GetMousePos(){
 	float x = m_mousepos.x;
 	float y = m_mousepos.y;
 	return sf::Vector2f(x, y);
+}
+
+sf::Text *InputManager::Get_Text()
+{
+	text->setString(str);
+	return text;
+}
+
+void InputManager::Reset_text()
+{
+	str = "";
 }

@@ -89,7 +89,9 @@ bool MainMenu::Update(float deltatime)
 
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
 			printf("Click SUCCESSSSS\n");
-			printf("HighScore-state does not exist\n");
+			printf("Next State set to Highscore\n");
+			setNextState("HighScoreState");
+			return false;
 		}
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
 
@@ -143,7 +145,6 @@ bool MainMenu::Update(float deltatime)
 			}
 		}
 	}
-
 
 	if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
 	else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}

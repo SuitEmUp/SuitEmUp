@@ -5,7 +5,7 @@
 #include <iostream>
 
 EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
-	m_damage = 1;
+	m_damage = 2;
 	m_truck=truck;
 	m_sprite = sprite;
 	m_cooldown = 0;
@@ -18,7 +18,11 @@ EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
 	AddAnimation(sprite);
 	
 	m_sprite->setOrigin(29/2, 35/2);
-	m_animation->update(0.1f, 0);
+
+	for(int i=0;i<3;i++)
+	{
+		m_animation->update(0.1f, 0);
+	}
 };
 
 bool EnemyObject::Update(float deltatime){
@@ -53,7 +57,7 @@ bool EnemyObject::Update(float deltatime){
 	m_sprite->setRotation((atan2(delta_y/dist, delta_x/dist))*(180/pi)+180);
 
 	if(dist<200 && m_cooldown<0){ //within a certain radius of the truck and has no cooldown on firing
-		m_cooldown = 1;	//gets cooldown
+		m_cooldown = 1.f;	//gets cooldown
 		return true;	//if this is returned a bullet will spawn
 	}
 	else return false;//doesn't matter if false is returned.

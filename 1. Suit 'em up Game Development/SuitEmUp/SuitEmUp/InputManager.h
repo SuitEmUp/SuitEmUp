@@ -23,6 +23,8 @@ public:
 	bool IsDown(int key) const;
 	bool IsDownOnce(int key) const;
 	bool IsUp(int key);
+	sf::Text *Get_Text();
+	void Reset_text();
 	bool IsAnyDown() const;
 
 private:
@@ -32,10 +34,12 @@ private:
 	bool m_previousMouse[sf::Mouse::ButtonCount];
 	bool m_current[256];
 	bool m_previous[256];
+	
 
 	int myMouseX;                                        
 	int myMouseY;    
 	sf::Vector2i m_mousepos;
-	sf::Text text;
 	std::string str;
+	sf::Text *text;
+	sf::Font font;
 };
