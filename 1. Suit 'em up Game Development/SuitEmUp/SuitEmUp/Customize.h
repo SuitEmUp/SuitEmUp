@@ -44,6 +44,7 @@ private:
 	sf::Sprite* m_truck;
 	sf::Sprite* m_statbox;
 	sf::Sprite* m_trinketbox;
+	sf::Sprite* m_decal;
 
 	sf::Sprite* m_smallupgrade1;
 	sf::Sprite* m_smallupgrade2;
