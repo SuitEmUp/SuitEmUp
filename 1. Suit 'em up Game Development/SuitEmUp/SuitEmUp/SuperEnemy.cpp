@@ -67,23 +67,12 @@ bool SuperEnemy::Update(float deltatime){
 	else return false;//doesn't matter if false is returned.
 };
 
-SuperEnemy::~SuperEnemy(){
-
-	//if(m_buffer != nullptr)
-	//{
-	//	delete m_buffer;
-	//	m_buffer =nullptr;
-	//}
-	//if(m_sound !=nullptr){
-	//	delete m_sound;
-	//	m_sound = nullptr;
-	//}
-
+SuperEnemy::~SuperEnemy()
+{
 	m_sprite = nullptr;
 	m_truck = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
-
 };
 
 bool SuperEnemy::GetType(){
