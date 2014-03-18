@@ -114,6 +114,8 @@ void DieState::Exit(){
 	m_glow2=nullptr;
 	m_glow3=nullptr;
 
+
+
 };
 
 
@@ -173,8 +175,11 @@ void DieState::Draw()
 		}
 	}
 
+	if(m_engine->m_gom->GetWin() == true)
+	{
 	m_engine->m_gom->Dead();
 	m_engine->m_window->draw(*m_text);
+	}
 
 	for(int i = 0; i < m_xbuttons.size(); i++)
 	{

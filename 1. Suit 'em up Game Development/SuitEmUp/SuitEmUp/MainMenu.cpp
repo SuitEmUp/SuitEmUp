@@ -80,6 +80,11 @@ bool MainMenu::Update(float deltatime)
 	{
 
 		if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
+
+			Config::set("currentsuitcost", "1000");
+			Config::set("currentweaponcost", "2000");
+			Config::set("currenttruckcost", "1500");
+
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");

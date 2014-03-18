@@ -55,7 +55,7 @@ public:
 	int GetScore(int m_value);
 	void Dead();
 	int Kill_count();
-
+	bool GetWin();
 	//TruckUpgrades
 	void UpgradeMaxHpAndSprites();
 

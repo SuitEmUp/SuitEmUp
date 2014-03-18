@@ -73,15 +73,6 @@ bool Game::Update(float deltatime)
 		}
 	}
 
-
-	m_deltatime = deltatime;
-
-	if(m_input->IsDown(sf::Keyboard::F1))
-	{
-		printf("Next State set to mainMenu\n");
-		setNextState("MainMenu");
-		return false;
-	};
 	if(m_input->IsDown(sf::Keyboard::Tab) && Config::getInt("quickcustomize",0) == 1)
 	{
 		printf("Next State set to Customize\n");
@@ -89,14 +80,8 @@ bool Game::Update(float deltatime)
 		m_engine->m_paused = 2;
 		return false;
 	};
-	if(m_input->IsDown(sf::Keyboard::F4))
-	{
-		printf("Next State set to Options\n");
-		setNextState("Options");
-		return false;
-	};
 
-	if(m_input->IsDown(sf::Keyboard::P))
+	if(m_input->IsDown(sf::Keyboard::Escape))
 	{
 		printf("Next State set to PausState\n");
 		setNextState("PausState");

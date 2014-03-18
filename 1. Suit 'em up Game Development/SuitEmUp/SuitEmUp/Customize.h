@@ -92,5 +92,6 @@ private:
 	std::string m_currentweapon;
 	std::string m_currentsuit;
 	std::string m_currenttruck;
-	bool once;
+	int once;
+
 };

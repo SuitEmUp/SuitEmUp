@@ -1,20 +1,25 @@
-﻿Build started 2014-03-18 15:16:29.
+﻿Build started 2014-03-18 18:56:36.
      1>Project "C:\Users\Fotze\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Animation.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\DieState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Highscore.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp"
-         Customize.cpp
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(166): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(168): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(170): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(172): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(174): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(176): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(298): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(314): warning C4552: '+' : operator has no effect; expected operator with side-effect
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(354): warning C4552: '+' : operator has no effect; expected operator with side-effect
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(487): warning C4552: '+' : operator has no effect; expected operator with side-effect
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(571): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(596): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Animation.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Button.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\ButtonManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HighScoreState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Highscore.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\HpBar.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PausState.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Popup.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\PopupManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Slider.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SniperGirl.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SoundManager.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Spawner.cpp"
+         Spawner.cpp
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(16): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(67): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(135): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(148): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(174): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(187): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(199): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(200): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(201): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(202): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(204): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(205): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(206): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(253): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(272): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fotze\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\spawner.cpp(291): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
          Generating Code...
          Skipping... (no relevant changes detected)
          SoundManager.cpp
@@ -26,7 +31,6 @@
          HpBar.cpp
          Highscore.cpp
          HighScoreState.cpp
-         DieState.cpp
          ButtonManager.cpp
          Button.cpp
          Animation.cpp
@@ -76,4 +80,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.37
+Time Elapsed 00:00:01.14

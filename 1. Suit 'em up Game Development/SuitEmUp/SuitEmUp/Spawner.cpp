@@ -156,7 +156,10 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1));
-
+	if(m_wavenumber = 6)
+	{
+		enemy->SetSpeed(75.0f);
+	}
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
@@ -191,17 +194,25 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 sf::Vector3i Spawner::Wave(){
 
-	if (m_wavenumber == 0){ return sf::Vector3i(50, 5, 1); m_hpmultiplier = 1;}
-	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 5); m_hpmultiplier = 1;}
-	if (m_wavenumber == 2){ return sf::Vector3i(90, 25, 10); m_hpmultiplier = 1.2;}
-	if (m_wavenumber == 3){ return sf::Vector3i(110, 35, 15); m_hpmultiplier = 1.4;}
-	if (m_wavenumber == 4){ return sf::Vector3i(120, 45, 20); m_hpmultiplier = 1.6;}
-	if (m_wavenumber == 5){ return sf::Vector3i(140, 55, 25); m_hpmultiplier = 1.8;}
-	if (m_wavenumber == 6){ return sf::Vector3i(160, 65, 30); m_hpmultiplier = 2;}
-	if (m_wavenumber == 7){ return sf::Vector3i(120, 75, 35); m_hpmultiplier = 2.2;}
-	if (m_wavenumber == 8){ return sf::Vector3i(90,85, 40); m_hpmultiplier = 2.4;}
-	if (m_wavenumber == 9){ return sf::Vector3i(60, 95, 50); m_hpmultiplier = 2.6;}
-	if (m_wavenumber == 10){ return sf::Vector3i(40, 105,60); m_hpmultiplier = 2.8;}
+	if (m_wavenumber == 0){ return sf::Vector3i(50, 10, 0); m_hpmultiplier = 1;}
+	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 0); m_hpmultiplier = 1;}
+	if (m_wavenumber == 2){ return sf::Vector3i(70, 30, 6); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 3){ return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 4){ return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 5){ return sf::Vector3i(0, 0, 20); m_hpmultiplier = 1.8; }
+	if (m_wavenumber == 6){ return sf::Vector3i(40, 35, 30); m_hpmultiplier = 2;}
+	if (m_wavenumber == 7){ return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 8){ return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 9){ return sf::Vector3i(100, 100, 40); m_hpmultiplier = 2.6;}
+	if(m_wavenumber == 10) 
+	{
+		m_waveduration = 10; 
+		return sf::Vector3i(0,0,0);
+	}
+	if(m_wavenumber == 11)
+	{
+		m_win = true;
+	}
 	return sf::Vector3i(0,0,0);
 
 }

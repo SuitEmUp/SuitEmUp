@@ -6,6 +6,7 @@
 #include "EnemyProjectile.h"
 #include "PlayerProjectile.h"
 
+
 class SpriteManager;
 class Truck;
 class PlayerProjectile;
@@ -35,7 +36,7 @@ public:
 	sf::Vector3i Wave();
 	void UpdateTime(float deltatime);
 	void NextWaveCheck();
-
+	bool m_win;
 
 private:
 
@@ -61,6 +62,6 @@ private:
 
 	float m_waveduration;
 
-
+	
 	Truck* m_truck;
 };
