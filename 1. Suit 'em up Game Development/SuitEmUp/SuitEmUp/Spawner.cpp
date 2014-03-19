@@ -20,6 +20,16 @@ Spawner::Spawner(Truck* truck){
 	m_spawningenemieslvl2 = 0;
 	m_currentenemieslvl3 = 0;
 	m_spawningenemieslvl3 = 0;
+	tm_message = new sf::Text;
+	fm_font = new sf::Font;
+	if (!fm_font->loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+	sm_message = "";
+	tm_message->setFont(*fm_font);
+	tm_message->setCharacterSize(30);
+	tm_message->setColor(sf::Color::Black);
+	tm_message->move(440.f, 50.f);	
+	tm_message->setStyle(sf::Text::Bold);
 
 	m_waveduration = 60;
 };
@@ -39,6 +49,19 @@ bool Spawner::Timer(float deltatime){
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
 	EnemyObject* enemy = new EnemyObject(m_truck, sm);
+
+	if(m_wavenumber >= 7)
+	{
+		enemy->SetSpeed(400.0f);
+	}
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(250.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(150.0f);
+	}
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -121,6 +144,19 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
 	SuperEnemy* enemy = new SuperEnemy(m_truck, sm);
 
+	if(m_wavenumber >= 10)
+	{
+		enemy->SetSpeed(500.0f);
+	}
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(350.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(210.0f);
+	}
+
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
@@ -157,11 +193,18 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm)
 {
 	SniperGirl* enemy = new SniperGirl(m_truck, sm);
 
-	if(m_wavenumber = 6)
+	if(m_wavenumber >= 7)
 	{
-		enemy->SetSpeed(75.0f);
+		enemy->SetSpeed(300.0f);
 	}
-
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(150.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(50.0f);
+	}
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -197,22 +240,61 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm)
 
 sf::Vector3i Spawner::Wave(){
 
-	if (m_wavenumber == 0){ return sf::Vector3i(50, 0, 0); m_hpmultiplier = 1;}
-	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 0); m_hpmultiplier = 1;}
-	if (m_wavenumber == 2){ return sf::Vector3i(70, 30, 6); m_hpmultiplier = 1.2;}
-	if (m_wavenumber == 3){ return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
-	if (m_wavenumber == 4){ return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
-	if (m_wavenumber == 5){ return sf::Vector3i(0, 0, 20); m_hpmultiplier = 1.8; }
-	if (m_wavenumber == 6){ return sf::Vector3i(40, 35, 30); m_hpmultiplier = 2;}
-	if (m_wavenumber == 7){ return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
-	if (m_wavenumber == 8){ return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
-	if (m_wavenumber == 9){ return sf::Vector3i(100, 100, 40); m_hpmultiplier = 2.6;}
-	if(m_wavenumber == 10) 
+	WaveCheck();
+
+	if (m_wavenumber == 0)
 	{
+		sm_message = "Wave 1 'NoobFilter'"; 
+		return sf::Vector3i(40, 0, 0); 
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 1)
+	{
+		sm_message = "Wave 2 'You Think This is a Game?' ";
+		m_waveduration = 150;
+		return sf::Vector3i(100, 10, 0); 
+		m_hpmultiplier = 1;}
+	if (m_wavenumber == 2)
+	{
+		sm_message = "Wave 3 'You Wont Win This One' "; 
+		m_waveduration = 80;
+		return sf::Vector3i(100, 15, 0); 
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 3)
+	{
+		m_waveduration = 60 ;
+		sm_message = "Wave 4 'Shooting From Afar' ";
+		return sf::Vector3i(70, 15, 1);
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 4){sm_message = "Wave 5 'Unfomfortable Sofa' "; return sf::Vector3i(70, 30, 3); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 5){sm_message = "Wave 6 'Playtime is OVER' "; return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 6){sm_message = "Wave 7 'Stop Cheating Wave' "; return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 7)
+	{
+		m_waveduration = 30;
+		sm_message = "Wave 8 'From Now on \n Bandits are on Cocaine' "; 
+		return sf::Vector3i(0, 0, 40); 
+		m_hpmultiplier = 1.8; 
+	}
+	if (m_wavenumber == 8)
+	{
+		m_waveduration = 50;
+		sm_message = "Wave 9 'Bandimons! Attack!' "; 
+		return sf::Vector3i(100, 40, 30); 
+		m_hpmultiplier = 2;
+	}
+	if (m_wavenumber == 9){m_waveduration = 40;sm_message = "Wave 10 'Don't Froth it Doesn't 'Suit' You' "; return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 10){m_waveduration = 40;sm_message = "Wave 11 'Last Level!"; return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 11){m_waveduration = 50; sm_message = "Wave 11 'Joking Ha Take This!"; return sf::Vector3i(100, 100, 60); m_hpmultiplier = 2.6;}
+	if(m_wavenumber == 12) 
+	{
+		sm_message = "ugh...how?...I will...cough....return...";
 		m_waveduration = 10; 
 		return sf::Vector3i(0,0,0);
 	}
-	if(m_wavenumber == 11)
+	if(m_wavenumber == 13)
 	{
 		m_win = true;
 	}
@@ -297,3 +379,12 @@ int Spawner::NumberOfEnemieslvl3(float numberofenemies){
 	}
 	return 0;
 };
+sf::Text *Spawner::WaveTitle()
+{
+	tm_message->setString(sm_message);
+	return tm_message;
+}
+float Spawner::WaveCheck()
+{
+	return m_time;
+}

@@ -93,5 +93,5 @@ private:
 	std::string m_currentsuit;
 	std::string m_currenttruck;
 	int once;
-
+	
 };

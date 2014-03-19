@@ -45,7 +45,7 @@ Customize::Customize(Engine *engine)
 	{ printf("Could not load font\n"); }
 
 	m_stats->setFont(*m_font);
-	m_stats->setCharacterSize(18);
+	m_stats->setCharacterSize(20);
 	m_stats->setColor(sf::Color::Black);
 	m_stats->setPosition(430.f, 400.f);	
 	m_stats->setStyle(sf::Text::Bold);
@@ -268,14 +268,28 @@ void Customize::Exit(){
 		m_rects[i] = nullptr;
 	}
 	m_rects.clear();
-
-	m_weaponcostText->setCharacterSize(40);
 };
 
 bool Customize::Update(float deltatime)
 {
 	//update score
 	howmuchmoneyihave = m_engine->m_gom->GetScore(howmuchmoneyihave);
+
+	if(Config::getInt("current_suit", 0) != 2)
+	{
+		m_suitcostText->setPosition(sf::Vector2f(150,555));	
+		m_suitcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("weapons_available", 0) != 3)
+	{
+		m_weaponcostText->setPosition(sf::Vector2f(600,313));
+		m_weaponcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("current_truck", 0) != 2)
+	{
+		m_truckcostText->setPosition(sf::Vector2f(1037,313));
+		m_truckcostText->setCharacterSize(30);
+	}
 
 	std::ostringstream ss;
 
@@ -473,15 +487,32 @@ bool Customize::Update(float deltatime)
 				//Truck Stuff
 				//----------------------
 
-				std::string count[3] = {"0", "1", "2"};
+				std::string count[3] = {"0", "1", "2" };
 
 				//Upgrade Truck
-				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_truck <= howmuchmoneyihave)
 				{
-					if(Config::getInt("current_truck", 0) < 2)
+					if(m_currentTruck == 1)
 					{
 						//upgrade truck
-						Config::set("current_truck", count[++counts]);
+						Config::set("current_truck", count[2]);
+						m_engine->m_gom->UpgradeMaxHpAndSprites();					
+						m_currentTruck++;
+
+						if(m_currentTruck == 2)
+						{
+							m_currenttruck = items[8];
+							Config::set("currenttruckcost", "Upgrade Complete");
+							m_truckcostText->setPosition(sf::Vector2f(960,319));
+							m_truckcostText->setCharacterSize(30);
+							m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
+							m_truck->setPosition(932, 114);
+						}
+					}
+					if(Config::getInt("current_truck", 0) == 0)
+					{
+						//upgrade truck
+						Config::set("current_truck", count[1]);
 						m_engine->m_gom->UpgradeMaxHpAndSprites();					
 						m_currentTruck++;
 
@@ -489,41 +520,19 @@ bool Customize::Update(float deltatime)
 						m_engine->m_gom->Buy(howmuchitcosts_truck);
 						howmuchitcosts_truck = 2500;
 
+
 						if(m_currentTruck == 1)
 						{
 							m_currenttruck = items[7];
-						}
-						if(m_currentTruck == 2)
-						{
-							m_currenttruck = items[8];
-						}
-
-						if(m_currentTruck == 1)
-						{
 							Config::set("currenttruckcost", "2500");
 							m_truckcostText->setPosition(sf::Vector2f(960,319));
 							m_truckcostText->setCharacterSize(30);
-						}
-						else if(m_currentTruck == 2)
-						{
-							Config::set("currenttruckcost", "Upgrade Complete");
-							m_truckcostText->setPosition(sf::Vector2f(960,319));
-							m_truckcostText->setCharacterSize(30);
-						}
-
-						if(m_currentTruck == 1)
-						{
 							m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
 							m_truck->setPosition(932, 114);
 						}
-						else if(m_currentTruck == 2)
-						{
-							m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
-							m_truck->setPosition(932, 114);
-						}
 					}
-
 				}
+
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
 				{
 					printf("Next State set to Game\n");

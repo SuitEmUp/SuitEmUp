@@ -26,23 +26,24 @@ DieState::DieState(Engine* engine)
 	{ printf("Could not load font\n"); }
 
 	m_text->setFont(m_font);
-	m_text->setCharacterSize(25);
+	m_text->setCharacterSize(20);
 	m_text->setColor(sf::Color::Black);
-	m_text->move(0.f, 0.f);	
+	m_text->setPosition(550.f, 200.f);	
 	m_text->setStyle(sf::Text::Bold);
 };
 
 bool DieState::Init()
 {
 
+	m_input->GlobalAllow();
 	//Resets stuff in the config-file
 	Config::set("current_suit", "0");
 	Config::set("current_weapon", "0");
 	Config::set("current_truck", "0");
 	Config::set("weapons_available", "1");
 	Config::set("currentsuitcost", "1000");
-	Config::set("currentweaponcost", "1500");
-	Config::set("currenttruckcost", "1200");
+	Config::set("currentweaponcost", "2000");
+	Config::set("currenttruckcost", "1500");
 	Config::renew();
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/sprites/Background.png", "Background", 1, 1);
@@ -54,31 +55,32 @@ bool DieState::Init()
 
 	m_xbuttons.push_back(new Button(m_input, "Retry", "Square", m_engine->m_spritemanager->Load("../data/buttons/Retry.png", "StartGame"),
 
-		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
+		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2)-40)));
 	//HighScore
 	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/HighScore.png", "HighScore"),
 
-		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
+		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3)-40)));
 	//Mainmenu
 	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
 
-		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
+		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*4)-40)));
 	//Submit
 	m_xbuttons.push_back(new Button(m_input, "Submit", "Square",m_engine->m_spritemanager->Load("../data/buttons/submit_button.png", "Submit"), 
 
-		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
+		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
+
 
 	m_glow1 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow1",  1.0f, 1.0f);
-	m_glow1->setPosition(Config::getInt("window_w", 0)/2 - 119, Config::getInt("menu_top_padding", 0));
+	m_glow1->setPosition	((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2)-40));
 
 	m_glow2 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow2",  1.0f, 1.0f);
-	m_glow2->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)));
+	m_glow2->setPosition	((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3)-40));
 
 	m_glow3 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow3",  1.0f, 1.0f);
-	m_glow3->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)*2));
+	m_glow3->setPosition	((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*4)-40));
 
 	m_glow4 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow4",  1.0f, 1.0f);
-	m_glow4->setPosition((Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0)*3));
+	m_glow4->setPosition((Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0));
 
 	m_input->Reset_text();
 
@@ -87,13 +89,6 @@ bool DieState::Init()
 	return true;
 };
 void DieState::Exit(){
-
-	/*for(unsigned int i = 0; i < m_rects.size(); i++)
-	{
-	delete m_rects[i];
-	m_rects[i] = nullptr;
-	}
-	m_rects.clear();*/
 
 	for(unsigned int i = 0; i < m_xbuttons.size(); i++)
 	{
@@ -121,8 +116,8 @@ void DieState::Exit(){
 
 bool DieState::Update(float deltatime)
 {
-	m_text = m_input->Get_Text();
 
+	m_text = m_input->Get_Text();
 	for(int i=0; i<m_xbuttons.size();i++)
 	{
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Retry")
@@ -157,6 +152,7 @@ bool DieState::Update(float deltatime)
 				player_score->kills = m_engine->m_gom->Kill_count();
 				m_highscore->Push_Back(player_score);
 				once = true; 
+				m_input->GlobalAllow();
 			}
 		}
 
@@ -166,6 +162,9 @@ bool DieState::Update(float deltatime)
 
 void DieState::Draw()
 {
+
+	m_text->setPosition(480.f, 170.f);
+	m_text->setCharacterSize(20);
 	//draw Background
 	m_engine->m_window->draw(*m_xbackground);
 
@@ -173,12 +172,17 @@ void DieState::Draw()
 		if(m_xbuttons.at(i)!=nullptr){
 			m_engine->m_window->draw(*m_xbuttons.at(i)->GetSprite()); // draws all buttons
 		}
-	}
-
-	if(m_engine->m_gom->GetWin() == true)
+	}	
+	if(m_engine->m_gom->GetWin() == false)
 	{
-	m_engine->m_gom->Dead();
-	m_engine->m_window->draw(*m_text);
+		m_engine->m_gom->Dead();
+		m_engine->m_window->draw(*m_text);
+	}
+	else
+	{
+		m_engine->m_gom->Won();
+		m_engine->m_window->draw(*m_text);
+
 	}
 
 	for(int i = 0; i < m_xbuttons.size(); i++)

@@ -27,7 +27,6 @@ GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, In
 
 
 	m_soundmanager = soundmngr;
-
 	m_input = input;
 	m_spritemanager=sm;
 	m_window=rw;
@@ -55,7 +54,6 @@ GameObjectManager::~GameObjectManager()
 void GameObjectManager::CreateGameObjects()
 {
 	//background
-
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Wackground", 1, 1);
 	m_background->setPosition(0,0);
 
@@ -192,7 +190,7 @@ void GameObjectManager::Update(float deltatime)
 	if(m_truck->Update(deltatime)){ //When the truck gets 0 hp it returns true or waves are done
 		m_game_over = true;
 	};
-	
+
 	m_eyecandy->Update(deltatime);
 	if(m_player->Update(deltatime)){ 
 
@@ -307,8 +305,8 @@ void GameObjectManager::Update(float deltatime)
 					int chance = rand()%10;
 					if(chance == 0)
 					{
-					m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
-						m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
 					}
 
 					delete m_enemies[j];
@@ -439,6 +437,8 @@ void GameObjectManager::Update(float deltatime)
 		lol=1;
 	}
 	m_hpbar->GetSprite()->setScale(lol, 1.0);
+
+
 }
 
 sf::Vector2f GameObjectManager::GetStartPosition(GameObject *GO)
@@ -457,6 +457,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 	m_window->draw(*m_player->GetSprite()); //Draws player
 
 	m_window->draw(m_xscore->DrawScore()); // draws score
+
 
 	for(int i=0; i<m_vRepairKits.size(); i++){
 		if(m_vRepairKits.at(i)!=nullptr){
@@ -495,6 +496,12 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
 	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
+
+	if(m_spawner->WaveCheck() < 10)
+	{
+		m_window->draw(*m_spawner->WaveTitle());
+	}
+
 }
 //////////////////////////////////////////////////////////////////////////// :)
 ///////////////////////////////////Buttons//////////////////////////////////
@@ -674,6 +681,10 @@ int GameObjectManager::GetScore(int m_value)
 void GameObjectManager::Dead()
 {
 	m_window->draw(m_xscore->DrawWhenDead());
+}
+void GameObjectManager::Won()
+{
+	m_window->draw(m_xscore->DrawWhenWon());
 }
 
 //truck related stuff

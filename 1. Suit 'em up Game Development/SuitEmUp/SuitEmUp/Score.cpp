@@ -65,3 +65,18 @@ sf::Text Score::DrawWhenDead()
 	score.setString( ss.str());
 	return score;
 }
+sf::Text Score::DrawWhenWon()
+{
+	score.setColor(sf::Color::Black);
+	score.setCharacterSize(20);
+	score.setPosition(150.f, 100.f);
+	std::ostringstream ss;
+
+	ss << "\t\t\t\t\t\t\tYour energy source have survived, for now." <<
+		"\n \t\t\t\t\t\t\t\tYour Score: " <<
+		GetScore() <<
+		"\n  write your name: ";
+	
+	score.setString( ss.str());
+	return score;
+}

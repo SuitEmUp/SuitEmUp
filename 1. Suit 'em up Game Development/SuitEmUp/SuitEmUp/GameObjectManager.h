@@ -56,6 +56,7 @@ public:
 	void Dead();
 	int Kill_count();
 	bool GetWin();
+	void Won();
 	//TruckUpgrades
 	void UpgradeMaxHpAndSprites();
 
@@ -106,7 +107,7 @@ private:
 	sf::Sprite* m_background;
 
 	std::vector<RepairKit*> m_vRepairKits;
-
+	
 	int Kill_Count;
 
 };
