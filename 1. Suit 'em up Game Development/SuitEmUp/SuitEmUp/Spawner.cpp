@@ -38,7 +38,7 @@ bool Spawner::Timer(float deltatime){
 
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
-	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "Bandit1", 1, 1));
+	EnemyObject* enemy = new EnemyObject(m_truck, sm);
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -119,7 +119,7 @@ bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
-	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "SuperBandit", 1.0, 1.0));
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm);
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -155,11 +155,16 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
 SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
+<<<<<<< HEAD
 	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1));
 	if(m_wavenumber = 6)
 	{
 		enemy->SetSpeed(75.0f);
 	}
+=======
+	SniperGirl* enemy = new SniperGirl(m_truck, sm);
+
+>>>>>>> 608713825347460fcc8ad7647cabe1915fdfb7cd
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;

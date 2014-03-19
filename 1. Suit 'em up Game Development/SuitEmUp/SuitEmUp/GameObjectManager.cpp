@@ -213,10 +213,12 @@ void GameObjectManager::Update(float deltatime)
 	{
 		m_enemies.push_back(m_spawner->EnemySpawner(m_spritemanager));
 	}
+
 	for(int i = 0; i<m_spawner->NumberOfEnemieslvl2(m_spawner->Wave().y); i++)
 	{
 		m_supers.push_back(m_spawner->SuperSpawner(m_spritemanager));
 	}
+
 	for(int i = 0; i<m_spawner->NumberOfEnemieslvl3(m_spawner->Wave().z); i++)
 	{
 		m_girls.push_back(m_spawner->SniperSpawner(m_spritemanager));

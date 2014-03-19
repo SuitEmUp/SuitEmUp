@@ -2,20 +2,24 @@
 
 #include "SniperGirl.h"
 #include "Truck.h"
+#include "SpriteManager.h"
 
-SniperGirl::SniperGirl(Truck* truck, sf::Sprite* sprite){
+SniperGirl::SniperGirl(Truck* truck, SpriteManager* sm){
 
+	
 	m_damage = 6;
 	m_truck=truck;
-	m_sprite = sprite;
+	m_sprite = sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1);
 	m_cooldown = 1;
 	speed = 50;
 	m_hp = 6;
-
+	m_shooting = sm->Load("../data/sprites/Bandit_2.png", "SniperShooting", 1, 1);
+	m_shooting->setOrigin(m_shooting->getLocalBounds().width/2, m_shooting->getLocalBounds().height/2);
+	
 	//Animation
 
 	m_animation = nullptr;
-	AddAnimation(sprite);
+	AddAnimation(m_sprite);
 
 
 	m_sprite->setOrigin(82/2, 34/2);
@@ -59,6 +63,7 @@ bool SniperGirl::Update(float deltatime){
 	{	
 		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		m_animation->PausAnimation();
+		m_sprite = m_shooting;
 	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);

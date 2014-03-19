@@ -2,20 +2,23 @@
 
 #include "SuperEnemy.h"
 #include "Truck.h"
+#include "SpriteManager.h"
 
-SuperEnemy::SuperEnemy(Truck* truck, sf::Sprite* sprite){
+SuperEnemy::SuperEnemy(Truck* truck, SpriteManager* sm){
 	m_damage = 4;
 	m_truck=truck;
-	m_sprite = sprite;
+	m_sprite = sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "SuperBandit", 1.0, 1.0);
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	m_cooldown = 1;
 	speed = 210;
 	m_hp = 4;
 
+	m_shooting = sm->Load("../data/sprites/Bandit2shoot.png", "SuperBanditShooting", 1.0, 1.0);
+	m_shooting->setOrigin(m_shooting->getLocalBounds().width/2, m_shooting->getLocalBounds().height/2);
 	//animation
 	m_animation = nullptr;
 
-	AddAnimation(sprite);
+	AddAnimation(m_sprite);
 
 	m_sprite->setOrigin(50/2, 40/2);
 
@@ -52,6 +55,7 @@ bool SuperEnemy::Update(float deltatime){
 	{	
 		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		m_animation->PausAnimation();
+		m_sprite = m_shooting;
 	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
