@@ -153,18 +153,16 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 	return nullptr;
 };
 
-SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
+SniperGirl* Spawner::SniperSpawner(SpriteManager* sm)
+{
+	SniperGirl* enemy = new SniperGirl(m_truck, sm);
 
-<<<<<<< HEAD
-	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1));
 	if(m_wavenumber = 6)
 	{
 		enemy->SetSpeed(75.0f);
 	}
-=======
-	SniperGirl* enemy = new SniperGirl(m_truck, sm);
 
->>>>>>> 608713825347460fcc8ad7647cabe1915fdfb7cd
+
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
@@ -199,7 +197,7 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 sf::Vector3i Spawner::Wave(){
 
-	if (m_wavenumber == 0){ return sf::Vector3i(50, 10, 0); m_hpmultiplier = 1;}
+	if (m_wavenumber == 0){ return sf::Vector3i(50, 0, 0); m_hpmultiplier = 1;}
 	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 0); m_hpmultiplier = 1;}
 	if (m_wavenumber == 2){ return sf::Vector3i(70, 30, 6); m_hpmultiplier = 1.2;}
 	if (m_wavenumber == 3){ return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}

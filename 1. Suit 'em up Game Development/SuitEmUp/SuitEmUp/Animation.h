@@ -19,7 +19,7 @@ public:
 	sf::Sprite* getSpriteSheet(int number) ;
 	std::size_t getSize() ;
 	sf::IntRect& getFrame(std::size_t n) ;
-
+	void setFrameTime(float time);
 	sf::Sprite* getCurrentFrame(int number);
 
 	void PausAnimation();
