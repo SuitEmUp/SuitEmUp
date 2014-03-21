@@ -122,7 +122,7 @@ bool PlayerObject::Update(float deltatime)
 
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	//Correct Origin
-	if(m_weapontype == "Needlegun")
+	//if(m_weapontype == "Needlegun")
 
 
 

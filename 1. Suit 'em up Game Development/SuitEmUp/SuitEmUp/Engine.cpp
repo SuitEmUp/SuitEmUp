@@ -162,3 +162,8 @@ void Engine::UpdateDeltatime()
 	time = clock.restart();
 	m_fDeltaTime = time.asSeconds();
 }
+
+void Engine::SetVisuals(float degree)
+{
+	m_visuallevel = degree;
+}

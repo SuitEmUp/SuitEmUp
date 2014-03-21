@@ -1,17 +1,17 @@
-window_w = 1280
-customize_padding_big = 45
 button_padding = 75
-weapons_available = 1
-current_truck = 0
+customize_padding_big = 45
+window_w = 1280
 window_h = 720
+current_truck = 0
+weapons_available = 1
 
-hud_padding = 75
 fullscreen = false
+hud_padding = 75
 menu_top_padding = 225
 logoypos = 75
-current_suit = 0
 currentsuitcost = 1000
-quickcustomize = 1
+current_suit = 0
 current_weapon = 0
-currentweaponcost = 1500
+quickcustomize = 1
+currentweaponcost = Upgrade Complete
 currenttruckcost = 1200

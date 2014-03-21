@@ -29,7 +29,7 @@ bool Game::Init()
 	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
 	{
 		printf("\n nu aer vi haer inne \n");
-		m_engine->m_gom->CreateGameObjects();
+		m_engine->m_gom->CreateGameObjects(m_engine->m_visuallevel);
 	}
 
 	/*popuplock = true;

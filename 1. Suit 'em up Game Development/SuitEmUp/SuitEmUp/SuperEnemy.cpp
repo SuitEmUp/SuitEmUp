@@ -77,6 +77,7 @@ SuperEnemy::~SuperEnemy()
 	m_truck = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
+	m_shooting = nullptr;
 };
 
 bool SuperEnemy::GetType(){
@@ -101,6 +102,4 @@ void SuperEnemy::AddAnimation(sf::Sprite *sprite)
 	m_animation = new Animation(sprite, 0.2, false, true);
 	m_animation->addFrame(sf::IntRect (8, 22, 50, 40));
 	m_animation->addFrame(sf::IntRect (73, 19, 50, 40));
-
-
 }

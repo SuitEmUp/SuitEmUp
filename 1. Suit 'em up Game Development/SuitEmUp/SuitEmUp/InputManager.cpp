@@ -42,7 +42,8 @@ InputManager::InputManager(sf::RenderWindow* window) :
 
 InputManager::~InputManager()
 {
-
+	delete text;
+	text = nullptr;
 }
 
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
@@ -98,7 +99,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 		}
 		else if (event.type == sf::Event::TextEntered)
 		{	
-			str += static_cast<char>(event.text.unicode);
+			/*str += static_cast<char>(event.text.unicode);
 			if(m_input->IsDown(sf::Keyboard::BackSpace))
 			{
 				str = "";
@@ -110,7 +111,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 			if (event.text.unicode < 128)
 			{
 				text->setString(str);
-			}
+			}*/
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)
 		{

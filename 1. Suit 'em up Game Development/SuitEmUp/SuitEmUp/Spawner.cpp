@@ -83,8 +83,8 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
 bool Spawner::EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet){
 
-	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
-	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+	float delta_x=enemy->GetPosition().x -bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y -bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
@@ -106,9 +106,11 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 }
 
 bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
+	float offsetX = sin(enemy->GetSprite()->getRotation()*3.14/180) * -25;
+	float offsetY = cos(enemy->GetSprite()->getRotation()*3.14/180) * -25;
 
-	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
-	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+	float delta_x=enemy->GetPosition().x - offsetY +-bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y - offsetX -bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
@@ -162,10 +164,10 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 		int q=rand()%2;
 		int y;
 		if(q==1){
-			y=800;
+			y=720;
 		}
 		else if(q==0){
-			y=-80;
+			y=0;
 		}
 		int x=rand()%1281;
 		enemy->SetPosition(x, y);
@@ -191,7 +193,7 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 sf::Vector3i Spawner::Wave(){
 
-	if (m_wavenumber == 0){ return sf::Vector3i(50, 5, 1); m_hpmultiplier = 1;}
+	if (m_wavenumber == 0){ return sf::Vector3i(50, 5, 100); m_hpmultiplier = 1;}
 	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 5); m_hpmultiplier = 1;}
 	if (m_wavenumber == 2){ return sf::Vector3i(90, 25, 10); m_hpmultiplier = 1.2;}
 	if (m_wavenumber == 3){ return sf::Vector3i(110, 35, 15); m_hpmultiplier = 1.4;}

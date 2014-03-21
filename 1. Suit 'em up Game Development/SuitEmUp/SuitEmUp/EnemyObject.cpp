@@ -13,8 +13,8 @@ EnemyObject::EnemyObject(Truck* truck, SpriteManager* sm){
 	speed = 150;
 	m_hp = 2;
 
-	m_shootingidle = sm->Load("../data/sprites/BanditEnblack.png", "Banditshootidle1", 1, 1);
-	m_shootingidle->setOrigin(m_shootingidle->getLocalBounds().width/2, m_shootingidle->getLocalBounds().height/2);
+	m_shooting = sm->Load("../data/sprites/BanditEnblack.png", "Banditshootidle1", 1, 1);
+	m_shooting->setOrigin(m_shooting->getLocalBounds().width/2, m_shooting->getLocalBounds().height/2);
 	m_shooting;
 
 	//Animation
@@ -55,7 +55,7 @@ bool EnemyObject::Update(float deltatime){
 	{	
 		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		m_animation->PausAnimation();
-		m_sprite = m_shootingidle;
+		m_sprite = m_shooting;
 		
 	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
@@ -76,6 +76,7 @@ EnemyObject::~EnemyObject()
 	m_sprite = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
+	m_shooting = nullptr;
 };
 
 bool EnemyObject::GetType(){

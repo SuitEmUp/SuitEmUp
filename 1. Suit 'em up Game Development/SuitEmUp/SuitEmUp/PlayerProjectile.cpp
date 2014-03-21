@@ -7,18 +7,19 @@
 
 PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprite* sprite, sf::Sprite* update, sf::Sprite* updatedupdate){
 	
-	if(player->GetWeaponType() == "ArmCannon"){
-	speed = 1000;
+	if(player->GetWeaponType() == "ArmCannon")
+	{
+	speed = 3000;
 	}
 
 	else{speed = 2000;}
 
 	m_position = player->GetPosition();
 
-	if(player->GetWeaponType() == "ArmCannon"){
+	if(player->GetWeaponType() == "ArmCannon")
+	{
 		m_sprite = updatedupdate;
 		m_sprite->setOrigin(64/2, 64/2);
-		m_sprite->setColor(sf::Color(0, 0, 0, 0xff));
 		
 	}
 

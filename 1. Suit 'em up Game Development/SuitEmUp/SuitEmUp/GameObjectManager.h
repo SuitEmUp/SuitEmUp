@@ -31,7 +31,7 @@ public:
 	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr);
 	~GameObjectManager();
 
-	void CreateGameObjects();
+	void CreateGameObjects(float degree);
 	void Update(float deltatime);
 	void ClearGameObjects();
 

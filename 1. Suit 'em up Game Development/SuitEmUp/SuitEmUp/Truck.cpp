@@ -14,7 +14,7 @@ Truck::Truck(int upgrade, sf::Sprite* sprite, sf::Sprite* sprite2,sf::Sprite* sp
 
 	if(upgrade == 1)
 	{
-	m_maxhp = 100;
+	m_maxhp = 100000000000000000;
 	m_hp = m_maxhp;
 	}
 	if(upgrade == 3)

@@ -25,6 +25,8 @@ public:
 	void Run();
 	void Cleanup();
 	void UpdateDeltatime(); //ladbon
+
+	void SetVisuals(float degree);
 public:
 	StateManager* m_statemanager;
 	sf::RenderWindow* m_window;

@@ -8,18 +8,36 @@
 #include <SFML\Graphics.hpp>
 
 class Particles;
-class Picture;
 class SpriteManager;
+class Animation;
+
+struct Picture{
+	float duration;
+	Animation* ani;
+	sf::Sprite* sprite;
+};
+
+struct Particle{
+	float m_duration;
+	sf::Vector2f m_direction;
+	sf::Vector2f m_position;
+	sf::Vector2f m_destination;
+	sf::Vector2f m_velocity;
+	sf::Vector2f m_acceleration;
+	sf::Vector2f m_aacceleration;
+	sf::Vector2f m_aaacceleration;
+	float m_speed;
+};
 
 class EyeCandy{
 public:
 
-	EyeCandy();
+	EyeCandy(float degree);
 	~EyeCandy();
 
 	void ShockCreator(sf::Vector2f p_position);
 	void BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f p_direction);
-	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation);
+	void PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation, float deltatime);
 
 	void BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination);
 	void TextCreator(sf::Text p_text, sf::Vector2f p_position);
@@ -32,22 +50,8 @@ public:
 	void ParticleDestroyer();
 
 private:
-	struct Particle{
-		float m_duration;
-		sf::Vector2f m_direction;
-		sf::Vector2f m_position;
-		sf::Vector2f m_destination;
-		sf::Vector2f m_velocity;
-		sf::Vector2f m_acceleration;
-		sf::Vector2f m_aacceleration;
-		sf::Vector2f m_aaacceleration;
-		float m_speed;
-	};
 
-	struct Picture{
-		float duration;
-		sf::Sprite* picture;
-	};
+
 
 	int count;
 
@@ -55,7 +59,7 @@ private:
 	sf::Vector2f m_destination;
 	std::string m_type;
 	int m_amount;
-	std::vector<Picture*> m_pictures;
+	std::vector<Picture*> m_animations;
 	std::vector<Particle*> m_particles;
 	std::vector<Particle*> m_shocks;
 	std::vector<sf::RectangleShape*> m_rectangles;
@@ -65,6 +69,7 @@ private:
 	//float<*>
 	float m_distance;
 
+	float m_degree;
 	//text
 	struct Text{
 		float duration_text;
@@ -73,5 +78,5 @@ private:
 
 
 	std::vector<Text> m_texts;
-	
+
 };
