@@ -28,7 +28,8 @@ Spawner::Spawner(Truck* truck){
 	tm_message->setFont(*fm_font);
 	tm_message->setCharacterSize(30);
 	tm_message->setColor(sf::Color::Black);
-	tm_message->move(440.f, 50.f);	
+	tm_message->setOrigin(30/2, 30/2);
+	tm_message->setPosition(440.f, 50.f);	
 	tm_message->setStyle(sf::Text::Bold);
 
 	m_waveduration = 60;
@@ -146,11 +147,11 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
 	if(m_wavenumber >= 10)
 	{
-		enemy->SetSpeed(500.0f);
+		enemy->SetSpeed(460.0f);
 	}
 	else if(m_wavenumber >= 3)
 	{
-		enemy->SetSpeed(350.0f);
+		enemy->SetSpeed(310.0f);
 	}
 	else
 	{
@@ -195,11 +196,11 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm)
 
 	if(m_wavenumber >= 7)
 	{
-		enemy->SetSpeed(300.0f);
+		enemy->SetSpeed(250.0f);
 	}
 	else if(m_wavenumber >= 3)
 	{
-		enemy->SetSpeed(150.0f);
+		enemy->SetSpeed(100.0f);
 	}
 	else
 	{

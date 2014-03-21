@@ -61,12 +61,12 @@ bool PlayerObject::Update(float deltatime)
 	}
 	if(m_suittype == "Level2")
 	{
-		speed = 400;
+		speed = 450;
 
 	}
 	if(m_suittype == "Level3")
 	{
-		speed = 500;
+		speed = 550;
 
 	}
 	//sets weapon stats

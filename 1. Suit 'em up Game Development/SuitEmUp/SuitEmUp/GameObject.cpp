@@ -18,7 +18,7 @@ void GameObject::SetPosition(float x_pos, float y_pos)
 bool GameObject::HasSprite()
 {
 	if(m_sprite!=nullptr){
-		return true;
+			 true;
 	}
 	else return false;
 };

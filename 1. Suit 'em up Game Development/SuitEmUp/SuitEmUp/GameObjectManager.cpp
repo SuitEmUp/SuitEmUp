@@ -698,7 +698,7 @@ void GameObjectManager::UpgradeMaxHpAndSprites()
 
 	if(Config::getInt("current_truck", 0) == 2)
 	{
-		m_truck = new Truck(3, m_spritemanager->Load("../data/sprites/truck_lvl3.PNG", "Truck_Animation_lv2",1, 1), 
+		m_truck = new Truck(3, m_spritemanager->Load("../data/sprites/truck_lvl3.PNG", "Truck_Animation_lv3",1, 1), 
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_2.png", "TruckWearDown_1", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_3.png", "TruckWearDown_2", 1, 1),
 			m_spritemanager->Load("../data/sprites/weardown_lvl3_4.png", "TruckWearDown_3", 1, 1));

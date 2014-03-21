@@ -492,45 +492,41 @@ bool Customize::Update(float deltatime)
 				//Upgrade Truck
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_truck <= howmuchmoneyihave)
 				{
-					if(m_currentTruck == 1)
-					{
-						//upgrade truck
-						Config::set("current_truck", count[2]);
-						m_engine->m_gom->UpgradeMaxHpAndSprites();					
-						m_currentTruck++;
 
-						if(m_currentTruck == 2)
-						{
-							m_currenttruck = items[8];
-							Config::set("currenttruckcost", "Upgrade Complete");
-							m_truckcostText->setPosition(sf::Vector2f(960,319));
-							m_truckcostText->setCharacterSize(30);
-							m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
-							m_truck->setPosition(932, 114);
-						}
+					if(Config::getInt("current_truck", 0) == 1)
+					{
+
+						m_currenttruck = items[8];
+						Config::set("currenttruckcost", "Upgrade Complete");
+						Config::set("current_truck", "2");
+						m_engine->m_gom->UpgradeMaxHpAndSprites();
+						m_truckcostText->setPosition(sf::Vector2f(960,319));
+						m_truckcostText->setCharacterSize(30);
+						m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
+						m_truck->setPosition(932, 114);
+						m_currentTruck++;
+						//score
+						m_engine->m_gom->Buy(howmuchitcosts_truck);
+						howmuchitcosts_truck = 0;
 					}
 					if(Config::getInt("current_truck", 0) == 0)
 					{
-						//upgrade truck
-						Config::set("current_truck", count[1]);
-						m_engine->m_gom->UpgradeMaxHpAndSprites();					
-						m_currentTruck++;
 
+
+						m_currenttruck = items[7];
+						Config::set("currenttruckcost", "2500");
+						Config::set("current_truck", "1");
+						m_engine->m_gom->UpgradeMaxHpAndSprites();
+						m_truckcostText->setPosition(sf::Vector2f(960,319));
+						m_truckcostText->setCharacterSize(30);
+						m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
+						m_truck->setPosition(932, 114);
 						//score
 						m_engine->m_gom->Buy(howmuchitcosts_truck);
 						howmuchitcosts_truck = 2500;
+						m_currentTruck++;
 
-
-						if(m_currentTruck == 1)
-						{
-							m_currenttruck = items[7];
-							Config::set("currenttruckcost", "2500");
-							m_truckcostText->setPosition(sf::Vector2f(960,319));
-							m_truckcostText->setCharacterSize(30);
-							m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
-							m_truck->setPosition(932, 114);
-						}
-					}
+					}			
 				}
 
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
