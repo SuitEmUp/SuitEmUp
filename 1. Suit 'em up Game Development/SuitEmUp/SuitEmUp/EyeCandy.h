@@ -13,8 +13,8 @@ class Animation;
 
 struct Picture{
 	float duration;
-	Animation* ani;
-	sf::Sprite* sprite;
+	//Animation* ani;
+	sf::Sprite* picture;
 };
 
 struct Particle{

@@ -23,9 +23,6 @@
 
 GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr)
 {
-
-
-
 	m_soundmanager = soundmngr;
 	m_input = input;
 	m_spritemanager=sm;

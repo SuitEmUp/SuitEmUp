@@ -19,7 +19,6 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 	if(player->GetWeaponType() == "ArmCannon")
 	{
 		m_sprite = updatedupdate;
-		m_sprite->setOrigin(64/2, 64/2);
 		
 	}
 
@@ -34,9 +33,13 @@ PlayerProjectile::PlayerProjectile(Truck* truck, PlayerObject* player, sf::Sprit
 		//	m_sprite->setScale((player->GetDamage()-80)/20, (player->GetDamage()-80)/100);
 	}
 
+	if(player->GetWeaponType() == "ArmCannon")
+	{
 
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
-
+		m_sprite->setOrigin(96, 64/2);
+		
+	}
+	else m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	//x difference between player and base
 	//y difference between player and base
 
