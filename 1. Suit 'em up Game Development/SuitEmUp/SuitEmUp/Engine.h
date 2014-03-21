@@ -54,6 +54,7 @@ public:
 	int m_musiclevel;
 	int m_mastervolumelevel;
 
+	
 
 	sf::Sprite *m_crosshair;
 

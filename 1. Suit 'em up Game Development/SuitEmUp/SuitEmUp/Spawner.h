@@ -6,6 +6,7 @@
 #include "EnemyProjectile.h"
 #include "PlayerProjectile.h"
 
+
 class SpriteManager;
 class Truck;
 class PlayerProjectile;
@@ -23,6 +24,10 @@ public:
 	bool SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet);
 	bool SniperDestroyer(SniperGirl* girl, PlayerProjectile* bullet);
 
+	//Title
+	sf::Text *WaveTitle();
+	float WaveCheck();
+
 	void KillCounter();
 	bool SpawnAlarm();
 
@@ -32,10 +37,11 @@ public:
 
 	float GetHpMultiplier();
 
+
 	sf::Vector3i Wave();
 	void UpdateTime(float deltatime);
 	void NextWaveCheck();
-
+	bool m_win;
 
 private:
 
@@ -60,7 +66,10 @@ private:
 	float m_koeffecientlvl3;
 
 	float m_waveduration;
-
-
+	std::string sm_message;
+	sf::Text *tm_message;
+	sf::Font *fm_font;
 	Truck* m_truck;
+
+
 };

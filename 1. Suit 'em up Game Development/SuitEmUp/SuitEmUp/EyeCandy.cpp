@@ -158,7 +158,7 @@ void EyeCandy::ShockCreator(sf::Vector2f p_position){
 	};
 
 };
-void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation, float deltatime)
+void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation)
 {
 	Picture* t_picture= new Picture();
 	p_sprite->setRotation(p_rotation);

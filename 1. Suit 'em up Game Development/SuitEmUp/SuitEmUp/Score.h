@@ -19,7 +19,7 @@ public:
 	sf::Text DrawScore();
 	sf::Text DrawWhenDead();
 	sf::Text FeedbackScore(int enemykillscore);
-	
+	sf::Text DrawWhenWon();
 private:
 	unsigned int m_score;
 	sf::Text score;
