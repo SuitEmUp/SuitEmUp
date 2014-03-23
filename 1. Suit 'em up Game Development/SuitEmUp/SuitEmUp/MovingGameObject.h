@@ -14,8 +14,8 @@ public:
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f vel);
 	int GetSpeed();
-	int SetSpeed(int s);
-
+	void SetSpeed(float s);
+	float getspeed();
 protected:
 	float speed;
 	sf::Vector2f m_velocity;

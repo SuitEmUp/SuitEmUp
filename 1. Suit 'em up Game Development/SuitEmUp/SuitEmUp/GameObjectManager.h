@@ -31,7 +31,7 @@ public:
 	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr);
 	~GameObjectManager();
 
-	void CreateGameObjects();
+	void CreateGameObjects(float degree);
 	void Update(float deltatime);
 	void ClearGameObjects();
 
@@ -55,7 +55,8 @@ public:
 	int GetScore(int m_value);
 	void Dead();
 	int Kill_count();
-
+	bool GetWin();
+	void Won();
 	//TruckUpgrades
 	void UpgradeMaxHpAndSprites();
 
@@ -106,7 +107,7 @@ private:
 	sf::Sprite* m_background;
 
 	std::vector<RepairKit*> m_vRepairKits;
-
+	
 	int Kill_Count;
 
 };

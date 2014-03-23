@@ -2,20 +2,25 @@
 
 #include "EnemyObject.h"
 #include "Truck.h"
+#include "SpriteManager.h"
 #include <iostream>
 
-EnemyObject::EnemyObject(Truck* truck, sf::Sprite* sprite){
+EnemyObject::EnemyObject(Truck* truck, SpriteManager* sm){
 	m_damage = 2;
 	m_truck=truck;
-	m_sprite = sprite;
+	m_sprite = sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "Bandit1", 1, 1);
 	m_cooldown = 0;
 	speed = 150;
 	m_hp = 2;
 
+	m_shooting = sm->Load("../data/sprites/BanditEnblack.png", "Banditshootidle1", 1, 1);
+	m_shooting->setOrigin(m_shooting->getLocalBounds().width/2, m_shooting->getLocalBounds().height/2);
+	m_shooting;
+
 	//Animation
 
 	m_animation = nullptr;
-	AddAnimation(sprite);
+	AddAnimation(m_sprite);
 	
 	m_sprite->setOrigin(29/2, 35/2);
 
@@ -50,6 +55,8 @@ bool EnemyObject::Update(float deltatime){
 	{	
 		m_velocity=m_truck->GetVelocity();//if within a certain radius of the truck it sticks to the truck(if the truck's gonna move in the future)
 		m_animation->PausAnimation();
+		m_sprite = m_shooting;
+		
 	}
 	m_position+=m_velocity*deltatime;//gets new position from velocity
 	m_sprite->setPosition(m_position);
@@ -69,6 +76,7 @@ EnemyObject::~EnemyObject()
 	m_sprite = nullptr;
 	delete m_animation;
 	m_animation = nullptr;
+	m_shooting = nullptr;
 };
 
 bool EnemyObject::GetType(){

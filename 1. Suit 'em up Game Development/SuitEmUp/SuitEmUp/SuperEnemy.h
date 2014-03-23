@@ -6,10 +6,11 @@
 #include "Animation.h"
 
 class Truck;
+class SpriteManager;
 
 class SuperEnemy : public MovingGameObject{
 public:
-	SuperEnemy(Truck* truck, sf::Sprite* sprite = nullptr);
+	SuperEnemy(Truck* truck, SpriteManager* sm);
 	~SuperEnemy();
 	bool Update(float deltatime);
 	bool GetType();
@@ -25,5 +26,6 @@ protected:
 	float m_cooldown;
 	float m_hp;
 
-	Animation *m_animation;
+	Animation* m_animation;
+	sf::Sprite* m_shooting;
 };

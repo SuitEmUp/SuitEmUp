@@ -92,3 +92,7 @@ void Animation::PausAnimation()
 	//if(m_paused == false) {m_paused = true;}
 	
 }
+void Animation::setFrameTime(float time)
+{
+	m_frameTime = time;
+}

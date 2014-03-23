@@ -38,11 +38,13 @@ InputManager::InputManager(sf::RenderWindow* window) :
 	text->setColor(sf::Color::Black);
 	text->move(0.f, 0.f);	
 	text->setStyle(sf::Text::Bold);
+	m_globalallow = false;
 }
 
 InputManager::~InputManager()
 {
-
+	delete text;
+	text = nullptr;
 }
 
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
@@ -98,18 +100,21 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 		}
 		else if (event.type == sf::Event::TextEntered)
 		{	
-			str += static_cast<char>(event.text.unicode);
-			if(m_input->IsDown(sf::Keyboard::BackSpace))
+			if(m_globalallow == true)
 			{
-				str = "";
-			}
-			if(m_input->IsDown(sf::Keyboard::Return))
-			{
-				str = "";
-			}
-			if (event.text.unicode < 128)
-			{
-				text->setString(str);
+				str += static_cast<char>(event.text.unicode);
+				if(m_input->IsDown(sf::Keyboard::BackSpace))
+				{
+					str = "";
+				}
+				if(m_input->IsDown(sf::Keyboard::Return)) 
+				{
+					str = "";
+				}
+				if (event.text.unicode < 128)
+				{
+					text->setString(str);
+				}
 			}
 		}
 		else if(event.type == sf::Event::MouseButtonReleased)
@@ -176,4 +181,15 @@ sf::Text *InputManager::Get_Text()
 void InputManager::Reset_text()
 {
 	str = "";
+}
+void InputManager::GlobalAllow()
+{
+	if(m_globalallow == false)
+	{
+		m_globalallow = true;
+	}
+	else
+	{
+		m_globalallow = false;
+	}
 }

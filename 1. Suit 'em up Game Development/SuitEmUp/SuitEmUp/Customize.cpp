@@ -12,6 +12,7 @@
 #include "SpriteManager.h"
 #include "GameObjectManager.h"
 #include "PlayerObject.h"
+#include <sstream>
 
 
 
@@ -24,16 +25,46 @@ Customize::Customize(Engine *engine)
 
 	m_weapons_available = Config::getInt("weapons_available", 0);
 	m_currentSuit = Config::getInt("current_suit", 0);
+	m_currentTruck = Config::getInt("current_truck", 0);
 
 	m_trinketboxactivator = false;
 	m_trinketboxlock = false;
 
 	howmuchitcosts_suit = 1000;
-	howmuchitcosts_weapon = 1500;
-	howmuchitcosts_truck = 1200;
+	howmuchitcosts_weapon = 2000;
+	howmuchitcosts_truck = 1500;
 	//howmuchitcosts_trinket = 500;
 
+	//stats text
+	m_stats = nullptr;
+	m_font = nullptr;
+	m_stats = new sf::Text;
+	m_font = new sf::Font;
 
+	if (!m_font->loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+
+	m_stats->setFont(*m_font);
+	m_stats->setCharacterSize(20);
+	m_stats->setColor(sf::Color::Black);
+	m_stats->setPosition(430.f, 400.f);	
+	m_stats->setStyle(sf::Text::Bold);
+
+	items[0] = "\nLenkár: Normal MoveSpeed\n";
+	items[1] = "\nSuravíra: Fast MoveSpeed\n";
+	items[2] = "\nChaya: Faster MoveSpeed\n";
+	items[3] = "\nThe Negotiator: 1 dmg\n";
+	items[4] = "\nThumper: 3 dmg piercing\n";
+	items[5] = "\nDiplomacy: 1 dmg Burst\n";
+	items[6] = "\nMukai: 100 hp\n";
+	items[7] = "\nMukai: 200 hp\n";
+	items[8] = "\nMukai: 300hp\n";
+
+	m_currentweapon = items[3];
+	m_currentsuit = items[0];
+	m_currenttruck = items[6];
+
+	once = 0;
 };
 
 bool Customize::Init()
@@ -47,6 +78,8 @@ bool Customize::Init()
 	m_currentWeapon = Config::getInt("current_weapon", 0);
 	m_currentTruck = Config::getInt("current_truck", 0);
 
+
+
 	tempName_change = "02";
 	//sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 	//m_rects.push_back(rectangle);
@@ -59,20 +92,64 @@ bool Customize::Init()
 	m_decal = m_engine->m_spritemanager->Load("../data/misc/customization/decal.png", "Decal", 1.0, 1.0);
 	m_decal->setPosition(932, 373);																																									
 
-	if(m_currentSuit == 0) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "Suit1", 1.0, 1.0);
-	else if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
-	else if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
-	m_suit->setPosition(45, 114);
+	if(m_currentSuit == 0)
+	{
+		m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_1.png", "Suit1", 1.0, 1.0);
+		m_suit->setPosition(45, 114);
+		m_currentsuit = items[0];
+		howmuchitcosts_suit = 1000;
+	}
+	else if (m_currentSuit == 1) 
+	{
+		m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
+		m_suit->setPosition(45, 114);
+		m_currentsuit = items[1];
+	}
+	else if (m_currentSuit == 2) 
+	{
+		m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
+		m_suit->setPosition(45, 114);
+		m_currentsuit = items[2];
+	}
+	if(m_currentWeapon == 0)
+	{
+		m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "Weapon1", 1.0, 1.0);
+		m_currentweapon = items[3];
+		m_weapon->setPosition(354, 114);
+		howmuchitcosts_weapon = 2000;
+	}
+	else if(m_currentWeapon == 1)
+	{
+		m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "Weapon2", 1.0, 1.0);
+		m_currentweapon = items[4];
+		m_weapon->setPosition(354, 114);
+	}
+	else if(m_currentWeapon == 2)
+	{
+		m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "Weapon3", 1.0, 1.0);
+		m_weapon->setPosition(354, 114);
+		m_currentweapon = items[5];
+	}
 
-	if(m_currentWeapon == 0)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_1.png", "Weapon1", 1.0, 1.0);
-	else if(m_currentWeapon == 1)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_2.png", "Weapon2", 1.0, 1.0);
-	else if(m_currentWeapon == 2)m_weapon = m_engine->m_spritemanager->Load("../data/misc/customization/weapon_3.png", "Weapon3", 1.0, 1.0);
-	m_weapon->setPosition(354, 114);
-
-	if(m_currentTruck == 0)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "Truck1", 1.0, 1.0);
-	else if(m_currentTruck == 1)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
-	else if(m_currentTruck == 2)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
-	m_truck->setPosition(932, 114);
+	if(m_currentTruck == 0)
+	{
+		howmuchitcosts_truck = 1500;
+		m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_1.png", "Truck1", 1.0, 1.0);
+		m_currenttruck = items[6];
+		m_truck->setPosition(932, 114);
+	}
+	else if(m_currentTruck == 1)
+	{
+		m_currenttruck = items[7];
+		m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
+		m_truck->setPosition(932, 114);
+	}
+	else if(m_currentTruck == 2)
+	{
+		m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
+		m_truck->setPosition(932, 114);
+		m_currenttruck = items[8];
+	}
 
 	//Buttons
 	m_engine->m_gom->CreateCusomizationButtons();
@@ -158,7 +235,7 @@ bool Customize::Init()
 	m_truckcostText->setColor(sf::Color::Black);						m_truckcostText->setCharacterSize(40);
 
 
-	//blabla fullösning
+	// fullösning
 	if(Config::getInt("current_suit", 0) == 2)
 	{
 		m_suitcostText->setPosition(sf::Vector2f(77,555));
@@ -190,35 +267,36 @@ void Customize::Exit(){
 		m_rects[i] = nullptr;
 	}
 	m_rects.clear();
-
 };
 
 bool Customize::Update(float deltatime)
 {
-	
-
-	if(m_input->IsDown(sf::Keyboard::F1))
-	{
-		printf("Next State set to MainMenu\n");
-		setNextState("MainMenu");
-		return false;
-	};
-	if(m_input->IsDown(sf::Keyboard::F2))
-	{
-		printf("Next State set to Game\n");
-		setNextState("Game");
-		return false;
-	};
-	if(m_input->IsDown(sf::Keyboard::F4))
-	{
-		printf("Next State set to Options\n");
-		setNextState("Options");
-		return false;
-	};
-
 	//update score
 	howmuchmoneyihave = m_engine->m_gom->GetScore(howmuchmoneyihave);
 
+	if(Config::getInt("current_suit", 0) != 2)
+	{
+		m_suitcostText->setPosition(sf::Vector2f(150,555));	
+		m_suitcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("weapons_available", 0) != 3)
+	{
+		m_weaponcostText->setPosition(sf::Vector2f(600,313));
+		m_weaponcostText->setCharacterSize(30);
+	}
+	if(Config::getInt("current_truck", 0) != 2)
+	{
+		m_truckcostText->setPosition(sf::Vector2f(1037,313));
+		m_truckcostText->setCharacterSize(30);
+	}
+
+	std::ostringstream ss;
+
+	ss << "\t\tAriana's Stats\n" <<
+		"\n\t\tScore: " << m_engine->m_gom->GetScore(once) << "\n" <<
+		m_currentsuit << m_currentweapon << m_currenttruck;
+
+	m_stats->setString(ss.str());
 
 
 	if(m_trinketboxactivator){
@@ -250,7 +328,7 @@ bool Customize::Update(float deltatime)
 					{
 						//score
 						m_engine->m_gom->Buy(howmuchitcosts_suit);
-						howmuchitcosts_suit + 1500;
+						howmuchitcosts_suit = 2000;
 
 						if(m_currentSuit == 0)
 						{
@@ -258,8 +336,9 @@ bool Customize::Update(float deltatime)
 							m_currentSuit = 1;
 							if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
 							Config::set("current_suit","1");
-							printf("Suit Upgraded\n");
-							Config::set("currentsuitcost", "2500");
+
+							Config::set("currentsuitcost", "2000");
+							m_currentsuit = items[1];
 						}
 						else if(m_currentSuit == 1)
 						{
@@ -267,10 +346,11 @@ bool Customize::Update(float deltatime)
 							m_currentSuit = 2;
 							if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
 							Config::set("current_suit","2");
-							printf("Suit Upgraded\n");
+
 							Config::set("currentsuitcost", "Upgrade Complete");
 							m_suitcostText->setPosition(sf::Vector2f(77,555));
 							m_suitcostText->setCharacterSize(30);
+							m_currentsuit = items[2];
 						}
 						m_suit->setPosition(45, 114);
 					}
@@ -285,10 +365,9 @@ bool Customize::Update(float deltatime)
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave && m_weapons_available != 3)
 				{
 
-					std::cout << m_weapons_available << std::endl;
 					//score
 					m_engine->m_gom->Buy(howmuchitcosts_weapon);
-					howmuchitcosts_weapon + 1500;
+					howmuchitcosts_weapon = 3000;
 					if(m_weapons_available == 1)
 					{
 						m_weapons_available = 2;
@@ -299,6 +378,7 @@ bool Customize::Update(float deltatime)
 						m_currentWeapon = Config::getInt("current_weapon", 0);
 						m_engine->m_gom->m_player->SetWeaponType("Needlegun");
 						Config::set("currentweaponcost", "3000");
+						m_currentweapon = items[4];
 					}
 					else if(m_weapons_available == 2)
 					{
@@ -312,6 +392,7 @@ bool Customize::Update(float deltatime)
 						Config::set("currentweaponcost", "Upgrade Complete");
 						m_weaponcostText->setPosition(sf::Vector2f(530,319));
 						m_weaponcostText->setCharacterSize(30);
+						m_currentweapon = items[5];
 					}
 					else if(m_weapons_available == 3){printf("Upgrade already complete\n");}
 					else {printf("Upgrade failed");}
@@ -327,14 +408,25 @@ bool Customize::Update(float deltatime)
 					if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "ChangeWeaponRight")
 					{
 						if(m_currentWeapon == 0 && m_weapons_available > 1)
+						{
 							m_currentWeapon = 1;
+							m_currentweapon = items[4];
+						}
 						else if(m_currentWeapon == 1 && m_weapons_available > 2)
+						{
 							m_currentWeapon = 2;
+							m_currentweapon = items[5];
+						}
 						else if(m_currentWeapon == 2 && m_weapons_available == 3)
+						{
 							m_currentWeapon = 0;
+							m_currentweapon = items[3];
+						}
 						else if(m_currentWeapon == 1 && m_weapons_available == 2)
+						{
 							m_currentWeapon = 0;
-
+							m_currentweapon = items[3];
+						}
 
 					}
 					//PrevWeapon
@@ -343,13 +435,24 @@ bool Customize::Update(float deltatime)
 						m_currentWeapon -= 1;
 
 						if(m_currentWeapon == 0 && m_weapons_available == 3)
+						{
 							m_currentWeapon = 3;
+							m_currentweapon = items[5];
+						}
 						else if(m_currentWeapon == 0 && m_weapons_available == 2)
+						{
 							m_currentWeapon = 1;
+							m_currentweapon = items[4];
+						}
 						else if(m_currentWeapon == 1 && m_weapons_available > 1)
-							m_currentWeapon = 0;
+						{	m_currentWeapon = 0;
+						m_currentweapon = items[3];
+						}
 						else if(m_currentWeapon == 2 && m_weapons_available > 2)
+						{
 							m_currentWeapon = 1;
+							m_currentweapon = items[4];
+						}
 						else if(m_currentWeapon = 0)
 							printf("You need to upgrade before you can change weapon\n");
 					}
@@ -383,37 +486,48 @@ bool Customize::Update(float deltatime)
 				//Truck Stuff
 				//----------------------
 
-				std::string count[3] = {"0", "1", "2"};
+				std::string count[3] = {"0", "1", "2" };
 
 				//Upgrade Truck
-				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_weapon <= howmuchmoneyihave)
+				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_truck <= howmuchmoneyihave)
 				{
-					if(Config::getInt("current_truck", 0) < 2)
+
+					if(Config::getInt("current_truck", 0) == 1)
 					{
-						//upgrade truck
-						Config::set("current_truck", count[++counts]);
-						m_engine->m_gom->UpgradeMaxHpAndSprites();					
+
+						m_currenttruck = items[8];
+						Config::set("currenttruckcost", "Upgrade Complete");
+						Config::set("current_truck", "2");
+						m_engine->m_gom->UpgradeMaxHpAndSprites();
+						m_truckcostText->setPosition(sf::Vector2f(960,319));
+						m_truckcostText->setCharacterSize(30);
+						m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
+						m_truck->setPosition(932, 114);
 						m_currentTruck++;
 						//score
 						m_engine->m_gom->Buy(howmuchitcosts_truck);
-						howmuchitcosts_truck + 1500;
-						if(m_currentTruck == 1)
-							Config::set("currenttruckcost", "2700");
-						else if(m_currentTruck == 2){
-							Config::set("currenttruckcost", "Upgrade Complete");
-							m_truckcostText->setPosition(sf::Vector2f(960,319));
-							m_truckcostText->setCharacterSize(30);
-						}
-						if(m_currentTruck == 1)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
-						else if(m_currentTruck == 2)m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_3.png", "Truck3", 1.0, 1.0);
-						m_truck->setPosition(932, 114);
-
-						printf("KOEPT SUIT\n");
-						printf("Click SUCCESSSSS\n");
-						printf("Suit Upgraded\n");
+						howmuchitcosts_truck = 0;
 					}
+					if(Config::getInt("current_truck", 0) == 0)
+					{
 
+
+						m_currenttruck = items[7];
+						Config::set("currenttruckcost", "2500");
+						Config::set("current_truck", "1");
+						m_engine->m_gom->UpgradeMaxHpAndSprites();
+						m_truckcostText->setPosition(sf::Vector2f(960,319));
+						m_truckcostText->setCharacterSize(30);
+						m_truck = m_engine->m_spritemanager->Load("../data/misc/customization/truck_2.png", "Truck2", 1.0, 1.0);
+						m_truck->setPosition(932, 114);
+						//score
+						m_engine->m_gom->Buy(howmuchitcosts_truck);
+						howmuchitcosts_truck = 2500;
+						m_currentTruck++;
+
+					}			
 				}
+
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
 				{
 					printf("Next State set to Game\n");
@@ -441,6 +555,8 @@ bool Customize::Update(float deltatime)
 		m_weaponcostText->setString(Config::get("currentweaponcost"));
 		m_truckcostText->setString(Config::get("currenttruckcost"));
 
+		ss.str("");
+
 		return true;
 };
 
@@ -456,7 +572,7 @@ void Customize::Draw()
 	m_engine->m_window->draw(*m_truck);
 	m_engine->m_window->draw(*m_statbox);
 	m_engine->m_window->draw(*m_decal);
-
+	m_engine->m_window->draw(*m_stats);
 
 
 	//buttons

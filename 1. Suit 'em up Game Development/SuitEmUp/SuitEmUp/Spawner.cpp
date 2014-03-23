@@ -20,6 +20,17 @@ Spawner::Spawner(Truck* truck){
 	m_spawningenemieslvl2 = 0;
 	m_currentenemieslvl3 = 0;
 	m_spawningenemieslvl3 = 0;
+	tm_message = new sf::Text;
+	fm_font = new sf::Font;
+	if (!fm_font->loadFromFile("../assets/fonts/Viking_n.ttf"))
+	{ printf("Could not load font\n"); }
+	sm_message = "";
+	tm_message->setFont(*fm_font);
+	tm_message->setCharacterSize(30);
+	tm_message->setColor(sf::Color::Black);
+	tm_message->setOrigin(30/2, 30/2);
+	tm_message->setPosition(440.f, 50.f);	
+	tm_message->setStyle(sf::Text::Bold);
 
 	m_waveduration = 60;
 };
@@ -38,7 +49,20 @@ bool Spawner::Timer(float deltatime){
 
 EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
-	EnemyObject* enemy = new EnemyObject(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "Bandit1", 1, 1));
+	EnemyObject* enemy = new EnemyObject(m_truck, sm);
+
+	if(m_wavenumber >= 7)
+	{
+		enemy->SetSpeed(400.0f);
+	}
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(250.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(150.0f);
+	}
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -83,8 +107,8 @@ EnemyObject* Spawner::EnemySpawner(SpriteManager* sm){
 
 bool Spawner::EnemyDestroyer(EnemyObject* enemy, PlayerProjectile* bullet){
 
-	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
-	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+	float delta_x=enemy->GetPosition().x -bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y -bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
@@ -106,9 +130,11 @@ bool Spawner::SuperDestroyer(SuperEnemy* enemy, PlayerProjectile* bullet){
 }
 
 bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
+	float offsetX = sin(enemy->GetSprite()->getRotation()*3.14/180) * -25;
+	float offsetY = cos(enemy->GetSprite()->getRotation()*3.14/180) * -25;
 
-	float delta_x=enemy->GetPosition().x-bullet->GetPosition().x;
-	float delta_y=enemy->GetPosition().y-bullet->GetPosition().y;
+	float delta_x=enemy->GetPosition().x - offsetY +-bullet->GetPosition().x;
+	float delta_y=enemy->GetPosition().y - offsetX -bullet->GetPosition().y;
 
 	float dist=sqrt(delta_x*delta_x+delta_y*delta_y);
 
@@ -119,7 +145,20 @@ bool Spawner::SniperDestroyer(SniperGirl* enemy, PlayerProjectile* bullet){
 
 SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 
-	SuperEnemy* enemy = new SuperEnemy(m_truck, sm->Load("../data/sprites/Spritesheet_enemy_1_2.png", "SuperBandit", 1.0, 1.0));
+	SuperEnemy* enemy = new SuperEnemy(m_truck, sm);
+
+	if(m_wavenumber >= 10)
+	{
+		enemy->SetSpeed(460.0f);
+	}
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(310.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(210.0f);
+	}
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
@@ -153,19 +192,32 @@ SuperEnemy* Spawner::SuperSpawner(SpriteManager* sm){
 	return nullptr;
 };
 
-SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
+SniperGirl* Spawner::SniperSpawner(SpriteManager* sm)
+{
+	SniperGirl* enemy = new SniperGirl(m_truck, sm);
 
-	SniperGirl* enemy = new SniperGirl(m_truck, sm->Load("../data/sprites/new_82_87.png", "SniperBandit", 1, 1));
+	if(m_wavenumber >= 7)
+	{
+		enemy->SetSpeed(250.0f);
+	}
+	else if(m_wavenumber >= 3)
+	{
+		enemy->SetSpeed(100.0f);
+	}
+	else
+	{
+		enemy->SetSpeed(50.0f);
+	}
 
 	int spawndirection = rand()%2;
 	if(spawndirection == 0){
 		int q=rand()%2;
 		int y;
 		if(q==1){
-			y=800;
+			y=720;
 		}
 		else if(q==0){
-			y=-80;
+			y=0;
 		}
 		int x=rand()%1281;
 		enemy->SetPosition(x, y);
@@ -191,17 +243,63 @@ SniperGirl* Spawner::SniperSpawner(SpriteManager* sm){
 
 sf::Vector3i Spawner::Wave(){
 
-	if (m_wavenumber == 0){ return sf::Vector3i(50, 5, 1); m_hpmultiplier = 1;}
-	if (m_wavenumber == 1){ return sf::Vector3i(70, 15, 5); m_hpmultiplier = 1;}
-	if (m_wavenumber == 2){ return sf::Vector3i(90, 25, 10); m_hpmultiplier = 1.2;}
-	if (m_wavenumber == 3){ return sf::Vector3i(110, 35, 15); m_hpmultiplier = 1.4;}
-	if (m_wavenumber == 4){ return sf::Vector3i(120, 45, 20); m_hpmultiplier = 1.6;}
-	if (m_wavenumber == 5){ return sf::Vector3i(140, 55, 25); m_hpmultiplier = 1.8;}
-	if (m_wavenumber == 6){ return sf::Vector3i(160, 65, 30); m_hpmultiplier = 2;}
-	if (m_wavenumber == 7){ return sf::Vector3i(120, 75, 35); m_hpmultiplier = 2.2;}
-	if (m_wavenumber == 8){ return sf::Vector3i(90,85, 40); m_hpmultiplier = 2.4;}
-	if (m_wavenumber == 9){ return sf::Vector3i(60, 95, 50); m_hpmultiplier = 2.6;}
-	if (m_wavenumber == 10){ return sf::Vector3i(40, 105,60); m_hpmultiplier = 2.8;}
+	if (m_wavenumber == 0)
+	{
+		sm_message = "Wave 1 'NoobFilter'"; 
+		return sf::Vector3i(40, 0, 0); 
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 1)
+	{
+		sm_message = "Wave 2 'You Think This is a Game?' ";
+		m_waveduration = 150;
+		return sf::Vector3i(100, 10, 0); 
+		m_hpmultiplier = 1;}
+	if (m_wavenumber == 2)
+	{
+		sm_message = "Wave 3 'You Wont Win This One' "; 
+		m_waveduration = 80;
+		return sf::Vector3i(100, 15, 0); 
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 3)
+	{
+		m_waveduration = 60 ;
+		sm_message = "Wave 4 'Shooting From Afar' ";
+		return sf::Vector3i(70, 15, 1);
+		m_hpmultiplier = 1;
+	}
+	if (m_wavenumber == 4){sm_message = "Wave 5 'Unfomfortable Sofa' "; return sf::Vector3i(70, 30, 3); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 5){sm_message = "Wave 6 'Playtime is OVER' "; return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 6){sm_message = "Wave 7 'Stop Cheating Wave' "; return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 7)
+	{
+		m_waveduration = 30;
+		sm_message = "Wave 8 'From Now on \n Bandits are on Cocaine' "; 
+		return sf::Vector3i(0, 0, 40); 
+		m_hpmultiplier = 1.8; 
+	}
+	if (m_wavenumber == 8)
+	{
+		m_waveduration = 50;
+		sm_message = "Wave 9 'Bandimons! Attack!' "; 
+		return sf::Vector3i(100, 40, 30); 
+		m_hpmultiplier = 2;
+	}
+	if (m_wavenumber == 9){m_waveduration = 40;sm_message = "Wave 10 'Don't Froth it Doesn't 'Suit' You' "; return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 10){m_waveduration = 40;sm_message = "Wave 11 'Last Level!"; return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 11){m_waveduration = 50; sm_message = "Wave 11 'Joking Ha Take This!"; return sf::Vector3i(100, 100, 60); m_hpmultiplier = 2.6;}
+	if(m_wavenumber == 12) 
+	{
+		sm_message = "ugh...how?...I will...cough....return...";
+		m_waveduration = 10; 
+		return sf::Vector3i(0,0,0);
+	}
+	if(m_wavenumber == 13)
+	{
+		m_win = true;
+	}
+
 	return sf::Vector3i(0,0,0);
 
 }
@@ -283,3 +381,12 @@ int Spawner::NumberOfEnemieslvl3(float numberofenemies){
 	}
 	return 0;
 };
+sf::Text *Spawner::WaveTitle()
+{
+	tm_message->setString(sm_message);
+	return tm_message;
+}
+float Spawner::WaveCheck()
+{
+	return m_time;
+}

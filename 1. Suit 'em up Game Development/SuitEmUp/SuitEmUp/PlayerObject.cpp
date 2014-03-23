@@ -16,7 +16,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 	m_truck = truck;
 	//m_unupdate = sprite;
 	m_cooldown = 0;
-	speed = 400;
+	speed = 350;
 	m_damage = 1;
 	m_controltype = "Special";
 	m_firetype = "Mouse";
@@ -61,12 +61,12 @@ bool PlayerObject::Update(float deltatime)
 	}
 	if(m_suittype == "Level2")
 	{
-		speed = 500;
+		speed = 450;
 
 	}
 	if(m_suittype == "Level3")
 	{
-		speed = 600;
+		speed = 550;
 
 	}
 	//sets weapon stats
@@ -83,7 +83,7 @@ bool PlayerObject::Update(float deltatime)
 	if(m_weapontype == "ArmCannon")
 	{
 		m_damage = 1;
-		m_attackspeed = 0.000002f;
+		m_attackspeed = 10.0f;
 	}
 	if(m_weapontype == "BoomWosh")
 	{
@@ -122,7 +122,7 @@ bool PlayerObject::Update(float deltatime)
 
 	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
 	//Correct Origin
-	if(m_weapontype == "Needlegun")
+	//if(m_weapontype == "Needlegun")
 
 
 
@@ -331,7 +331,7 @@ bool PlayerObject::Update(float deltatime)
 		}
 		if(m_weapontype == "ArmCannon"){
 			if(m_input->Mouse_isDown(sf::Mouse::Button::Left)/* && m_cooldown==0*/){
-				m_cooldown=1;	//How long the cooldown is
+				m_cooldown=m_attackspeed;	//How long the cooldown is
 				return true;	//if this is returned a bullet will be spawned
 			}
 		}

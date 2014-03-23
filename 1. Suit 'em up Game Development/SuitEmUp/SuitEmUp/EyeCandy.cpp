@@ -2,14 +2,15 @@
 
 #include "EyeCandy.h"
 #include "SpriteManager.h"
+#include "Animation.h"
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
 
-EyeCandy::EyeCandy()
+EyeCandy::EyeCandy(float degree)
 {
 	m_recticles.clear();
 	m_rectangles.clear();
-
+	m_degree = degree/100;
 	srand(time(0));
 };
 EyeCandy::~EyeCandy()
@@ -56,19 +57,18 @@ EyeCandy::~EyeCandy()
 		}
 	}
 	m_recticles.clear();
-	for (auto it = m_pictures.begin();it != m_pictures.end(); it++)
+	for (auto it = m_animations.begin();it != m_animations.end(); it++)
 	{
 		if(*it != nullptr) {
-			(*it)->picture = nullptr;
 			delete *it;
 		}
 	}
-	m_pictures.clear();
+	m_animations.clear();
 	for(int i = 0; i<m_texts.size(); i++){
-		
-			m_texts.erase(m_texts.begin()+i);
-			i--;
-			if(i<0) i=0;
+
+		m_texts.erase(m_texts.begin()+i);
+		i--;
+		if(i<0) i=0;
 	}
 	m_texts.clear();
 };
@@ -102,7 +102,10 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 
 	//	m_rectangles.push_back(rect);
 	//};
-	for(int i = 0; i<(rand()%(200-150+1))+150; i++){
+	int highest = 200*m_degree;
+	int lowest = 150*m_degree;
+
+	for(int i = 0; i<(rand()%(highest-lowest+1))+lowest; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
@@ -123,7 +126,11 @@ void EyeCandy::BloodCreator(char* p_type, sf::Vector2f p_position, sf::Vector2f 
 	};
 };
 void EyeCandy::ShockCreator(sf::Vector2f p_position){
-	for(int i = 0; i<(rand()%(100-50+1))+50; i++){
+
+	int highest = 100*m_degree;
+	int lowest = 50*m_degree;
+
+	for(int i = 0; i<(rand()%(highest-lowest+1))+lowest; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(5000-1+1))+1)*3.14/180;
 
@@ -152,20 +159,63 @@ void EyeCandy::ShockCreator(sf::Vector2f p_position){
 };
 void EyeCandy::PictureCreator(sf::Sprite* p_sprite, sf::Vector2f p_position, float p_rotation)
 {
+	/*Picture* t_picture= new Picture();
+	p_sprite->setRotation(p_rotation);
+	p_sprite->setPosition(p_position);
+	p_sprite->setOrigin(79/2, 81/2);
+	t_picture->sprite = p_sprite;
+	t_picture->duration = 2;
+	t_picture->ani = new Animation(t_picture->sprite, 0.1, false, true);
+	t_picture->ani->addFrame(sf::IntRect (0, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (79+5, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (158+10, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (237+15, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (316+20, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (395+25, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (474+30, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (553+35, 0, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (0, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (79+5, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (158+10, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (237+15, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (316+20, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (395+25, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (474+30, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (553+35, 81+5, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (0, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (79+5, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (158+10, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (237+15, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (316+20, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (395+25, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (474+30, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (553+35, 162+10, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (0, 243+15, 79, 81));
+	t_picture->ani->addFrame(sf::IntRect (79+5, 243+15, 79, 81));
+	t_picture->ani->setSpriteSheet(t_picture->sprite);
+
+	t_picture->ani->update(0.32, 1);
+
+
+	t_picture->sprite = t_picture->ani->getCurrentFrame(20);
+	m_animations.push_back(t_picture);*/
+
 	Picture* t_picture= new Picture();
 	t_picture->duration = 6;
 	t_picture->picture = p_sprite;
 	t_picture->picture->setPosition(p_position);
 	t_picture->picture->setOrigin(t_picture->picture->getLocalBounds().width/4, t_picture->picture->getLocalBounds().height*0.8);
-	t_picture->picture->setRotation(p_rotation+50);
-	m_pictures.push_back(t_picture);
+	t_picture->picture->setRotation(p_rotation +70);
+	m_animations.push_back(t_picture);
+
 };
 void EyeCandy::BoomWoshCreator(sf::Vector2f p_position, sf::Vector2f p_destination)
 {
 
+	int highest = 200*m_degree;
+	int lowest = 100*m_degree;
 
-
-	for(int i = 0; i<(rand()%(200-100+1))+100; i++){
+	for(int i = 0; i<(rand()%(highest-lowest+1))+lowest; i++){
 		Particle* partickel = new Particle;
 		int randomm = ((rand()%(50000000-1+1))+1)*3.14/180;
 
@@ -202,7 +252,7 @@ void EyeCandy::Update(float deltatime){
 		if(m_texts.at(i).duration_text < 0){
 			m_texts.erase(m_texts.begin()+i);
 			i--;
-			if(i<0) i=0;
+			//if(i<0) i=0;
 		}
 	}
 	for(int i = 0; i<m_particles.size(); i++){
@@ -215,7 +265,7 @@ void EyeCandy::Update(float deltatime){
 			m_particles.erase(m_particles.begin()+i);
 			m_rectangles.erase(m_rectangles.begin()+i);
 			i--;
-			if(i<0) i=0;
+			//if(i<0) i=0;
 		}
 	};
 
@@ -255,15 +305,18 @@ void EyeCandy::Update(float deltatime){
 			m_shocks.erase(m_shocks.begin()+i);
 			m_squares.erase(m_squares.begin()+i);
 			i--;
-			if(i<0) i=0;
+			//if(i<0) i=0;
 		}
 	};
-	for(int i = 0; i<m_pictures.size(); i++){
-		m_pictures.at(i)->duration -= deltatime;
-		if(m_pictures.at(i)->duration < 0){
-			m_pictures.erase(m_pictures.begin()+i);
+	for(int i = 0; i<m_animations.size(); i++){
+		m_animations.at(i)->duration -= deltatime;
+	
+		if(m_animations.at(i)->duration < 0){
+			delete m_animations.at(i);
+			m_animations.at(i) = nullptr;
+			m_animations.erase(m_animations.begin()+i);
 			i--;
-			if(i<0) i=0;
+			//if(i<0) i=0;
 		}
 	};
 
@@ -290,9 +343,9 @@ void EyeCandy::DrawParticles(float deltatime, sf::RenderWindow* renderwindow){
 	}
 };
 void EyeCandy::DrawPictures(float deltatime, sf::RenderWindow* renderwindow){
-	for(int i = 0; i<m_pictures.size(); i++){
-		renderwindow->draw(*m_pictures.at(i)->picture);
-		
+	for(int i = 0; i<m_animations.size(); i++){
+		renderwindow->draw(*m_animations.at(i)->picture);
+
 	};
 };
 void EyeCandy::PictureDestroyer(){};

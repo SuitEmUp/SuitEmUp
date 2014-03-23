@@ -30,7 +30,7 @@ bool Options::Init()
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "SoundSlider", sf::Vector2f(1280/2, 100), m_engine->m_soundlevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MusicSlider", sf::Vector2f(1280/2, 200), m_engine->m_musiclevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MasterVolumeSlider", sf::Vector2f(1280/2, 300), m_engine->m_mastervolumelevel));
-	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "VisualSlider", sf::Vector2f(1280/2, 400),1));
+	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "VisualSlider", sf::Vector2f(1280/2, 400), m_engine->m_visuallevel));
 
 	m_buttons.push_back(new Button(m_engine->m_input, "BackButton", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 100, 100));
 

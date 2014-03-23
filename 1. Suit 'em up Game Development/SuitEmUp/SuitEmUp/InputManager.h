@@ -27,6 +27,9 @@ public:
 	void Reset_text();
 	bool IsAnyDown() const;
 
+	//Fix
+	void GlobalAllow();
+
 private:
 
 	sf::RenderWindow* m_window;
@@ -35,11 +38,12 @@ private:
 	bool m_current[256];
 	bool m_previous[256];
 	
-
+	bool m_globalallow;
 	int myMouseX;                                        
 	int myMouseY;    
 	sf::Vector2i m_mousepos;
 	std::string str;
 	sf::Text *text;
 	sf::Font font;
+	std::string *check;
 };
