@@ -114,9 +114,9 @@ bool Customize::Init()
 	//m_truckrect->setFillColor(sf::Color(255,255,255,100));		m_truckrect->setOutlineColor(sf::Color::Black);
 	//m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
 
-	sf::RectangleShape* t_suitrect = new sf::RectangleShape;					t_suitrect->setSize(sf::Vector2f(299, 50));
+	sf::RectangleShape* t_suitrect = new sf::RectangleShape;					t_suitrect->setSize(sf::Vector2f(287, 50));
 	t_suitrect->setFillColor(sf::Color(255,255,255,50));		t_suitrect->setOutlineColor(sf::Color::Black);
-	t_suitrect->setOutlineThickness(2);						t_suitrect->setPosition(sf::Vector2f(47, 556));
+	t_suitrect->setOutlineThickness(2);						t_suitrect->setPosition(sf::Vector2f(53, 547));
 
 	m_rects.push_back(t_suitrect);
 
@@ -177,7 +177,6 @@ bool Customize::Init()
 
 
 	printf("State: Customize, Initialized\n");
-	printf("F1 - F4 to Change States\n");
 
 	return true;
 };

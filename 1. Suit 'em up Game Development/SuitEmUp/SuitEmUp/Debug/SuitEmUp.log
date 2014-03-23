@@ -1,9 +1,87 @@
-﻿Build started 2014-03-18 11:10:20.
+﻿Build started 2014-03-23 15:59:19.
      1>Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         D:\Program Files (x86)\VC\bin\CL.exe /c /I"C:\cpp\SFML-2.1\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Customize.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Game.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\MainMenu.cpp" "..\..\..\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\Options.cpp"
+         Options.cpp
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(54): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(67): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(70): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(73): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(76): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(81): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(121): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(124): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\options.cpp(127): warning C4018: '<' : signed/unsigned mismatch
+         MainMenu.cpp
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(46): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(49): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(52): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(55): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(58): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(82): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(169): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\mainmenu.cpp(197): warning C4018: '<' : signed/unsigned mismatch
+         Game.cpp
+         Customize.cpp
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(92): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(94): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(96): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(98): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(100): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(102): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(237): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(253): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(291): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(399): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(464): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\laban\documents\github\suitemup\1. suit 'em up game development\suitemup\suitemup\customize.cpp(489): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       Link:
+         D:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cpp\SFML-2.1\lib" "sfml-window-d.lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-audio-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.lib" /MACHINE:X86 Debug\Animation.obj
+         Debug\Button.obj
+         Debug\ButtonManager.obj
+         Debug\Config.obj
+         Debug\Customize.obj
+         Debug\DieState.obj
+         Debug\EnemyObject.obj
+         Debug\EnemyProjectile.obj
+         Debug\Engine.obj
+         Debug\EyeCandy.obj
+         Debug\Game.obj
+         Debug\GameObject.obj
+         Debug\GameObjectManager.obj
+         Debug\Highscore.obj
+         Debug\HighScoreState.obj
+         Debug\HpBar.obj
+         Debug\InputManager.obj
+         Debug\main.obj
+         Debug\MainMenu.obj
+         Debug\MovingGameObject.obj
+         Debug\Options.obj
+         Debug\PausState.obj
+         Debug\PlayerObject.obj
+         Debug\PlayerProjectile.obj
+         Debug\Popup.obj
+         Debug\PopupManager.obj
+         Debug\Projectile.obj
+         Debug\RepairKit.obj
+         Debug\Score.obj
+         Debug\Slider.obj
+         Debug\SniperGirl.obj
+         Debug\SoundManager.obj
+         Debug\Spawner.obj
+         Debug\Sprite.obj
+         Debug\SpriteManager.obj
+         Debug\SuperEnemy.obj
+         Debug\Truck.obj
+         Debug\TitleScreen.obj
+         Debug\StateManager.obj
+         Debug\Utils.obj
          SuitEmUp.vcxproj -> C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\Debug\SuitEmUp.exe
      1>Done Building Project "C:\Users\Laban\Documents\GitHub\SuitEmUp\1. Suit 'em up Game Development\SuitEmUp\SuitEmUp\SuitEmUp.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.07
+Time Elapsed 00:00:03.94

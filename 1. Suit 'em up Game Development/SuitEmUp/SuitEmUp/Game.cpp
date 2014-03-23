@@ -28,7 +28,7 @@ bool Game::Init()
 
 	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
 	{
-		printf("\n nu aer vi haer inne \n");
+
 		m_engine->m_gom->CreateGameObjects();
 	}
 
@@ -36,7 +36,6 @@ bool Game::Init()
 	onepopuplock = false;*/
 
 	printf("State: Game,  Initialized\n");
-	printf("F1 - F4 to Change States\n");
 	return true;
 };
 
