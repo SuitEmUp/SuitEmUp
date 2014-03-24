@@ -245,19 +245,19 @@ sf::Vector3i Spawner::Wave(){
 
 	if (m_wavenumber == 0)
 	{
-		sm_message = "Wave 1 'NoobFilter'"; 
+		sm_message = "Wave 1\n'NoobFilter'"; 
 		return sf::Vector3i(40, 0, 0); 
 		m_hpmultiplier = 1;
 	}
 	if (m_wavenumber == 1)
 	{
-		sm_message = "Wave 2 'You Think This is a Game?' ";
+		sm_message = "Wave 2\n'You Think This is a Game?' ";
 		m_waveduration = 150;
 		return sf::Vector3i(100, 10, 0); 
 		m_hpmultiplier = 1;}
 	if (m_wavenumber == 2)
 	{
-		sm_message = "Wave 3 'You Wont Win This One' "; 
+		sm_message = "Wave 3\n'You Wont Win This One' "; 
 		m_waveduration = 80;
 		return sf::Vector3i(100, 15, 0); 
 		m_hpmultiplier = 1;
@@ -265,33 +265,33 @@ sf::Vector3i Spawner::Wave(){
 	if (m_wavenumber == 3)
 	{
 		m_waveduration = 60 ;
-		sm_message = "Wave 4 'Shooting From Afar' ";
+		sm_message = "Wave 4\n'Shooting From Afar' ";
 		return sf::Vector3i(70, 15, 1);
 		m_hpmultiplier = 1;
 	}
-	if (m_wavenumber == 4){sm_message = "Wave 5 'Unfomfortable Sofa' "; return sf::Vector3i(70, 30, 3); m_hpmultiplier = 1.2;}
-	if (m_wavenumber == 5){sm_message = "Wave 6 'Playtime is OVER' "; return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
-	if (m_wavenumber == 6){sm_message = "Wave 7 'Stop Cheating Wave' "; return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
+	if (m_wavenumber == 4){sm_message = "Wave 5\n'Unfomfortable Sofa' "; return sf::Vector3i(70, 30, 3); m_hpmultiplier = 1.2;}
+	if (m_wavenumber == 5){sm_message = "Wave 6\n'Playtime is OVER' "; return sf::Vector3i(40, 40, 10); m_hpmultiplier = 1.4;}
+	if (m_wavenumber == 6){sm_message = "Wave 7\n'Stop Cheating Wave' "; return sf::Vector3i(40, 20, 25); m_hpmultiplier = 1.6;}
 	if (m_wavenumber == 7)
 	{
 		m_waveduration = 30;
-		sm_message = "Wave 8 'From Now on \n Bandits are on Cocaine' "; 
+		sm_message = "Wave 8\n'Bandits are now on Cocaine' "; 
 		return sf::Vector3i(0, 0, 40); 
 		m_hpmultiplier = 1.8; 
 	}
 	if (m_wavenumber == 8)
 	{
 		m_waveduration = 50;
-		sm_message = "Wave 9 'Bandimons! Attack!' "; 
+		sm_message = "Wave 9\n'Bandimons! Attack!'"; 
 		return sf::Vector3i(100, 40, 30); 
 		m_hpmultiplier = 2;
 	}
-	if (m_wavenumber == 9){m_waveduration = 40;sm_message = "Wave 10 'Don't Froth it Doesn't 'Suit' You' "; return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
-	if (m_wavenumber == 10){m_waveduration = 40;sm_message = "Wave 11 'Last Level!"; return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
-	if (m_wavenumber == 11){m_waveduration = 50; sm_message = "Wave 11 'Joking Ha Take This!"; return sf::Vector3i(100, 100, 60); m_hpmultiplier = 2.6;}
+	if (m_wavenumber == 9){m_waveduration = 40;sm_message = "Wave 10\n'Don't Froth it Doesn't 'Suit' You' "; return sf::Vector3i(50, 60, 40); m_hpmultiplier = 2.2;}
+	if (m_wavenumber == 10){m_waveduration = 40;sm_message = "Wave 11\n'Last Level!"; return sf::Vector3i(0,75, 50); m_hpmultiplier = 2.4;}
+	if (m_wavenumber == 11){m_waveduration = 50; sm_message = "Wave 11\n'Joking Ha! Take This!"; return sf::Vector3i(60, 60, 60); m_hpmultiplier = 2.6;}
 	if(m_wavenumber == 12) 
 	{
-		sm_message = "ugh...how?...I will...cough....return...";
+		sm_message = "ugh...how?...I will...\ncough....return...";
 		m_waveduration = 10; 
 		return sf::Vector3i(0,0,0);
 	}

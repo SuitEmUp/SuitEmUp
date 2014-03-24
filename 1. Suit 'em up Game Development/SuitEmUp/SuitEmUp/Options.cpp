@@ -77,6 +77,7 @@ bool Options::Update(float deltatime)
 			m_engine->m_visuallevel = m_sliders.at(i)->GetLevel();
 		}
 	}
+
 	//m_engine->m_gom->m_eyecandy->SetVisualQuality();
 
 	for(int i=0; i<m_buttons.size(); i++){

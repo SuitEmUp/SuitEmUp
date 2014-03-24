@@ -145,7 +145,7 @@ bool DieState::Update(float deltatime)
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Submit")
 		{
-			if(once == false)
+			if(once == false && m_text->getString().getSize() > 0)
 			{
 				player_score->name = m_text->getString();
 				player_score->score = m_engine->m_gom->GetScore(player_score->score);
