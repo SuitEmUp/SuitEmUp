@@ -53,19 +53,19 @@ bool DieState::Init()
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 	//StartGame
 
-	m_xbuttons.push_back(new Button(m_input, "Retry", "Square", m_engine->m_spritemanager->Load("../data/buttons/Retry.png", "StartGame"),
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Retry", "Square", m_engine->m_spritemanager->Load("../data/buttons/Retry.png", "StartGame"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2)-40)));
 	//HighScore
-	m_xbuttons.push_back(new Button(m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/HighScore.png", "HighScore"),
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager,m_input, "HighScore", "Square", m_engine->m_spritemanager->Load("../data/buttons/HighScore.png", "HighScore"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3)-40)));
 	//Mainmenu
-	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager, m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*4)-40)));
 	//Submit
-	m_xbuttons.push_back(new Button(m_input, "Submit", "Square",m_engine->m_spritemanager->Load("../data/buttons/submit_button.png", "Submit"), 
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Submit", "Square",m_engine->m_spritemanager->Load("../data/buttons/submit_button.png", "Submit"), 
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 

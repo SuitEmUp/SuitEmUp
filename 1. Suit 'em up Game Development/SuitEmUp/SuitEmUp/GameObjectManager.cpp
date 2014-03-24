@@ -492,7 +492,7 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 	};
 
 	m_eyecandy->DrawParticles(deltatime, m_window);
-
+	
 	m_window->draw(*m_hpbar->Sprite2()); //draws hpsprite
 	m_window->draw(*m_hpbar->GetSprite()); //Draws hpbar
 	m_window->draw(*m_hpbar->Sprite3()); //draws hpbars shadow
@@ -509,17 +509,17 @@ void GameObjectManager::DrawGameObjects(float deltatime)
 
 void GameObjectManager::CreateButtons()
 {
-	m_vButtons.push_back(new Button(m_input, "StartGame", "Square", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"),
+	m_vButtons.push_back(new Button(m_soundmanager, m_input, "StartGame", "Square", m_spritemanager->Load("../data/buttons/Start_Game.png", "StartGame"),
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_vButtons.push_back(new Button(m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/HighScore.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_soundmanager, m_input, "HighScore", "Square", m_spritemanager->Load("../data/buttons/HighScore.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_vButtons.push_back(new Button(m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Options.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_soundmanager, m_input, "Options", "Square" ,m_spritemanager->Load("../data/buttons/Options.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
-	m_vButtons.push_back(new Button(m_input, "QuitGame", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
+	m_vButtons.push_back(new Button(m_soundmanager, m_input, "QuitGame", "Square", m_spritemanager->Load("../data/buttons/Quit_Game.png", "QuitGame"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
 };
 
@@ -543,29 +543,29 @@ void GameObjectManager::CreateCusomizationButtons()
 	//Top Suit
 	//	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitLeft", "Square",  m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeSuitLeft"), 
 	//	Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeSuit"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "UpgradeSuit", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeSuit"), 
 		Config::getInt("customize_padding_big", 0), Config::getInt("customize_padding_big", 0)));
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeSuitRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeSuitRight"), 
 	//295, Config::getInt("customize_padding_big", 0)));
 
 	//Top Weapon
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "ChangeWeaponLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeWeaponLeft"), 
 		354, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeWeapon", "Square", m_spritemanager->Load("../data/buttons/upgrade_weapon.png", "UpgradeWeapon"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "UpgradeWeapon", "Square", m_spritemanager->Load("../data/buttons/upgrade_weapon.png", "UpgradeWeapon"), 
 		413, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "ChangeWeaponRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeWeaponRight"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "ChangeWeaponRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeWeaponRight"), 
 		873, Config::getInt("customize_padding_big", 0)));
 
 	//Top Truck
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckLeft", "Square", m_spritemanager->Load("../data/buttons/change_left_button.png", "ChangeTruckLeft"), 
 	//932, Config::getInt("customize_padding_big", 0)));
-	m_vCustomizeButtons.push_back(new Button(m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeTruck"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "UpgradeTruck", "Square", m_spritemanager->Load("../data/buttons/small_upgrade.png", "UpgradeTruck"), 
 		932, Config::getInt("customize_padding_big", 0)));
 	//m_vCustomizeButtons.push_back(new Button(m_input, "ChangeTruckRight", "Square", m_spritemanager->Load("../data/buttons/change_right_button.png", "ChangeTruckRight"), 
 	//1182, Config::getInt("customize_padding_big", 0)));
 
 	//back
-	m_vCustomizeButtons.push_back(new Button(m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
+	m_vCustomizeButtons.push_back(new Button(m_soundmanager, m_input, "Back", "Square", m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 
 		Config::getInt("customize_padding_big", 0), ((Config::getInt("window_h", 0) - Config::getInt("customize_padding_big",0) - 64))));
 
 	//Trinkets
@@ -591,37 +591,37 @@ void GameObjectManager::CreateTrinketButtons()
 	//ifstates for sprites needed, this will do for testing the layout
 
 	//top row
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		75 + 123/2, 222));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*1) + (50*2), 222));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*2) + (50*3), 222));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*3) + (50*4), 222));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*4) + (50*5), 222));
 
 	//mid row
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		156 + 123/2, 343));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		156 + (123*1) + (50*2), 343));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		156 + (123*2) + (50*3), 343));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		156 + (123*3) + (50*4), 343));
 
 	//bot row
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot1", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot1"),
 		75 + 123/2, 464));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot2", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*1) + (50*2), 464));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot3", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*2) + (50*3), 464));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot4", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*3) + (50*4), 464));
-	m_vTrinketButtons.push_back(new Button(m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
+	m_vTrinketButtons.push_back(new Button(m_soundmanager, m_input, "tSlot5", "Circle", m_spritemanager->Load("../data/buttons/trinket_slot.png", "tSlot3"),
 		75 + (123*4) + (50*5), 464));
 
 };

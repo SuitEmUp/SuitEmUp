@@ -27,14 +27,13 @@ bool Options::Init()
 	tempName_change = "02";
 	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
-
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "SoundSlider", sf::Vector2f(1280/2, 100), m_engine->m_soundlevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MusicSlider", sf::Vector2f(1280/2, 200), m_engine->m_musiclevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "MasterVolumeSlider", sf::Vector2f(1280/2, 300), m_engine->m_mastervolumelevel));
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "VisualSlider", sf::Vector2f(1280/2, 400), m_engine->m_visuallevel));
 
-	m_buttons.push_back(new Button(m_engine->m_input, "BackButton", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 100, 100));
-	m_buttons.push_back(new Button(m_engine->m_input, "ChangeMovement", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 100, 200));
+	m_buttons.push_back(new Button(m_engine->m_soundmanager, m_engine->m_input, "BackButton", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 70, 650-45));
+	m_buttons.push_back(new Button(m_engine->m_soundmanager, m_engine->m_input, "ChangeMovement", "Square", m_engine->m_spritemanager->Load("../data/buttons/Special.png", "SpecialMove"), (1280/2)-(238/2), 500));
 
 	//animation
 	m_fire_sprite->setPosition(370.0f, 585.0f);
@@ -106,17 +105,21 @@ bool Options::Update(float deltatime)
 	for(int i=0; i<m_buttons.size(); i++){
 		if(m_buttons.at(i)->Update() == "Clicked"){
 			if(m_buttons.at(i)->GetType2() == "BackButton" && m_buttons.at(i)){
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				setNextState("MainMenu");
 				return false;
 			}
 			else if(m_buttons.at(i)->GetType2() == "ChangeMovement" && m_buttons.at(i))
 			{
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				if(m_engine->m_controltype == "Special")
 				{
 				m_engine->m_controltype = "Normal";
+				m_buttons.at(i)->GetSprite()->setTexture(*m_engine->m_spritemanager->Load("../data/buttons/Normal.png", "NormalMove")->getTexture());
 				std::cout<< "Normal controls!" << std::endl;
 				}
-				else {m_engine->m_controltype = "Special";	std::cout<< "Special controls!" << std::endl;}
+				else {m_engine->m_controltype = "Special";	std::cout<< "Special controls!" << std::endl;
+				m_buttons.at(i)->GetSprite()->setTexture(*m_engine->m_spritemanager->Load("../data/buttons/Special.png", "SpecialMove")->getTexture());}
 			}
 		}
 	}

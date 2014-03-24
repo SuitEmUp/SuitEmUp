@@ -8,7 +8,7 @@
 Score::	Score()
 {
 
-	m_score = 0; 
+	m_score = 10000; 
 
 
 	if (!font.loadFromFile("../assets/fonts/Viking_n.ttf"))

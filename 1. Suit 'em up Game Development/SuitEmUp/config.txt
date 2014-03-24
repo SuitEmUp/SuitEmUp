@@ -10,9 +10,13 @@ logoypos = 15
 currentsuitcost = 1000
 current_suit = 0
 quickcustomize = 1
+<<<<<<< HEAD
 current_weapon = 0
 
+=======
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 weapons_available = 1
 currentweaponcost = 2000
 currenttruckcost = 1500
 showtutorial = true;
+

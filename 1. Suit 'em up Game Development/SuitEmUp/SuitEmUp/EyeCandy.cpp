@@ -310,7 +310,7 @@ void EyeCandy::Update(float deltatime){
 	};
 	for(int i = 0; i<m_animations.size(); i++){
 		m_animations.at(i)->duration -= deltatime;
-	
+		m_animations.at(i)->picture->setColor(sf::Color(255, 255, 255, 42.5 * m_animations.at(i)->duration));
 		if(m_animations.at(i)->duration < 0){
 			delete m_animations.at(i);
 			m_animations.at(i) = nullptr;

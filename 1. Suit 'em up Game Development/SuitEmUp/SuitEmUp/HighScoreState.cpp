@@ -83,7 +83,7 @@ bool HighScoreState::Init()
 	}
 
 	//Mainmenu
-	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
 
 	m_glow1 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow1",  1.0f, 1.0f);
@@ -146,12 +146,15 @@ bool HighScoreState::Update(float deltatime)
 
 	for(int i=0; i<m_xbuttons.size();i++)
 	{
-		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Main")
+		if(m_xbuttons.at(i)->Update()== "Clicked")
 		{
-			printf("Next State set to MainMenu\n");
-			setNextState("MainMenu");
-			m_engine->m_paused = 1;
-			return false;
+			if(m_xbuttons.at(i)->GetType2() == "Main")
+			{
+				printf("Next State set to MainMenu\n");
+				setNextState("MainMenu");
+				m_engine->m_paused = 1;
+				return false;
+			}
 		}
 	}
 	return  true;

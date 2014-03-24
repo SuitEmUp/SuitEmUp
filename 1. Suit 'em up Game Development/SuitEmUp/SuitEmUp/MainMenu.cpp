@@ -9,8 +9,7 @@
 #include "Button.h"
 #include "Config.h"
 
-
-
+#include "SoundManager.h"
 
 MainMenu::MainMenu(Engine *engine) 
 {
@@ -106,6 +105,10 @@ bool MainMenu::Update(float deltatime)
 			{
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame")
 				{
+<<<<<<< HEAD
+=======
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 					m_ShowTutorial = true;
 				}
 
@@ -113,21 +116,43 @@ bool MainMenu::Update(float deltatime)
 				{
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Highscore\n");
+<<<<<<< HEAD
+=======
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 					setNextState("HighScoreState");
 					return false;
 				}
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options")
 				{
+<<<<<<< HEAD
 
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Options\n");
 					setNextState("Options");
 					return false;
+=======
+					printf("Click SUCCESSSSS\n");
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
+					printf("Next State set to Options\n");
+					setNextState("Options");
+					return false;
+				}
+
+
+				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+					
+					m_engine->m_running = false;
+					printf("Click SUCCESSSSS\n");
+					printf("This button doesnt work yet\n");
+					//Exit Game
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 				}
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame")
 				{
 
+<<<<<<< HEAD
 					m_engine->m_running = false;
 					printf("Click SUCCESSSSS\n");
 					printf("This button doesnt work yet\n");
@@ -163,6 +188,45 @@ bool MainMenu::Update(float deltatime)
 		Exit();
 		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 		{
+=======
+
+
+
+
+		}
+
+
+		if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
+		else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 2){		m_codecount += 1;}
+		else if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 3){	m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 4){		m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 5){		m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 6){		m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 7){		m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::B) && m_codecount == 8){			m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::A) && m_codecount == 9){			m_codecount += 1;}
+		if (m_input->IsDownOnce(sf::Keyboard::Return) && m_codecount == 10)
+		{
+			m_codecount += 1;
+			m_logo = m_engine->m_spritemanager->Load("../data/misc/reallogo.png", "Logo", 1.0f, 1.0f);
+			m_logo->setOrigin(m_logo->getLocalBounds().width / 2, 0);
+			m_logo->setPosition(Config::getInt("window_w", 0) / 2, Config::getInt("logoypos", 0));
+		}
+	}
+
+
+	if(m_ShowTutorial)
+	{
+		Exit();
+		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
+		{
+			
+			Config::set("currentsuitcost", "1000");
+			Config::set("currentweaponcost", "1500");
+			Config::set("currenttruckcost", "1200");
+			Config::renew;
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");
@@ -174,7 +238,10 @@ bool MainMenu::Update(float deltatime)
 
 
 	return true;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 87bd569ab59248b25bc2edac1c3f327c61068e93
 }
 
 
