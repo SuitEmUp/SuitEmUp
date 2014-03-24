@@ -9,7 +9,7 @@ RepairKit::RepairKit(sf::Vector2f p_position, sf::Vector2f p_velocity, sf::Sprit
 	m_sprite = p_sprite;
 	m_radius = 50;
 	speed = 100;
-	m_sprite->setOrigin(m_sprite->getLocalBounds().width/2, m_sprite->getLocalBounds().height/2);
+	m_sprite->setOrigin(64/2, 64/2);
 };
 
 bool RepairKit::Update(PlayerObject* p_player, float deltatime){

@@ -39,5 +39,7 @@ private:
 	std::vector<sf::Text*> m_texts;
 	std::vector<Button*> m_buttons;
 	std::vector<Slider*> m_sliders;
+	Animation *m_fire;
+	sf::Sprite *m_fire_sprite;
 
 };

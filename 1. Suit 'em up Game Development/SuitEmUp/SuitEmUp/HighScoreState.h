@@ -44,6 +44,7 @@ private:
 
 	sf::Sprite *m_background;
 	sf::Text* text;
+
 	sf::Font *font;
 
 	std::vector<sf::Text*>Texts;
@@ -53,6 +54,7 @@ private:
 	std::vector<sf::RectangleShape*> m_rects;
 	std::vector<Button*> m_xbuttons;
 	sf::Sprite* m_glow1;
+	Animation *m_fire;
+	sf::Sprite *m_fire_sprite;
 
-	
 };

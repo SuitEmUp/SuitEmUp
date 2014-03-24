@@ -20,7 +20,7 @@ Options::Options(Engine* engine)
 
 bool Options::Init()
 {
-
+	m_fire_sprite = m_engine->m_spritemanager->Load("../data/Sprites/firespreadsheet.png", "fire", 1.3, 1.3);
 	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
 	printf("State: Options,   Initialized\n");
@@ -35,6 +35,10 @@ bool Options::Init()
 	m_buttons.push_back(new Button(m_engine->m_soundmanager, m_engine->m_input, "BackButton", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 70, 650-45));
 	m_buttons.push_back(new Button(m_engine->m_soundmanager, m_engine->m_input, "ChangeMovement", "Square", m_engine->m_spritemanager->Load("../data/buttons/Special.png", "SpecialMove"), (1280/2)-(238/2), 500));
 
+	//animation
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire = new Animation(m_fire_sprite, 0.2,false, true);
+	m_fire->setSpriteSheet(m_fire_sprite);
 
 	m_font.loadFromFile("../assets/fonts/Viking_n.ttf");
 	for(int i = 0; i<5; i++)
@@ -59,6 +63,17 @@ bool Options::Init()
 	m_texts.at(4)->setString("Current Control Type");
 	m_texts.at(4)->setPosition(1280/2, 450);
 	m_texts.at(4)->setOrigin((m_texts.at(4)->getLocalBounds().width/2), (m_texts.at(4)->getLocalBounds().height/2)-10);
+
+	m_fire->addFrame(sf::IntRect (0, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (34, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (68, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (102, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (136, 0, 28, 23));
+	
+	for(int count=0;count<5;count++)
+	{
+		m_fire->update(0.1f, 1);
+	}
 	/*printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";*/
@@ -91,10 +106,15 @@ void Options::Exit()
 
 	m_background = nullptr;
 	std::cout<< m_engine->m_controltype << std::endl;
+	delete m_fire;
+	m_fire = nullptr;
 };
 
 bool Options::Update(float deltatime)
 {
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire->update(deltatime, 1);
+
 	for(int i=0; i<m_sliders.size(); i++){
 		m_sliders.at(i)->Update(m_engine->m_input);
 		if(m_sliders.at(i)->GetSliderType() == "SoundSlider"){
@@ -110,6 +130,7 @@ bool Options::Update(float deltatime)
 			m_engine->m_visuallevel = m_sliders.at(i)->GetLevel();
 		}
 	}
+
 	//m_engine->m_gom->m_eyecandy->SetVisualQuality();
 
 	for(int i=0; i<m_buttons.size(); i++){
@@ -177,7 +198,7 @@ void Options::Draw()
 	for(int i=0; i<m_texts.size(); i++){
 		m_engine->m_window->draw(*m_texts.at(i));
 	}
-
+	m_engine->m_window->draw(*m_fire_sprite);
 };
 std::string Options::Next()
 {

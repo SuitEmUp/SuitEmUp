@@ -26,7 +26,7 @@ InputManager::InputManager(sf::RenderWindow* window) :
 	for(int i = 0; i < sf::Mouse::ButtonCount; i++) {
 		m_currentMouse[i] = false;
 		m_previousMouse[i] = false;
-	};
+	}; 
 	//text
 	text = new sf::Text;
 

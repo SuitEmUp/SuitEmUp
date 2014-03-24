@@ -27,7 +27,7 @@ DieState::DieState(Engine* engine)
 
 	m_text->setFont(m_font);
 	m_text->setCharacterSize(20);
-	m_text->setColor(sf::Color::Black);
+	m_text->setColor(sf::Color(156, 35, 23, 255));
 	m_text->setPosition(550.f, 200.f);	
 	m_text->setStyle(sf::Text::Bold);
 };
@@ -145,7 +145,7 @@ bool DieState::Update(float deltatime)
 		}
 		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Submit")
 		{
-			if(once == false)
+			if(once == false && m_text->getString().getSize() > 0)
 			{
 				player_score->name = m_text->getString();
 				player_score->score = m_engine->m_gom->GetScore(player_score->score);
@@ -153,6 +153,8 @@ bool DieState::Update(float deltatime)
 				m_highscore->Push_Back(player_score);
 				once = true; 
 				m_input->GlobalAllow();
+				setNextState("HighScoreState");
+				return false;
 			}
 		}
 

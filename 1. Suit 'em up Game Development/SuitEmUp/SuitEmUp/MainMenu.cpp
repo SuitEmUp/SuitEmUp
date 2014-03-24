@@ -38,7 +38,7 @@ bool MainMenu::Init()
 	printf("State: MainMenu,  Initialized\n");
 
 	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
-
+	m_fire_sprite = m_engine->m_spritemanager->Load("../data/Sprites/firespreadsheet.png", "fire", 1.3, 1.3);
 	m_logo = m_engine->m_spritemanager->Load("../data/misc/logo.png", "Logo", 1.0f, 1.0f);
 
 	m_logo->setOrigin(m_logo->getLocalBounds().width / 2, 0);
@@ -65,6 +65,21 @@ bool MainMenu::Init()
 	m_reset = false;
 	m_codecount = 0;
 
+	//animation
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire = new Animation(m_fire_sprite, 0.2,false, true);
+	m_fire->setSpriteSheet(m_fire_sprite);
+
+	m_fire->addFrame(sf::IntRect (0, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (34, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (68, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (102, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (136, 0, 28, 23));
+
+	for(int count=0;count<5;count++)
+	{
+		m_fire->update(0.1f, 1);
+	}
 
 
 	return true;
@@ -72,12 +87,18 @@ bool MainMenu::Init()
 void MainMenu::Exit()
 {
 	m_engine->m_gom->EraseButtons();
+	delete m_fire;
+	m_fire = nullptr;
 };
 
 bool MainMenu::Update(float deltatime)
 {
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+
+
 	if(!m_ShowTutorial)
 	{
+		m_fire->update(deltatime, 1);
 		for(int i = 0; i < m_engine->m_gom->m_vButtons.size(); i++)
 		{
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked")
@@ -85,6 +106,7 @@ bool MainMenu::Update(float deltatime)
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame")
 				{
 					m_engine->m_soundmanager->PlaySound("M4A1.wav");
+
 					m_ShowTutorial = true;
 				}
 
@@ -92,13 +114,23 @@ bool MainMenu::Update(float deltatime)
 				{
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Highscore\n");
+
+
 					m_engine->m_soundmanager->PlaySound("M4A1.wav");
+
 					setNextState("HighScoreState");
 					return false;
 				}
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options")
 				{
+
+
+					printf("Click SUCCESSSSS\n");
+					printf("Next State set to Options\n");
+					setNextState("Options");
+					return false;
+
 					printf("Click SUCCESSSSS\n");
 					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					printf("Next State set to Options\n");
@@ -108,21 +140,15 @@ bool MainMenu::Update(float deltatime)
 
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
-					
+
 					m_engine->m_running = false;
 					printf("Click SUCCESSSSS\n");
 					printf("This button doesnt work yet\n");
 					//Exit Game
+
 				}
 			}
-
-
-
-
-
 		}
-
-
 		if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
 		else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
 		if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 2){		m_codecount += 1;}
@@ -148,11 +174,11 @@ bool MainMenu::Update(float deltatime)
 		Exit();
 		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 		{
-			
+
 			Config::set("currentsuitcost", "1000");
-			Config::set("currentweaponcost", "1500");
-			Config::set("currenttruckcost", "1200");
-			Config::renew;
+			Config::set("currentweaponcost", "2000");
+			Config::set("currenttruckcost", "1500");
+			Config::renew();
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");
@@ -165,8 +191,6 @@ bool MainMenu::Update(float deltatime)
 
 	return true;
 }
-
-
 void MainMenu::Draw()
 {
 	m_engine->m_window->draw(*m_xbackground);
@@ -188,6 +212,8 @@ void MainMenu::Draw()
 			m_engine->m_window->draw(*m_glow4);
 		}
 	}
+	m_engine->m_window->draw(*m_fire_sprite);
+
 	if(m_ShowTutorial)
 		m_engine->m_window->draw(*m_Tutorial);
 };

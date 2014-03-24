@@ -30,6 +30,7 @@ HighScoreState::HighScoreState(Engine* engine)
 
 bool HighScoreState::Init()
 {
+	m_fire_sprite = m_engine->m_spritemanager->Load("../data/Sprites/firespreadsheet.png", "fire", 1.3, 1.3);
 	m_background = m_engine->m_spritemanager->Load("../data/sprites/title.png", "title.png", 1, 1);
 	m_background->setPosition(0,0);
 
@@ -48,20 +49,20 @@ bool HighScoreState::Init()
 		{
 			text->setFont(*font);
 			text->setCharacterSize(20);
-			text->setColor(sf::Color::Red);	
+			text->setColor(sf::Color(156, 35, 23, 255));	
 			text->setStyle(sf::Text::Bold);
 
 			std::ostringstream ss;
-			ss << m_highscore->Getdata(i)->name << " " << m_highscore->Getdata(i)->score << " " << m_highscore->Getdata(i)->kills << "\n";	
+			ss << i+1 << ". " << m_highscore->Getdata(i)->name << "  " << m_highscore->Getdata(i)->score << "  | Kills | -> " << m_highscore->Getdata(i)->kills << "\n";	
 			text->setString( ss.str());
-			text->setPosition(Config::getInt("window_w", 0)/2 - 119, text->getCharacterSize()*i+1);
+			text->setPosition(400, 100+(text->getCharacterSize()+10)*i);
 			Texts.push_back(text);
 			text = new sf::Text;
 		}
 	}
 	else
 	{
-		for(int y=0;y<25;y++)
+		for(int y=0;y<13;y++)
 		{
 			if(y == m_highscore->Size())
 			{
@@ -69,13 +70,13 @@ bool HighScoreState::Init()
 			}
 			text->setFont(*font);
 			text->setCharacterSize(20);
-			text->setColor(sf::Color::Red);	
+			text->setColor(sf::Color(156, 35, 23, 255));		
 			text->setStyle(sf::Text::Bold);
 
 			std::ostringstream ss;
-			ss << m_highscore->Getdata(y)->name << " " << m_highscore->Getdata(y)->score << " " << m_highscore->Getdata(y)->kills << "\n";	
+			ss << y+1 << ". " << m_highscore->Getdata(y)->name << "  " << m_highscore->Getdata(y)->score << "  | Kills | -> " << m_highscore->Getdata(y)->kills << "\n";	
 			text->setString( ss.str());
-			text->setPosition(Config::getInt("window_w", 0)/2 - 119, text->getCharacterSize()*y+1);
+			text->setPosition(400, 100+(text->getCharacterSize()+10)*y);
 			Texts.push_back(text);
 			text = new sf::Text;
 		}
@@ -91,6 +92,22 @@ bool HighScoreState::Init()
 	std::cout << "Initiated HighscoreState\n";
 
 	tempName_change = "02";
+
+	//animation
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire = new Animation(m_fire_sprite, 0.2,false, true);
+	m_fire->setSpriteSheet(m_fire_sprite);
+
+	m_fire->addFrame(sf::IntRect (0, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (34, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (68, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (102, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (136, 0, 28, 23));
+
+	for(int count=0;count<5;count++)
+	{
+		m_fire->update(0.1f, 1);
+	}
 
 	return true;
 };
@@ -118,11 +135,14 @@ void HighScoreState::Exit()
 		delete m_glow1;
 		m_glow1 = nullptr;
 	}
-
+	delete m_fire;
+	m_fire = nullptr;
 };
 
 bool HighScoreState::Update(float deltatime)
 {
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire->update(deltatime, 1);
 
 	for(int i=0; i<m_xbuttons.size();i++)
 	{
@@ -164,6 +184,8 @@ void HighScoreState::Draw()
 			m_engine->m_window->draw(*m_glow1);
 		}
 	}
+	m_engine->m_window->draw(*m_fire_sprite);
+
 };
 std::string HighScoreState::Next()
 {
