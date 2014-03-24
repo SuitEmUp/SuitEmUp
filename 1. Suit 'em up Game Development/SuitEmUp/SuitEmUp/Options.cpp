@@ -36,6 +36,29 @@ bool Options::Init()
 	m_buttons.push_back(new Button(m_engine->m_soundmanager, m_engine->m_input, "ChangeMovement", "Square", m_engine->m_spritemanager->Load("../data/buttons/Special.png", "SpecialMove"), (1280/2)-(238/2), 500));
 
 
+	m_font.loadFromFile("../assets/fonts/Viking_n.ttf");
+	for(int i = 0; i<5; i++)
+	{
+		m_texts.push_back(new sf::Text);
+		m_texts.at(i)->setFont(m_font);
+		m_texts.at(i)->setColor(sf::Color(255, 230, 50));
+	}
+
+	m_texts.at(0)->setString("Sound Volume");
+	m_texts.at(0)->setPosition(1280/2, 50);
+	m_texts.at(0)->setOrigin(m_texts.at(0)->getLocalBounds().width/2, m_texts.at(0)->getLocalBounds().height/2);
+	m_texts.at(1)->setString("Music Volume");
+	m_texts.at(1)->setPosition(1280/2, 150);
+	m_texts.at(1)->setOrigin(m_texts.at(1)->getLocalBounds().width/2, m_texts.at(1)->getLocalBounds().height/2);
+	m_texts.at(2)->setString("Master Volume");
+	m_texts.at(2)->setPosition(1280/2, 250);
+	m_texts.at(2)->setOrigin(m_texts.at(2)->getLocalBounds().width/2, m_texts.at(2)->getLocalBounds().height/2);
+	m_texts.at(3)->setString("Particles");
+	m_texts.at(3)->setPosition(1280/2, 350);
+	m_texts.at(3)->setOrigin(m_texts.at(3)->getLocalBounds().width/2, m_texts.at(3)->getLocalBounds().height/2);
+	m_texts.at(4)->setString("Current Control Type");
+	m_texts.at(4)->setPosition(1280/2, 450);
+	m_texts.at(4)->setOrigin((m_texts.at(4)->getLocalBounds().width/2), (m_texts.at(4)->getLocalBounds().height/2)-10);
 	/*printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";*/
@@ -58,6 +81,13 @@ void Options::Exit()
 		i--;
 	};
 	m_sliders.clear();
+
+	for(int i = 0; i< m_texts.size(); i++){
+		delete m_texts[i];
+		m_texts.erase(m_texts.begin()+i);
+		i--;
+	};
+	m_texts.clear();
 
 	m_background = nullptr;
 	std::cout<< m_engine->m_controltype << std::endl;
@@ -94,9 +124,9 @@ bool Options::Update(float deltatime)
 				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				if(m_engine->m_controltype == "Special")
 				{
-				m_engine->m_controltype = "Normal";
-				m_buttons.at(i)->GetSprite()->setTexture(*m_engine->m_spritemanager->Load("../data/buttons/Normal.png", "NormalMove")->getTexture());
-				std::cout<< "Normal controls!" << std::endl;
+					m_engine->m_controltype = "Normal";
+					m_buttons.at(i)->GetSprite()->setTexture(*m_engine->m_spritemanager->Load("../data/buttons/Normal.png", "NormalMove")->getTexture());
+					std::cout<< "Normal controls!" << std::endl;
 				}
 				else {m_engine->m_controltype = "Special";	std::cout<< "Special controls!" << std::endl;
 				m_buttons.at(i)->GetSprite()->setTexture(*m_engine->m_spritemanager->Load("../data/buttons/Special.png", "SpecialMove")->getTexture());}
@@ -111,9 +141,9 @@ bool Options::Update(float deltatime)
 	setNextState("MainMenu");
 	return false;
 	};
-<<<<<<< HEAD
-	
-=======
+	<<<<<<< HEAD
+
+	=======
 	if(m_input->IsDown(sf::Keyboard::F2))
 	{
 	printf("Next State set to Game\n");
@@ -143,6 +173,9 @@ void Options::Draw()
 	}
 	for(int i=0; i<m_buttons.size(); i++){
 		m_engine->m_window->draw(*m_buttons.at(i)->GetSprite());
+	}
+	for(int i=0; i<m_texts.size(); i++){
+		m_engine->m_window->draw(*m_texts.at(i));
 	}
 
 };

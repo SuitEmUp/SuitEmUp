@@ -35,6 +35,8 @@ private:
 
 	sf::Sprite *m_background;
 
+	sf::Font m_font;
+	std::vector<sf::Text*> m_texts;
 	std::vector<Button*> m_buttons;
 	std::vector<Slider*> m_sliders;
 
