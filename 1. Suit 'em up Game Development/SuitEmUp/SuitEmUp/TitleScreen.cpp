@@ -26,15 +26,30 @@ TitleScreen::TitleScreen(Engine* engine)
 	start_game.move(325.f, 650.f);	
 	start_game.setStyle(sf::Text::Bold);
 
+
+	m_blTimer = 10;
+	m_tiTimer = 100;
+	m_blackfade = 255.0f;
+	m_titlefade = 255.0f;
+	m_CanGoToMain = true;
+
 };
 
 bool TitleScreen::Init()
 {
 	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
+	m_TitleLogo = m_engine->m_spritemanager->Load("../data/misc/titlelogob.png", "title", 1.0, 1.0);
+
+	Black = new sf::RectangleShape;							Black->setSize(sf::Vector2f(1280, 720));
+	Black->setFillColor(sf::Color(0,0,0,m_blackfade));		Black->setPosition(sf::Vector2f(0, 0 ));
 
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
 	return true;
+
+
+
+
 };
 void TitleScreen::Exit()
 {
@@ -43,12 +58,59 @@ void TitleScreen::Exit()
 
 bool TitleScreen::Update(float deltatime)
 {
-	if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
+	int fadespeed = 4;
+
+	if(m_CanGoToMain == true)
 	{
-		printf("Next State set to MainMenu\n");
-		setNextState("MainMenu");
-		return false;
-	};
+		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
+		{
+			printf("Next State set to MainMenu\n");
+			setNextState("MainMenu");
+			return false;
+		};
+	}
+
+	else if(m_CanGoToMain == false)
+	{
+		if(m_tiTimer > 0)
+		{
+			m_tiTimer -= 1;
+			/*if(m_tiTimer < 0)
+				m_tiTimer = 0*/;
+		}
+
+
+		if(m_tiTimer <= 0)
+		{
+			m_titlefade -= fadespeed;
+			if(m_titlefade <= 0)
+			{
+				m_blTimer -= 1;
+				delete m_TitleLogo;
+				m_TitleLogo = nullptr;
+				if(m_blTimer <= 0)
+				{
+					m_blackfade -= fadespeed;
+					if(m_blackfade <= 0)
+					{
+						delete Black;
+						Black = nullptr;
+					}
+				}
+			}
+		}
+		if(Black != nullptr)
+		Black->setFillColor(sf::Color(0,0,0, m_blackfade));
+		if(m_TitleLogo != nullptr)
+		m_TitleLogo->setColor(sf::Color(255, 255, 255, m_titlefade));
+
+
+		if(m_blackfade <= 0)
+			m_CanGoToMain = true;
+	}
+
+
+
 	return true;
 }
 
@@ -56,6 +118,12 @@ void TitleScreen::Draw()
 {
 	m_engine->m_window->draw(*m_xbackground);
 	m_engine->m_window->draw(start_game);
+	
+	if(Black != nullptr)
+	m_engine->m_window->draw(*Black);
+	if(m_TitleLogo != nullptr)
+	m_engine->m_window->draw(*m_TitleLogo);
+
 };
 
 std::string TitleScreen::Next()

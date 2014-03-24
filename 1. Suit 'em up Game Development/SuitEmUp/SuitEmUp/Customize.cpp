@@ -191,21 +191,21 @@ bool Customize::Init()
 	//m_truckrect->setFillColor(sf::Color(255,255,255,100));		m_truckrect->setOutlineColor(sf::Color::Black);
 	//m_truckrect->setOutlineThickness(2);					m_truckrect->setPosition(sf::Vector2f(934, 315 ));
 
-	sf::RectangleShape* t_suitrect = new sf::RectangleShape;					t_suitrect->setSize(sf::Vector2f(299, 50));
-	t_suitrect->setFillColor(sf::Color(255,255,255,50));		t_suitrect->setOutlineColor(sf::Color::Black);
-	t_suitrect->setOutlineThickness(2);						t_suitrect->setPosition(sf::Vector2f(47, 556));
+	sf::RectangleShape* t_suitrect = new sf::RectangleShape;		t_suitrect->setSize(sf::Vector2f(287, 50));
+	t_suitrect->setFillColor(sf::Color(255,255,255,50));			t_suitrect->setOutlineColor(sf::Color::Black);
+	t_suitrect->setOutlineThickness(2);								t_suitrect->setPosition(sf::Vector2f(53, 547));
 
 	m_rects.push_back(t_suitrect);
 
-	sf::RectangleShape* t_weaponrect = new sf::RectangleShape;					t_weaponrect->setSize(sf::Vector2f(568, 50));
-	t_weaponrect->setFillColor(sf::Color(255,255,255,50));	t_weaponrect->setOutlineColor(sf::Color::Black);
-	t_weaponrect->setOutlineThickness(2);					t_weaponrect->setPosition(sf::Vector2f(356, 315));
+	sf::RectangleShape* t_weaponrect = new sf::RectangleShape;		t_weaponrect->setSize(sf::Vector2f(556, 50));
+	t_weaponrect->setFillColor(sf::Color(255,255,255,50));			t_weaponrect->setOutlineColor(sf::Color::Black);
+	t_weaponrect->setOutlineThickness(2);							t_weaponrect->setPosition(sf::Vector2f(362, 309));
 
 	m_rects.push_back(t_weaponrect);
 
-	sf::RectangleShape* t_truckrect = new sf::RectangleShape;					t_truckrect->setSize(sf::Vector2f(299, 50));
-	t_truckrect->setFillColor(sf::Color(255,255,255,50));	t_truckrect->setOutlineColor(sf::Color::Black);
-	t_truckrect->setOutlineThickness(2);						t_truckrect->setPosition(sf::Vector2f(934, 315 ));
+	sf::RectangleShape* t_truckrect = new sf::RectangleShape;		t_truckrect->setSize(sf::Vector2f(287, 50));
+	t_truckrect->setFillColor(sf::Color(255,255,255,50));			t_truckrect->setOutlineColor(sf::Color::Black);
+	t_truckrect->setOutlineThickness(2);							t_truckrect->setPosition(sf::Vector2f(940, 309 ));
 
 	m_rects.push_back(t_truckrect);
 
@@ -254,7 +254,6 @@ bool Customize::Init()
 
 
 	printf("State: Customize, Initialized\n");
-	printf("F1 - F4 to Change States\n");
 
 	return true;
 };

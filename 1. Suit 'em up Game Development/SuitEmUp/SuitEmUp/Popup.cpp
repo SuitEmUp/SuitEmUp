@@ -84,7 +84,6 @@ void Popup::FadeAway()
 
 	if (m_fadevalue < 0 ){{
 		m_willfade = false;
-		printf("Beep boop, motherfucker\n");
 		m_exists = false;
 		//CleanUp();
 

@@ -1,17 +1,18 @@
 window_w = 1280
-customize_padding_big = 45
 button_padding = 75
-weapons_available = 1
-current_truck = 0
+customize_padding_big = 45
 window_h = 720
-
+current_truck = 0
 hud_padding = 75
 fullscreen = false
-menu_top_padding = 225
-logoypos = 75
+menu_top_padding = 280
+logoypos = 15
 current_suit = 0
 currentsuitcost = 1000
-quickcustomize = 1
 current_weapon = 0
+quickcustomize = 1
+
+weapons_available = 1
 currentweaponcost = 2000
 currenttruckcost = 1500
+showtutorial = true;

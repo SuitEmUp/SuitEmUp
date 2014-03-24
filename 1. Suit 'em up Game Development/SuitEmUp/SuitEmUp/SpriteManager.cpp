@@ -30,8 +30,6 @@ SpriteManager::~SpriteManager()
 
 }; 
 
-// Faktumet är ju att man absolut inte bör koda med bokstäverna åäö eftersom att inte allas tangentbord har dessa bokstäver
-
 sf::Sprite* SpriteManager::Load(const std::string &filename, const std::string spritename, float x_scale, float y_scale)
 {
 	auto it = m_Textures.find(filename); //searches for texture

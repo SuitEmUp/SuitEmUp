@@ -57,7 +57,12 @@ bool Engine::Initialize()
 	m_soundmanager = new SoundManager();
 	m_soundmanager->Initialize("../data/sounds/");
 	m_statemanager = new StateManager();
-	m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Default);
+
+	if(Config::getBool("fullscreen", false) == true)
+		m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Fullscreen);
+	if(Config::getBool("fullscreen", false) == false)
+		m_window = new sf::RenderWindow(sf::VideoMode(Config::getInt("window_w", 0), Config::getInt("window_h", 0)), "SFML window", sf::Style::Default);
+
 	m_input = new InputManager(m_window);
 	m_spritemanager = new SpriteManager();
 	m_gom = new GameObjectManager(m_spritemanager, m_window, m_input, m_soundmanager, &m_controltype);

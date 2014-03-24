@@ -24,7 +24,6 @@ bool Options::Init()
 	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
 	printf("State: Options,   Initialized\n");
-	printf("F1 - F4 to Change States\n");
 	tempName_change = "02";
 	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
