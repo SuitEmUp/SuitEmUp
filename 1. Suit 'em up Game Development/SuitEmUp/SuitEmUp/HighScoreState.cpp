@@ -49,20 +49,20 @@ bool HighScoreState::Init()
 		{
 			text->setFont(*font);
 			text->setCharacterSize(20);
-			text->setColor(sf::Color::Red);	
+			text->setColor(sf::Color(156, 35, 23, 255));	
 			text->setStyle(sf::Text::Bold);
 
 			std::ostringstream ss;
-			ss << m_highscore->Getdata(i)->name << "   " << m_highscore->Getdata(i)->score << "   " << m_highscore->Getdata(i)->kills << "\n";	
+			ss << i+1 << ". " << m_highscore->Getdata(i)->name << "  " << m_highscore->Getdata(i)->score << "  | Kills | -> " << m_highscore->Getdata(i)->kills << "\n";	
 			text->setString( ss.str());
-			text->setPosition(500, 100+text->getCharacterSize()*i);
+			text->setPosition(400, 100+(text->getCharacterSize()+10)*i);
 			Texts.push_back(text);
 			text = new sf::Text;
 		}
 	}
 	else
 	{
-		for(int y=0;y<25;y++)
+		for(int y=0;y<13;y++)
 		{
 			if(y == m_highscore->Size())
 			{
@@ -70,13 +70,13 @@ bool HighScoreState::Init()
 			}
 			text->setFont(*font);
 			text->setCharacterSize(20);
-			text->setColor(sf::Color::Red);	
+			text->setColor(sf::Color(156, 35, 23, 255));		
 			text->setStyle(sf::Text::Bold);
 
 			std::ostringstream ss;
-			ss << m_highscore->Getdata(y)->name << "   " << m_highscore->Getdata(y)->score << "  5 " << m_highscore->Getdata(y)->kills << "\n";	
+			ss << y+1 << ". " << m_highscore->Getdata(y)->name << "  " << m_highscore->Getdata(y)->score << "  | Kills | -> " << m_highscore->Getdata(y)->kills << "\n";	
 			text->setString( ss.str());
-			text->setPosition(500, 100+text->getCharacterSize()*y);
+			text->setPosition(400, 100+(text->getCharacterSize()+10)*y);
 			Texts.push_back(text);
 			text = new sf::Text;
 		}

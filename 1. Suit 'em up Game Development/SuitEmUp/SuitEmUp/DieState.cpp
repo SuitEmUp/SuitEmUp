@@ -27,7 +27,7 @@ DieState::DieState(Engine* engine)
 
 	m_text->setFont(m_font);
 	m_text->setCharacterSize(20);
-	m_text->setColor(sf::Color::Black);
+	m_text->setColor(sf::Color(156, 35, 23, 255));
 	m_text->setPosition(550.f, 200.f);	
 	m_text->setStyle(sf::Text::Bold);
 };
@@ -154,6 +154,7 @@ bool DieState::Update(float deltatime)
 				once = true; 
 				m_input->GlobalAllow();
 				setNextState("HighScoreState");
+				return false;
 			}
 		}
 
