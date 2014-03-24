@@ -43,7 +43,8 @@ InputManager::InputManager(sf::RenderWindow* window) :
 
 InputManager::~InputManager()
 {
-
+	delete text;
+	text = nullptr;
 }
 
 bool InputManager::Mouse_isDownOnce(sf::Mouse::Button button) const
@@ -106,7 +107,7 @@ void InputManager::HandleInput(bool &running, InputManager *m_input, StateManage
 				{
 					str = "";
 				}
-				if(m_input->IsDown(sf::Keyboard::Return))
+				if(m_input->IsDown(sf::Keyboard::Return)) 
 				{
 					str = "";
 				}

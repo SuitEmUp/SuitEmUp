@@ -31,6 +31,16 @@ private:
 	sf::Text start_game;
 	sf::Font font;
 	sf::Sprite *m_xbackground;
+	sf::Sprite* m_TitleLogo;
+	bool m_CanGoToMain;
+	float m_blackfade;
+	float m_titlefade;
+
+	sf::RectangleShape* Black;
+
+	int m_blTimer;
+	int m_tiTimer;
+
 
 
 

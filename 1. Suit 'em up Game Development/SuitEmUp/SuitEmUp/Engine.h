@@ -25,6 +25,8 @@ public:
 	void Run();
 	void Cleanup();
 	void UpdateDeltatime(); //ladbon
+
+	void SetVisuals(float degree);
 public:
 	StateManager* m_statemanager;
 	sf::RenderWindow* m_window;
@@ -52,7 +54,7 @@ public:
 	int m_musiclevel;
 	int m_mastervolumelevel;
 
-	
+	std::string m_controltype;
 
 	sf::Sprite *m_crosshair;
 

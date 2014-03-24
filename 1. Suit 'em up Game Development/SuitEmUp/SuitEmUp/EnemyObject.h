@@ -27,7 +27,5 @@ protected:
 	float m_damage;
 
 	Animation *m_animation;
-
-	sf::Sprite* m_shootingidle;
 	sf::Sprite* m_shooting;
 };

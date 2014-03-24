@@ -28,14 +28,19 @@ bool Game::Init()
 
 	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
 	{
-		m_engine->m_gom->CreateGameObjects();
+
+
+
+
+
+		m_engine->m_gom->CreateGameObjects(m_engine->m_visuallevel);
+
 	}
 
 	/*popuplock = true;
 	onepopuplock = false;*/
 
 	printf("State: Game,  Initialized\n");
-	printf("F1 - F4 to Change States\n");
 	return true;
 };
 

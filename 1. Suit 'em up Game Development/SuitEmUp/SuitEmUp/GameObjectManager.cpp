@@ -21,11 +21,9 @@
 #include "HpBar.h"
 
 
-GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr)
+GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr, std::string* controltype)
 {
-
-
-
+	m_controltype = controltype;
 	m_soundmanager = soundmngr;
 	m_input = input;
 	m_spritemanager=sm;
@@ -51,15 +49,14 @@ GameObjectManager::~GameObjectManager()
 	//	m_spritemanager=nullptr;
 	int i = 0;
 }
-void GameObjectManager::CreateGameObjects()
+
+void GameObjectManager::CreateGameObjects(float degree)
 {
 	//background
 	m_background = m_spritemanager->Load("../data/sprites/Background.png", "Wackground", 1, 1);
 	m_background->setPosition(0,0);
 
 	//Creates all objects that exists from the beginning
-
-
 
 	//ANIMATIONS TRUCK
 
@@ -74,7 +71,7 @@ void GameObjectManager::CreateGameObjects()
 
 
 
-	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1), m_spritemanager);
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1), m_spritemanager, m_controltype);
 	m_spawner = new Spawner(m_truck);
 
 
@@ -94,7 +91,7 @@ void GameObjectManager::CreateGameObjects()
 		(m_spritemanager->Load("../data/sprites/HP_Bar_Shadows_2.png", "hpshadow", 1,1)));
 	m_xscore = new Score();
 
-	m_eyecandy = new EyeCandy();
+	m_eyecandy = new EyeCandy(degree);
 
 	//resets a few things
 
@@ -200,7 +197,7 @@ void GameObjectManager::Update(float deltatime)
 		if(m_player->GetWeaponType() == "ArmCannon") m_soundmanager->PlaySound("Bow.wav");
 		m_player_projectiles.push_back(new PlayerProjectile
 			(m_truck, m_player, m_spritemanager->Load("../data/sprites/BulletProjectile.png", "PlayerBullet", 0.3, 0.3), 
-			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/Projectile_3.png", "TeslaBall", 0.25, 0.25)));
+			m_spritemanager->Load("../data/sprites/BulletProjectileNeedle.png", "PlayerNeedle", 1, 1), m_spritemanager->Load("../data/sprites/LAZER.png", "LAZERR", 0.8, 1)));
 	}
 
 
@@ -288,17 +285,18 @@ void GameObjectManager::Update(float deltatime)
 
 			if(m_spawner->EnemyDestroyer(m_enemies.at(j), m_player_projectiles.at(i))){
 				if(m_player->GetWeaponType() == "ArmCannon"){
-					m_eyecandy->ShockCreator(m_enemies.at(j)->GetPosition());
+					m_eyecandy->ShockCreator(m_player_projectiles.at(i)->GetPosition());
 				}
 				else if(m_player->GetWeaponType() == "BoomWosh")
 				{
 					m_eyecandy->BoomWoshCreator(m_enemies.at(j)->GetPosition(), m_truck->GetPosition());
 				}
 
-				else m_eyecandy->BloodCreator("Player", m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+				else m_eyecandy->BloodCreator("Player", m_player_projectiles.at(i)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 
 				if(m_enemies.at(j)->Damaged(m_player->GetDamage())<=0){
 					//EYECANDY SCORE AND DEADPICTURE CREATION
+					
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/DeadBandit.png", "BanditCorpse", 1.2, 1.2), m_enemies.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+160);
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(10), m_enemies.at(j)->GetPosition());
 
@@ -332,13 +330,13 @@ void GameObjectManager::Update(float deltatime)
 
 			if(m_spawner->SuperDestroyer(m_supers.at(j), m_player_projectiles.at(i))){
 				if(m_player->GetWeaponType() == "ArmCannon"){
-					m_eyecandy->ShockCreator(m_supers.at(j)->GetPosition());
+					m_eyecandy->ShockCreator(m_player_projectiles.at(i)->GetPosition());
 				}
 				else if(m_player->GetWeaponType() == "BoomWosh")
 				{
 					m_eyecandy->BoomWoshCreator(m_supers.at(j)->GetPosition(), m_truck->GetPosition());
 				}
-				else m_eyecandy->BloodCreator("Player", m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+				else m_eyecandy->BloodCreator("Player", m_player_projectiles.at(i)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_supers.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%5;
 					if(chance == 0)
@@ -348,8 +346,10 @@ void GameObjectManager::Update(float deltatime)
 					}
 
 					//score and feedback
+
 					m_eyecandy->PictureCreator(m_spritemanager->Load("../data/sprites/Corpse placeholder.png", "Supercorpse", 1.3, 1.3), m_supers.at(j)->GetPosition(), m_player_projectiles.at(i)->GetRotation()+180);
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(20), m_supers.at(j)->GetPosition());
+
 
 					delete m_supers[j];
 					m_supers.erase(m_supers.begin()+j);
@@ -375,13 +375,13 @@ void GameObjectManager::Update(float deltatime)
 
 			if(m_spawner->SniperDestroyer(m_girls.at(j), m_player_projectiles.at(i))){
 				if(m_player->GetWeaponType() == "ArmCannon"){
-					m_eyecandy->ShockCreator(m_girls.at(j)->GetPosition());
+					m_eyecandy->ShockCreator(m_player_projectiles.at(i)->GetPosition());
 				}
 				else if(m_player->GetWeaponType() == "BoomWosh")
 				{
 					m_eyecandy->BoomWoshCreator(m_girls.at(j)->GetPosition(), m_truck->GetPosition());
 				}
-				else m_eyecandy->BloodCreator("Player", m_girls.at(j)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
+				else m_eyecandy->BloodCreator("Player", m_player_projectiles.at(i)->GetPosition(), m_player_projectiles.at(i)->GetVelocity());
 				if(m_girls.at(j)->Damaged(m_player->GetDamage())<=0){
 					int chance = rand()%2;
 					if(chance == 0)

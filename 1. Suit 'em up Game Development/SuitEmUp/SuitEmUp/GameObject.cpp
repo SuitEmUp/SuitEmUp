@@ -20,7 +20,7 @@ bool GameObject::HasSprite()
 	if(m_sprite!=nullptr){
 			 true;
 	}
-	else return false;
+	return false;
 };
 
 float GameObject::GetRadius()
