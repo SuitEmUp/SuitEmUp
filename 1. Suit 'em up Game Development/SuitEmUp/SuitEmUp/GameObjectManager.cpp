@@ -304,7 +304,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 0)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_enemies.at(j)->GetPosition(), m_enemies.at(j)->GetVelocity(), 
-							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 0.8f, 0.8f)));
 					}
 
 					delete m_enemies[j];
@@ -342,7 +342,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 0)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_supers.at(j)->GetPosition(), m_supers.at(j)->GetVelocity(), 
-							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 0.8f, 0.8f)));
 					}
 
 					//score and feedback
@@ -387,7 +387,7 @@ void GameObjectManager::Update(float deltatime)
 					if(chance == 0)
 					{
 						m_vRepairKits.push_back(new RepairKit(m_girls.at(j)->GetPosition(), m_girls.at(j)->GetVelocity(), 
-							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 1, 1)));
+							m_spritemanager->Load("../data/sprites/ToolBox.png", "Toolbox", 0.8f, 0.8f)));
 					}
 					m_eyecandy->TextCreator(m_xscore->FeedbackScore(30), m_girls.at(j)->GetPosition());
 

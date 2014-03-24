@@ -22,7 +22,7 @@ TitleScreen::TitleScreen(Engine* engine)
 
 	start_game.setFont(font);
 	start_game.setCharacterSize(25);
-	start_game.setColor(sf::Color::Green);
+	start_game.setColor(sf::Color::Red);
 	start_game.move(325.f, 650.f);	
 	start_game.setStyle(sf::Text::Bold);
 
@@ -31,7 +31,7 @@ TitleScreen::TitleScreen(Engine* engine)
 	m_tiTimer = 100;
 	m_blackfade = 255.0f;
 	m_titlefade = 255.0f;
-	m_CanGoToMain = true;
+	m_CanGoToMain = false;
 
 };
 
@@ -39,29 +39,47 @@ bool TitleScreen::Init()
 {
 	m_xbackground = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 	m_TitleLogo = m_engine->m_spritemanager->Load("../data/misc/titlelogob.png", "title", 1.0, 1.0);
+	m_fire_sprite = m_engine->m_spritemanager->Load("../data/Sprites/firespreadsheet.png", "fire", 1.3, 1.3);
 
 	Black = new sf::RectangleShape;							Black->setSize(sf::Vector2f(1280, 720));
 	Black->setFillColor(sf::Color(0,0,0,m_blackfade));		Black->setPosition(sf::Vector2f(0, 0 ));
 
+	//animation
+	m_fire_sprite->setPosition(370.0f, 585.0f);
+	m_fire = new Animation(m_fire_sprite, 0.2,false, true);
+	m_fire->setSpriteSheet(m_fire_sprite);
+
+	m_fire->addFrame(sf::IntRect (0, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (34, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (68, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (102, 0, 28, 23));
+	m_fire->addFrame(sf::IntRect (136, 0, 28, 23));
+	
+	for(int count=0;count<5;count++)
+	{
+		m_fire->update(0.1f, 1);
+	}
+	
 	printf("State: TitleScreen,  Initialized\n");
 	printf("Press SPACE or RETURN to enter MainMenu\n");
 	return true;
-
-
-
-
 };
 void TitleScreen::Exit()
 {
+	delete m_fire;
+	m_fire = nullptr;
+
 };
 
 
 bool TitleScreen::Update(float deltatime)
 {
+	m_fire_sprite->setPosition(370.0f, 585.0f);
 	int fadespeed = 4;
 
 	if(m_CanGoToMain == true)
 	{
+		m_fire->update(deltatime, 1);
 		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 		{
 			printf("Next State set to MainMenu\n");
@@ -76,7 +94,7 @@ bool TitleScreen::Update(float deltatime)
 		{
 			m_tiTimer -= 1;
 			/*if(m_tiTimer < 0)
-				m_tiTimer = 0*/;
+			m_tiTimer = 0*/;
 		}
 
 
@@ -86,30 +104,30 @@ bool TitleScreen::Update(float deltatime)
 			if(m_titlefade <= 0)
 			{
 				m_blTimer -= 1;
-				delete m_TitleLogo;
+				//delete m_TitleLogo;
 				m_TitleLogo = nullptr;
 				if(m_blTimer <= 0)
 				{
 					m_blackfade -= fadespeed;
 					if(m_blackfade <= 0)
 					{
-						delete Black;
+						//	delete Black;
 						Black = nullptr;
 					}
 				}
 			}
 		}
 		if(Black != nullptr)
-		Black->setFillColor(sf::Color(0,0,0, m_blackfade));
+			Black->setFillColor(sf::Color(0,0,0, m_blackfade));
 		if(m_TitleLogo != nullptr)
-		m_TitleLogo->setColor(sf::Color(255, 255, 255, m_titlefade));
+			m_TitleLogo->setColor(sf::Color(255, 255, 255, m_titlefade));
 
 
 		if(m_blackfade <= 0)
 			m_CanGoToMain = true;
+
+
 	}
-
-
 
 	return true;
 }
@@ -118,11 +136,17 @@ void TitleScreen::Draw()
 {
 	m_engine->m_window->draw(*m_xbackground);
 	m_engine->m_window->draw(start_game);
-	
+
 	if(Black != nullptr)
-	m_engine->m_window->draw(*Black);
+		m_engine->m_window->draw(*Black);
 	if(m_TitleLogo != nullptr)
-	m_engine->m_window->draw(*m_TitleLogo);
+		m_engine->m_window->draw(*m_TitleLogo);
+
+	if(m_CanGoToMain)
+	{
+		m_engine->m_window->draw(*m_fire_sprite);
+	}
+
 
 };
 

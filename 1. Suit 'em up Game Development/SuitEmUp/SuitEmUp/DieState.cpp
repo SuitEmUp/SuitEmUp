@@ -153,6 +153,7 @@ bool DieState::Update(float deltatime)
 				m_highscore->Push_Back(player_score);
 				once = true; 
 				m_input->GlobalAllow();
+				setNextState("HighScoreState");
 			}
 		}
 

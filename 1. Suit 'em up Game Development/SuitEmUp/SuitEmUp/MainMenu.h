@@ -56,4 +56,6 @@ private:
 	int m_morepushdown;
 
 	sf::Sprite *m_xbackground;
+	Animation *m_fire;
+	sf::Sprite *m_fire_sprite;
 };

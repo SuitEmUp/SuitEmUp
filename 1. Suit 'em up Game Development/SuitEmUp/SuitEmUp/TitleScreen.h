@@ -40,8 +40,8 @@ private:
 
 	int m_blTimer;
 	int m_tiTimer;
-
-
+	Animation *m_fire;
+	sf::Sprite *m_fire_sprite;
 
 
 };

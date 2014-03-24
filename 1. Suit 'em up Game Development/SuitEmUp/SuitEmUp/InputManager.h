@@ -35,8 +35,8 @@ private:
 	sf::RenderWindow* m_window;
 	bool m_currentMouse[sf::Mouse::ButtonCount];
 	bool m_previousMouse[sf::Mouse::ButtonCount];
-	bool m_current[256];
-	bool m_previous[256];
+	bool m_current[sf::Keyboard::KeyCount];
+	bool m_previous[sf::Keyboard::KeyCount];
 	
 	bool m_globalallow;
 	int myMouseX;                                        

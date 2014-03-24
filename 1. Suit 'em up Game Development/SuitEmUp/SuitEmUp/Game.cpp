@@ -25,6 +25,8 @@ Game::Game(Engine *engine)
 };
 bool Game::Init()
 {
+	m_engine->m_crosshair = m_engine->m_spritemanager->Load("../data/sprites/new.png", "crosshair", 1, 1);
+	m_engine->m_crosshair->setOrigin(33/2,33/2);
 
 	if(m_engine->m_paused == 1 || m_engine->m_paused == 3)
 	{

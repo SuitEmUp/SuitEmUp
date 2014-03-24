@@ -14,7 +14,7 @@ Truck::Truck(int upgrade, sf::Sprite* sprite, sf::Sprite* sprite2,sf::Sprite* sp
 
 	if(upgrade == 1)
 	{
-	m_maxhp = 130;
+	m_maxhp = 130 ;
 	m_hp = m_maxhp;
 	}
 	if(upgrade == 3)
@@ -75,13 +75,8 @@ bool Truck::Update(float deltatime)
 {
 	m_sprite->setPosition(m_position);
 
-
-
 	m_truck_hp->update(deltatime, 1);
-
-
-	m_truck_hp->update(deltatime, 1);
-
+	
 	if(m_hp>m_maxhp){m_hp=m_maxhp;}
 
 	if(m_hp > 75)

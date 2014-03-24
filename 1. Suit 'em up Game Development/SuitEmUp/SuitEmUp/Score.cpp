@@ -60,7 +60,7 @@ sf::Text Score::DrawWhenDead()
 		"left defenseless against the bandits.\n \t\t\t\t\t\t\t\tYour Score: " <<
 		GetScore() <<
 		"\n  write your name: " <<
-		"\n \t\t\t Press enter to submit score";
+		"\n \t\t\t\t\t\t Press enter to submit score";
 	
 	score.setString( ss.str());
 	return score;
@@ -73,7 +73,7 @@ sf::Text Score::DrawWhenWon()
 	std::ostringstream ss;
 
 	ss << "\t\t\t\t\t\t\tYour energy source have survived, for now." <<
-		"\n \t\t\t\t\t\t\t\tYour Score: " <<
+		"\n\n \t\t\t\t\t\t\t\tYour Score: " <<
 		GetScore() <<
 		"\n  write your name: ";
 	

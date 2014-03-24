@@ -1,0 +1,2 @@
+go into the release and use the exe file.
+make sure you've installed : http://www.microsoft.com/en-us/download/details.aspx?id=30679
