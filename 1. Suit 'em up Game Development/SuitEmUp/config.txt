@@ -11,8 +11,8 @@ current_suit = 0
 currentsuitcost = 1000
 current_weapon = 0
 quickcustomize = 1
-
 weapons_available = 1
 currentweaponcost = 2000
 currenttruckcost = 1500
 showtutorial = true;
+

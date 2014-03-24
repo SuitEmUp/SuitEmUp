@@ -126,12 +126,15 @@ bool HighScoreState::Update(float deltatime)
 
 	for(int i=0; i<m_xbuttons.size();i++)
 	{
-		if(m_xbuttons.at(i)->Update()== "Clicked" && m_xbuttons.at(i)->GetType2() == "Main")
+		if(m_xbuttons.at(i)->Update()== "Clicked")
 		{
-			printf("Next State set to MainMenu\n");
-			setNextState("MainMenu");
-			m_engine->m_paused = 1;
-			return false;
+			if(m_xbuttons.at(i)->GetType2() == "Main")
+			{
+				printf("Next State set to MainMenu\n");
+				setNextState("MainMenu");
+				m_engine->m_paused = 1;
+				return false;
+			}
 		}
 	}
 	return  true;
