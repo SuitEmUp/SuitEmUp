@@ -31,7 +31,7 @@ TitleScreen::TitleScreen(Engine* engine)
 	m_tiTimer = 100;
 	m_blackfade = 255.0f;
 	m_titlefade = 255.0f;
-	m_CanGoToMain = false;
+	m_CanGoToMain = true;
 
 };
 
