@@ -1,7 +1,9 @@
 #include "Button.h"	
+#include "SoundManager.h"
 
-Button::Button(InputManager* p_input, std::string p_ButtonName, std::string p_shape, sf::Sprite* p_Sprite, int x_Pos, int y_Pos)
+Button::Button(SoundManager* sm, InputManager* p_input, std::string p_ButtonName, std::string p_shape, sf::Sprite* p_Sprite, int x_Pos, int y_Pos)
 {
+	m_sm = sm;
 	//m_nextState = p_nextState;
 	m_sprite = p_Sprite;
 	m_position = sf::Vector2f(x_Pos, y_Pos);
@@ -15,57 +17,12 @@ Button::Button(InputManager* p_input, std::string p_ButtonName, std::string p_sh
 		m_sprite->setOrigin(m_sprite->getLocalBounds().width / 2, m_sprite->getLocalBounds().height / 2);
 	}
 
-	m_buffer1 = new sf::SoundBuffer();
-	m_buffer1->loadFromFile("../data/sounds/buttons/jarredgibb_02.wav");
-	m_buffer2 = new sf::SoundBuffer();
-	m_buffer2->loadFromFile("../data/sounds/buttons/jarredgibb_03.wav");
-	m_buffer3 = new sf::SoundBuffer();
-	m_buffer3->loadFromFile("../data/sounds/buttons/jarredgibb_04.wav");
-	m_buffer4 = new sf::SoundBuffer();
-	m_buffer4->loadFromFile("../data/sounds/buttons/jarredgibb_05.wav");
-
-	m_pressedbuffer = new sf::SoundBuffer();
-	m_PressedSound = new sf::Sound();
-	m_pressedbuffer->loadFromFile("../data/sounds/M4A1.wav");
-	m_PressedSound->setBuffer(*m_pressedbuffer);
-	m_PressedSound->setVolume(200);
-	m_PressedSound->setPitch(2);
-
-	m_clicksound = new sf::Sound();
-	m_clicksound->setBuffer(*m_buffer1);
-	m_clicksound->setVolume(100);
-	m_clicksound->setPitch(2);
 };
 
 Button::~Button()
 {
 	m_sprite = nullptr;
 	m_input = nullptr;
-
-	delete m_buffer1;
-	m_buffer1 = nullptr;
-	if(m_buffer1 != nullptr)
-		printf("Failed to delete m_buffer1\n");
-
-	delete m_buffer2;
-	m_buffer2 = nullptr;
-	if(m_buffer2 != nullptr)
-		printf("Failed to delete m_buffer2\n");
-
-	delete m_buffer2;
-	m_buffer3 = nullptr;
-	if(m_buffer3 != nullptr)
-		printf("Failed to delete m_buffer3\n");
-
-	delete m_buffer2;
-	m_buffer4 = nullptr;
-	if(m_buffer4 != nullptr)
-		printf("Failed to delete m_buffer4\n");
-
-	delete m_clicksound;
-	m_clicksound = nullptr;
-	if(m_clicksound != nullptr)
-		printf("Failed to delete m_clicksound\n");
 
 };
 
@@ -87,7 +44,6 @@ std::string Button::Update()
 				if(m_input->Mouse_isDownOnce(sf::Mouse::Button::Left))
 				{
 					printf("Button Clicked!\n");
-					m_PressedSound->play();
 					return "Clicked";
 				}
 				else
@@ -98,21 +54,20 @@ std::string Button::Update()
 						int randomm = ((rand()%(4-1+1))+1);
 						if(randomm == 1)
 						{
-							m_clicksound->setBuffer(*m_buffer1);
+							m_sm->PlaySound("buttons/jarredgibb_05.wav");
 						}
 						if(randomm == 2)
 						{
-							m_clicksound->setBuffer(*m_buffer2);
+							m_sm->PlaySound("buttons/jarredgibb_02.wav");
 						}
 						if(randomm == 3)
 						{
-							m_clicksound->setBuffer(*m_buffer3);
+							m_sm->PlaySound("buttons/jarredgibb_03.wav");
 						}
 						if(randomm == 4)
 						{
-							m_clicksound->setBuffer(*m_buffer4);
+							m_sm->PlaySound("buttons/jarredgibb_04.wav");
 						}
-						m_clicksound->play();
 					}
 					m_previous = "Hovering";
 					return "Hovering";

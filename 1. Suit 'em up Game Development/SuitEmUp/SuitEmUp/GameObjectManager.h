@@ -28,7 +28,7 @@ class GameObjectManager
 {
 	friend class Customize;
 public:
-	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr);
+	GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr, std::string* controltype);
 	~GameObjectManager();
 
 	void CreateGameObjects(float degree);
@@ -86,6 +86,7 @@ public:
 	std::vector<Button*> m_vTrinketButtons;
 
 private:
+	std::string* m_controltype;
 	//	std::vector<GameObject*> m_gameobject;
 	EyeCandy* m_eyecandy;
 	Truck* m_truck;

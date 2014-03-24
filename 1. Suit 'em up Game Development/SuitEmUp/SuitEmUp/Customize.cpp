@@ -12,6 +12,8 @@
 #include "SpriteManager.h"
 #include "GameObjectManager.h"
 #include "PlayerObject.h"
+#include "Engine.h"
+#include "SoundManager.h"
 #include <sstream>
 
 
@@ -324,6 +326,7 @@ bool Customize::Update(float deltatime)
 				//Upgrade Suit
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeSuit" && howmuchitcosts_suit <= howmuchmoneyihave)
 				{
+					
 					if(m_currentSuit != 2)
 					{
 						//score
@@ -332,6 +335,7 @@ bool Customize::Update(float deltatime)
 
 						if(m_currentSuit == 0)
 						{
+							m_engine->m_soundmanager->PlaySound("SuitUpgrade.wav");
 							m_engine->m_gom->m_player->SetSuitType("Level2");
 							m_currentSuit = 1;
 							if (m_currentSuit == 1) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_2.png", "Suit2", 1.0, 1.0);
@@ -342,6 +346,7 @@ bool Customize::Update(float deltatime)
 						}
 						else if(m_currentSuit == 1)
 						{
+							m_engine->m_soundmanager->PlaySound("SuitUpgrade.wav");
 							m_engine->m_gom->m_player->SetSuitType("Level3");
 							m_currentSuit = 2;
 							if (m_currentSuit == 2) m_suit = m_engine->m_spritemanager->Load("../data/misc/customization/suit_3.png", "Suit3", 1.0, 1.0);
@@ -364,7 +369,7 @@ bool Customize::Update(float deltatime)
 				//Upgrade Weapon
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeWeapon" && howmuchitcosts_weapon <= howmuchmoneyihave && m_weapons_available != 3)
 				{
-
+					m_engine->m_soundmanager->PlaySound("WeaponUpgrade.wav");
 					//score
 					m_engine->m_gom->Buy(howmuchitcosts_weapon);
 					howmuchitcosts_weapon = 3000;
@@ -491,10 +496,10 @@ bool Customize::Update(float deltatime)
 				//Upgrade Truck
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "UpgradeTruck" && howmuchitcosts_truck <= howmuchmoneyihave)
 				{
-
+					
 					if(Config::getInt("current_truck", 0) == 1)
 					{
-
+						m_engine->m_soundmanager->PlaySound("TruckUpgrade.wav");
 						m_currenttruck = items[8];
 						Config::set("currenttruckcost", "Upgrade Complete");
 						Config::set("current_truck", "2");
@@ -511,7 +516,7 @@ bool Customize::Update(float deltatime)
 					if(Config::getInt("current_truck", 0) == 0)
 					{
 
-
+						m_engine->m_soundmanager->PlaySound("TruckUpgrade.wav");
 						m_currenttruck = items[7];
 						Config::set("currenttruckcost", "2500");
 						Config::set("current_truck", "1");
@@ -530,6 +535,7 @@ bool Customize::Update(float deltatime)
 
 				if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "Back")
 				{
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					printf("Next State set to Game\n");
 					setNextState("Game");
 					return false;
@@ -537,6 +543,7 @@ bool Customize::Update(float deltatime)
 			}
 			if(m_engine->m_gom->m_vCustomizeButtons.at(i)->GetType2() == "QuitGame")
 			{
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				printf("Next State set to Game\n");
 				setNextState("Game");
 				return false;

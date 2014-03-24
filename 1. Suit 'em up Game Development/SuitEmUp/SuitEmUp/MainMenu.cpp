@@ -9,8 +9,7 @@
 #include "Button.h"
 #include "Config.h"
 
-
-
+#include "SoundManager.h"
 
 MainMenu::MainMenu(Engine *engine) 
 {
@@ -85,6 +84,7 @@ bool MainMenu::Update(float deltatime)
 			{
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame")
 				{
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					m_ShowTutorial = true;
 				}
 
@@ -92,30 +92,36 @@ bool MainMenu::Update(float deltatime)
 				{
 					printf("Click SUCCESSSSS\n");
 					printf("Next State set to Highscore\n");
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					setNextState("HighScoreState");
 					return false;
 				}
 
 				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options")
 				{
-
 					printf("Click SUCCESSSSS\n");
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					printf("Next State set to Options\n");
 					setNextState("Options");
 					return false;
 				}
-				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame")
-				{
 
+
+				if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
+					
 					m_engine->m_running = false;
 					printf("Click SUCCESSSSS\n");
 					printf("This button doesnt work yet\n");
 					//Exit Game
 				}
-
-
 			}
+
+
+
+
+
 		}
+
 
 		if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
 		else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
@@ -142,6 +148,11 @@ bool MainMenu::Update(float deltatime)
 		Exit();
 		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 		{
+			
+			Config::set("currentsuitcost", "1000");
+			Config::set("currentweaponcost", "1500");
+			Config::set("currenttruckcost", "1200");
+			Config::renew;
 			printf("Click SUCCESSSSS\n");
 			printf("Next State set to Game\n");
 			setNextState("Game");
@@ -153,7 +164,6 @@ bool MainMenu::Update(float deltatime)
 
 
 	return true;
-
 }
 
 
