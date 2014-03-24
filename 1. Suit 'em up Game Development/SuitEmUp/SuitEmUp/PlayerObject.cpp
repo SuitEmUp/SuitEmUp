@@ -11,7 +11,7 @@ PlayerObject::PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite
 {
 	m_controltype = movement;
 	m_spritemanager = p_spritemanager;
-	m_position = sf::Vector2f(600, 400);
+	m_position = sf::Vector2f(540, 200);
 	//m_update = update;
 	m_input = input;
 	m_truck = truck;

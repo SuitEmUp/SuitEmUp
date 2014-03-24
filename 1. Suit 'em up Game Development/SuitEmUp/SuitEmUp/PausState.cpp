@@ -7,7 +7,7 @@
 #include "PausState.h"
 #include "InputManager.h"
 #include "SpriteManager.h"
-
+#include "SoundManager.h"
 
 
 
@@ -27,15 +27,15 @@ bool PausState::Init()
 
 	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2<float>(150.0f, 150.0f));
 
-	m_buttons.push_back(new Button(m_input, "Resume", "Square", m_engine->m_spritemanager->Load("../data/buttons/Resume.png", "StartGame"),
+	m_buttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Resume", "Square", m_engine->m_spritemanager->Load("../data/buttons/Resume.png", "StartGame"),
 
 		(Config::getInt("window_w", 0)/2 - 119), Config::getInt("menu_top_padding", 0)));
 
-	m_buttons.push_back(new Button(m_input, "Customization", "Square", m_engine->m_spritemanager->Load("../data/buttons/Customize button.PNG", "Customization"),
+	m_buttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Customization", "Square", m_engine->m_spritemanager->Load("../data/buttons/Customize button.PNG", "Customization"),
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + Config::getInt("button_padding", 0))));
 
-	m_buttons.push_back(new Button(m_input, "MainMenu", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "QuitGame"), 
+	m_buttons.push_back(new Button(m_engine->m_soundmanager,m_input, "MainMenu", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "QuitGame"), 
 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*2))));
 
@@ -95,18 +95,21 @@ bool PausState::Update(float deltatime)
 	{
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Resume")
 		{
+			m_engine->m_soundmanager->PlaySound("M4A1.wav");
 			printf("Next State set to GameState\n");
 			setNextState("Game");
 			return false;
 		}
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "Customization")
 		{
+			m_engine->m_soundmanager->PlaySound("M4A1.wav");
 			printf("Next State set to Customize\n");
 			setNextState("Customize");
 			return false;
 		}
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
 		{
+			m_engine->m_soundmanager->PlaySound("M4A1.wav");
 			printf("Next State set to MainMenu\n");
 			m_engine->m_gom->ClearGameObjects();
 			setNextState("MainMenu");

@@ -9,8 +9,7 @@
 #include "Button.h"
 #include "Config.h"
 
-
-
+#include "SoundManager.h"
 
 MainMenu::MainMenu(Engine *engine) 
 {
@@ -89,7 +88,7 @@ bool MainMenu::Update(float deltatime)
 				//setNextState("Game");
 				//m_engine->m_paused = 3; //through mainmenu
 				//return false;
-
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				m_ShowTutorial = true;
 			}
 
@@ -97,11 +96,13 @@ bool MainMenu::Update(float deltatime)
 				printf("Click SUCCESSSSS\n");
 				printf("Next State set to Highscore\n");
 				setNextState("HighScoreState");
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				return false;
 			}
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
 
 				printf("Click SUCCESSSSS\n");
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				printf("Next State set to Options\n");
 				setNextState("Options");
 				return false;
@@ -110,11 +111,12 @@ bool MainMenu::Update(float deltatime)
 
 				m_engine->m_running = false;
 				printf("Click SUCCESSSSS\n");
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				printf("This button doesnt work yet\n");
 				//Exit Game
 
 				if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked"){
-
+					m_engine->m_soundmanager->PlaySound("M4A1.wav");
 					if(m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
 						//m_clicksound->play();
 						printf("Click SUCCESSSSS\n");
@@ -152,7 +154,7 @@ bool MainMenu::Update(float deltatime)
 			}
 
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "StartGame"){
-
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				Config::set("currentsuitcost", "1000");
 				Config::set("currentweaponcost", "2000");
 				Config::set("currenttruckcost", "1500");
@@ -166,15 +168,16 @@ bool MainMenu::Update(float deltatime)
 
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "HighScore"){
 				setNextState("HighScoreState");
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				return false;
 			}
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "Options"){
-
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				setNextState("Options");
 				return false;
 			}
 			if(m_engine->m_gom->m_vButtons.at(i)->Update() == "Clicked" && m_engine->m_gom->m_vButtons.at(i)->GetType2() == "QuitGame"){
-
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				m_engine->m_running = false;
 				//Exit Game
 
@@ -216,6 +219,7 @@ bool MainMenu::Update(float deltatime)
 
 		return true;
 	}
+	return true;
 }
 
 

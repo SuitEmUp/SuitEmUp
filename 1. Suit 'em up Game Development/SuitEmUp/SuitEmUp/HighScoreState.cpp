@@ -82,7 +82,7 @@ bool HighScoreState::Init()
 	}
 
 	//Mainmenu
-	m_xbuttons.push_back(new Button(m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
+	m_xbuttons.push_back(new Button(m_engine->m_soundmanager,m_input, "Main", "Square" ,m_engine->m_spritemanager->Load("../data/buttons/Main_Menu.png", "Mainmenu"), 
 		(Config::getInt("window_w", 0)/2 - 119), (Config::getInt("menu_top_padding", 0) + (Config::getInt("button_padding", 0)*3))));
 
 	m_glow1 = m_engine->m_spritemanager->Load("../data/buttons/hover.png","glow1",  1.0f, 1.0f);
