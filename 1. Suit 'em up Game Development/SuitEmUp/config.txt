@@ -13,5 +13,5 @@ current_suit = 0
 currentsuitcost = 1000
 quickcustomize = 1
 current_weapon = 0
-currentweaponcost = Upgrade Complete
+currentweaponcost = 2000
 currenttruckcost = 1500

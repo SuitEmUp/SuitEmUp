@@ -21,6 +21,7 @@ Options::Options(Engine* engine)
 bool Options::Init()
 {
 
+	m_background = m_engine->m_spritemanager->Load("../data/Sprites/title.png", "bakgrund", 1.0, 1.0);
 
 	printf("State: Options,   Initialized\n");
 	printf("F1 - F4 to Change States\n");
@@ -34,6 +35,7 @@ bool Options::Init()
 	m_sliders.push_back(new Slider(m_engine->m_spritemanager, "VisualSlider", sf::Vector2f(1280/2, 400), m_engine->m_visuallevel));
 
 	m_buttons.push_back(new Button(m_engine->m_input, "BackButton", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 100, 100));
+	m_buttons.push_back(new Button(m_engine->m_input, "ChangeMovement", "Square", m_engine->m_spritemanager->Load("../data/buttons/back_button.png", "Back"), 100, 200));
 
 
 	/*printf("State: Options,   Initialized\n");
@@ -58,6 +60,9 @@ void Options::Exit()
 		i--;
 	};
 	m_sliders.clear();
+
+	m_background = nullptr;
+	std::cout<< m_engine->m_controltype << std::endl;
 };
 
 bool Options::Update(float deltatime)
@@ -84,6 +89,15 @@ bool Options::Update(float deltatime)
 			if(m_buttons.at(i)->GetType2() == "BackButton" && m_buttons.at(i)){
 				setNextState("MainMenu");
 				return false;
+			}
+			else if(m_buttons.at(i)->GetType2() == "ChangeMovement" && m_buttons.at(i))
+			{
+				if(m_engine->m_controltype == "Special")
+				{
+				m_engine->m_controltype = "Normal";
+				std::cout<< "Normal controls!" << std::endl;
+				}
+				else {m_engine->m_controltype = "Special";	std::cout<< "Special controls!" << std::endl;}
 			}
 		}
 	}

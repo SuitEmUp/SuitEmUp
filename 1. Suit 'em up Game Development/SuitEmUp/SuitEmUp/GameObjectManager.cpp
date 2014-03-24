@@ -21,8 +21,9 @@
 #include "HpBar.h"
 
 
-GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr)
+GameObjectManager::GameObjectManager(SpriteManager* sm, sf::RenderWindow* rw, InputManager* input, SoundManager* soundmngr, std::string* controltype)
 {
+	m_controltype = controltype;
 	m_soundmanager = soundmngr;
 	m_input = input;
 	m_spritemanager=sm;
@@ -48,6 +49,7 @@ GameObjectManager::~GameObjectManager()
 	//	m_spritemanager=nullptr;
 	int i = 0;
 }
+
 void GameObjectManager::CreateGameObjects(float degree)
 {
 	//background
@@ -69,7 +71,7 @@ void GameObjectManager::CreateGameObjects(float degree)
 
 
 
-	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1), m_spritemanager);
+	m_player = new PlayerObject(m_truck, m_input, m_spritemanager->Load("../data/sprites/ArianaSpriteBlack.png", "Ariana", 1, 1), m_spritemanager, m_controltype);
 	m_spawner = new Spawner(m_truck);
 
 

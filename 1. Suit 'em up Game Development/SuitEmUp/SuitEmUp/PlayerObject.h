@@ -13,10 +13,11 @@ class PlayerObject : public MovingGameObject
 {
 public:
 	//PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite = nullptr, sf::Sprite* update = nullptr);
-	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, SpriteManager* p_spritemanager);
+	PlayerObject(Truck* truck, InputManager* input, sf::Sprite* sprite, SpriteManager* p_spritemanager, std::string* Movementtype);
 	~PlayerObject();
 	bool Update(float deltatime);
 	bool GetType();
+	void TruckCollision();
 	float GetDamage();
 	sf::Vector2f GetDirection();
 
@@ -52,7 +53,7 @@ private:
 	
 
 	std::string m_firetype;
-	std::string m_controltype;
+	std::string* m_controltype;
 
 	std::string m_suittype;
 	std::string m_weapontype;
