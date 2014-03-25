@@ -23,7 +23,7 @@ public:
 	bool Initialize(std::string path);
 	void PlaySound(std::string path);
 	void PlayMusic(std::string path);
-	void StopMusic();
+	void StopMusic(std::string path);
 
 	void SetMusicVolume(float volume);
 	void SetSoundVolume(float volume);

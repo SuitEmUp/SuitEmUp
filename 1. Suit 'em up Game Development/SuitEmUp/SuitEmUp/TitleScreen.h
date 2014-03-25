@@ -42,6 +42,6 @@ private:
 	int m_tiTimer;
 	Animation *m_fire;
 	sf::Sprite *m_fire_sprite;
-
+	bool m_playsound;
 
 };

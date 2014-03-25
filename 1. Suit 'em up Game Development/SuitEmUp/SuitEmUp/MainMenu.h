@@ -34,8 +34,6 @@ private:
 	Engine *m_engine;
 	std::vector<Button*> m_Buttons;
 
-	sf::Sound* m_clicksound;
-	sf::SoundBuffer* m_buffer;
 	sf::Sprite* m_logo;
 	sf::Sprite* m_glow1;
 	sf::Sprite* m_glow2;

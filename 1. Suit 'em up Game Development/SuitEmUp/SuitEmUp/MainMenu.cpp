@@ -17,13 +17,6 @@ MainMenu::MainMenu(Engine *engine)
 	next_state = "";
 	m_input = m_engine->m_input;
 
-	m_buffer = new sf::SoundBuffer();
-	m_buffer->loadFromFile("../data/sounds/M4A1.wav");
-	m_clicksound = new sf::Sound();
-	m_clicksound->setBuffer(*m_buffer);
-	m_clicksound->setVolume(200);
-	m_clicksound->setPitch(2);
-
 	m_canclick = false;
 	m_oneclicklock = false;
 
@@ -80,7 +73,6 @@ bool MainMenu::Init()
 	{
 		m_fire->update(0.1f, 1);
 	}
-
 
 	return true;
 };
@@ -150,13 +142,21 @@ bool MainMenu::Update(float deltatime)
 			}
 		}
 		if(m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 0){			m_codecount += 1;}
-		else if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
+		//else m_codecount = 0;
+		if (m_input->IsDownOnce(sf::Keyboard::Up) && m_codecount == 1){	m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 2){		m_codecount += 1;}
-		else if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 3){	m_codecount += 1;}
+		//else m_codecount = 0;
+		if (m_input->IsDownOnce(sf::Keyboard::Down) && m_codecount == 3){	m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 4){		m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 5){		m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::Left) && m_codecount == 6){		m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::Right) && m_codecount == 7){		m_codecount += 1;}
+		//else m_codecount = 0;
 		if (m_input->IsDownOnce(sf::Keyboard::B) && m_codecount == 8){			m_codecount += 1;}
 		if (m_input->IsDownOnce(sf::Keyboard::A) && m_codecount == 9){			m_codecount += 1;}
 		if (m_input->IsDownOnce(sf::Keyboard::Return) && m_codecount == 10)

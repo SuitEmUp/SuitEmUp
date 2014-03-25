@@ -5,7 +5,7 @@
 #include "TitleScreen.h"
 #include "InputManager.h"
 #include "SpriteManager.h"
-
+#include "SoundManager.h"
 
 
 
@@ -32,6 +32,7 @@ TitleScreen::TitleScreen(Engine* engine)
 	m_blackfade = 255.0f;
 	m_titlefade = 255.0f;
 	m_CanGoToMain = false;
+	m_playsound = true;
 
 };
 
@@ -68,7 +69,6 @@ void TitleScreen::Exit()
 {
 	delete m_fire;
 	m_fire = nullptr;
-
 };
 
 
@@ -79,6 +79,10 @@ bool TitleScreen::Update(float deltatime)
 
 	if(m_CanGoToMain == true)
 	{
+		if(m_playsound){
+		m_engine->m_soundmanager->PlayMusic("Campfire.wav");
+		m_playsound = false;
+		}
 		m_fire->update(deltatime, 1);
 		if(m_input->IsDown(sf::Keyboard::Space) || m_input->IsDown(sf::Keyboard::Return))
 		{

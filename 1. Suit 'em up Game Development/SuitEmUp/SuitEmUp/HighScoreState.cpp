@@ -7,6 +7,7 @@
 #include <iostream>
 #include "GameObjectManager.h"
 #include "SpriteManager.h"
+#include "SoundManager.h"
 
 HighScoreState::HighScoreState(Engine* engine) 
 {
@@ -153,6 +154,7 @@ bool HighScoreState::Update(float deltatime)
 				printf("Next State set to MainMenu\n");
 				setNextState("MainMenu");
 				m_engine->m_paused = 1;
+				m_engine->m_soundmanager->PlaySound("M4A1.wav");
 				return false;
 			}
 		}

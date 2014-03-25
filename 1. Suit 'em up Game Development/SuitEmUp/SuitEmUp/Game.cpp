@@ -8,6 +8,7 @@
 #include "PlayerObject.h"
 #include "Config.h"
 #include "Score.h"
+#include "SoundManager.h"
 
 
 Game::Game(Engine *engine) 
@@ -20,7 +21,6 @@ Game::Game(Engine *engine)
 	m_score = 0;
 	popuplock = true;
 	onepopuplock = false;
-
 
 };
 bool Game::Init()
@@ -41,7 +41,7 @@ bool Game::Init()
 
 	/*popuplock = true;
 	onepopuplock = false;*/
-
+	m_engine->m_soundmanager->StopMusic("Campfire.wav");
 	printf("State: Game,  Initialized\n");
 	return true;
 };

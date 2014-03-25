@@ -110,6 +110,7 @@ bool PausState::Update(float deltatime)
 		if(m_buttons.at(i)->Update()== "Clicked" && m_buttons.at(i)->GetType2() == "MainMenu")
 		{
 			m_engine->m_soundmanager->PlaySound("M4A1.wav");
+			m_engine->m_soundmanager->PlayMusic("Campfire.wav");
 			printf("Next State set to MainMenu\n");
 			m_engine->m_gom->ClearGameObjects();
 			setNextState("MainMenu");

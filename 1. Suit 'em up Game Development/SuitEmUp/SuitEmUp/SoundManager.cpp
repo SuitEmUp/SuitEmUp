@@ -52,20 +52,45 @@ void SoundManager::PlayMusic(std::string path)
 	PlayMusic(path);
 };
 
-void SoundManager::StopMusic(){};
+void SoundManager::StopMusic(std::string path)
+{
+	if(m_musics.size()>0)
+	{
+		for(MusicStruct music : m_musics){
+			if(music.path == path){
+				music.musicdata->stop();
+				return;
+			}
+		}
+	}
+};
 
 void SoundManager::SetMusicVolume(float volume){
 	m_musicvolume = volume;
+	if(m_musics.size()>0)
+	{
+		for(MusicStruct music : m_musics){
+			music.musicdata->setVolume(m_musicvolume*m_mastervolume);
+			return;
+		}
+	}
 };
 void SoundManager::SetSoundVolume(float volume){
 	m_soundvolume = volume;
 };
 void SoundManager::SetMasterVolume(float volume){
 	m_mastervolume = volume/100;
+	if(m_musics.size()>0)
+	{
+		for(MusicStruct music : m_musics){
+			music.musicdata->setVolume(m_musicvolume*m_mastervolume);
+			return;
+		}
+	}
 };
 
 float SoundManager::GetSoundVolume(){
-return 0;};
+	return 0;};
 float SoundManager::GetMusicVolume(){return 0;};
 float SoundManager::GetMasterVolume(){return 0;};
 
