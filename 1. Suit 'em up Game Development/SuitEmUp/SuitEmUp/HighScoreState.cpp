@@ -138,6 +138,13 @@ void HighScoreState::Exit()
 	}
 	delete m_fire;
 	m_fire = nullptr;
+
+	for(unsigned int i = 0; i < Texts.size(); i++)
+	{
+		delete Texts[i];
+		Texts[i] = nullptr;
+	}
+	Texts.clear();
 };
 
 bool HighScoreState::Update(float deltatime)
